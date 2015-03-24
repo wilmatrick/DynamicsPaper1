@@ -45,13 +45,13 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 
 [TO DO]
 
-\subsection{Potential models}
-
-[TO DO] Mention different ways to calculate actions in different potentials.
-
 \subsection{Distribution function}
 
 [TO DO]
+
+\subsection{Potential models}
+
+[TO DO] Mention different ways to calculate actions in different potentials.
 
 \subsection{Mock Data}
 
@@ -63,40 +63,36 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 \item *Plot 3:* distribution of mock data set in real space: z vs. R. and vz vs. R, maybe for a hot and cold population? (maybe a bit boring? Would be however illustrative, that the mock data sampled from the qdf is indeed similar to something we could observe. Also: could make a 4 sigma contour in the vz vs. R plot, to show, that the choice of integration limits is important but 4 sigma should be sufficient.)
 \end{itemize}
 
-\subsection{Analysis}
-
-[TO DO] Don't forget: How to choose the fitting ranges.
-
 \subsection{Measurement Errors}
 
 [TO DO]
 
-\begin{itemize}
-\item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
-    * hotness of stars
-    * number of stars
-\item *Plot 2:* Some plot that shows, that our approximation of ignoring distance errors works. Any ideas?
-\end{itemize}
+\subsection{Analysis}
+
+[TO DO] Don't forget: How to choose the fitting ranges.
 
 \section{Results}
 
 \subsection{Verification of the Method}
 
 \begin{itemize}
+\item *Plot 1:* two panels: 
+\begin{itemize}
+\item a) convergence of the normalisation vs. ngl\_vel (GL order of integrating the qdf over the velocities to get the density), 
+\item b) convergence of the normalisation vs. n\_dens (number of grid points in each (R,z) at which the density is explicitely calculated, before interpolating and integrating over the volume to get the normalisation). \\ 
+ This might not be a very exciting plot, but when we later show plots, that demonstrate e.g. how robust the method is against incompleteness, people might think, that in this case the normalization is not so important and time could be saved in calculating it. We know, that it is important to get the normalisation right. Plus, it proves, that possible biases when using the St\"ackel approximation are not due to a wrong normalisation.
+ \end{itemize}
 \item *Test 1:* Isochrone potential, 2 different b, 2 different populations, 5 different SF (isoSph test suite) \\
-*Plot 1:* scatter plot (offset / stddev) vs. (stddev / true value [\%]) for b and one qdf parameter --> and panel with normal distribution. This plot could show 3 things:
+*Plot 2:* scatter plot (offset / stddev) vs. (stddev / true value [\%]) for b and one qdf parameter --> and panel with normal distribution. This plot could show 3 things:
 \begin{itemize}
 \item Central limit theorem is satisified --> method works.
 \item Bigger volumes give better constraints.
 \item hot populations seem to give tighter constraints on the potential.
 \end{itemize}
-\item *Plot 2:* two panels: 
-\item a) convergence of the normalisation vs. ngl\_vel (GL order of integrating the qdf over the velocities to get the density), 
-\item b) convergence of the normalisation vs. n\_dens (number of grid points in each (R,z) at which the density is explicitely calculated, before interpolating and integrating over the volume to get the normalisation). \\ 
- This might not be a very exciting plot, but when we later show plots, that demonstrate e.g. how robust the method is against incompleteness, people might think, that in this case the normalization is not so important and time could be saved in calculating it. We know, that it is important to get the normalisation right. Plus, it proves, that possible biases when using the St\"ackel approximation are not due to a wrong normalisation.
 \item *Plot 3:* Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.
+\item *Plot 4:* stddev ~ 1/sqrt(N)
 \end{itemize}
-Don't forget to mention, that we also veryfied that stddev ~ 1/sqrt(N)
+
 
 \subsection{Do shape and position of the observation volume matter?}
 
@@ -111,7 +107,7 @@ Don't forget to mention, that we also veryfied that stddev ~ 1/sqrt(N)
     b) offset / stddev vs. stddev / true value [\%], that demonstrates, that it doesn't matter much for the potential recovery, if we have more radial or vertical coverage, and the position within the galaxy. 
      \end{itemize}
      
-\subsection{What if our data set is incomplete?}
+\subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
 
 \begin{itemize}
 \item  *Test 1:* isochrone potential, b=0.9 kpc, two populations, completeness$(d) = 1 - \epsilon \cdot d/Rmax$, where Rmax is radius of spherical selection function. Marginalize over vT in analysis. \\
@@ -141,8 +137,16 @@ Don't forget to mention, that we also veryfied that stddev ~ 1/sqrt(N)
 
 \subsection{Effect of measurement errors on recovery of potential?}
 
-* *Test 1:* One selection function, one population, vary the size of the proper motion error (don't forget to adapt the number of MC samples needed) \\
-*Plot 1:* (width of pdf) vs. (maximum velocity error / temperature parameter)
+\begin{itemize}
+\item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
+    * hotness of stars
+    * number of stars
+\item *Plot 2:* Some plot that shows, that our approximation of ignoring distance errors works. Any ideas?
+\item *Test 1:* One selection function, one population, vary the size of the proper motion error (don't forget to adapt the number of MC samples needed) \\
+*Plot 3:* (width of pdf) vs. (maximum velocity error / temperature parameter)
+\end{itemize}
+
+
 
 \section{Conclusion}
 
