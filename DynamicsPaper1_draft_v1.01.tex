@@ -20,7 +20,7 @@
 \affil{Institute for Advanced Study, Princeton, NJ}
 
 %% Affiliations
-\altaffiltext{1}{Max-Planck-Institut f\"ur Astronomie, K \"onigstuhl 17, D-69117 Heidelberg, Germany}
+\altaffiltext{1}{Max-Planck-Institut f\"ur Astronomie, K\"onigstuhl 17, D-69117 Heidelberg, Germany}
 \altaffiltext{2}{Correspondence should be addressed to trick@mpia.de.}
 \altaffiltext{3}{Institute for Advanced Study, Einstein Drive, Princeton, NJ 08540, USA}
 \altaffiltext{4}{Hubble fellow}
@@ -39,11 +39,34 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 
 [TO DO]
 
+\paragraph{Collection of thoughts for the introduction}
+\begin{itemize}
+\item \textbf{Our modelling method in a nutshell:} We fit simultaneously a model for the Galaxy's gravitational potential and an orbit distribution function (df) to stellar phase-space data. To turn a star's position and velocity into a full orbit, we need the gravitational potential in which the star moves. We assume that we know a family of orbit distribution functions that are close enough to the real distribution of orbits. In this case the stellar orbits calculated within a proposed potential will only follow such a df, if this potential model is close enough to the true potential.
+\\Or in other words: We need the potential to calculate orbits. At the same time, if we \textit{know} the true orbits, we can deduce the true potential from them. To find the true orbits, we make use of the predictive power of an orbit distribution function.
+
+\item \textbf{Motivation to use this modelling technique in the Milky Way:} Bovy et al. 2012 .... [TO DO]
+
+\item \textbf{Introducing orbits and actions:} There are different ways to describe stellar orbits. The most obvious is to give the stars position and velocity vector at each point in time, by evaluating the potential forces that act on the star in each time step. Most orbits in realistic galaxy potentials  are however not closed, so we would have to integrate the orbit forever. Another, much more convenient way to describe orbits, are so called integrals of motion. These integrals are functions of the star's time-dependent position and velocity, but are themselves constants in time, i.e. conserved quantities. The most obvious integral in static potentials is the energy of the orbit. Symmetries in potentials frequently allow more than one integral: In spherical potentials all three components of the angular momentum are conserved. In many axisymmetric potentials there is, in addition to the energy $E$ and vertical component of the angular momentum $L_z$, a third non-classical integral of motion $I_3$, which has however no easy physical meaning.  (Binney \& Tremaine, Galactic Dynamics)\\
+Because any function of integrals is an integral of motion itself, it is possible to construct integrals that have both very convenient properties and intuitive physical meanings. One such a set are the so-called actions. In axisymmetric potentials they are frequently called the radial action $J_R$, the vertical action $J_z$ and the $\phi$-action, which is simply the vertical component of the angular momentum, $L_z$. The radial action and vertical action quantify the amount of oscillation in radial and vertical direction that the orbit exhibits.  Actions are constructed in such a way, that they are not only integrals, but also correspond to the momenta in a set of canonical coordinates. The canonical conjugate positions of the actions are the so-called angles, which have the convenient properties, that they increase strictly linearly in time while the star moves along the orbit. They are periodic in $2\pi$ and the frequencies by which they change are functions of the actions. In the action-angle coordinate system, the only thing we need to fully describe an orbit in an axisymmetric potential are therefore just three fixed numbers, the actions. 
+
+\item \textbf{Using actions for distribution functions:} Actions are therefore the natural coordinates of orbits and each point in action space corresponds to one specific orbit in a given potential. It is often used in dynamical modelling, e.g. in the Schwarzschild superposition method (source???), to reconstruct a galaxy by superimposing different orbits and populating them with stars. In this way these kind of methods construct orbit distribution functions for galaxies, which are at the same time distribution functions in action space. Because angles increase linearly in time, when a star moves along its orbit, stars are uniformly distributed in angle space. Therefore a orbit distribution function in terms of actions and a uniform distribution of stars in angle-space can be directly mapped to a distribution of stars in canonical configuration phase-space, measurable stellar positions and velocities. While a stellar distribution in configuration space is six-dimensional, the distribution in action-angle space is effectively three-dimensional, because of the uniformity in angles. (Rewrite, too verbose...)
+
+\item \textbf{Why should we care about actions in realistic galaxies?} In reality galaxies have rarely perfectly static and axisymmetric potentials, which drastically reduces the number of conserved quantites along orbits. In static non-axisymmetric  potentials there can still be two integrals of motion, angular momentum however is no longer conserved. The Milky Way's disk might have an overall axisymmetric appearance, but is perturbed by spiral arms. The strongest deviation from axisymmetry in the Galaxy is the bar, which also causes the Galactic potential to vary slowly in time. The stirrs up the stars of the disk and the potential and causes radial migration of the orbits (Reference???), orbits change and with them the actions. One could wonder if, under such non-axisymmetric, non-static potential conditions, the assumption and treatment of globally conserved actions in the Milky Way is still a sensible approach. First of all, actions are the natural way to treat orbits and they can be locally defined, even if they might not be globally conserved. As long as we care about orbits, we should care about actions. An orbit carries information about the star's past, about where the star was born and which tidal processes might have carried it away from its inital orbit. Together with the chemistry of the stars, which determined by their place of birth, their current orbits are valuable diagnostics for the evolution and structure of the Milky Way. Secondly, gravitational processes do only in the most extreme cases completely change the actions. In a slowly changing potential, where orbits adapt adiabatically to those changes, actions are conserved (Binney \& Tremaine, Galactic Dynamics). And even during bar-induced radial migration at least the vertical actions are conserved and will continue to carry some amount of information about the stars' inital orbit distribution.\\
+[TO DO] (Maybe cite Potzen 2015, who showed that analysing aspherical systems in spherical actions can still be a powerfull tool, when used with care...)
+
+\item \textbf{Why should we care about an axisymmetric "best fit" model for the Milky Way disk?} [TO DO]
+
+\item \textbf{Previous results with this modelling technique:} Bovy \& Rix 2013 ... [TO DO]
+
+\item \textbf{Motivating this method characterization in anticipation of GAIA:} [TO DO]
+\end{itemize}
+
 \section{Method}
 
 \subsection{Actions}
 
 [TO DO]
+
 
 \subsection{Distribution function}
 
@@ -56,6 +79,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 \subsection{Mock Data}
 
 [TO DO]
+
+\paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
 \item *Diagram 1*: schematic flow chart of how to sample mock data (could be helpful for people, who want to sample mock data in action space and didn't know how to start, like me)
@@ -74,6 +99,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 \section{Results}
 
 \subsection{Verification of the Method}
+
+\paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
 \item *Plot 1:* two panels: 
@@ -96,6 +123,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 
 \subsection{Do shape and position of the observation volume matter?}
 
+\paragraph{Collection of possible tests and plots}
+
  *Test 1:* Compare results of wedges of same volume, but different positions and orientations. 
  \begin{itemize}
     \item I guess, the ones that demonstrate, that phi-coverage is much less important than R and z coverage, is boring, right? And I already have a plot in 3.1 that shows, that larger volumes are better. 
@@ -109,6 +138,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
      
 \subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
 
+\paragraph{Collection of possible tests and plots}
+
 \begin{itemize}
 \item  *Test 1:* isochrone potential, b=0.9 kpc, two populations, completeness$(d) = 1 - \epsilon \cdot d/Rmax$, where Rmax is radius of spherical selection function. Marginalize over vT in analysis. \\
 *Plot 1*: Violin plot: x-axis - $\epsilon$. y-axis: b-parameter and one of the qdf parameters.
@@ -117,6 +148,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 \end{itemize}
 
 \subsection{What if our assumed distribution function differs from the star's DF?}
+
+\paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
 \item *Test 1:* mix hot and cold populations, 5 free qdf parameters in analysis!, use code that estimates the best velocity integration ranges. h\_sigma\_r \& h\_sigma\_z are the same for both populations, sigma\_r and sigma\_z have the same ratio, but are 50\% different for the two populations. h\_R is also 50\% different. Vary the fraction of pollution. Idea behind this: What if the stellar distribution has a different shape, e.g. added "wings", or had a different tracer density decrease with R. Would be however great, if we could show how the mixture of qdf's quanlitatively changes the shape of the df. Any ideas? \\
@@ -127,6 +160,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 
 \subsection{What if our assumed potential model differs from the real potential?}
 
+\paragraph{Collection of possible tests and plots}
+
 *Test 1:* Try to recover a Miyamoto-Nagai disk + power-law halo potential by fitting a 2-component St\"ackel potential. \\
 *Plot 1:* 
 \begin{itemize}
@@ -136,6 +171,8 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 \end{itemize}
 
 \subsection{Effect of measurement errors on recovery of potential?}
+
+\paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
 \item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
