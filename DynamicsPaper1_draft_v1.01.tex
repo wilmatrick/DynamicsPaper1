@@ -1,0 +1,167 @@
+%% Document class
+\documentclass[12pt,preprint]{aastex}
+ 
+%% Abbreviations
+\shorttitle{Action-based Dynamical Models for the Milky Way}
+\shortauthors{Trick et al.}
+
+\begin{document}
+
+%% Title
+\title{Action-based Dynamical Models for the Milky Way Disk:\\
+    How to deal with "Real World" Issues}
+
+%% Authors    
+\author{W. Trick\altaffilmark{1,2} and H.-W. Rix\altaffilmark{1}}
+\affil{Max-Planck-Institute for Astronomy, Heidelberg}
+\email{trick@mpia.de}
+\and
+\author{J. Bovy\altaffilmark{3,4}}
+\affil{Institute for Advanced Study, Princeton, NJ}
+
+%% Affiliations
+\altaffiltext{1}{Max-Planck-Institut f\"ur Astronomie, K \"onigstuhl 17, D-69117 Heidelberg, Germany}
+\altaffiltext{2}{Correspondence should be addressed to trick@mpia.de.}
+\altaffiltext{3}{Institute for Advanced Study, Einstein Drive, Princeton, NJ 08540, USA}
+\altaffiltext{4}{Hubble fellow}
+
+
+
+%% Abstract
+\begin{abstract}
+Starting point for abstract: my old poster abstract. [TO DO] We aim to recover the Milky Way's gravitational potential using action-based dynamical modeling (cf. Bovy \& Rix 2013, Binney \& McMillan 2011, Binney 2012). This technique works by modeling the observed positions and velocities of disk stars with an equilibrium, three-integral quasi-isothermal distribution function. In preparation for the application to stellar phase-space data from Gaia, we create and analyze a large suite of mock data sets and we develop qualitative "rules of thumb" for which characteristics and limitations of data, model and code affect constraints on the potential most. We investigate sample size and measurement errors of the data set, size and shape of the observed volume, numerical accuracy of the code and action calculation, and deviations of the data from the assumed family of axisymmetric model potentials and distribution functions. This will answer the question: What kind of data gives the best and most reliable constraints on the Galaxy's potential?
+\end{abstract}
+
+%% Keywords
+\keywords{Galaxy: disk --- Galaxy: fundamental parameters --- Galaxy: kinematics and dynamics --- Galaxy: structure}
+
+\section{Introduction}
+
+[TO DO]
+
+\section{Method}
+
+\subsection{Actions}
+
+[TO DO]
+
+\subsection{Potential models}
+
+[TO DO] Mention different ways to calculate actions in different potentials.
+
+\subsection{Distribution function}
+
+[TO DO]
+
+\subsection{Mock Data}
+
+[TO DO]
+
+\begin{itemize}
+\item *Diagram 1*: schematic flow chart of how to sample mock data (could be helpful for people, who want to sample mock data in action space and didn't know how to start, like me)
+\item *Plot 2:* 2 triangle plots with (jr, lz, jz) on the axes to show the distribution of stars in action space within mock data sets - for a large sphere and a small sphere. (I thought it was very instructive to see how the spatial selection function shapes the distribution of actions, it also helped me understand which orbits have which actions.)
+\item *Plot 3:* distribution of mock data set in real space: z vs. R. and vz vs. R, maybe for a hot and cold population? (maybe a bit boring? Would be however illustrative, that the mock data sampled from the qdf is indeed similar to something we could observe. Also: could make a 4 sigma contour in the vz vs. R plot, to show, that the choice of integration limits is important but 4 sigma should be sufficient.)
+\end{itemize}
+
+\subsection{Analysis}
+
+[TO DO] Don't forget: How to choose the fitting ranges.
+
+\subsection{Measurement Errors}
+
+[TO DO]
+
+\begin{itemize}
+\item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
+    * hotness of stars
+    * number of stars
+\item *Plot 2:* Some plot that shows, that our approximation of ignoring distance errors works. Any ideas?
+\end{itemize}
+
+\section{Results}
+
+\subsection{Verification of the Method}
+
+\begin{itemize}
+\item *Test 1:* Isochrone potential, 2 different b, 2 different populations, 5 different SF (isoSph test suite) \\
+*Plot 1:* scatter plot (offset / stddev) vs. (stddev / true value [\%]) for b and one qdf parameter --> and panel with normal distribution. This plot could show 3 things:
+\begin{itemize}
+\item Central limit theorem is satisified --> method works.
+\item Bigger volumes give better constraints.
+\item hot populations seem to give tighter constraints on the potential.
+\end{itemize}
+\item *Plot 2:* two panels: 
+\item a) convergence of the normalisation vs. ngl\_vel (GL order of integrating the qdf over the velocities to get the density), 
+\item b) convergence of the normalisation vs. n\_dens (number of grid points in each (R,z) at which the density is explicitely calculated, before interpolating and integrating over the volume to get the normalisation). \\ 
+ This might not be a very exciting plot, but when we later show plots, that demonstrate e.g. how robust the method is against incompleteness, people might think, that in this case the normalization is not so important and time could be saved in calculating it. We know, that it is important to get the normalisation right. Plus, it proves, that possible biases when using the St\"ackel approximation are not due to a wrong normalisation.
+\item *Plot 3:* Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.
+\end{itemize}
+Don't forget to mention, that we also veryfied that stddev ~ 1/sqrt(N)
+
+\subsection{Do shape and position of the observation volume matter?}
+
+ *Test 1:* Compare results of wedges of same volume, but different positions and orientations. 
+ \begin{itemize}
+    \item I guess, the ones that demonstrate, that phi-coverage is much less important than R and z coverage, is boring, right? And I already have a plot in 3.1 that shows, that larger volumes are better. 
+    \item This test suite was made with the MW-like potential and there seem to be biases, that are different for different volumes. If we say, okay, we have to deal with whatever biases we get, I could still include those volumes with good R AND z coverage, because for them the biases seem to be smaller.
+    \item I might add a few more volumes, e.g. one with large vertical coverage at different positions
+    \item Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?\\
+*Plot 1:* 
+    a) cross section of volumes in R and z
+    b) offset / stddev vs. stddev / true value [\%], that demonstrates, that it doesn't matter much for the potential recovery, if we have more radial or vertical coverage, and the position within the galaxy. 
+     \end{itemize}
+     
+\subsection{What if our data set is incomplete?}
+
+\begin{itemize}
+\item  *Test 1:* isochrone potential, b=0.9 kpc, two populations, completeness$(d) = 1 - \epsilon \cdot d/Rmax$, where Rmax is radius of spherical selection function. Marginalize over vT in analysis. \\
+*Plot 1*: Violin plot: x-axis - $\epsilon$. y-axis: b-parameter and one of the qdf parameters.
+\item  *Test 2:* isochrone potential, two populations, incompleteness function that depends only on z. \\
+*Plot 2*: violin plot
+\end{itemize}
+
+\subsection{What if our assumed distribution function differs from the star's DF?}
+
+\begin{itemize}
+\item *Test 1:* mix hot and cold populations, 5 free qdf parameters in analysis!, use code that estimates the best velocity integration ranges. h\_sigma\_r \& h\_sigma\_z are the same for both populations, sigma\_r and sigma\_z have the same ratio, but are 50\% different for the two populations. h\_R is also 50\% different. Vary the fraction of pollution. Idea behind this: What if the stellar distribution has a different shape, e.g. added "wings", or had a different tracer density decrease with R. Would be however great, if we could show how the mixture of qdf's quanlitatively changes the shape of the df. Any ideas? \\
+*Plot 1:* Violin plot: x-axis - fraction of pollution. y-axis: b-parameter and one or two qdf parameters.
+\item *Test 2:* same as Test 1, but this time vary the degree of difference and make it 50\% pollution. Idea behind this: What happens, if we have errors in the abundances and mix different MAPs? For this it would be could to compare how much the qdf parameters of neighbouring MAPs differ and how big the difference between MAPs can be, such that it still can reproduce the potential. \\
+*Plot 2:* Violin plot: x-axis - difference in qdf parameters. y-axis: b-parameter and one or two qdf parameters.
+\end{itemize}
+
+\subsection{What if our assumed potential model differs from the real potential?}
+
+*Test 1:* Try to recover a Miyamoto-Nagai disk + power-law halo potential by fitting a 2-component St\"ackel potential. \\
+*Plot 1:* 
+\begin{itemize}
+   \item (R,z)-plane: color coding: difference between true potential's F\_R and best fit potential F\_R
+    \item (R,z)-plane: color coding: difference between true potential's F\_z and best fit potential F\_z \\
+    Any idea how to account for the error bars on the best fit potential?
+\end{itemize}
+
+\subsection{Effect of measurement errors on recovery of potential?}
+
+* *Test 1:* One selection function, one population, vary the size of the proper motion error (don't forget to adapt the number of MC samples needed) \\
+*Plot 1:* (width of pdf) vs. (maximum velocity error / temperature parameter)
+
+\section{Conclusion}
+
+[TO DO]
+
+\section{Questions that haven't been covered so far:}
+
+\begin{itemize}
+\item What limits the overall code speed?
+\item What happens, when the errors are not uniform?
+\item What if errors in distance matter for selection?
+\item Deviations from axisymmetry: Take numerical simulations.
+\end{itemize}
+
+
+%===============================================
+
+\begin{thebibliography}{}
+\bibitem[Bovy \& Rix(2013]{bov13} Bovy, J., \& Rix, H.-W., 2003, \apj, ???, ???
+\end{thebibliography}
+
+\end{document}
