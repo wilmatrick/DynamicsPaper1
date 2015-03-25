@@ -1,5 +1,12 @@
 %% Document class
 \documentclass[12pt,preprint]{aastex}
+
+%general packages
+\usepackage{amsmath}	%for \text{} in math mode
+
+%%Figure packages
+\usepackage{grffile}	%for dots in filenames
+
  
 %% Abbreviations
 \shorttitle{Action-based Dynamical Models for the Milky Way}
@@ -52,7 +59,8 @@ Because any function of integrals is an integral of motion itself, it is possibl
 \item \textbf{Using actions for distribution functions:} Actions are therefore the natural coordinates of orbits and each point in action space corresponds to one specific orbit in a given potential. It is often used in dynamical modelling, e.g. in the Schwarzschild superposition method (source???), to reconstruct a galaxy by superimposing different orbits and populating them with stars. In this way these kind of methods construct orbit distribution functions for galaxies, which are at the same time distribution functions in action space. Because angles increase linearly in time, when a star moves along its orbit, stars are uniformly distributed in angle space. Therefore a orbit distribution function in terms of actions and a uniform distribution of stars in angle-space can be directly mapped to a distribution of stars in canonical configuration phase-space, measurable stellar positions and velocities. While a stellar distribution in configuration space is six-dimensional, the distribution in action-angle space is effectively three-dimensional, because of the uniformity in angles. (Rewrite, too verbose...)
 
 \item \textbf{Why should we care about actions in realistic galaxies?} In reality galaxies have rarely perfectly static and axisymmetric potentials, which drastically reduces the number of conserved quantites along orbits. In static non-axisymmetric  potentials there can still be two integrals of motion, angular momentum however is no longer conserved. The Milky Way's disk might have an overall axisymmetric appearance, but is perturbed by spiral arms. The strongest deviation from axisymmetry in the Galaxy is the bar, which also causes the Galactic potential to vary slowly in time. The stirrs up the stars of the disk and the potential and causes radial migration of the orbits (Reference???), orbits change and with them the actions. One could wonder if, under such non-axisymmetric, non-static potential conditions, the assumption and treatment of globally conserved actions in the Milky Way is still a sensible approach. First of all, actions are the natural way to treat orbits and they can be locally defined, even if they might not be globally conserved. As long as we care about orbits, we should care about actions. An orbit carries information about the star's past, about where the star was born and which tidal processes might have carried it away from its inital orbit. Together with the chemistry of the stars, which determined by their place of birth, their current orbits are valuable diagnostics for the evolution and structure of the Milky Way. Secondly, gravitational processes do only in the most extreme cases completely change the actions. In a slowly changing potential, where orbits adapt adiabatically to those changes, actions are conserved (Binney \& Tremaine, Galactic Dynamics). And even during bar-induced radial migration at least the vertical actions are conserved and will continue to carry some amount of information about the stars' inital orbit distribution.\\
-[TO DO] (Maybe cite Potzen 2015, who showed that analysing aspherical systems in spherical actions can still be a powerfull tool, when used with care...)
+
+[TO DO] (Maybe cite Potzen 2015, who showed that analysing aspherical systems in spherical actions can still be a powerful tool, when used with care...)
 
 \item \textbf{Why should we care about an axisymmetric "best fit" model for the Milky Way disk?} [TO DO]
 
@@ -197,6 +205,15 @@ Because any function of integrals is an integral of motion itself, it is possibl
 \item What if errors in distance matter for selection?
 \item Deviations from axisymmetry: Take numerical simulations.
 \end{itemize}
+
+%===============================================
+
+
+\begin{figure}
+%\plottwo{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_bw.eps}{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_bw.eps}
+\caption{This figure demonstrates the shape of the likelihood in eq. (???) in the parameter space $\{p_\Phi,\ln(p_{DF})\}$. The mock data set analysed here has 20,000 stars and was created in a isochrone potential with $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$, observed within a spherical volume around the sun of radius $r = 2 \text{ kpc }$, and represents a rather hot stellar population with DF parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $.  The true parameters are marked by dotted lines. The dark, medium and bright gray contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_{DF})$ to turn the likelihood into a full posterior distribution function). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem.}
+\end{figure}
 
 
 %===============================================
