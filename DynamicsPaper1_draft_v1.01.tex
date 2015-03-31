@@ -281,12 +281,27 @@ The velocities are independent of the selection function and observed volume. Fo
 \caption{Relative error of the likelihood normalization in eq. (???) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume of around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over each velocity component. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $. We show the results for two different potentials, an isochrone potential with parameters $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$ and a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km/s },2.5\text{ kpc },400 \text{ pc }, 0.8,0\}$. We calculate the true normalization as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=40)$, which has high enough accuracy. The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.01\%$ for both potential types. It should be noted that the scaling in the upper panels is much larger than in the lower panels. Choosing $N_\text{velocity}$ too small can therefore have much more severe effects on the accuracy of the normalization than $N_\text{spatial}$. A relative error of $0.3\%$ can already introduce biases in the outcome of the analysis, that are, for a data set of $~10,000$ stars already as large as a few sigma.} 
 \end{figure}
 
+%FIGURE: isoSphFlexMixCont
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixCont/isoSphFlexMixCont_violins.eps}
+\caption{Caption [TO DO]} 
+\end{figure}
+
 
 
 %===============================================
 
 \begin{thebibliography}{}
-\bibitem[Bovy \& Rix(2013]{bov13} Bovy, J., \& Rix, H.-W., 2003, \apj, ???, ???
+\bibitem[Binney \& McMillan(2011)]{bin11} Binney, J. J., \& McMillan, P. 2011, \mnras, 413, 1889
+\bibitem[Binney(2012)]{bin12} Binney, J. J. 2012, \mnras, 426, 1324
+\bibitem[Bovy et al.(2012b)]{bov12b} Bovy, J., Rix, H.-W., \& Hogg, D. W. 2012b, \apj, 751, 131
+\bibitem[Bovy et al.(2012c)]{bov12c} Bovy, J., Rix, H.-W., Hogg, D. W. et al., 2012c, \apj, 755,115
+\bibitem[Bovy et al.(2012d)]{bov12d} Bovy, J., Rix, H.-W., Liu, C. et al., 2012d, \apj, 753, 148
+\bibitem[Bovy \& Rix(2013)]{bov13}  Bovy, J., \& Rix, H.-W. 2003, \apj, 779, 115
+\bibitem[Ting et al.(2013)]{tin13} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G. 2013, \mnras, 434, 652
 \end{thebibliography}
+
+
 
 \end{document}
