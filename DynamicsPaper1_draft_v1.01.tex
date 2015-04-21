@@ -3,6 +3,7 @@
 
 %general packages
 \usepackage{amsmath}	%for \text{} in math mode
+\usepackage{ mathrsfs } %for likelihood L
 
 %%Figure packages
 \usepackage{grffile}	%for dots in filenames
@@ -101,11 +102,11 @@ Because any function of integrals is an integral of motion itself, it is possibl
 [TO DO]
 
 
-\subsection{Distribution function}
+\subsection{Distribution function} \label{sec:qDF}
 
 [TO DO]
 
-\subsection{Potential models}
+\subsection{Potential models}  \label{sec:potentials}
 
 [TO DO] Mention different ways to calculate actions in different potentials.
 
@@ -148,13 +149,30 @@ The velocities are independent of the selection function and observed volume. Fo
 \item *Plot 3:* distribution of mock data set in real space: z vs. R. and vz vs. R, maybe for a hot and cold population? (maybe a bit boring? Would be however illustrative, that the mock data sampled from the qdf is indeed similar to something we could observe. Also: could make a 4 sigma contour in the vz vs. R plot, to show, that the choice of integration limits is important but 4 sigma should be sufficient.)
 \end{itemize}
 
+\subsection{Analysis}
+
+The idea behind our modeling approach is that the orbits of the stars belonging to one MAP [TO DO: explain MAP???], calculated from a phase-space observation for each star within a proposal potential,  will only follow a distribution function from the family of qDFs (cf. \S\ref{sec:qDF}) if this propsal potential is (close to) the true potential in which the stars move. This opens up the possibility to fit the qDF and the potential simultaneously to the stellar phase-space data of one MAP, using the orbits of the stars. 
+
+\subsubsection{Likelihood}
+
+We're fitting the potential and the qDF to the data
+\begin{eqnarray*}
+D_j  =\{ \vect{x}_i,\vect{v}_i \mid \text{star $i$ belonging to MAP $j$}\},
+\end{eqnarray*}
+where  $\vect{x}_i$ and $\vect{v}_i$ are the position and velocity of one star. Our modeling takes place the galactocentric rest-frame with cylindrical coordinates $\vect{x} = (R,\phi,z)$ and velocity components in the corresponding coordinate directions $\vect{v} = (v_R,\phi,z)$. If the phase-space data is given in observed coordinates, position $\tilde{\vect{x}}=(\alpha,\delta,m-M)$ in right ascension $\alpha$, declination $\delta$ and distance modulus $m-M$ and velocity $\tilde{\vect{v}} = (\mu_\alpha,\mu_\delta,v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\alpha,\mu_\delta)$ [TO DO: cos somwhere???] and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity (cf. \S ???).
+
+ by finding the maximum likelihood,
+\begin{equation*}
+\mathscr{L}(M \mid D_j)
+\end{equation*}
+
+To be able to control the number of degrees of freedom in the potential fit, we have to assume a certain family of potential models, parametrized by the parameters $p_\Phi$ (cf. \S\ref{sec:potentials}). The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$.
+
+[TO DO] Don't forget: How to choose the fitting ranges.
+
 \subsection{Measurement Errors}
 
 [TO DO]
-
-\subsection{Analysis}
-
-[TO DO] Don't forget: How to choose the fitting ranges.
 
 \section{Results}
 
