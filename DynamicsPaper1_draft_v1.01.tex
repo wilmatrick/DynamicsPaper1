@@ -21,8 +21,9 @@
 \begin{document}
 
 %% Title
-\title{Action-based Dynamical Models for the Milky Way Disk:\\
-    How to deal with "Real World" Issues}
+%\title{Action-based Dynamical Models for the Milky Way Disk:\\
+%    How to deal with "Real World" Issues}
+\title{The {\sc GodsMapper}:\\Galactic Orbit Distribution of Stellar Mono-Abundance Populations and Potential Exploration and Recovery}
 
 %% Authors    
 \author{W. Trick\altaffilmark{1,2} and H.-W. Rix\altaffilmark{1}}
@@ -116,22 +117,26 @@ One goal of this work is to test how the loss of information in the process of m
 The distribution function is given in terms of actions and angles. The obvious procedure would be to draw $\vect{J}_i$ from qDF$(\vect{J}_i \mid p_{DF})$ and $\vect{\theta}_i$ between 0 and $2\pi$, transforming this to $(\text{x}_i,\text{v}_i)$ in the given potential and rejecting all stars that are outside the observed volume. The transformation $(\vect{J}_i,\vect{\theta}_i) \longrightarrow (\vect{x}_i,\vect{v}_i)$ is however difficult to perform and computationally much more expensive than the transformation $(\vect{x}_i,\vect{v}_i) \longrightarrow (\vect{J}_i,\vect{\theta}_i)$. The observed volume is also much smaller than the whole galaxy and the fraction of rejected stars would be enormous. We propose a fast and simple two-step method for drawing mock data from an action distribution function in a given observed volume.
 [TO DO]
 
+\subsubsection{Selection function: observed volume and completeness}
+
+[TO DO]
+
 
 \subsubsection{Preparation: Tracer density} \label{sec:density}
 
-One crucial point in creating the mock data, as well as in the analysis, is to calculate the spatial tracer density $\rho(\vect{x} \mid p_{\Phi},p_{DF})$ for a given distribution function with parameters $p_{DF}$ in a potential with parameters $p_{\Phi}$. We do this by integrating the axisymmetric distribution function over the velocity at $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane, using a Gauss-Legendre quadrature of order $N_\text{velocity}$ in each of the three velocity components. The velocity distribution according to the qDF at a given $(R_i,z_i)$ looks approximately Gaussian for $v_R$ and $v_z$. The $v_T$ distribution peaks somewhere around $v_{circ}(R_\odot)$ and $v_T > 0$ (cf. \S ?????). We approximate the integration over the velocity therefore as
+One crucial point in creating the mock data, as well as in the analysis, is to calculate the spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_{DF})$ for a given distribution function with parameters $p_{DF}$ in a potential with parameters $p_{\Phi}$. We do this by integrating the axisymmetric distribution function over the velocity at $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane, using a Gauss-Legendre quadrature of order $N_\text{velocity}$ in each of the three velocity components. The velocity distribution according to the qDF at a given $(R_i,z_i)$ looks approximately Gaussian for $v_R$ and $v_z$. The $v_T$ distribution peaks somewhere around $v_{circ}(R_\odot)$ and $v_T > 0$ (cf. \S ?????). We approximate the integration over the velocity therefore as
 \begin{eqnarray}
-\rho(R,|z| \mid p_{\Phi},p_{DF}) &=& \int_{-\infty}^{\infty} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_{DF}) \Diff3\vect{v}\nonumber\\
-&\approx& \int_{-N_\text{sigma} \sigma_R(R \mid p_{DF})}^{N_\text{sigma} \sigma_R(R \mid p_{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_{DF})}^{N_\text{sigma} \sigma_z(R \mid p_{DF})} \int_{0}^{1.5 v_{circ}(R_\odot)}   \nonumber\\
+\rho_\text{DF}(R,|z| \mid p_{\Phi},p_{DF}) &=& \int_{-\infty}^{\infty} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
+&\approx& \int_{-N_\text{sigma} \sigma_R(R \mid p_{DF})}^{N_\text{sigma} \sigma_R(R \mid p_{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_{DF})}^{N_\text{sigma} \sigma_z(R \mid p_{DF})} \int_{0}^{1.5 v_{circ}(R_\odot)}  \nonumber\\
 & & \hspace{1cm} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_{DF}) \diff v_T \diff v_z \diff v_R, \label{eq:tracerdensity}
 \end{eqnarray}
 where $\sigma_R(R \mid p_{DF})$ and $\sigma_z(R \mid p_{DF})$ are the star's radial and vertical velocity dispersion according to the qDF and given by eq. (???) and (???) and $N_\text{sigma}$ has to be large enough. The size of the $N_\text{spatial} \times N_\text{spatial}$ grid in $(R,z)$ is chosen cover the extent of the observed volume for $z>0$. We interpolate then over this grid to be able to evaluate the density at each $(R,z)$ within the observed volume. The total number of grid points and therefore actions that need to be calculated are $N_\text{spatial}^2 \cdot N_\text{velocity}^3$. Fig. ??? shows the importance of choosing $N_\text{spatial}$, $N_\text{velocity}$ and $N_\text{spatial}$ sufficiently large in order to get the density with an acceptable numerical accuracy. For the creation of the mock data we use $N_\text{spatial} = 20$, $N_\text{velocity} = 40$ and $N_\text{sigma}=5$.
 
 \subsubsection{Step 1: Drawing positions from the observed volume}
 
-To get $\vect{x}_i$ for our mock data stars, we first sample random positions $(R_i,z_i,\phi_i)$ uniformly from the observed volume. Making use of the geometric shapes of our simple observed volumes (spheres, cylinders, wedges...) we can do this efficiently with inverse transform Monte Carlo sampling. In a second step we then apply a rejection Monte Carlo method to these positions using the pre-calculated, interpolated density grid $\rho(R,|z| \mid p_{\Phi},p_{DF})$. In an optional third step, if we want to apply a non-uniform selection function, sf$(\vect{x}) \neq $ const. within the observed volume, we use the rejection method a second time on the set of positions we got from the last step. This procedure can be repeated until the required number of positions are reached. The sample then follows the required distribution
+To get $\vect{x}_i$ for our mock data stars, we first sample random positions $(R_i,z_i,\phi_i)$ uniformly from the observed volume. Making use of the geometric shapes of our simple observed volumes (spheres, cylinders, wedges...) we can do this efficiently with inverse transform Monte Carlo sampling. In a second step we then apply a rejection Monte Carlo method to these positions using the pre-calculated, interpolated density grid $\rho_\text{DF}(R,|z| \mid p_{\Phi},p_{DF})$. In an optional third step, if we want to apply a non-uniform selection function, sf$(\vect{x}) \neq $ const. within the observed volume, we use the rejection method a second time on the set of positions we got from the last step. This procedure can be repeated until the required number of positions are reached. The sample then follows the required distribution
 \begin{equation*}
-\vect{x}_i \longrightarrow p(\vect{x}) \propto \rho(R,z \mid p_{\Phi},p_{DF}) \times \text{sf}(\vect{x}).
+\vect{x}_i \longrightarrow p(\vect{x}) \propto \rho_\text{DF}(R,z \mid p_{\Phi},p_{DF}) \times \text{sf}(\vect{x}).
 \end{equation*}
 
 \subsubsection{Step 2: Drawing velocities according to the distribution function}
@@ -153,22 +158,50 @@ The velocities are independent of the selection function and observed volume. Fo
 
 The idea behind our modeling approach is that the orbits of the stars belonging to one MAP [TO DO: explain MAP???], calculated from a phase-space observation for each star within a proposal potential,  will only follow a distribution function from the family of qDFs (cf. \S\ref{sec:qDF}) if this propsal potential is (close to) the true potential in which the stars move. This opens up the possibility to fit the qDF and the potential simultaneously to the stellar phase-space data of one MAP, using the orbits of the stars. 
 
-\subsubsection{Likelihood}
+\subsubsection{Data and Selection Function} 
 
 We're fitting the potential and the qDF to the data
 \begin{eqnarray*}
-D_j  =\{ \vect{x}_i,\vect{v}_i \mid \text{star $i$ belonging to MAP $j$}\},
+D_j  =\{ \vect{x}_i,\vect{v}_i \mid \text{(star $i$ belonging to MAP $j$)} \wedge (\text{sf}(\vect{x_i}) > 0) \},
 \end{eqnarray*}
-where  $\vect{x}_i$ and $\vect{v}_i$ are the position and velocity of one star. Our modeling takes place the galactocentric rest-frame with cylindrical coordinates $\vect{x} = (R,\phi,z)$ and velocity components in the corresponding coordinate directions $\vect{v} = (v_R,\phi,z)$. If the phase-space data is given in observed coordinates, position $\tilde{\vect{x}}=(\alpha,\delta,m-M)$ in right ascension $\alpha$, declination $\delta$ and distance modulus $m-M$ and velocity $\tilde{\vect{v}} = (\mu_\alpha,\mu_\delta,v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\alpha,\mu_\delta)$ [TO DO: cos somwhere???] and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity (cf. \S ???).
+where  $\vect{x}_i$ and $\vect{v}_i$ are the position and velocity of one star. The phase-space volume within which stars are observed by a given survey is defined by the survey's selection function $\text{sf}(\vect{x},\vect{v})$, which is in general a function of the position only, $\text{sf}(\vect{x})$. To first order the shape of the selection function ("observed volume") is limited by the directions in which the survey is pointed and the sensitivity down to which limiting magnitude it can detect stars. In the simplest case, if all stars had the same brightness, the selection function is 1 everywhere inside the observed volume and 0 outside. Because stars have different brightness the selection function will usually decrease from 1 close to the sun to 0 at the edges of the observed volume ("completeness"). [TO DO: Explain selection function somewhere else????] Only stars for which the selection function is non-zero are contained in the data set $D_j$.
+\\Our modeling takes place in the Galactocentric rest-frame with cylindrical coordinates $\vect{x} = (R,\phi,z)$ and velocity components in the corresponding coordinate directions $\vect{v} = (v_R,v_\phi,v_z)$.\footnote{If the phase-space data is given in observed coordinates, position $\tilde{\vect{x}}=(\alpha,\delta,m-M)$ in right ascension $\alpha$, declination $\delta$ and distance modulus $m-M$ and velocity $\tilde{\vect{v}} = (\mu_\alpha,\mu_\delta,v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\alpha,\mu_\delta)$ [TO DO: cos somwhere???] and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity (cf. \S ???).}
 
- by finding the maximum likelihood,
+\subsubsection{Model Parameters} 
+
+We fit the five free parameters of the qDF family, $h_R$, $\sigma_R$, $\sigma_z$, $h_{\sigma_R}$ and $h_{\sigma_z}$, in logarithmic scale, which corresponds to a logarithmically flat prior in the framework of Bayesian statistics. The set of qDF fit parameters is therefore 
 \begin{equation*}
-\mathscr{L}(M \mid D_j)
+p_{DF} := \{ \ln \left(h_R/8\text{kpc}\right), \ln \left(\sigma_R/220\text{km/s}\right), \ln \left(\sigma_z/220\text{km/s}\right), \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\} .
 \end{equation*}
+To be able to control the number of degrees of freedom in the potential fit, we have to assume a certain family of potential models, parametrized by the parameters $p_\Phi$ (cf. \S\ref{sec:potentials}). 
+\\The total set of model parameters to fit is then
+\begin{eqnarray*}
+M =\{ p_{DF} , p_\Phi \},
+\end{eqnarray*}
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_{DF})$.
 
-To be able to control the number of degrees of freedom in the potential fit, we have to assume a certain family of potential models, parametrized by the parameters $p_\Phi$ (cf. \S\ref{sec:potentials}). The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$.
+\subsubsection{Likelihood} 
 
-[TO DO] Don't forget: How to choose the fitting ranges.
+The likelihood of the model given the data $\mathscr{L}(M \mid D_j)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_{DF}$, i.e. 
+\begin{equation*}
+\mathscr{L}(M \mid D_j) = \prod_i P(\vect{x}_i,\vect{v}_i \mid M).
+\end{equation*}
+This probability is, properly normalized,
+\begin{eqnarray}
+P(\vect{x}_i,\vect{v}_i \mid M) &=& \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid M) \cdot \text{sf}(\vect{x})}\nonumber\\
+&\propto&  \frac{\text{qDF}(\vect{J}_i \mid M)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x})}. \label{eq:prob}
+\end{eqnarray}
+In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we use simply eq. (\ref{eq:prob}) in the likelihood calculation. We find the best set of model parameters by maximising the likelihood.
+
+
+\subsubsection{Choosing integration ranges.}
+
+
+
+\subsubsection{Fitting procedure}
+
+[TO DO]
+
 
 \subsection{Measurement Errors}
 
