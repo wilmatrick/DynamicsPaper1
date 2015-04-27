@@ -3,7 +3,7 @@
 
 %general packages
 \usepackage{amsmath}	%for \text{} in math mode
-\usepackage{ mathrsfs } %for likelihood L
+\usepackage{mathrsfs } %for likelihood L
 
 %%Figure packages
 \usepackage{grffile}	%for dots in filenames
@@ -23,7 +23,8 @@
 %% Title
 %\title{Action-based Dynamical Models for the Milky Way Disk:\\
 %    How to deal with "Real World" Issues}
-\title{The {\sc GodsMapper}:\\Galactic Orbit Distribution of Stellar Mono-Abundance Populations and Potential Exploration and Recovery}
+%\title{The {\sc GodsMapper}:\\Galactic Orbit Distribution of Stellar Mono-Abundance Populations and Potential Exploration and %Recovery}
+\title{The {\sc MadMapper}:\\Milky Way Action Distribution ofMono-Abundance Populations and Potential Exploration and Recovery}
 
 %% Authors    
 \author{W. Trick\altaffilmark{1,2} and H.-W. Rix\altaffilmark{1}}
@@ -49,6 +50,9 @@ Starting point for abstract: my old poster abstract. [TO DO] We aim to recover t
 %% Keywords
 \keywords{Galaxy: disk --- Galaxy: fundamental parameters --- Galaxy: kinematics and dynamics --- Galaxy: structure}
 
+%table of contents (remove later)
+\tableofcontents
+
 \section{Introduction}
 
 [TO DO]
@@ -71,11 +75,11 @@ Because any function of integrals is an integral of motion itself, it is possibl
 
 \item \textbf{Why should we care about an axisymmetric "best fit" model for the Milky Way disk?} One of the key assumptions of our modelling technique is the assumed axisymmetry of the Milky Way's gravitational potential, especially its disk. As we discussed already in the previous paragraph, this assumption is indeed only an approximation to the real disk, which has a much richer structure and more complicated potential, with spiral arms and ring-like structures (like the Monocerros ring), with a warp and a flare in the outer disk (references????). Also the Milky Way's halo has substructure, a multitude of streams (references???) and shell-like overdensities (reference???). The ultimate goal will be to find and identify substructures observationally and describe theoretically the structure and evolution of potential perturbations. Our method and efforts  to extract information about the axisymmetric Milky Way potential from disk stars aims to create a reliable and well-constraint basis for these endevours: The best possible axisymmetric approximation to the Milky Way's potential could serve as a realistic equilibrium model from which a description of non-axisymmetric tidal perturbations can be theoretically established by perturbation theory. It will also help a great deal to identify sub-structures, e.g. to find and orbitally connect tidal streams, which in return will then give better constraints on the deviations from axisymmetry. Many modelling and techniques, both purely gravitational, but also chemo-dynamical, can greatly profit from a good axisymmetric model for the galaxy: While we are still far away from knowing the MW's potential all over the place, an axisymmetric model will be the best reference to turn phase-space coordiantes into whole orbits. And orbits are the diagnostics that carry information from everywhere in the galaxy into the solar neighbourhood, where we can hope to exploit them. (Some overlap with section before. How to better structure these two sections and assign the arguments more clearly to "axisymmetric disk" or "actions"?) 
 
-\item \textbf{Previous results with this modelling technique:} Bovy \& Rix 2013 ... [TO DO]
+\item \textbf{Previous results with this modelling technique:} \citet{bov13} ... [TO DO]
 \begin{itemize}
-\item disk scale length $R_d = 2.15 \pm 0.14 \text{ kpc }$ (Bovy \& Rix 2013)
-\item disk is maximal (Bovy \& Rix 2013)
-\item slope of dark matter halo $\alpha < 1.53$ (Bovy \& Rix 2013)
+\item disk scale length $R_d = 2.15 \pm 0.14 \text{ kpc }$ \citep{bov13}
+\item disk is maximal \citep{bov13}
+\item slope of dark matter halo $\alpha < 1.53$ \citep{bov13}
 \end{itemize}
 
 \item \textbf{What do we already know about the axisymmetric MW disk (from other references)?} [TO DO]
@@ -91,12 +95,17 @@ Because any function of integrals is an integral of motion itself, it is possibl
 \item slope \& shape of dark matter halo (current state of knowledge?)
 \end{itemize} 
 
+\item \textbf{Other modelling approaches using DF's similar to Binney:}
+\begin{itemize}
+\item \citet{pif14} used a slightly different DF-based modelling approach to constrain the MW's vertical density profile near the sun. They fitted a superposition of "quasi-isothermal" DFs for thick and thin disk, and a DF for the halo to \textasciitilde200,000 giant stars from the RAVE survey (RAdial Velocity Experiment, \citet{ste06}). They didn't use any chemical information of the stars. To account for different populations within the thin disk, they weighted the corresponding DF's with an assumed star-formation rate instead. To circumvent the use of RAVE's non-trivial spatial selection function, they separated stars into spatial bins in $(R,z)$ and fitted the velocity distribution predicted by their DF and potential model at the mean $(R,z)$ of each bin to the observed velocities only. They're result for their radial profile of the vertical force within $|z|=1.1$ kpc and $R>6.6$ kpc agrees well with the previous results from our method by \citet{bov13}. By not using chemical information and hiding the spatial distribution of stars by binning to circumvent a complicated selection function, \citet{pif14} is however rejecting a lot of valuable information in the data set. ([TO DO: Look at other useful references in this paper: Bienayme et al. 2014, Zhang et al. 2013, Binney et al. 2014a, Binney 2012b, McMillan \& Binney 2013])
+\end{itemize}
+
 
 
 \item \textbf{Motivating this method characterization in anticipation of GAIA:} [TO DO]
 \end{itemize}
 
-\section{Method}
+\section{Model \& Mock Data}
 
 \subsection{Actions}
 
@@ -111,16 +120,15 @@ Because any function of integrals is an integral of motion itself, it is possibl
 
 [TO DO] Mention different ways to calculate actions in different potentials.
 
+\subsection{Selection function: observed volume and completeness}
+
+[TO DO]
+
 \subsection{Mock Data}
 
 One goal of this work is to test how the loss of information in the process of measuring stellar phase-space coordinates can affect the outcome of the modelling. To investigate this, we assume first that our measured stars do indeed come from our assumed families of potentials and distribution functions and draw mock data from a given true distribution. In further steps we can manipulate and modify these mock data sets to mimick observational effects.\\
 The distribution function is given in terms of actions and angles. The obvious procedure would be to draw $\vect{J}_i$ from qDF$(\vect{J}_i \mid p_{DF})$ and $\vect{\theta}_i$ between 0 and $2\pi$, transforming this to $(\text{x}_i,\text{v}_i)$ in the given potential and rejecting all stars that are outside the observed volume. The transformation $(\vect{J}_i,\vect{\theta}_i) \longrightarrow (\vect{x}_i,\vect{v}_i)$ is however difficult to perform and computationally much more expensive than the transformation $(\vect{x}_i,\vect{v}_i) \longrightarrow (\vect{J}_i,\vect{\theta}_i)$. The observed volume is also much smaller than the whole galaxy and the fraction of rejected stars would be enormous. We propose a fast and simple two-step method for drawing mock data from an action distribution function in a given observed volume.
 [TO DO]
-
-\subsubsection{Selection function: observed volume and completeness}
-
-[TO DO]
-
 
 \subsubsection{Preparation: Tracer density} \label{sec:density}
 
@@ -132,7 +140,7 @@ One crucial point in creating the mock data, as well as in the analysis, is to c
 \end{eqnarray}
 where $\sigma_R(R \mid p_{DF})$ and $\sigma_z(R \mid p_{DF})$ are the star's radial and vertical velocity dispersion according to the qDF and given by eq. (???) and (???) and $N_\text{sigma}$ has to be large enough. The size of the $N_\text{spatial} \times N_\text{spatial}$ grid in $(R,z)$ is chosen cover the extent of the observed volume for $z>0$. We interpolate then over this grid to be able to evaluate the density at each $(R,z)$ within the observed volume. The total number of grid points and therefore actions that need to be calculated are $N_\text{spatial}^2 \cdot N_\text{velocity}^3$. Fig. ??? shows the importance of choosing $N_\text{spatial}$, $N_\text{velocity}$ and $N_\text{spatial}$ sufficiently large in order to get the density with an acceptable numerical accuracy. For the creation of the mock data we use $N_\text{spatial} = 20$, $N_\text{velocity} = 40$ and $N_\text{sigma}=5$.
 
-\subsubsection{Step 1: Drawing positions from the observed volume}
+\subsubsection{Step 1: Drawing positions from the selection function}
 
 To get $\vect{x}_i$ for our mock data stars, we first sample random positions $(R_i,z_i,\phi_i)$ uniformly from the observed volume. Making use of the geometric shapes of our simple observed volumes (spheres, cylinders, wedges...) we can do this efficiently with inverse transform Monte Carlo sampling. In a second step we then apply a rejection Monte Carlo method to these positions using the pre-calculated, interpolated density grid $\rho_\text{DF}(R,|z| \mid p_{\Phi},p_{DF})$. In an optional third step, if we want to apply a non-uniform selection function, sf$(\vect{x}) \neq $ const. within the observed volume, we use the rejection method a second time on the set of positions we got from the last step. This procedure can be repeated until the required number of positions are reached. The sample then follows the required distribution
 \begin{equation*}
@@ -146,6 +154,10 @@ The velocities are independent of the selection function and observed volume. Fo
 (\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{qDF}(\vect{x},\vect{v} \mid p_{\Phi},p_{DF}) \times \text{sf}(\vect{x}).
 \end{equation*} 
 
+\subsubsection{Step 3: Introducing measurement errors}
+
+[TO DO]
+
 \paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
@@ -154,9 +166,11 @@ The velocities are independent of the selection function and observed volume. Fo
 \item *Plot 3:* distribution of mock data set in real space: z vs. R. and vz vs. R, maybe for a hot and cold population? (maybe a bit boring? Would be however illustrative, that the mock data sampled from the qdf is indeed similar to something we could observe. Also: could make a 4 sigma contour in the vz vs. R plot, to show, that the choice of integration limits is important but 4 sigma should be sufficient.)
 \end{itemize}
 
-\subsection{Analysis}
+\section{Analysis}
 
 The idea behind our modeling approach is that the orbits of the stars belonging to one MAP [TO DO: explain MAP???], calculated from a phase-space observation for each star within a proposal potential,  will only follow a distribution function from the family of qDFs (cf. \S\ref{sec:qDF}) if this propsal potential is (close to) the true potential in which the stars move. This opens up the possibility to fit the qDF and the potential simultaneously to the stellar phase-space data of one MAP, using the orbits of the stars. 
+
+\subsection{Likelihood}
 
 \subsubsection{Data and Selection Function} 
 
@@ -180,30 +194,58 @@ M =\{ p_{DF} , p_\Phi \},
 \end{eqnarray*}
 The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_{DF})$.
 
-\subsubsection{Likelihood} 
+\subsubsection{Form of the Likelihood} 
 
 The likelihood of the model given the data $\mathscr{L}(M \mid D_j)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_{DF}$, i.e. 
-\begin{equation*}
-\mathscr{L}(M \mid D_j) = \prod_i P(\vect{x}_i,\vect{v}_i \mid M).
-\end{equation*}
-This probability is, properly normalized,
+\begin{equation}
+\mathscr{L}(M \mid D_j) = \prod_i^{N_j} P(\vect{x}_i,\vect{v}_i \mid M), \label{eq:likelihood}
+\end{equation}
+where $N_j$ is the number of stars in the data set $D_j$. This probability is, properly normalized,
 \begin{eqnarray}
 P(\vect{x}_i,\vect{v}_i \mid M) &=& \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid M) \cdot \text{sf}(\vect{x})}\nonumber\\
 &\propto&  \frac{\text{qDF}(\vect{J}_i \mid M)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x})}. \label{eq:prob}
 \end{eqnarray}
 In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we use simply eq. (\ref{eq:prob}) in the likelihood calculation. We find the best set of model parameters by maximising the likelihood.
 
+\subsubsection{Numerical accuracy in calculating the likelihood}
+[TO DO: Consistent capitals in section titles. ????]
 
-\subsubsection{Choosing integration ranges.}
+To evaluate the likelihood at a given set of $(p_\Phi,p_{DF})$ we proceed in principle in the following way: The numerator in eq. (\ref{eq:prob}) can be calculated straightforward by calculating the actions of each star in the given potential (cf. \S ???) and then evaluating the qDF at each action. For the normalisation of the likelihood we first have to calculate the density $\rho_\text{DF}(R,|z| \mid M)$ on a grid as described in \S\ref{sec:density}. The density is then interpolated using bi-variate spline interpolation. In the case of $\text{sf}(\vect{x})=1$ everywhere inside the observed volume and $\text{sf}(\vect{x})=0$ outside, i.e. for a complete sample, the integral in the normalisation in eq. (\ref{eq:prob}) is essentially two-dimensional in $R$ and $z$ and we can use the shape of the observed volume to set finite integration limits. We perform this integral over the interpolated tracer density by using Gauss Legendre integration of order 40 in each $R$ and $z$ direction. The integration over $\phi$ is done analytically.
+\\Unfortunately the evaluation of the likelihood for only one set of model parameters is already very computationall expensive. The computation speed is set by the number of action calculations needed, i.e. the number of stars and the numerical accuracy of the integrals in the normalisation, which requires $N_\text{spatial}^2 \times N_\text{velocity}^3$ action calculations. The numerical accuracy has to be choosen high enough, such that the integrals in the normalisation are mostly converged and the error introduced by this does not dominate in the likelihood, i.e.
+\begin{eqnarray*}
+\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N_j} \log \text{qDF}(\vect{J_i} \mid M) \\
+& & -N_j \log(\text{true normalisation}) - N_j \log (1 + \text{rel. error}),\\
+ \text{with }  & &N_j \log (1 + \text{rel. error}) \lesssim 1.
+\end{eqnarray*}
+[TO DO: Don't understand why 1 is the threshold here. ???]
+For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.\footnote{In case of the isochrone potential we already have high enough accuracy for $N_\text{spatial}=16$, $N_\text{velocity}=20$ and $N_{sigma}=4$.} [TO DO: Should we also show that 40th order GL integraiton over interpolated density is enough? as this is really a lot and well converged, I would simply state that this is enough, but not show anythin.????]
+[TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
 
-
-
-\subsubsection{Fitting procedure}
+\subsection{Measurement Errors}
 
 [TO DO]
 
+\subsection{Fitting Procedure}
 
-\subsection{Measurement Errors}
+We search the $(p_\Phi,p_{DF})$ parameter space for the maximum of the likelihood in eq. (\ref{eq:likelihood}). The most crucial part of our fitting procedure for finding the peak and width of the likelihood in the $(p_\Phi,p_{DF})$ parameter space  is therefore the reduction of computational costs while not introducing systematic errors due to numerical inaccuracies. We do this by a two-step procedure: The first step finds the approximate peak and width of the likelihood using a nested-grid search, while the second step will either sample the shape of the likelihood (or rather the posterior probability distribution) using a Monte-Carlo Markov Chain (MCMC) or calculate the likelihood on a much finer grid.
+
+\subsubsection{Fitting Step 1: Nested-grid search with a fiducial qDF}
+
+[TO DO: Make consistent: use of $\sigma_{R,0}$ and $\sigma_R$ as profile or dispersion at sun. ???]
+
+The $(p_\Phi,p_{DF})$ parameter space can be high-dimensional and we do not necessarily have a good notion where to look for the likelihood peak initially. We use a nested-grid approach to minimize effectively the number of models for which we have to evaluate the likelihood. Using a grid is preferable to other optimizing methods in our case, because we have fast ($p_\text{DF}$) and very slow ($p_\Phi$) parameters. Each time the likelihood is evaluated for a new potential, we have to convert the observed phase-space data of the stars $(\vect{x}_i,\vect{v}_i)$ into the actions $\vect{J}_i$ in this given potential. As we need to calculate  $N_j \times N_\text{error} +  N_\text{spatial}^2 \times N_\text{velocity}^3$ [TO DO: explain $N_\text{error}$ ???] actions, this consumes most of the computation time. A grid-search allows us to pre-calculate all actions for the $k$-th potential $p_{\Phi,k}$ first and then step through all $p_\text{DF}$ parameters and evaluate $\mathscr{L} (p_{\Phi,k},p_\text{DF})$. The calculations in each of these two steps, first action calculation and then likelihood calculation for all $p_\text{DF}$s, do not depend on each other and can therefore be easily parallelized on multiple cores. For this to work properly, the pre-calculation of the actions has to be completely independent of the $p_\text{DF}$ parameters. The actions needed for the normalisation are related to the $p_\text{DF}$ through the velocity integration limits in eq. (???). We therefore use the same velocity integration limits in the likelihood calculations for all $p_\text{DF}$ s in a given potential. This set of parameters, that sets the velocity integration range globally, $(\sigma_{R,0},\sigma_{z,0},h_{\sigma_R},h_{\sigma_z})$ in eq. (???), is referred to as the "fiducial qDF". [TO DO: Continue]
+\\The function evaluations of the $qDF$ at each of the $N_j \times N_\text{error} +  N_\text{spatial}^2 \times N_\text{velocity}^3$ actions have a smaller, but non-negligible contribution to the total computation time. Therefore the number of qDFs we are investigating for each potential also plays a role.
+[TO DO]
+
+
+
+\subsubsection{Choosing integration ranges}
+
+
+
+
+
+
 
 [TO DO]
 
@@ -258,7 +300,7 @@ In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\pr
 *Plot 2*: violin plot
 \end{itemize}
 
-\subsection{What if our assumed distribution function differs from the star's DF?}
+\subsection{What if our assumed distribution function differs from the stars' DF?}
 
 \paragraph{Collection of possible tests and plots}
 
@@ -331,6 +373,7 @@ In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\pr
 \begin{figure}
 \plotone{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_2.eps}
 \caption{Relative error of the likelihood normalization in eq. (???) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $. We show the results for two different potentials, an isochrone potential with parameters $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$ and a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km/s },2.5\text{ kpc },400 \text{ pc }, 0.8,0\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
 \end{figure}
 
 \addtocounter{figure}{-1}
@@ -347,14 +390,16 @@ In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\pr
 
 %FIGURE: isoSphFlexMixDiff
 
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixDiff/isoSphFlexMixDiff_violins.eps}
-\caption{Caption [TO DO], Maybe different/same x-axis??? [TO DO]} 
-\end{figure}
+%\begin{figure}
+%\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixDiff/isoSphFlexMixDiff_violins.eps}
+%\caption{Caption [TO DO], Maybe different/same x-axis??? [TO DO]} 
+%\end{figure}
 
 
 
 %===============================================
+
+[TO DO: Check if all references are actually used in paper. ???]
 
 \begin{thebibliography}{}
 \bibitem[Binney \& McMillan(2011)]{bin11} Binney, J. J., \& McMillan, P. 2011, \mnras, 413, 1889
@@ -363,6 +408,8 @@ In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\pr
 \bibitem[Bovy et al.(2012c)]{bov12c} Bovy, J., Rix, H.-W., Hogg, D. W. et al., 2012c, \apj, 755,115
 \bibitem[Bovy et al.(2012d)]{bov12d} Bovy, J., Rix, H.-W., Liu, C. et al., 2012d, \apj, 753, 148
 \bibitem[Bovy \& Rix(2013)]{bov13}  Bovy, J., \& Rix, H.-W. 2003, \apj, 779, 115
+\bibitem[Piffl et al.(2014)]{pif14} Piffl, T., Binney, J., \& McMillan, P. J. et al., 2014, \mnras, 455, 3133
+\bibitem[Steinmetz et al.(2006)]{ste06} Steinmetz, M. et al., 2006, \aj, 132, 1645
 \bibitem[Ting et al.(2013)]{tin13} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G. 2013, \mnras, 434, 652
 \end{thebibliography}
 
