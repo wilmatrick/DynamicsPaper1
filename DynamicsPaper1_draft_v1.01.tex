@@ -24,7 +24,7 @@
 %\title{Action-based Dynamical Models for the Milky Way Disk:\\
 %    How to deal with "Real World" Issues}
 %\title{The {\sc GodsMapper}:\\Galactic Orbit Distribution of Stellar Mono-Abundance Populations and Potential Exploration and %Recovery}
-\title{The {\sc MadMapper}:\\Milky Way Action Distribution ofMono-Abundance Populations and Potential Exploration and Recovery}
+\title{The {\sc MadMapper}:\\Milky Way Action Distribution of Mono-Abundance Populations and Potential Exploration and Recovery}
 
 %% Authors    
 \author{W. Trick\altaffilmark{1,2} and H.-W. Rix\altaffilmark{1}}
@@ -234,7 +234,7 @@ We search the $(p_\Phi,p_{DF})$ parameter space for the maximum of the likelihoo
 [TO DO: Make consistent: use of $\sigma_{R,0}$ and $\sigma_R$ as profile or dispersion at sun. ???]
 
 The $(p_\Phi,p_{DF})$ parameter space can be high-dimensional and we do not necessarily have a good notion where to look for the likelihood peak initially. We use a nested-grid approach to minimize effectively the number of models for which we have to evaluate the likelihood. Using a grid is preferable to other optimizing methods in our case, because we have fast ($p_\text{DF}$) and very slow ($p_\Phi$) parameters. Each time the likelihood is evaluated for a new potential, we have to convert the observed phase-space data of the stars $(\vect{x}_i,\vect{v}_i)$ into the actions $\vect{J}_i$ in this given potential. As we need to calculate  $N_j \times N_\text{error} +  N_\text{spatial}^2 \times N_\text{velocity}^3$ [TO DO: explain $N_\text{error}$ ???] actions, this consumes most of the computation time. A grid-search allows us to pre-calculate all actions for the $k$-th potential $p_{\Phi,k}$ first and then step through all $p_\text{DF}$ parameters and evaluate $\mathscr{L} (p_{\Phi,k},p_\text{DF})$. The calculations in each of these two steps, first action calculation and then likelihood calculation for all $p_\text{DF}$s, do not depend on each other and can therefore be easily parallelized on multiple cores. For this to work properly, the pre-calculation of the actions has to be completely independent of the $p_\text{DF}$ parameters. The actions needed for the normalisation are related to the $p_\text{DF}$ through the velocity integration limits in eq. (???). We therefore use the same velocity integration limits in the likelihood calculations for all $p_\text{DF}$ s in a given potential. This set of parameters, that sets the velocity integration range globally, $(\sigma_{R,0},\sigma_{z,0},h_{\sigma_R},h_{\sigma_z})$ in eq. (???), is referred to as the "fiducial qDF". [TO DO: Continue]
-\\The function evaluations of the $qDF$ at each of the $N_j \times N_\text{error} +  N_\text{spatial}^2 \times N_\text{velocity}^3$ actions have a smaller, but non-negligible contribution to the total computation time. Therefore the number of qDFs we are investigating for each potential also plays a role.
+\\The function evaluations of the qDF at each of the $N_j \times N_\text{error} +  N_\text{spatial}^2 \times N_\text{velocity}^3$ actions have a smaller, but non-negligible contribution to the total computation time. Therefore the number of qDFs we are investigating for each potential also plays a role.
 [TO DO]
 
 
@@ -352,6 +352,13 @@ The $(p_\Phi,p_{DF})$ parameter space can be high-dimensional and we do not nece
 \end{itemize}
 
 %===============================================
+
+%FIGURE: distribution of mock data in action and configuration space
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/kks2WedgeEx/kks2WedgeEx_mockdata.eps}
+\caption{[TO DO]} 
+\end{figure}
 
 %FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
 
