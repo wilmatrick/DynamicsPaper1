@@ -209,6 +209,9 @@ P(\vect{x}_i,\vect{v}_i \mid M) &=& \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \t
 \end{eqnarray}
 In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we use simply eq. (\ref{eq:prob}) in the likelihood calculation. We find the best set of model parameters by maximising the likelihood.
 
+\subsubsection{Units of the likelihood}
+[TO DO]
+
 \subsubsection{Numerical accuracy in calculating the likelihood}
 [TO DO: Consistent capitals in section titles. ????]
 
@@ -222,6 +225,9 @@ To evaluate the likelihood at a given set of $(p_\Phi,p_{DF})$ we proceed in pri
 [TO DO: Don't understand why 1 is the threshold here. ???]
 For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.\footnote{In case of the isochrone potential we already have high enough accuracy for $N_\text{spatial}=16$, $N_\text{velocity}=20$ and $N_{sigma}=4$.} [TO DO: Should we also show that 40th order GL integraiton over interpolated density is enough? as this is really a lot and well converged, I would simply state that this is enough, but not show anythin.????]
 [TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
+
+\subsection{Marginalization over coordinates}
+[TO DO]
 
 \subsection{Measurement Errors}
 
@@ -408,8 +414,14 @@ The $(p_\Phi,p_{DF})$ parameter space can be high-dimensional and we do not nece
 
 \begin{figure}
 \plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexIncompR/isoSphFlexIncompR_violins.eps}
-\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO])} 
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO] Colors are wrong [TO DO])} 
 \end{figure}
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexIncompR/isoSphFlexIncomp_mockdata.eps}
+\caption{Caption [TO DO] (Re-do, if new analyses are in violin plot.)} 
+\end{figure}
+
 
 
 
