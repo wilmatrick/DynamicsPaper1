@@ -381,6 +381,19 @@ After the nested-grid search is converged, we already have a very good feeling f
 \caption{[TO DO]} 
 \end{figure}
 
+%FIGURE: accuracy in the likelihood normalisation 
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_2.eps}
+\caption{Relative error of the likelihood normalization in eq. (???) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $. We show the results for two different potentials, an isochrone potential with parameters $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$ and a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km/s },2.5\text{ kpc },400 \text{ pc }, 0.8,0\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) We calculate the true normalization as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$, which has high enough accuracy. The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for both potential types (except the smallest volume in MW potential [TO DO: Why???]). Choosing $N_\text{velocity}$ too small can have much more severe effects on the accuracy of the normalization than $N_\text{spatial}$. A relative error of $0.3\%$ can already introduce biases in the outcome of the analysis, that are, for a data set of $~10,000$ stars already as large as a few sigma. When using a fiducial qDF to set the integration range over the velocity in the analysis  (cf. \S ???) of an isochrone potential for 20,000 stars, already $N_\text{sigma}=4$ and $N_\text{velocity}=20$ behaves well: a precision of 0.05\% in the normalisation leads to an error in the log-likelihood of $\sim1$ [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]}
+\end{figure}
+
 %FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
 
 \begin{figure}
@@ -396,18 +409,14 @@ After the nested-grid search is converged, we already have a very good feeling f
 \caption{The width of the likelihood for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set. All mock data sets were created in an isochrone potential with $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$, for a qDF with $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $ and within a spherical observation volume around the sun of radius $r = 3 \text{ kpc }$. The data sets have different sample sizes and contain between 100 and 40,000 stars, as indicated on the $x$-axis. The likelihood was evaluated on a grid in the parameters $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km/s}),\ln(h_{\sigma_R}/8\text{kpc}) \}$, while all other parameters were assumed to be known and kept at their true values. For each fit parameter the likelihood was then marginalized by summing over the grid and then a Gauss curve was fitted to the marginalized likelihood. The standard deviation of these best fit Gaussians $\Delta$ is shown on the $y$-axis for $b$ in kpc (red dots) and for $\ln(h_R/8\text{kpc})$ in dimensionless units (blue). The black lines are fits of the functional form $\Delta(N) \propto 1/\sqrt{N}$ to the data points  of both shown parameters. As can be seen, for large data samples the width of the likelihood behaves as expected and scales with $1/\sqrt{N}$ as predicted by the central limit theorem.} 
 \end{figure}
 
-%FIGURE: accuracy in the likelihood normalisation 
+%FIGURE: central limit theorem is satisfied
 
 \begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_2.eps}
-\caption{Relative error of the likelihood normalization in eq. (???) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $. We show the results for two different potentials, an isochrone potential with parameters $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$ and a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km/s },2.5\text{ kpc },400 \text{ pc }, 0.8,0\}$. (Caption continues on next page.)} 
-\label{fig:norm_accuracy}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSph/isoSph_CLT.eps}
+\caption{[TO DO]}
 \end{figure}
 
-\addtocounter{figure}{-1}
-\begin{figure} [t!]
-  \caption{(Continued.) We calculate the true normalization as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$, which has high enough accuracy. The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for both potential types (except the smallest volume in MW potential [TO DO: Why???]). Choosing $N_\text{velocity}$ too small can have much more severe effects on the accuracy of the normalization than $N_\text{spatial}$. A relative error of $0.3\%$ can already introduce biases in the outcome of the analysis, that are, for a data set of $~10,000$ stars already as large as a few sigma. When using a fiducial qDF to set the integration range over the velocity in the analysis  (cf. \S ???) of an isochrone potential for 20,000 stars, already $N_\text{sigma}=4$ and $N_\text{velocity}=20$ behaves well: a precision of 0.05\% in the normalisation leads to an error in the log-likelihood of $\sim1$ [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]}
-\end{figure}
+
 
 %FIGURE: isoSphFlexMixCont
 
