@@ -129,44 +129,40 @@ Because any function of integrals is an integral of motion itself, it is possibl
 \subsection{Mock Data}
 
 One goal of this work is to test how the loss of information in the process of measuring stellar phase-space coordinates can affect the outcome of the modelling. To investigate this, we assume first that our measured stars do indeed come from our assumed families of potentials and distribution functions and draw mock data from a given true distribution. In further steps we can manipulate and modify these mock data sets to mimick observational effects.\\
-The distribution function is given in terms of actions and angles. The obvious procedure would be to draw $\vect{J}_i$ from qDF$(\vect{J}_i \mid p_{DF})$ and $\vect{\theta}_i$ between 0 and $2\pi$, transforming this to $(\text{x}_i,\text{v}_i)$ in the given potential and rejecting all stars that are outside the observed volume. The transformation $(\vect{J}_i,\vect{\theta}_i) \longrightarrow (\vect{x}_i,\vect{v}_i)$ is however difficult to perform and computationally much more expensive than the transformation $(\vect{x}_i,\vect{v}_i) \longrightarrow (\vect{J}_i,\vect{\theta}_i)$. The observed volume is also much smaller than the whole galaxy and the fraction of rejected stars would be enormous. We propose a fast and simple two-step method for drawing mock data from an action distribution function in a given observed volume.
+The distribution function is given in terms of actions and angles. The obvious procedure would be to draw $\vect{J}_i$ from qDF$(\vect{J}_i \mid p_\text{DF})$ and $\vect{\theta}_i$ between 0 and $2\pi$, transforming this to $(\text{x}_i,\text{v}_i)$ in the given potential and rejecting all stars that are outside the observed volume. The transformation $(\vect{J}_i,\vect{\theta}_i) \longrightarrow (\vect{x}_i,\vect{v}_i)$ is however difficult to perform and computationally much more expensive than the transformation $(\vect{x}_i,\vect{v}_i) \longrightarrow (\vect{J}_i,\vect{\theta}_i)$. The observed volume is also much smaller than the whole galaxy and the fraction of rejected stars would be enormous. We propose a fast and simple two-step method for drawing mock data from an action distribution function in a given observed volume.
 [TO DO]
 
 \subsubsection{Preparation: Tracer density} \label{sec:density}
 
-One crucial point in creating the mock data, as well as in the analysis, is to calculate the spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_{DF})$ for a given distribution function with parameters $p_{DF}$ in a potential with parameters $p_{\Phi}$. We do this by integrating the axisymmetric distribution function over the velocity at $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane, using a Gauss-Legendre quadrature of order $N_\text{velocity}$ in each of the three velocity components. The velocity distribution according to the qDF at a given $(R_i,z_i)$ looks approximately Gaussian for $v_R$ and $v_z$. The $v_T$ distribution peaks somewhere around $v_{circ}(R_\odot)$ and $v_T > 0$ (cf. \S ?????). We approximate the integration over the velocity therefore as
+One crucial point in creating the mock data, as well as in the analysis, is to calculate the spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_\text{DF})$ for a given distribution function with parameters $p_\text{DF}$ in a potential with parameters $p_{\Phi}$. We do this by integrating the axisymmetric distribution function over the velocity at $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane, using a Gauss-Legendre quadrature of order $N_\text{velocity}$ in each of the three velocity components. The velocity distribution according to the qDF at a given $(R_i,z_i)$ looks approximately Gaussian for $v_R$ and $v_z$. The $v_T$ distribution peaks somewhere around $v_\text{circ}(R_\odot)$ and $v_T > 0$ (cf. \S ?????). We approximate the integration over the velocity therefore as
 \begin{eqnarray}
-\rho_\text{DF}(R,|z| \mid p_{\Phi},p_{DF}) &=& \int_{-\infty}^{\infty} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
-&\approx& \int_{-N_\text{sigma} \sigma_R(R \mid p_{DF})}^{N_\text{sigma} \sigma_R(R \mid p_{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_{DF})}^{N_\text{sigma} \sigma_z(R \mid p_{DF})} \int_{0}^{1.5 v_{circ}(R_\odot)}  \nonumber\\
-& & \hspace{1cm} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_{DF}) \diff v_T \diff v_z \diff v_R, \label{eq:tracerdensity}
+\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) &=& \int_{-\infty}^{\infty} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
+&\approx& \int_{-N_\text{sigma} \sigma_R(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_R(R \mid p_\text{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_z(R \mid p_\text{DF})} \int_{0}^{1.5 v_\text{circ}(R_\odot)}  \nonumber\\
+& & \hspace{1cm} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \diff v_T \diff v_z \diff v_R, \label{eq:tracerdensity}
 \end{eqnarray}
-where $\sigma_R(R \mid p_{DF})$ and $\sigma_z(R \mid p_{DF})$ are the star's radial and vertical velocity dispersion according to the qDF and given by eq. (???) and (???) and $N_\text{sigma}$ has to be large enough. The size of the $N_\text{spatial} \times N_\text{spatial}$ grid in $(R,z)$ is chosen cover the extent of the observed volume for $z>0$. We interpolate then over this grid to be able to evaluate the density at each $(R,z)$ within the observed volume. The total number of grid points and therefore actions that need to be calculated are $N_\text{spatial}^2 \cdot N_\text{velocity}^3$. Fig. ??? shows the importance of choosing $N_\text{spatial}$, $N_\text{velocity}$ and $N_\text{spatial}$ sufficiently large in order to get the density with an acceptable numerical accuracy. For the creation of the mock data we use $N_\text{spatial} = 20$, $N_\text{velocity} = 40$ and $N_\text{sigma}=5$.
+where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are the star's radial and vertical velocity dispersion according to the qDF and given by eq. (???) and (???) and $N_\text{sigma}$ has to be large enough. The size of the $N_\text{spatial} \times N_\text{spatial}$ grid in $(R,z)$ is chosen cover the extent of the observed volume for $z>0$. We interpolate then over this grid to be able to evaluate the density at each $(R,z)$ within the observed volume. The total number of grid points and therefore actions that need to be calculated are $N_\text{spatial}^2 \cdot N_\text{velocity}^3$. Fig. ??? shows the importance of choosing $N_\text{spatial}$, $N_\text{velocity}$ and $N_\text{spatial}$ sufficiently large in order to get the density with an acceptable numerical accuracy. For the creation of the mock data we use $N_\text{spatial} = 20$, $N_\text{velocity} = 40$ and $N_\text{sigma}=5$.
 
 \subsubsection{Step 1: Drawing positions from the selection function}
 
-To get $\vect{x}_i$ for our mock data stars, we first sample random positions $(R_i,z_i,\phi_i)$ uniformly from the observed volume. Making use of the geometric shapes of our simple observed volumes (spheres, cylinders, wedges...) we can do this efficiently with inverse transform Monte Carlo sampling. In a second step we then apply a rejection Monte Carlo method to these positions using the pre-calculated, interpolated density grid $\rho_\text{DF}(R,|z| \mid p_{\Phi},p_{DF})$. In an optional third step, if we want to apply a non-uniform selection function, sf$(\vect{x}) \neq $ const. within the observed volume, we use the rejection method a second time on the set of positions we got from the last step. This procedure can be repeated until the required number of positions are reached. The sample then follows the required distribution
+To get $\vect{x}_i$ for our mock data stars, we first sample random positions $(R_i,z_i,\phi_i)$ uniformly from the observed volume. Making use of the geometric shapes of our simple observed volumes (spheres, cylinders, wedges...) we can do this efficiently with inverse transform Monte Carlo sampling. In a second step we then apply a rejection Monte Carlo method to these positions using the pre-calculated, interpolated density grid $\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF})$. In an optional third step, if we want to apply a non-uniform selection function, sf$(\vect{x}) \neq $ const. within the observed volume, we use the rejection method a second time on the set of positions we got from the last step. This procedure can be repeated until the required number of positions are reached. The sample then follows the required distribution
 \begin{equation*}
-\vect{x}_i \longrightarrow p(\vect{x}) \propto \rho_\text{DF}(R,z \mid p_{\Phi},p_{DF}) \times \text{sf}(\vect{x}).
+\vect{x}_i \longrightarrow p(\vect{x}) \propto \rho_\text{DF}(R,z \mid p_{\Phi},p_\text{DF}) \times \text{sf}(\vect{x}).
 \end{equation*}
 
 \subsubsection{Step 2: Drawing velocities according to the distribution function}
 
-The velocities are independent of the selection function and observed volume. For each of the positions $(R_i,z_i)$ found in step 1 we now sample velocities directly from the qDF$(R_i,z_i,\vect{v} \mid p_{Phi},p_{DF})$ using a rejection method. To reduce the number of rejected velocities, we use a Gaussian in velocity space as an envelope function, from which we first randomly sample velocities and then apply the rejection method to shape the Gaussian velocity distribution towards the velocity distribution predicted by the qDF. The envelope Gaussian peaks at $(v_R=0,v_T=max(\text{qDF}(R_i,z_i,0,vT,0 \mid p_{Phi},p_{DF})),v_z=0)$ and has a standard deviation of $(2\sigma_R(R_i),2\sigma_R(R_i),2\sigma_z(R_i))$. We then pick one of the sampled velocities $\vect{v}_i$ at and for each $(R_i,z_i)$ and arrive at our desired mock data sample
+The velocities are independent of the selection function and observed volume. For each of the positions $(R_i,z_i)$ found in step 1 we now sample velocities directly from the qDF$(R_i,z_i,\vect{v} \mid p_{Phi},p_\text{DF})$ using a rejection method. To reduce the number of rejected velocities, we use a Gaussian in velocity space as an envelope function, from which we first randomly sample velocities and then apply the rejection method to shape the Gaussian velocity distribution towards the velocity distribution predicted by the qDF. The envelope Gaussian peaks at $(v_R=0,v_T=max(\text{qDF}(R_i,z_i,0,vT,0 \mid p_{Phi},p_\text{DF})),v_z=0)$ and has a standard deviation of $(2\sigma_R(R_i),2\sigma_R(R_i),2\sigma_z(R_i))$. We then pick one of the sampled velocities $\vect{v}_i$ at and for each $(R_i,z_i)$ and arrive at our desired mock data sample
 \begin{equation*}
-(\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{qDF}(\vect{x},\vect{v} \mid p_{\Phi},p_{DF}) \times \text{sf}(\vect{x}).
+(\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{qDF}(\vect{x},\vect{v} \mid p_{\Phi},p_\text{DF}) \times \text{sf}(\vect{x}).
 \end{equation*} 
+[TO DO: mention fig. \ref{fig:mockdatadistr}. ???]
 
 \subsubsection{Step 3: Introducing measurement errors}
 
 [TO DO]
 
-\paragraph{Collection of possible tests and plots}
+\paragraph{[TO DO] Possible plots:} *Diagram*: schematic flow chart of how to sample mock data (could be helpful for people, who want to sample mock data in action space and didn't know how to start, like me)
 
-\begin{itemize}
-\item *Diagram 1*: schematic flow chart of how to sample mock data (could be helpful for people, who want to sample mock data in action space and didn't know how to start, like me)
-\item *Plot 2:* 2 triangle plots with (jr, lz, jz) on the axes to show the distribution of stars in action space within mock data sets - for a large sphere and a small sphere. (I thought it was very instructive to see how the spatial selection function shapes the distribution of actions, it also helped me understand which orbits have which actions.)
-\item *Plot 3:* distribution of mock data set in real space: z vs. R. and vz vs. R, maybe for a hot and cold population? (maybe a bit boring? Would be however illustrative, that the mock data sampled from the qdf is indeed similar to something we could observe. Also: could make a 4 sigma contour in the vz vs. R plot, to show, that the choice of integration limits is important but 4 sigma should be sufficient.)
-\end{itemize}
 
 \section{Analysis}
 
@@ -187,18 +183,18 @@ where  $\vect{x}_i$ and $\vect{v}_i$ are the position and velocity of one star. 
 
 We fit the five free parameters of the qDF family, $h_R$, $\sigma_R$, $\sigma_z$, $h_{\sigma_R}$ and $h_{\sigma_z}$, in logarithmic scale, which corresponds to a logarithmically flat prior in the framework of Bayesian statistics. The set of qDF fit parameters is therefore 
 \begin{equation*}
-p_{DF} := \{ \ln \left(h_R/8\text{kpc}\right), \ln \left(\sigma_R/220\text{km/s}\right), \ln \left(\sigma_z/220\text{km/s}\right), \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\} .
+p_\text{DF} := \{ \ln \left(h_R/8\text{kpc}\right), \ln \left(\sigma_R/220\text{km s$^{-1}$}\right), \ln \left(\sigma_z/220\text{km s$^{-1}$}\right), \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\} .
 \end{equation*}
 To be able to control the number of degrees of freedom in the potential fit, we have to assume a certain family of potential models, parametrized by the parameters $p_\Phi$ (cf. \S\ref{sec:potentials}). 
 \\The total set of model parameters to fit is then
 \begin{eqnarray*}
-M =\{ p_{DF} , p_\Phi \},
+M =\{ p_\text{DF} , p_\Phi \},
 \end{eqnarray*}
-The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_{DF})$.
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
 
 \subsubsection{Form of the Likelihood} 
 
-The likelihood of the model given the data $\mathscr{L}(M \mid D_j)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_{DF}$, i.e. 
+The likelihood of the model given the data $\mathscr{L}(M \mid D_j)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
 \begin{equation}
 \mathscr{L}(M \mid D_j) = \prod_i^{N_j} P(\vect{x}_i,\vect{v}_i \mid M), \label{eq:likelihood}
 \end{equation}
@@ -212,22 +208,22 @@ In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\pr
 
 \subsubsection{A word on units}
 
-We evaluate the likelihood in a scale-free potential within a Galactocentric coordinate system which is defined as $v_\text{circ}(R = 1) = 1$. $v_\text{circ}(R_\odot = 8. \text{kpc}) \sim 230 \text{km/s}$ is the Galaxy potential parameter that determines the total Galaxy mass / amplitude of the potential. To switch into our modelling coordinate frame, we first have to re-scale the data and the model parameters: all spatial coordinates to units of $r_o := R_\odot$ and all velocities to units of $v_o := v_\text{circ}(R_\odot )$. The prefactor $1/\left(r_o v_o\right)^3$ in eq. (\ref{eq:prob}) makes sure that the likelihood has the correct units to satisfy:
+We evaluate the likelihood in a scale-free potential within a Galactocentric coordinate system which is defined as $v_\text{circ}(R = 1) = 1$. $v_\text{circ}(R_\odot = 8. \text{kpc}) \sim 230 \text{km s$^{-1}$}$ is the Galaxy potential parameter that determines the total Galaxy mass / amplitude of the potential. To switch into our modelling coordinate frame, we first have to re-scale the data and the model parameters: all spatial coordinates to units of $r_o := R_\odot$ and all velocities to units of $v_o := v_\text{circ}(R_\odot )$. The prefactor $1/\left(r_o v_o\right)^3$ in eq. (\ref{eq:prob}) makes sure that the likelihood has the correct units to satisfy:
 \begin{eqnarray*}
 \int P(\vect{x},\vect{v} \mid M) \Diff 3 x \Diff 3 v \propto 1
 \end{eqnarray*} 
 Including this prefactor is crucial when $v_\text{circ}(R_\odot )$ is a free fitting parameter.
 
-\subsubsection{Numerical accuracy in calculating the likelihood}
+\subsubsection{Numerical accuracy in calculating the likelihood} \label{sec:numaccuracynormalisation}
 [TO DO: Consistent capitals in section titles. ????]
 
-To evaluate the likelihood at a given set of $(p_\Phi,p_{DF})$ we proceed in principle in the following way: The numerator in eq. (\ref{eq:prob}) can be calculated straightforward by calculating the actions of each star in the given potential (cf. \S ???) and then evaluating the qDF at each action. For the normalisation of the likelihood we first have to calculate the density $\rho_\text{DF}(R,|z| \mid M)$ on a grid as described in \S\ref{sec:density}. The density is then interpolated using bi-variate spline interpolation. In the case of $\text{sf}(\vect{x})=1$ everywhere inside the observed volume and $\text{sf}(\vect{x})=0$ outside, i.e. for a complete sample, the integral in the normalisation in eq. (\ref{eq:prob}) is essentially two-dimensional in $R$ and $z$ and we can use the shape of the observed volume to set finite integration limits. We perform this integral over the interpolated tracer density by using Gauss Legendre integration of order 40 in each $R$ and $z$ direction. The integration over $\phi$ is done analytically.
+To evaluate the likelihood at a given set of $(p_\Phi,p_\text{DF})$ we proceed in principle in the following way: The numerator in eq. (\ref{eq:prob}) can be calculated straightforward by calculating the actions of each star in the given potential (cf. \S ???) and then evaluating the qDF at each action. For the normalisation of the likelihood we first have to calculate the density $\rho_\text{DF}(R,|z| \mid M)$ on a grid as described in \S\ref{sec:density}. The density is then interpolated using bi-variate spline interpolation. In the case of $\text{sf}(\vect{x})=1$ everywhere inside the observed volume and $\text{sf}(\vect{x})=0$ outside, i.e. for a complete sample, the integral in the normalisation in eq. (\ref{eq:prob}) is essentially two-dimensional in $R$ and $z$ and we can use the shape of the observed volume to set finite integration limits. We perform this integral over the interpolated tracer density by using Gauss Legendre integration of order 40 in each $R$ and $z$ direction. The integration over $\phi$ is done analytically.
 \\Unfortunately the evaluation of the likelihood for only one set of model parameters is already very computationall expensive. The computation speed is set by the number of action calculations needed, i.e. the number of stars and the numerical accuracy of the integrals in the normalisation, which requires $N_\text{spatial}^2 \times N_\text{velocity}^3$ action calculations. The numerical accuracy has to be choosen high enough, such that the integrals in the normalisation are mostly converged and the error introduced by this does not dominate in the likelihood, i.e.
-\begin{eqnarray*}
-\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N_j} \log \text{qDF}(\vect{J_i} \mid M) \\
-& & -N_j \log(\text{true normalisation}) - N_j \log (1 + \text{rel. error}),\\
- \text{with }  & &N_j \log (1 + \text{rel. error}) \lesssim 1.
-\end{eqnarray*}
+\begin{eqnarray}
+\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N_j} \log \text{qDF}(\vect{J_i} \mid M) \nonumber\\
+& & -N_j \log(\text{true normalisation}) - N_j \log (1 + \text{rel. error}),\label{eq:relerrlikelihood}\\
+ \text{with }  & &N_j \log (1 + \text{rel. error}) \lesssim 1.\nonumber
+\end{eqnarray}
 [TO DO: Don't understand why 1 is the threshold here. ???]
 For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.\footnote{In case of the isochrone potential we already have high enough accuracy for $N_\text{spatial}=16$, $N_\text{velocity}=20$ and $N_{sigma}=4$.} [TO DO: Should we also show that 40th order GL integraiton over interpolated density is enough? as this is really a lot and well converged, I would simply state that this is enough, but not show anythin.????]
 [TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
@@ -241,13 +237,13 @@ For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of G
 
 \subsection{Fitting Procedure}
 
-We search the $(p_\Phi,p_{DF})$ parameter space for the maximum of the likelihood in eq. (\ref{eq:likelihood}). The most crucial part of our fitting procedure for finding the peak and width of the likelihood in the $(p_\Phi,p_{DF})$ parameter space  is therefore the reduction of computational costs while not introducing systematic errors due to numerical inaccuracies. We do this by a two-step procedure: The first step finds the approximate peak and width of the likelihood using a nested-grid search, while the second step will either sample the shape of the likelihood (or rather the posterior probability distribution) using a Monte-Carlo Markov Chain (MCMC) or calculate the likelihood on a much finer grid.
+We search the $(p_\Phi,p_\text{DF})$ parameter space for the maximum of the likelihood in eq. (\ref{eq:likelihood}). The most crucial part of our fitting procedure for finding the peak and width of the likelihood in the $(p_\Phi,p_\text{DF})$ parameter space  is therefore the reduction of computational costs while not introducing systematic errors due to numerical inaccuracies. We do this by a two-step procedure: The first step finds the approximate peak and width of the likelihood using a nested-grid search, while the second step will either sample the shape of the likelihood (or rather the posterior probability distribution) using a Monte-Carlo Markov Chain (MCMC) or calculate the likelihood on a much finer grid.
 
 \subsubsection{Fitting Step 1: Finding the likelihood peak with a Nested-grid search}
 
 [TO DO: Make consistent: use of $\sigma_{R,0}$ and $\sigma_R$ as profile or dispersion at sun. ???]
 
-The $(p_\Phi,p_{DF})$ parameter space can be high-dimensional and we do not necessarily have a good notion where to look for the likelihood peak initially. We use a nested-grid approach to find the peak and to minimize effectively the number of models for which we have to evaluate the likelihood.\footnote{The nested-grid approach is preferable to other optimizing methods, because it can be effectively parallelized on multiple computer cores, while methods like ??????? work linearly and would therefore take longer.}
+The $(p_\Phi,p_\text{DF})$ parameter space can be high-dimensional and we do not necessarily have a good notion where to look for the likelihood peak initially. We use a nested-grid approach to find the peak and to minimize effectively the number of models for which we have to evaluate the likelihood.\footnote{The nested-grid approach is preferable to other optimizing methods, because it can be effectively parallelized on multiple computer cores, while methods like ??????? work linearly and would therefore take longer.}
 \\The nested-grid search works in the following way: 
 \begin{itemize}
 
@@ -274,41 +270,110 @@ After the nested-grid search is converged, we already have a very good feeling f
 
 \subsection{Verification of the Method}
 
-\paragraph{Collection of possible tests and plots}
+[TO DO]
 
-\begin{itemize}
-\item *Plot 1:* two panels: 
-\begin{itemize}
-\item a) convergence of the normalisation vs. ngl\_vel (GL order of integrating the qdf over the velocities to get the density), 
-\item b) convergence of the normalisation vs. n\_dens (number of grid points in each (R,z) at which the density is explicitely calculated, before interpolating and integrating over the volume to get the normalisation). \\ 
- This might not be a very exciting plot, but when we later show plots, that demonstrate e.g. how robust the method is against incompleteness, people might think, that in this case the normalization is not so important and time could be saved in calculating it. We know, that it is important to get the normalisation right. Plus, it proves, that possible biases when using the St\"ackel approximation are not due to a wrong normalisation.
- \end{itemize}
-\item *Test 1:* Isochrone potential, 2 different b, 2 different populations, 5 different SF (isoSph test suite) \\
-*Plot 2:* scatter plot (offset / stddev) vs. (stddev / true value [\%]) for b and one qdf parameter --> and panel with normal distribution. This plot could show 3 things:
-\begin{itemize}
-\item Central limit theorem is satisified --> method works.
-\item Bigger volumes give better constraints.
-\item hot populations seem to give tighter constraints on the potential.
-\end{itemize}
-\item *Plot 3:* Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.
-\item *Plot 4:* stddev ~ 1/sqrt(N)
-\end{itemize}
+%====================================================================
+
+%FIGURE: distribution of mock data in action and configuration space
+
+\begin{figure}[H]
+\plotone{~/BovyCode/analyzeFlexible/plots/kks2WedgeEx/kks2WedgeEx_mockdata.eps}
+\caption{Distribution of mock data in action space (2D iso-density contours in the two central and the lower left panel) and configuration space (1D histograms in right panels), depending shape and position of observation volume (cf. lower left panel) and 'hottness' of the stellar population. The mock data was created in a 2-component KK-Staeckel-potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$ [TO DO: Does $\Delta$ have units????] (which is an approximate fit to the MilkyWay2014 potential in Galpy). We use two stellar populations, a 'hot' one with $p_{DF,hot} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (red lines) and a 'cool' population with $p_{DF,cool} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (blue lines). In the upper left panel we demonstrate the shape of the two different observation volumes within which we were creating each a 'hot' and a 'cool' mock data set: a large volume centered on the Galactic plane (solid lines in all plots) and a smaller one above the plane (dashed lines in all plots). Both volumes have an angular extent of $\Delta\phi \pm 20^\circ$. Each of the four mock data sets compared in this plot has 20,000 stars in it. The stars of the 'cool' population have in general lower radial and vertical actions, i.e. are on more circular obrits. The different ranges of $L_z$'s in the two volumes reflect $L_z \sim R  v_\text{circ}$ and the different radial extent of both volumes.The volume above the plane contains no stars with $J_z = 0$ and more with $J_z$: The higher a volume is located above the plane, the larger $J_z$ has to be for the star's orbit to cross this volume. Circular orbits with $J_R = 0$ and $J_z = 0$ can obviously only be observed in the Galactic mid-plane. The smaller an orbit's $L_z$, the smaller also its mean orbital radius. For this orbit to be able to reach into a volume located at larger Galacto-centric radius, it needs to be more eccentric and therefore have a larger $J_z$. This anti-correlation between $L_z$ and $J_R$ can be seen in the top central panel. Orbits with both large $J_R$ and large $J_z$ would be very energetic and are therefore less likely to be observed.} 
+\label{fig:mockdatadistr}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:mockdatadistr}:} Shift description of action space from caption to here. Mention, that the distribution according to the qdf in configuration space is indeed how expected: More stars at lower R and lower $|z|$, uniform in $\phi$. Using the velocity dispersion (with $\sigma_0$ being indeed the velocity dispersion at the sun) as integration ranges over $v_R$ and $v_z$ is fine. Maybe overplot $\pm5\sigma_0$ range? For $v_T$ distribution: Explain asymmetric drift. Would $v_T$ for a potential with perfectly flat rotation curve peak at 230km/s? This potential has only an approximately flat rotation curve.
+
+%====================================================================
+
+%FIGURE: accuracy in the likelihood normalisation 
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_2.eps}
+\caption{Relative error of the likelihood normalization in eq. (\ref{eq:prob}) and (\ref{eq:relerrlikelihood}) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_\text{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We show the results for three different potentials, an isochrone potential with parameters $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 2-component KK-Staeckel potential with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) We calculate the true normalization with high accuracy as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$. [TO DO: Introduce $M_{tot}$ as the likelihood normalization somewhere as formula... ???] The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for all three potential types. Only for the smallest volume in the MW potential (yellow line) the error is only $\sim 0.005\%$. This could be due to the fact, that, while we have analytical formulas to calculate the actions for the isochrone and the Staeckel potential exactly, we have to resort to an approximate action calculation (Staeckel Fudge by Binney) for the MW-like potential (cf. \S ???).}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:norm_accuracy}:} When fitting a potential and DF model to stellar data, the numerical accuracy of the normalisation is very important. The tracer density changes smoothly with the potential and DF parameters. Systematic errors in the density calculation can therefore lead to systematic over- or underestimation of the true potential parameters. This effect is less severe for larger volumes: The density gradient within a large volume is larger and therefore the relative change of the normalisation with the model parameters is also larger as for smaller observation volumes. For small volumes it is therefore more important to get the density right, i.e. having high $N_\text{velocity}$ and $N_\text{sigma}$. For larger volumes it is also important to pre-calculate the density at enough spatial points, i.e. having high $N_\text{spatial}$, while at the same time smaller inaccuracies in the density calculation do not have a comparable severe effect. This could be also the reason, why the normalisation calculation for the smallest volume in fig. \ref{fig:norm_accuracy} is much more well behaved as long as we can calculate exact actions (isochrone and Staeckel potential) [TO DO: Is this really the reason????]. [TO DO: Should we demonstrate how a wrong accuracy introduces biases???] Using a fiducial qDF to fix the integration range over the velocity in the analysis  (cf. \S ???) can help to make the normalisation vary in a more controlled and smooth way. If the fiducial qDF is close to the true qDF parameters, we get already un-biased and well-behaved results for a data set with 20,000 stars in the isochrone potential and an accuracy of $N_\text{sigma}=4$ and $N_\text{velocity}=20$, as demonstrated in fig. \ref{fig:centrallimitheorem}. This lower accuracy leads to an relative error of  0.005\% in the normalisation and therefore to an error in the log-likelihood of $\sim1$ (cf. \S{sec:numaccuracynormalisation}). [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]
+
+
+\paragraph{[TO DO] Possible other plots:} Maybe show also how the normalisation accuracy varies with the order of GL integration over the interpolated density. We use 40, which seems to be definitely enough. Demonstrate with a plot?
+
+%====================================================================
+
+%FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
+
+\begin{figure}
+%\plottwo{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_bw.eps}{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
+\caption{The likelihood in eq. (???) in the parameter space $\{p_\Phi,\ln(p_\text{DF})\}$ for one example mock data set. This mock data set has 20,000 stars and was created in a isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, observed within a spherical volume around the sun of radius $r = 2 \text{ kpc }$, and represents a rather hot stellar population with DF parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $.  The true parameters are marked by dotted lines. The dark, medium and bright purple contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_\text{DF})$ to turn the likelihood into a full posterior distribution function). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem. [TO DO: Maybe re-do with higher accuracy??? This was done with $N_{sigma} = 4$.]}
+\label{fig:triangleplot}
+\end{figure}
+
+%====================================================================
+
+%FIGURE: width of likelihood propto 1/sqrt(N)
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/sqrtNiso/sqrtNiso_Stddev_Vs_N.eps}
+\caption{The width of the likelihood for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set. All mock data sets were created in an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, for a qDF with $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ and within a spherical observation volume around the sun of radius $r = 3 \text{ kpc }$. The data sets have different sample sizes and contain between 100 and 40,000 stars, as indicated on the $x$-axis. The likelihood was evaluated on a grid in the parameters $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$, while all other parameters were assumed to be known and kept at their true values. For each fit parameter the likelihood was then marginalized by summing over the grid and then a Gauss curve was fitted to the marginalized likelihood. The standard deviation of these best fit Gaussians $\Delta$ is shown on the $y$-axis for $b$ in kpc (red dots) and for $\ln(h_R/8\text{kpc})$ in dimensionless units (blue). The black lines are fits of the functional form $\Delta(N) \propto 1/\sqrt{N}$ to the data points  of both shown parameters. As can be seen, for large data samples the width of the likelihood behaves as expected and scales with $1/\sqrt{N}$ as predicted by the central limit theorem.  [TO DO: Maybe re-do with higher accuracy??? This was done with $N_{sigma} = 4$.]} 
+\label{fig:sqrtN}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:triangleplot} and \ref{fig:sqrtN}:} The central limit theorem predicts that the likelihood will approach a Gaussian distribution $\mathscr{N}(\mu,\sigma/\sqrt{N})$ with $N$ being the number of data points.
+
+%====================================================================
+
+
+%FIGURE: central limit theorem is satisfied
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSph/isoSph_CLT.eps}
+\caption{According to the central limit theorem the likelihood will follow a Gaussian distribution for a large number of stars. From this follows that also for a large number of data sets the corresponding best fit values for the model parameters have to follow a Gaussian distribution, centered on the true model parameters. That our method satisfies this and is therefore an unbiased estimator [TO DO: can I say that????] is demonstrated here. We create 640 mock data sets. They come from two different isochrone potentials ($p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},b \}$ with $b = 0.9$ kpc (first column) and $b = 1.5$ kpc (second column)), two different stellar populations ('hot' with $p_{DF,hot} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (solid symbols) and 'cool' with $p_{DF,cool} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (open symbols)) and five spherical observation volumes of different sizes (color coded, see legend). For each parameter set we therefore sample 32 mock data realisations and analyse them by evaluating the likelihood ??? on a grid. As numerical accuracy we use $N_\text{velocity} = 20$ and $N_\text{spatial}$. The fit parameters are $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$. All other model parameters are kept at their true value in the modelling. We determine the best fit value and the standard error (SE) for each fit parameter by fitting a Gaussian to the marginalized likelihood. The offset is the difference between the best fit and the true value of each model parameter. In the first two columns the offset in units of the SE is plotted vs. the SE in \% of the true model parameter. The first row shows the results for the isochrone scale length $b$ and the second row the qDF parameter $h_{\sigma_z}$, which corresponds to the scale length of the vertical velocity distribution. }
+\label{fig:centrallimittheorem}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The last column finally displays a histogram of the 640 offsets (in units of the corresponding SE). The black solid line is a Gaussian fit to a histogram. The dashed pink line is a normal distribution $\mathscr{N}(0,1)$. As they agree very well, our modelling method is therefore well-behaved and unbiased. For the 32 analyses belonging to one model we also determine the mean offset and SE, which are overplotted in black in the first two columns (with $1/\sqrt{32}$ as error).  [TO DO: Is the scatter of the black symbols too large??? Is the reason for this numerical inaccuracies???] [TO DO: units of b in title????????]} 
+  \end{figure}
+  
+ \paragraph{[TO DO] Stuff to explain about fig. \ref{fig:centrallimittheorem}:} Mention also that bigger volumes give most of the time better constraints and that there is no clear answer, if a hot or cooler population gives better constraints. Depends on parameter considered.
+
+%====================================================================
+
+\paragraph{[TO DO] Missing test and plot:}  Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.
 
 
 \subsection{Do shape and position of the observation volume matter?}
 
-\paragraph{Collection of possible tests and plots}
+%====================================================================
 
- *Test 1:* Compare results of wedges of same volume, but different positions and orientations. 
- \begin{itemize}
-    \item I guess, the ones that demonstrate, that phi-coverage is much less important than R and z coverage, is boring, right? And I already have a plot in 3.1 that shows, that larger volumes are better. 
-    \item This test suite was made with the MW-like potential and there seem to be biases, that are different for different volumes. If we say, okay, we have to deal with whatever biases we get, I could still include those volumes with good R AND z coverage, because for them the biases seem to be smaller.
-    \item I might add a few more volumes, e.g. one with large vertical coverage at different positions
-    \item Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?\\
-*Plot 1:* 
-    a) cross section of volumes in R and z
-    b) offset / stddev vs. stddev / true value [\%], that demonstrates, that it doesn't matter much for the potential recovery, if we have more radial or vertical coverage, and the position within the galaxy. 
-     \end{itemize}
+%FIGURE: Does shape and position of obs. volume matter?
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/wedge/wedge_volumetest.eps}
+\caption{We demonstrate that for a given size of the observation volume the shape and position of the volume does not matter much as long as we have both large radial and/or vertical coverage. The left column shows the position of our test observation volumes within the Galaxy with respect to the Galactic plane and the sun. The angular extent of each wedge-shaped observation volume was adapted such that all have the volume of $4.5 \text{ kpc}^3$, even though their extent in $(R,z)$ is different. Each data set contains 20,000 stars. We assume a Milky Way-like potential like in \citet{bo13}, with  $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 'hot' stellar population with $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We evaluate the likelihood on a grid in the fit parameter $\{R_d,f_h,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$. All other parameters are kept at their true values in the modelling. Standard error and offset were determined as in fig. \ref{fig:centrallimittheorem}. The accuracy of the analyses is $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$. In an axisymmetric potential the coverage in angular direction does not matter, as long as there are enough stars in the observation volume.}
+\label{fig:obsvolumetest}
+\end{figure}
+
+\paragraph{Stuff that needs to be further examined in fig. \ref{fig:obsvolumetest}:}
+\begin{itemize}
+\item [TO DO] There are biases. Do they get smaller with higher accuracy? Do they disappear for KKS potential?
+\item [TO DO]  As transparency doesn't work in eps, the orange volume looks smaller than the blue one.
+\item [TO DO] Maybe skip first row of plots?
+\item [TO DO] 'Larger is better' is also demonstrated in fig. \ref{fig:centrallimittheorem}
+\item [TO DO] We could compare these results with similar results for KKS pot. If the latter has no biases, we can state that to avoid biases when using an non-Staeckel potential, one should use a volume with comparable R \textit{and} z coverage, because for this the biases seem to be smallest.
+\item [TO DO] Maybe add volume at smaller radius with large vertical extent?
+\item [TO DO] Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?
+\end{itemize}
+
+%====================================================================
      
 \subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
 
@@ -322,6 +387,35 @@ After the nested-grid search is converged, we already have a very good feeling f
 \end{itemize}
 
 \subsection{What if our assumed distribution function differs from the stars' DF?}
+
+%====================================================================
+
+%FIGURE: isoSphFlexMixCont
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixCont/isoSphFlexMixCont_violins.eps}
+\caption{(Caption on next page.)}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.)  The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a 'hot' stellar population by stars coming from a 'cool' population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. In total there are always 20,000 stars in the data set. Both populations come from same potential, an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$ (true parameters are indicated by green lines). The composite data set is then fit them with one single qDF. Example 1 (left) mixes the 'hot' population $p_\text{DF,hot,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'cool' population $p_\text{DF,cool,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}+50\%, 55 \text{ km s$^{-1}$}-50\%, 66 \text{ km s$^{-1}$}-50\%, 8 \text{ kpc}, 7 \text{ kpc }\}$. Example 2 (right) mixes the 'cool' population $p_{DF,cool,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'hotter' population $p_{DF,hot,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}-50\%, 42+50\% \text{ km s$^{-1}$}, 32+50\% \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. The parameters were chosen such, that the two parameter sets have the same $\sigma_R/\sigma_z$ ratio and 'hotter' populations have shorter tracer scale lengths. The velocity dispersion scale lengths were fixed according to ???Bovy2012???. True parameters of the 'hotter' population are shown as red lines, those of the 'cooler' populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???] [TO DO: Change 'cold' in plot to 'cool'. ???]}
+\end{figure}
+
+%FIGURE: isoSphFlexMixDiff
+
+\begin{figure}
+\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixDiff/isoSphFlexMixDiff_violins.eps}
+\caption{(Caption on next page.)}
+\end{figure}
+
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The dependence of the parameter recovery on the difference in DF parameters of the mixture of two stellar populations and their 'hotness'.  [TO DO], Maybe different/same x-axis??? [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF. [TO DO])} 
+\end{figure}
+
+%====================================================================
 
 \paragraph{Collection of possible tests and plots}
 
@@ -374,63 +468,18 @@ After the nested-grid search is converged, we already have a very good feeling f
 
 %===============================================
 
-%FIGURE: distribution of mock data in action and configuration space
-
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/kks2WedgeEx/kks2WedgeEx_mockdata.eps}
-\caption{[TO DO]} 
-\end{figure}
-
-%FIGURE: accuracy in the likelihood normalisation 
-
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_2.eps}
-\caption{Relative error of the likelihood normalization in eq. (???) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $. We show the results for two different potentials, an isochrone potential with parameters $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$ and a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km/s },2.5\text{ kpc },400 \text{ pc }, 0.8,0\}$. (Caption continues on next page.)} 
-\label{fig:norm_accuracy}
-\end{figure}
-
-\addtocounter{figure}{-1}
-\begin{figure} [t!]
-  \caption{(Continued.) We calculate the true normalization as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$, which has high enough accuracy. The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for both potential types (except the smallest volume in MW potential [TO DO: Why???]). Choosing $N_\text{velocity}$ too small can have much more severe effects on the accuracy of the normalization than $N_\text{spatial}$. A relative error of $0.3\%$ can already introduce biases in the outcome of the analysis, that are, for a data set of $~10,000$ stars already as large as a few sigma. When using a fiducial qDF to set the integration range over the velocity in the analysis  (cf. \S ???) of an isochrone potential for 20,000 stars, already $N_\text{sigma}=4$ and $N_\text{velocity}=20$ behaves well: a precision of 0.05\% in the normalisation leads to an error in the log-likelihood of $\sim1$ [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]}
-\end{figure}
-
-%FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
-
-\begin{figure}
-%\plottwo{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_bw.eps}{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
-\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlex/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
-\caption{The likelihood in eq. (???) in the parameter space $\{p_\Phi,\ln(p_{DF})\}$ for one example mock data set. This mock data set has 20,000 stars and was created in a isochrone potential with $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$, observed within a spherical volume around the sun of radius $r = 2 \text{ kpc }$, and represents a rather hot stellar population with DF parameters $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $.  The true parameters are marked by dotted lines. The dark, medium and bright purple contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_{DF})$ to turn the likelihood into a full posterior distribution function). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem.}
-\end{figure}
-
-%FIGURE: width of likelihood propto 1/sqrt(N)
-
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/sqrtNiso/sqrtNiso_Stddev_Vs_N.eps}
-\caption{The width of the likelihood for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set. All mock data sets were created in an isochrone potential with $p_\Phi = \{v_{circ},b \}=\{230 \text{ km/s },0.9\text{ kpc } \}$, for a qDF with $p_{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc }, 55 \text{ km/s }, 66 \text{ km/s }, 8 \text{ kpc }, 7 \text{ kpc }\} $ and within a spherical observation volume around the sun of radius $r = 3 \text{ kpc }$. The data sets have different sample sizes and contain between 100 and 40,000 stars, as indicated on the $x$-axis. The likelihood was evaluated on a grid in the parameters $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km/s}),\ln(h_{\sigma_R}/8\text{kpc}) \}$, while all other parameters were assumed to be known and kept at their true values. For each fit parameter the likelihood was then marginalized by summing over the grid and then a Gauss curve was fitted to the marginalized likelihood. The standard deviation of these best fit Gaussians $\Delta$ is shown on the $y$-axis for $b$ in kpc (red dots) and for $\ln(h_R/8\text{kpc})$ in dimensionless units (blue). The black lines are fits of the functional form $\Delta(N) \propto 1/\sqrt{N}$ to the data points  of both shown parameters. As can be seen, for large data samples the width of the likelihood behaves as expected and scales with $1/\sqrt{N}$ as predicted by the central limit theorem.} 
-\end{figure}
-
-%FIGURE: central limit theorem is satisfied
-
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/isoSph/isoSph_CLT.eps}
-\caption{[TO DO]}
-\end{figure}
 
 
 
-%FIGURE: isoSphFlexMixCont
 
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixCont/isoSphFlexMixCont_violins.eps}
-\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. [TO DO])} 
-\end{figure}
 
-%FIGURE: isoSphFlexMixDiff
 
-\begin{figure}
-\plotone{~/BovyCode/analyzeFlexible/plots/isoSphFlexMixDiff/isoSphFlexMixDiff_violins.eps}
-\caption{Caption [TO DO], Maybe different/same x-axis??? [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF. [TO DO])} 
-\end{figure}
+
+
+
+
+
+
 
 %FIGURE: isoSphFlexIncompR
 
