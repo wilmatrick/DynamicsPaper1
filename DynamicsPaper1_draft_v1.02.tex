@@ -1,5 +1,6 @@
 %% Document class
 \documentclass[12pt,preprint]{aastex}
+%\documentclass[preprint2]{aastex}
 
 %general packages
 \usepackage{amsmath}	%for \text{} in math mode
@@ -103,22 +104,24 @@ Because any function of integrals is an integral of motion itself, it is possibl
 \item \textbf{Motivating this method characterization in anticipation of GAIA:} [TO DO]
 \end{itemize}
 
-\section{Model \& Mock Data}
+\section{Dynamical Modelling}
 
-\subsection{Actions}
+\subsection{Model}
 
-[TO DO]
-
-
-\subsection{Distribution function} \label{sec:qDF}
+\subsubsection{Actions}
 
 [TO DO]
 
-\subsection{Potential models}  \label{sec:potentials}
+
+\subsubsection{Distribution function} \label{sec:qDF}
+
+[TO DO] [To Do here: Also mention how the density is calculated.]
+
+\subsubsection{Potential models}  \label{sec:potentials}
 
 [TO DO] Mention different ways to calculate actions in different potentials.
 
-\subsection{Selection function: observed volume and completeness}
+\subsubsection{Selection function: observed volume and completeness}
 
 [TO DO]
 
@@ -129,6 +132,8 @@ The distribution function is given in terms of actions and angles. The obvious p
 [TO DO]
 
 \subsubsection{Preparation: Tracer density} \label{sec:density}
+
+[TO DO: This section should be shifted to the distribution function section. ???]
 
 One crucial point in creating the mock data, as well as in the analysis, is to calculate the spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_\text{DF})$ for a given distribution function with parameters $p_\text{DF}$ in a potential with parameters $p_{\Phi}$. We do this by integrating the axisymmetric distribution function over the velocity at $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane, using a Gauss-Legendre quadrature of order $N_\text{velocity}$ in each of the three velocity components. The velocity distribution according to the qDF at a given $(R_i,z_i)$ looks approximately Gaussian for $v_R$ and $v_z$. The $v_T$ distribution peaks somewhere around $v_\text{circ}(R_\odot)$ and $v_T > 0$ (cf. \S ?????). We approximate the integration over the velocity therefore as
 \begin{eqnarray}
@@ -153,6 +158,21 @@ The velocities are independent of the selection function and observed volume. Fo
 \end{equation*} 
 [TO DO: mention fig. \ref{fig:mockdatadistr}. ???]
 
+%====================================================================
+
+%FIGURE: distribution of mock data in action and configuration space
+
+\begin{figure}[H]
+\plotone{figs/kks2WedgeEx_mockdata.eps}
+\caption{Distribution of mock data in action space (2D iso-density contours in the two central and the lower left panel) and configuration space (1D histograms in right panels), depending shape and position of observation volume (cf. lower left panel) and 'hottness' of the stellar population. The mock data was created in a 2-component KK-Staeckel-potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$ [TO DO: Does $\Delta$ have units????] (which is an approximate fit to the MilkyWay2014 potential in Galpy). We use two stellar populations, a 'hot' one with $p_{DF,hot} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (red lines) and a 'cool' population with $p_{DF,cool} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (blue lines). In the upper left panel we demonstrate the shape of the two different observation volumes within which we were creating each a 'hot' and a 'cool' mock data set: a large volume centered on the Galactic plane (solid lines in all plots) and a smaller one above the plane (dashed lines in all plots). Both volumes have an angular extent of $\Delta\phi \pm 20^\circ$. Each of the four mock data sets compared in this plot has 20,000 stars in it. The stars of the 'cool' population have in general lower radial and vertical actions, i.e. are on more circular obrits. The different ranges of $L_z$'s in the two volumes reflect $L_z \sim R  v_\text{circ}$ and the different radial extent of both volumes.The volume above the plane contains no stars with $J_z = 0$ and more with $J_z$: The higher a volume is located above the plane, the larger $J_z$ has to be for the star's orbit to cross this volume. Circular orbits with $J_R = 0$ and $J_z = 0$ can obviously only be observed in the Galactic mid-plane. The smaller an orbit's $L_z$, the smaller also its mean orbital radius. For this orbit to be able to reach into a volume located at larger Galacto-centric radius, it needs to be more eccentric and therefore have a larger $J_z$. This anti-correlation between $L_z$ and $J_R$ can be seen in the top central panel. Orbits with both large $J_R$ and large $J_z$ would be very energetic and are therefore less likely to be observed. [TO DO: How many percent do the contours enclose????]} 
+\label{fig:mockdatadistr}
+\end{figure}
+%
+%\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:mockdatadistr}:} Shift description of action space from caption to here. Mention, that the distribution according to the qdf in configuration space is indeed how expected: More stars at lower R and lower $|z|$, uniform in $\phi$. Using the velocity dispersion (with $\sigma_0$ being indeed the velocity dispersion at the sun) as integration ranges over $v_R$ and $v_z$ is fine. Maybe overplot $\pm5\sigma_0$ range? For $v_T$ distribution: Explain asymmetric drift. Would $v_T$ for a potential with perfectly flat rotation curve peak at 230km/s? This potential has only an approximately flat rotation curve.\\Cool and hot have different anisotropy --> difference between cool and hot in $J_R$ and $J_z$ is therefore different. \\Asymmetric drift at a given radius: 1) density profile: more stars inside as compared to outside. stars from inside come from smaller radius and are currently at their apocenter --> slower as circular velocity. --> more likely to be observed as stars from outside at their pericenter. 2) dispersion profile: stars on larger radii are on more circular orbits, because lower velocity dispersion. --> there are even less pericenter stars from the outside in the sample. more stars on non-circular orbits in the inside --> more likely to reach out.
+
+%===========================================================================================================================================================================================
+
+
 \subsubsection{Step 3: Introducing measurement errors}
 
 [TO DO]
@@ -160,11 +180,9 @@ The velocities are independent of the selection function and observed volume. Fo
 \paragraph{[TO DO] Possible plots:} *Diagram*: schematic flow chart of how to sample mock data (could be helpful for people, who want to sample mock data in action space and didn't know how to start, like me)
 
 
-\section{Analysis}
+\subsection{Likelihood}
 
 The idea behind our modeling approach is that the orbits of the stars belonging to one MAP [TO DO: explain MAP???], calculated from a phase-space observation for each star within a proposal potential,  will only follow a distribution function from the family of qDFs (cf. \S\ref{sec:qDF}) if this propsal potential is (close to) the true potential in which the stars move. This opens up the possibility to fit the qDF and the potential simultaneously to the stellar phase-space data of one MAP, using the orbits of the stars. 
-
-\subsection{Likelihood}
 
 \subsubsection{Data and Selection Function} 
 
@@ -224,10 +242,32 @@ To evaluate the likelihood at a given set of $(p_\Phi,p_\text{DF})$ we proceed i
 For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.\footnote{In case of the isochrone potential we already have high enough accuracy for $N_\text{spatial}=16$, $N_\text{velocity}=20$ and $N_{sigma}=4$.} [TO DO: Should we also show that 40th order GL integraiton over interpolated density is enough? as this is really a lot and well converged, I would simply state that this is enough, but not show anythin.????]
 [TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
 
-\subsection{Marginalization over coordinates}
+%====================================================================
+
+%FIGURE: accuracy in the likelihood normalisation 
+
+\begin{figure}
+\plotone{figs/normalisation_accuracy_2.eps}
+\caption{Relative error of the likelihood normalization in eq. (\ref{eq:prob}) and (\ref{eq:relerrlikelihood}) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_\text{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We show the results for three different potentials, an isochrone potential with parameters $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 2-component KK-Staeckel potential with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) We calculate the true normalization with high accuracy as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$. [TO DO: Introduce $M_{tot}$ as the likelihood normalization somewhere as formula... ???] The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for all three potential types. Only for the smallest volume in the MW potential (yellow line) the error is only $\sim 0.005\%$. This could be due to the fact, that, while we have analytical formulas to calculate the actions for the isochrone and the Staeckel potential exactly, we have to resort to an approximate action calculation (Staeckel Fudge by Binney) for the MW-like potential (cf. \S ???). [TO DO: larger labels???] [TO DO: Try to redo yellow curve in MW. Weird, that it does not depend on $N_{spatial}$.???]}
+\end{figure}
+%
+%\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:norm_accuracy}:} When fitting a potential and DF model to stellar data, the numerical accuracy of the normalisation is very important. The tracer density changes smoothly with the potential and DF parameters. Systematic errors in the density calculation can therefore lead to systematic over- or underestimation of the true potential parameters. This effect is less severe for larger volumes: The density gradient within a large volume is larger and therefore the relative change of the normalisation with the model parameters is also larger as for smaller observation volumes. For small volumes it is therefore more important to get the density right, i.e. having high $N_\text{velocity}$ and $N_\text{sigma}$. For larger volumes it is also important to pre-calculate the density at enough spatial points, i.e. having high $N_\text{spatial}$, while at the same time smaller inaccuracies in the density calculation do not have a comparable severe effect. This could be also the reason, why the normalisation calculation for the smallest volume in fig. \ref{fig:norm_accuracy} is much more well behaved as long as we can calculate exact actions (isochrone and Staeckel potential) [TO DO: Is this really the reason????]. [TO DO: Should we demonstrate how a wrong accuracy introduces biases???] Using a fiducial qDF to fix the integration range over the velocity in the analysis  (cf. \S ???) can help to make the normalisation vary in a more controlled and smooth way. If the fiducial qDF is close to the true qDF parameters, we get already un-biased and well-behaved results for a data set with 20,000 stars in the isochrone potential and an accuracy of $N_\text{sigma}=4$ and $N_\text{velocity}=20$, as demonstrated in fig. \ref{fig:centrallimitheorem}. This lower accuracy leads to an relative error of  0.005\% in the normalisation and therefore to an error in the log-likelihood of $\sim1$ (cf. \S{sec:numaccuracynormalisation}). [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]\\If two hypotheses have a $\Delta \log \mathscr{L} = 1$, one hypothesis is 10 times more likely. Below this we cannot properly decide which hypothesis is better. [TO DO: This limit should be satisfied for the differential log likelihood error (i.e. the derivative of the likelihood w.r.t. the parameters.) than only the likelihood. How to do this? Probably not doing this....]
+
+
+%\paragraph{[TO DO] Possible other plots:} Maybe show also how the normalisation accuracy varies with the order of GL integration over the interpolated density. We use 40, which seems to be definitely enough. Demonstrate with a plot?
+
+%====================================================================
+
+\subsubsection{Marginalization over coordinates}
 [TO DO]
 
-\subsection{Measurement Errors}
+\subsubsection{Measurement Errors}
 
 [TO DO]
 
@@ -265,14 +305,17 @@ After the nested-grid search is converged, we already have a very good feeling f
 \section{Results}
 
 We are now in a position to explore the questions about the ultimate limitations of action based modelling, posed in the introduction: 
-can we still retrieve unbiased  model parameter estimates $p_M$ in the limit of large sample sizes? 
-What role does the survey volume and geometry play, at given sample size? 
-What if our knowledge of the sample selection function is imperfect, and potentially biased? 
-How do the parameter estimates deteriorate if the individual errors on the phase-space coordinates become significant? 
-What if our knowledge of the sample selection function is imperfect, and potentially biased?
+\begin{itemize}
+\item Can we still retrieve unbiased  model parameter estimates $p_M$ in the limit of large sample sizes? 
+\item What role does the survey volume and geometry play, at given sample size? 
+\item What if our knowledge of the sample selection function is imperfect, and potentially biased? 
+\item How do the parameter estimates deteriorate if the individual errors on the phase-space coordinates become significant? 
+\end{itemize}
 But we also consider the more fundamental limitations:
-What if the observed stars are not extacly drawn from the family of model distribution functions? 
-What happens to the estimate of the potential and the DF, if the actual potential is not contained in the family of model potentials?
+\begin{itemize}
+\item What if the observed stars are not extacly drawn from the family of model distribution functions? 
+\item What happens to the estimate of the potential and the DF, if the actual potential is not contained in the family of model potentials?
+\end{itemize}
 We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state.
 [{\bf hat shouldl also be at the end of the introduction..}
 [say: except for the case of ``errors'' we assume that thne phase-space errors are negligible..]
@@ -282,61 +325,11 @@ We do not explore the breakdown of the assumption that the system is axisymmetri
 \subsection{Model parameter estimates in the limit of large data sets}
 
 The individual \MAP in \citet{bov13} contained typically 200 [CHECK] objects, so that each \MAP implied a quite broad \pdf  for the \pmodel .
-Here we explore what happens in the limit of very much larger samples for each \MAP , say 20,000 objects. As outlined in \S [CHECK] most immediate
-consequence of larger samples is given by the likelihood normalization requirement, $\log(1+{\mathrm rel. error})\le 1/N_{sample}$, (see Eq. 5), which is the modelling aspect that drives the computing time. This issues aside, we would, however, expect that in the limit of large data sets with vanishing measurement errors the \pdf s of the \pmodel become Gaussian, with a \pdf~ width, $\sigma_p$ that scales as $1/N_{sample}$. Further, we must verify that any bias in the \pdf~ expectation value is far less than 
+Here we explore what happens in the limit of very much larger samples for each \MAP , say 20,000 objects. As outlined in \S [TO DO CHECK] the immediate consequence of larger samples is given by the likelihood normalization requirement, $\log(1+{\mathrm rel. error})\le 1/N_{sample}$, (see Eq. 5 [TO DO CHECK]), which is the modelling aspect that drives the computing time. This issues aside, we would, however, expect that in the limit of large data sets with vanishing measurement errors the \pdf s of the \pmodel become Gaussian, with a \pdf~ width, $\sigma_p$ that scales as $1/N_{sample}$. Further, we must verify that any bias in the \pdf~ expectation value is far less than 
 $\sigma_p$, even for quite large samples.
 
- Using sets of mock data (describe by referencing to Section) and our fiducial model for \pmodel , we verified that the \RM~ satisfies all these conditions and expectations. Fig. \ref{fig:triangleplot} illustrates the joint \pdf `s of all \pmodel . This Figure illustrates that the \pdf `s are multivariate Gaussians that project into Gaussians when considering the marginalized \pdf for all the individual \pmodel . Note that some of the parameters are quite covariant, but the level of their actual covariance depends on the of the \pmodel~ from with the mock data were drawn.  Figure\ref{fig:sqrtN} then illustrates that the \pdf~ width, $\sigma_p$ indeed scales as $1/N_{sample}$.
+ Using sets of mock data ([ TO DO: describe by referencing to Section]) and our fiducial model for \pmodel , we verified that the \RM~ satisfies all these conditions and expectations. Fig. \ref{fig:triangleplot} illustrates the joint \pdf `s of all \pmodel . This figure illustrates that the \pdf `s are multivariate Gaussians that project into Gaussians when considering the marginalized \pdf for all the individual \pmodel . Note that some of the parameters are quite covariant, but the level of their actual covariance depends on the of the \pmodel~ from with the mock data were drawn.  Figure\ref{fig:sqrtN} then illustrates that the \pdf~ width, $\sigma_p$ indeed scales as $1/N_{sample}$.
 Fig.\ref{fig:centrallimittheorem} illustrates even more, that the \RM satisfies the central limit theorem. The average parameter estimates from many mock samples with identical underlying \pmodel are very close to the input \pmodel , and the distibution of the actual parameter estimates are a Gaussian around it. 
-
-\subsection{The Role of the Survey Volume Geometry}
-
-Beyond the sample size, the survey volume {\it per se} must play a role; clearly, even a vast and perfect data set of stars within 100~pc of the Sun, has limited power to tell us about the potential at very different $R$. Intuitively, having dynamical tracers over a wide range in $R$ suggests to allow tighter contraints on
-the radial dependence of the potential. To this end, we devise a number mock data sets, drawn from a one single \pmodel , 
-but drawn from six different volume wedges (see \S blahblah), as illustrated in the left panels of
-Fig.\ref{fig:obsvolumetest}. To make the parameter inference comparison very differential, the mock data sets are equally large (20,000) in all cases, and are drawn from identical total survey volumes ($4.5~kpc^3$, achieved by adjusting the angular width of the edges). The right panels of Fig.\ref{fig:obsvolumetest} the illustrate the ability of \RM to constrain model parameters (in this case two $p_\Phi$ parameters). The two top right panels of Fig.\ref{fig:obsvolumetest} illustrate that the radial extent and the maximal height above the mid-plane matter. In the case shown, the standard error of the estimated parameters in twice as large for the volume with small $\Delta R$ and $\Delta |z|$; unsurprisingly, in the axisymmetic context the larger $\Delta\phi$ extent of that volume does not help to constrain the parameters. The panels in the bottom row explore whether the radial or vertical extent plays a dominant role: it appears that substantive radial and vertical extent are comparably important to constrain the parameters. 
-This Figure also implies that for these cases volume offsets in the radial or vertical direction have at most modest impact. While we believe the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel~ and volumina. Figure \ref{fig:centrallimittheorem}  amplifies the same point: it illustrates that at given sample size, drawing the data -- more sparsely -- from a larger volume provides better \pmodel~ constraints. 
-
-
-
-
-
-
- 
-
-
-
-%====================================================================
-
-%FIGURE: distribution of mock data in action and configuration space
-
-\begin{figure}[H]
-\plotone{figs/kks2WedgeEx_mockdata.eps}
-\caption{Distribution of mock data in action space (2D iso-density contours in the two central and the lower left panel) and configuration space (1D histograms in right panels), depending shape and position of observation volume (cf. lower left panel) and 'hottness' of the stellar population. The mock data was created in a 2-component KK-Staeckel-potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$ [TO DO: Does $\Delta$ have units????] (which is an approximate fit to the MilkyWay2014 potential in Galpy). We use two stellar populations, a 'hot' one with $p_{DF,hot} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (red lines) and a 'cool' population with $p_{DF,cool} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (blue lines). In the upper left panel we demonstrate the shape of the two different observation volumes within which we were creating each a 'hot' and a 'cool' mock data set: a large volume centered on the Galactic plane (solid lines in all plots) and a smaller one above the plane (dashed lines in all plots). Both volumes have an angular extent of $\Delta\phi \pm 20^\circ$. Each of the four mock data sets compared in this plot has 20,000 stars in it. The stars of the 'cool' population have in general lower radial and vertical actions, i.e. are on more circular obrits. The different ranges of $L_z$'s in the two volumes reflect $L_z \sim R  v_\text{circ}$ and the different radial extent of both volumes.The volume above the plane contains no stars with $J_z = 0$ and more with $J_z$: The higher a volume is located above the plane, the larger $J_z$ has to be for the star's orbit to cross this volume. Circular orbits with $J_R = 0$ and $J_z = 0$ can obviously only be observed in the Galactic mid-plane. The smaller an orbit's $L_z$, the smaller also its mean orbital radius. For this orbit to be able to reach into a volume located at larger Galacto-centric radius, it needs to be more eccentric and therefore have a larger $J_z$. This anti-correlation between $L_z$ and $J_R$ can be seen in the top central panel. Orbits with both large $J_R$ and large $J_z$ would be very energetic and are therefore less likely to be observed. [TO DO: How many percent do the contours enclose????]} 
-\label{fig:mockdatadistr}
-\end{figure}
-%
-%\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:mockdatadistr}:} Shift description of action space from caption to here. Mention, that the distribution according to the qdf in configuration space is indeed how expected: More stars at lower R and lower $|z|$, uniform in $\phi$. Using the velocity dispersion (with $\sigma_0$ being indeed the velocity dispersion at the sun) as integration ranges over $v_R$ and $v_z$ is fine. Maybe overplot $\pm5\sigma_0$ range? For $v_T$ distribution: Explain asymmetric drift. Would $v_T$ for a potential with perfectly flat rotation curve peak at 230km/s? This potential has only an approximately flat rotation curve.\\Cool and hot have different anisotropy --> difference between cool and hot in $J_R$ and $J_z$ is therefore different. \\Asymmetric drift at a given radius: 1) density profile: more stars inside as compared to outside. stars from inside come from smaller radius and are currently at their apocenter --> slower as circular velocity. --> more likely to be observed as stars from outside at their pericenter. 2) dispersion profile: stars on larger radii are on more circular orbits, because lower velocity dispersion. --> there are even less pericenter stars from the outside in the sample. more stars on non-circular orbits in the inside --> more likely to reach out.
-
-%====================================================================
-
-%FIGURE: accuracy in the likelihood normalisation 
-
-\begin{figure}
-\plotone{figs/normalisation_accuracy_2.eps}
-\caption{Relative error of the likelihood normalization in eq. (\ref{eq:prob}) and (\ref{eq:relerrlikelihood}) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_\text{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We show the results for three different potentials, an isochrone potential with parameters $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 2-component KK-Staeckel potential with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$. (Caption continues on next page.)} 
-\label{fig:norm_accuracy}
-\end{figure}
-
-\addtocounter{figure}{-1}
-\begin{figure} [t!]
-  \caption{(Continued.) We calculate the true normalization with high accuracy as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$. [TO DO: Introduce $M_{tot}$ as the likelihood normalization somewhere as formula... ???] The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for all three potential types. Only for the smallest volume in the MW potential (yellow line) the error is only $\sim 0.005\%$. This could be due to the fact, that, while we have analytical formulas to calculate the actions for the isochrone and the Staeckel potential exactly, we have to resort to an approximate action calculation (Staeckel Fudge by Binney) for the MW-like potential (cf. \S ???). [TO DO: larger labels???] [TO DO: Try to redo yellow curve in MW. Weird, that it does not depend on $N_{spatial}$.???]}
-\end{figure}
-%
-%\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:norm_accuracy}:} When fitting a potential and DF model to stellar data, the numerical accuracy of the normalisation is very important. The tracer density changes smoothly with the potential and DF parameters. Systematic errors in the density calculation can therefore lead to systematic over- or underestimation of the true potential parameters. This effect is less severe for larger volumes: The density gradient within a large volume is larger and therefore the relative change of the normalisation with the model parameters is also larger as for smaller observation volumes. For small volumes it is therefore more important to get the density right, i.e. having high $N_\text{velocity}$ and $N_\text{sigma}$. For larger volumes it is also important to pre-calculate the density at enough spatial points, i.e. having high $N_\text{spatial}$, while at the same time smaller inaccuracies in the density calculation do not have a comparable severe effect. This could be also the reason, why the normalisation calculation for the smallest volume in fig. \ref{fig:norm_accuracy} is much more well behaved as long as we can calculate exact actions (isochrone and Staeckel potential) [TO DO: Is this really the reason????]. [TO DO: Should we demonstrate how a wrong accuracy introduces biases???] Using a fiducial qDF to fix the integration range over the velocity in the analysis  (cf. \S ???) can help to make the normalisation vary in a more controlled and smooth way. If the fiducial qDF is close to the true qDF parameters, we get already un-biased and well-behaved results for a data set with 20,000 stars in the isochrone potential and an accuracy of $N_\text{sigma}=4$ and $N_\text{velocity}=20$, as demonstrated in fig. \ref{fig:centrallimitheorem}. This lower accuracy leads to an relative error of  0.005\% in the normalisation and therefore to an error in the log-likelihood of $\sim1$ (cf. \S{sec:numaccuracynormalisation}). [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]\\If two hypotheses have a $\Delta \log \mathscr{L} = 1$, one hypothesis is 10 times more likely. Below this we cannot properly decide which hypothesis is better. [TO DO: This limit should be satisfied for the differential log likelihood error (i.e. the derivative of the likelihood w.r.t. the parameters.) than only the likelihood. How to do this? Probably not doing this....]
-
-
-\paragraph{[TO DO] Possible other plots:} Maybe show also how the normalisation accuracy varies with the order of GL integration over the interpolated density. We use 40, which seems to be definitely enough. Demonstrate with a plot?
 
 %====================================================================
 
@@ -382,8 +375,11 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 
 \paragraph{[TO DO] Missing test and plot:}  Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.
 
+\subsection{The Role of the Survey Volume Geometry} \label{sec:obsvolume}
 
-\subsection{Do shape and position of the observation volume matter?}
+Beyond the sample size, the survey volume {\it per se} must play a role; clearly, even a vast and perfect data set of stars within 100~pc of the Sun, has limited power to tell us about the potential at very different $R$. Intuitively, having dynamical tracers over a wide range in $R$ suggests to allow tighter contraints on the radial dependence of the potential. To this end, we devise a number mock data sets, drawn from a one single \pmodel , but drawn from six different volume wedges (see \S [TO DO CHECK]), as illustrated in the left panels of fig. \ref{fig:obsvolumetest}. To make the parameter inference comparison very differential, the mock data sets are equally large (20,000) in all cases, and are drawn from identical total survey volumes ($4.5~kpc^3$, achieved by adjusting the angular width of the edges). The right panels of Fig.\ref{fig:obsvolumetest} the illustrate the ability of \RM to constrain model parameters (in this case two $p_\Phi$ parameters). The two top right panels of Fig.\ref{fig:obsvolumetest} illustrate that the radial extent and the maximal height above the mid-plane matter. In the case shown, the standard error of the estimated parameters in twice as large for the volume with small $\Delta R$ and $\Delta |z|$; unsurprisingly, in the axisymmetic context the larger $\Delta\phi$ extent of that volume does not help to constrain the parameters. The panels in the bottom row explore whether the radial or vertical extent plays a dominant role: it appears that substantive radial and vertical extent are comparably important to constrain the parameters. 
+
+This Figure also implies that for these cases volume offsets in the radial or vertical direction have at most modest impact. While we believe the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel~ and volumina. Figure \ref{fig:centrallimittheorem}  amplifies the same point: it illustrates that at given sample size, drawing the data -- more sparsely -- from a larger volume provides better \pmodel~ constraints. 
 
 %====================================================================
 
@@ -407,16 +403,68 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 \end{itemize}
 
 %====================================================================
-     
+
+
 \subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
+
+The selection function of a survey is described by a spatial survey volume and a completeness function, which determines the fraction of stars observed at a given location within the Galaxy with a given brightness, metallicity etc (see \S[TO DO CHECK]). The completeness function depends on the characteristics and mode of the survey, can be very complex and is therefore sometimes not perfectly known. We investigate how much an imperfect knowledge of the selection function can affect the recovery of the potential. We model this by creating mock data with varying incompleteness and assuming constant completeness in the analysis. The mock data comes from a sphere of $r_\text{max} = 3$ kpc around the sun and an incompleteness function that drops linearly either with distance from the sun (left panels in fig. \ref{fig:incomp_mockdata}) or with distance from the Galactic plane (right panels in fig. \ref{fig:incomp_mockdata}). We demonstrate that the potential recovery with  \RM is very robust against somewhat wrong assumptions about the (in-)completeness of the data (see the tests for the radial incompleteness function in fig. \ref{fig:isoSphFlexIncompR_violins} and vertical incompleteness function in \ref{fig:isoSphFlexIncompZ_violins}). A lot of information about the potential comes from the rotation curve measurements in the plane, which is not affected by applying an incompleteness function. The robustness is however still given - at least for small deviations of true and assumed completeness ($\lesssim 10%$) - if we do not include information about the rotation curve () and marginalize the likelihood over the $v_T$ coordinate (see bright grey violins in fig. \ref{fig:isoSphFlexIncompR_violins} and \ref{fig:isoSphFlexIncompZ_violins}). For the radial incompleteness function we get better results than for the vertical incompleteness. As the former models the important effect of stars being less likely to be observed the further away they are, this is an encouraging result.
+
+\paragraph{Stuff that needs to be further examined:}
+\begin{itemize}
+\item Maybe instead of decreasing completeness with height above the plane, a completeness that INcreases with height above the plan, to model e.g. obscuration due to dust.
+\item Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this robustness is a special case for the isochrone potential.
+\end{itemize}
+
+
+
+%===============================================
+
+%FIGURE: isoSphFlexIncompR and isoSphFlexIncompZ in mock data space
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncomp_mockdata.eps}
+\caption{Caption [TO DO] ([TO DO] Re-do, if new analyses are in violin plot.)} 
+\label{fig:incomp_mockdata}
+\end{figure}
+
+%FIGURE: isoSphFlexIncompR
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompR_violins.eps}
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO] Redo marginalization calculations, and this time punish negative scale potential scale length.) [TO DO: Write that $\epsilon_r = 0$ in analysis]} 
+\label{fig:isoSphFlexIncompR_violins}
+\end{figure}
+
+%\begin{figure}
+%\plotone{~/Dropbox/PhD/Presentations/15-06-16IMPRSEvaluation/py/plots/isoSphFlexIncompR_violins.eps}
+%\caption{[NOTE: This plot will not be in the final paper. It is just to illustrate, how the isoSphFlexIncomp analyses could also be shown - no violins, but with error bars.] [TO DO: Add other parameters and tests to this plot to see how it looks. This is an alternative version of the isoSphFlexIncomR plot (test with hot population.)]} 
+%\end{figure}
+
+
+%FIGURE: isoSphFlexIncompZ
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompZ_violins.eps}
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough, though there is one analyse (hot, no3) for which it did not work. Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO])} 
+\label{fig:isoSphFlexIncompZ_violins}
+\end{figure}
+
+
+%===============================================
+
+
+
+\subsection{Effect of measurement errors on recovery of potential?}
 
 \paragraph{Collection of possible tests and plots}
 
 \begin{itemize}
-\item  *Test 1:* isochrone potential, b=0.9 kpc, two populations, completeness$(d) = 1 - \epsilon \cdot d/Rmax$, where Rmax is radius of spherical selection function. Marginalize over vT in analysis. \\
-*Plot 1*: Violin plot: x-axis - $\epsilon$. y-axis: b-parameter and one of the qdf parameters.
-\item  *Test 2:* isochrone potential, two populations, incompleteness function that depends only on z. \\
-*Plot 2*: violin plot
+\item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
+    * hotness of stars
+    * number of stars
+\item *Plot 2:* Some plot that shows, that our approximation of ignoring distance errors works. Any ideas?
+\item *Test 1:* One selection function, one population, vary the size of the proper motion error (don't forget to adapt the number of MC samples needed) \\
+*Plot 3:* (width of pdf) vs. (maximum velocity error / temperature parameter)
 \end{itemize}
 
 \subsection{What if our assumed distribution function differs from the stars' DF?}
@@ -480,18 +528,7 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 
 %====================================================================
 
-\subsection{Effect of measurement errors on recovery of potential?}
 
-\paragraph{Collection of possible tests and plots}
-
-\begin{itemize}
-\item *Plot 1:* The plot I had on the poster, which shows the number of MC samples needed for given maximum error. However, we still haven't tested, if this plot depends on: 
-    * hotness of stars
-    * number of stars
-\item *Plot 2:* Some plot that shows, that our approximation of ignoring distance errors works. Any ideas?
-\item *Test 1:* One selection function, one population, vary the size of the proper motion error (don't forget to adapt the number of MC samples needed) \\
-*Plot 3:* (width of pdf) vs. (maximum velocity error / temperature parameter)
-\end{itemize}
 
 
 
@@ -508,39 +545,7 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 \item Deviations from axisymmetry: Take numerical simulations.
 \end{itemize}
 
-%===============================================
 
-
-
-
-
-%FIGURE: isoSphFlexIncompR
-
-\begin{figure}
-\plotone{figs/isoSphFlexIncompR_violins.eps}
-\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO] Redo marginalization calculations, and this time punish negative scale potential scale length.)} 
-\end{figure}
-
-\begin{figure}
-\plotone{~/Dropbox/PhD/Presentations/15-06-16IMPRSEvaluation/py/plots/isoSphFlexIncompR_violins.eps}
-\caption{[TO DO: Add other parameters and tests to this plot to see how it looks. This is an alternative version of the isoSphFlexIncomR plot (test with hot population.)]} 
-\end{figure}
-
-\begin{figure}
-\plotone{figs/isoSphFlexIncomp_mockdata.eps}
-\caption{Caption [TO DO] ([TO DO] Add IncompZ data sets. [TO DO] Re-do, if new analyses are in violin plot.)} 
-\end{figure}
-
-
-%FIGURE: isoSphFlexIncompZ
-
-\begin{figure}
-\plotone{figs/isoSphFlexIncompZ_violins.eps}
-\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough, though there is one analyse (hot, no3) for which it did not work. Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO])} 
-\end{figure}
-
-
-%===============================================
 
 [TO DO: Check if all references are actually used in paper. ???]
 
@@ -559,3 +564,43 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 
 
 \end{document}
+
+%=====================================================
+
+%15. May 2015 --> Meet with HW to write
+%
+%* introduction too elaborate --> same information 
+%* just explain what the best solution in analysis section is, don't explain too much about other (worse) techniques
+%* Numerical accuracy plot is a result
+%* 20,000 stars --> much larger than current sample sizes (200 stars), but forecasting to larger sample sizes with Gaia (?)
+%* Fig. 3,4,5 --> Behaviour in the limit of large samples
+%* Questions posed in Results section already asked in Introduction, at the end, same as beginning of results section.
+%* Change order of sections according to order in Results section intro
+%* mention in introduction that we do not investigate axisymmetry
+%* limit of lousy data --> model assumptions are not limiting. very good data --> model assumptions are limiting. Bovy & Rix: 150 stars per MAP. When we get larger samples sizes, the modelling will be limited by the model assumptions.
+%* rename model parameters $M$ into $p_M$
+%* mock data in action space plot --> in mock data section
+%* accuracy plot --> in "Numerical accuracy of the likelihood calculation" section
+%* in section on numerical accuracy erwähnen, dass wir in the limit of many stars aufpassen müssen, dass wir die normalisierung genau genug berechnen.
+%* Macro fuer MAP schreiben: In Kapitälchen, damit klar ist, dass das ein Akronym ist
+%* Citation korrigieren: bo13 --> bov13
+%* Check how many stars were typically in a Bovy&Rix13 MAP
+%* Triangle plot --> I talk about likelihood, but it is a pdf!
+%* Priors: We want parameter estimates that alre tight enough, such that it does not matter, if we had assumed a flat or a logarithmically flat prior
+%* Introduce somewhere the 20,000 stars 
+%* if the priors are sufficiently flat, likelihood and pdf are the same.
+%* rename $N_j$ into $N_sample$
+%* change <_ 1 in eq. 5 to <_ 1/N_sample
+%* Mach einheitlich: width of pdf, likelihood, Standard error --> $\sigma_p$ ???
+%* schwarze punkte in (un)-bias CLT plot: call "pdf expectation value"
+%* 'hot' and 'cool' should be trademark names for qdf parameter sets --> Table where I define them. --> In Mock Data section some tables with parameter sets. Auch fuer potentials.
+%* triangle plot: potential-potential, qdf-qdf und potential-qdf panels in unterschiedlichen Farbschemen.
+%* Error on the width of the likelihood scales also with 1/sqrt(N) or sqrt(N-1) --> nicht in sqrtN figure einzeichnen, weil mein scatter größer ist. Neu berechnen?
+%* Latex Tipp: ~ ist ein halber Abstand.
+%* TO DO: Test, if characteristic errors indeed smaller than disp --> negligible
+%* obsvolumetest: orange volume eine breite weiter nach oben, also leicht oberhalb der plane.
+%* Fiducial qdfs, potentials and volumes --> eine section haben, die alles erklärt und eine table die die parameters vorstellt. Vor allem auch die Form von Wedges erklären. "Angular segments of cylindrical annuli" = "wedges" erklären und definieren!!!
+%* replace "cf." with "see" everywhere
+%* Latex Tipp: Häufige Bennenungen als Befehle definieren. Lässt sich nachträglich leichter ändern.
+%* Check that CLT plot and volumetestplot have both 20,000 stars
+%* epsilon ist was kleines, sollte also nicht 100% sein (incompleteness ...)
