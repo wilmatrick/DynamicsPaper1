@@ -121,6 +121,28 @@ Because any function of integrals is an integral of motion itself, it is possibl
 
 [TO DO] Mention different ways to calculate actions in different potentials.
 
+\begin{table}
+\rotate
+\begin{center}
+\caption{Caption [TO DO].\label{tbl:referencepotentials}}
+\begin{tabular}{cllclcc}
+\tableline\tableline
+name     & potential type         & \multicolumn{3}{c}{parameters $p_\Phi$}                                                                                 & action calculation                                       & reference     \\
+\tableline
+"Iso-Pot" & isochrone potential   & circular velocity at the sun                                   & $v_\text{circ}$                  & = $230$ km s$^{-1}$ & analytical \& exact $J_r, J_\vartheta, L_z$;             & \citet{bin08} \\
+          &					      & isochrone scale length                                         & $b$                              & = $0.9$ kpc         & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
+          &                       &                                                                &                                  &                     & in eq. (???)                                             &               \\
+\tableline
+"KKS-Pot" & 2-component           & circular velocity at the sun                                   & $v_\text{circ}$                  & = $230$ km s$^{-1}$ & exact $J_\lambda, J_\nu, L_z$                            & \citet{bat94} \\
+          & Kuzmin-Kutuzov-       & focal distance of coordinate system                            & $\Delta = \sqrt{\gamma - \alpha}$ & = 0.3               & using "St\"{a}ckel Fudge"                                & \citet{bin12} \\                                                                
+          & St\"{a}ckel potential &                                                                &                                  &                     &                                                          &               \\
+          & with coordinate system: &                                                              &                                  &                     &                                                          &               \\
+          & $\frac{R^2}{\tau+\alpha}+\frac{z^2}{\tau+\gamma}$&                                       &                                  &                     &                                                          &               \\
+\tableline
+\end{tabular}
+\end{center}
+\end{table}
+
 \subsubsection{Selection function: observed volume and completeness}
 
 [TO DO]
@@ -407,7 +429,7 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 
 \subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
 
-The selection function of a survey is described by a spatial survey volume and a completeness function, which determines the fraction of stars observed at a given location within the Galaxy with a given brightness, metallicity etc (see \S[TO DO CHECK]). The completeness function depends on the characteristics and mode of the survey, can be very complex and is therefore sometimes not perfectly known. We investigate how much an imperfect knowledge of the selection function can affect the recovery of the potential. We model this by creating mock data with varying incompleteness and assuming constant completeness in the analysis. The mock data comes from a sphere of $r_\text{max} = 3$ kpc around the sun and an incompleteness function that drops linearly either with distance from the sun (left panels in fig. \ref{fig:incomp_mockdata}) or with distance from the Galactic plane (right panels in fig. \ref{fig:incomp_mockdata}). We demonstrate that the potential recovery with  \RM is very robust against somewhat wrong assumptions about the (in-)completeness of the data (see the tests for the radial incompleteness function in fig. \ref{fig:isoSphFlexIncompR_violins} and vertical incompleteness function in \ref{fig:isoSphFlexIncompZ_violins}). A lot of information about the potential comes from the rotation curve measurements in the plane, which is not affected by applying an incompleteness function. The robustness is however still given - at least for small deviations of true and assumed completeness ($\lesssim 10%$) - if we do not include information about the rotation curve () and marginalize the likelihood over the $v_T$ coordinate (see bright grey violins in fig. \ref{fig:isoSphFlexIncompR_violins} and \ref{fig:isoSphFlexIncompZ_violins}). For the radial incompleteness function we get better results than for the vertical incompleteness. As the former models the important effect of stars being less likely to be observed the further away they are, this is an encouraging result.
+The selection function of a survey is described by a spatial survey volume and a completeness function, which determines the fraction of stars observed at a given location within the Galaxy with a given brightness, metallicity etc (see \S[TO DO CHECK]). The completeness function depends on the characteristics and mode of the survey, can be very complex and is therefore sometimes not perfectly known. We investigate how much an imperfect knowledge of the selection function can affect the recovery of the potential. We model this by creating mock data with varying incompleteness and assuming constant completeness in the analysis. The mock data comes from a sphere of $r_\text{max} = 3$ kpc around the sun and an incompleteness function that drops linearly either with distance from the sun (left panels in fig. \ref{fig:incomp_mockdata}) or with distance from the Galactic plane (right panels in fig. \ref{fig:incomp_mockdata}). We demonstrate that the potential recovery with  \RM is very robust against somewhat wrong assumptions about the (in-)completeness of the data (see the tests for the radial incompleteness function in fig. \ref{fig:isoSphFlexIncompR_violins} and vertical incompleteness function in \ref{fig:isoSphFlexIncompZ_violins}). A lot of information about the potential comes from the rotation curve measurements in the plane, which is not affected by applying an incompleteness function. The robustness is however still given - at least for small deviations of true and assumed completeness ($\lesssim 10\%$) - if we do not include information about the rotation curve and marginalize the likelihood over the $v_T$ coordinate (see bright grey violins in fig. \ref{fig:isoSphFlexIncompR_violins} and \ref{fig:isoSphFlexIncompZ_violins}). For the radial incompleteness function we get better results than for the vertical incompleteness. As the former models the important effect of stars being less likely to be observed the further away they are, this is an encouraging result.
 
 \paragraph{Stuff that needs to be further examined:}
 \begin{itemize}
@@ -469,6 +491,15 @@ The selection function of a survey is described by a spatial survey volume and a
 
 \subsection{What if our assumed distribution function differs from the stars' DF?}
 
+\cite{san15} and ??? develop extended distribution functions (EDFs), that extend action-based DFs to also describe the distribution of the star's metallicities. While a full chemo-dynamical modelling,  including metallicity as well as $\alpha$- and other chemical abundances, is ultimately the right way to go, the form of the EDFs still depends on a lot of additional assumptions. By looking at fig. 6 in \cite{bov13} (other references???) we doubt that a final version of an EDF will have a simple form in action-metallicity space. Motivated by the findings of ???Bovy et al. 2012???, we therefore resign to the simpler approach outlined in \cite{bov13} and here, were metallicity and $\alpha$-abundances are implicitly taken into account by describing each MAP separately by one qDF. This procedure could have two caveats: 
+\\First, the binning of the stars according to their abundances could lead to pollution of one MAP, by either choosing the bin sizes too large, or too small compared to the stars' inherent abundance errors. 
+\\Second, while ???Bovy et al. 2012??? makes us confident that the qDF is indeed a good functional form to describe each MAP, it could very well be, that the stars' true distribution is close to but not exactly of the family of assumed qDFs. 
+\\We try to investigate both this issues with the following test: We draw two mock data sets, each from a different qDF, and mix the stars in different fractions together. We then analyse this mixture by assuming all stars sill came from a single qDF. The results are shown in fig. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. 
+\\In example 1 and 2 (fig. \ref{fig:isoSphFlexMixCont}) we consider two very different MAPs, a hotter and a cooler one, that are mixed together in different fractions. This test could be understood as the true distribution of stars being a linear combination of two very different qDFs and we investigate how this deviation from a single qDF affects the potential recovery. We find that for a MAP that follows approximately a hot population (polluted by up to $\sim30\%$ of cooler stars), the potential can still be very well recovered. The analysis of cooler MAPs are much more affected by pollution due to hotter MAP stars.
+\\In example 3 and 4 (fig. \ref{fig:isoSphFlexMixDiff}) it is investigated how different the qDF parameters of two MAPs are allowed to be to be still able to constrain the true potential. This test could be seen as a model scenario for decreasing bin sizes in the metallicity-$\alpha$ plane when sorting stars in different MAPs, assuming that there is a smooth variation of qDF within the metallicity-$\alpha$ plane. We find that differences of $20\%$ in the qDF parameters of two neighbouring MAPs can still give quite good constraints on the potential parameters. We compare this with the relative difference in the qDF parameters in the bins in fig. 6 of \cite{bov13}, which have sizes of $[Fe/H] = 0.1$ dex and $\Delta [\alpha/Fe] = 0.05$ dex. It seems that these bin sizes are large enough to make sure that $\sigma_{R,0}$ and $\sigma_{z,0}$ of neighbouring MAPs do not differ more than $20\%$. As fig. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff} suggests especially the tracer scale length $h_R$ needs to be recovered to get the potential right. For this parameter however the bin sizes in fig. 6 of \cite{bov13} might not yet be small enough to ensure no more than $20\%$ of difference in neighbouring $h_R$, especially in the low-$\alpha$ ($[\alpha/Fe] \lesssim 0.2$), intermediate-metallicity ($[Fe/H] \sim -0.5$) MAPs.
+
+[TO DO: think, if this might better be two different sections. ???? one for MixDiff about neighbouring MAPS and one for MixCont for difference in DF. ????]
+
 %====================================================================
 
 %FIGURE: isoSphFlexMixCont
@@ -476,11 +507,12 @@ The selection function of a survey is described by a spatial survey volume and a
 \begin{figure}
 \plotone{figs/isoSphFlexMixCont_violins.eps}
 \caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixCont}
 \end{figure}
 
 \addtocounter{figure}{-1}
 \begin{figure} [t!]
-  \caption{(Continued.)  The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a 'hot' stellar population by stars coming from a 'cool' population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. In total there are always 20,000 stars in the data set. Both populations come from same potential, an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$ (true parameters are indicated by green lines). The composite data set is then fit them with one single qDF. Example 1 (left) mixes the 'hot' population $p_\text{DF,hot,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'cool' population $p_\text{DF,cool,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}+50\%, 55 \text{ km s$^{-1}$}-50\%, 66 \text{ km s$^{-1}$}-50\%, 8 \text{ kpc}, 7 \text{ kpc }\}$. Example 2 (right) mixes the 'cool' population $p_{DF,cool,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'hotter' population $p_{DF,hot,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}-50\%, 42+50\% \text{ km s$^{-1}$}, 32+50\% \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. The parameters were chosen such, that the two parameter sets have the same $\sigma_R/\sigma_z$ ratio and 'hotter' populations have shorter tracer scale lengths. The velocity dispersion scale lengths were fixed according to ???Bovy2012???. True parameters of the 'hotter' population are shown as red lines, those of the 'cooler' populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???] [TO DO: Change 'cold' in plot to 'cool'. ???] [TO DO: Write 'all hot' instead of '100\% hot'.???]}
+  \caption{(Continued.)  The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a 'hot' stellar population by stars coming from a 'cool' population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. In total there are always 20,000 stars in the data set. Both populations come from same potential, an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$ (true parameters are indicated by green lines). The composite data set is then fit them with one single qDF. Example 1 (left) mixes the 'hot' population $p_\text{DF,hot,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'cool' population $p_\text{DF,cool,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}+50\%, 55 \text{ km s$^{-1}$}-50\%, 66 \text{ km s$^{-1}$}-50\%, 8 \text{ kpc}, 7 \text{ kpc }\}$. Example 2 (right) mixes the 'cool' population $p_{DF,cool,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'hotter' population $p_{DF,hot,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}-50\%, 42+50\% \text{ km s$^{-1}$}, 32+50\% \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. The parameters were chosen such, that the two parameter sets have the same $\sigma_R/\sigma_z$ ratio and 'hotter' populations have shorter tracer scale lengths. The velocity dispersion scale lengths were fixed according to ???Bovy2012???. True parameters of the 'hotter' population are shown as red lines, those of the 'cooler' populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???] [TO DO: Change 'cold' in plot to 'cool'. ???] [TO DO: Write 'all hot' instead of '100\% hot'.??? X-labels are wrong ???? invert x-axis ???]}
 \end{figure}
 
 %FIGURE: isoSphFlexMixDiff
@@ -488,12 +520,13 @@ The selection function of a survey is described by a spatial survey volume and a
 \begin{figure}
 \plotone{figs/isoSphFlexMixDiff_violins.eps}
 \caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixDiff}
 \end{figure}
 
 
 \addtocounter{figure}{-1}
 \begin{figure} [t!]
-  \caption{(Continued.) The dependence of the parameter recovery on the difference in DF parameters of the mixture of two stellar populations and their 'hotness'.  [TO DO], Maybe different/same x-axis??? [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF. [TO DO] [TO DO: Add in plot a label, that it is a 50\%/50\% mix of a hot and a cold population.???])} 
+  \caption{(Continued.) The dependence of the parameter recovery on the difference in DF parameters of the mixture of two stellar populations and their 'hotness'.  [TO DO], Maybe different/same x-axis??? [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF. [TO DO] [TO DO: Add in plot a label, that it is a 50\%/50\% mix of a hot and a cold population.??])} 
 \end{figure}
 
 %====================================================================
@@ -550,6 +583,7 @@ The selection function of a survey is described by a spatial survey volume and a
 [TO DO: Check if all references are actually used in paper. ???]
 
 \begin{thebibliography}{}
+\bibitem[Batsleer \& Dejonghe(1994)]{bat94} [TO DO]
 \bibitem[Binney \& McMillan(2011)]{bin11} Binney, J. J., \& McMillan, P. 2011, \mnras, 413, 1889
 \bibitem[Binney(2012)]{bin12} Binney, J. J. 2012, \mnras, 426, 1324
 \bibitem[Bovy et al.(2012b)]{bov12b} Bovy, J., Rix, H.-W., \& Hogg, D. W. 2012b, \apj, 751, 131
@@ -559,6 +593,7 @@ The selection function of a survey is described by a spatial survey volume and a
 \bibitem[Piffl et al.(2014)]{pif14} Piffl, T., Binney, J., \& McMillan, P. J. et al., 2014, \mnras, 455, 3133
 \bibitem[Steinmetz et al.(2006)]{ste06} Steinmetz, M. et al., 2006, \aj, 132, 1645
 \bibitem[Ting et al.(2013)]{tin13} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G. 2013, \mnras, 434, 652
+\bibitem[Binney \& Tremaine(2008)]{bin08} Binney, J., \& Tremaine, S. 2008, [TO DO: Galactic Dynamics???]
 \end{thebibliography}
 
 
