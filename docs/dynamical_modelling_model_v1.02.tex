@@ -1,0 +1,52 @@
+\subsection{Model}
+
+\subsubsection{Actions}
+
+[TO DO]
+
+
+\subsubsection{Distribution function} \label{sec:qDF}
+
+[TO DO] [To Do here: Also mention how the density is calculated.]
+
+\subsubsection{Potential models}  \label{sec:potentials}
+
+[TO DO] Mention different ways to calculate actions in different potentials.
+
+\begin{deluxetable}{llllll}
+\tabletypesize{\scriptsize}
+\rotate
+\tablecaption{Caption [TO DO].\label{tbl:referencepotentials}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{name} & \colhead{potential type} & \colhead{free parameters $p_\Phi$} &  & \colhead{action calculation} & \colhead{reference}}
+\startdata
+"Iso-Pot" & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{bin08} \\
+          &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
+          &                       &                                          &                                               & in eq. (???)                                             &               \\
+\tableline
+"KKS-Pot" & 2-component           & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$                & \citet{bat94} \\
+          & Kuzmin-Kutuzov-       & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using "St\"{a}ckel Fudge"                   &               \\                                                                
+          & St\"{a}ckel potential & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{bin12}                               &               \\
+          &                       & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation on action grid            &               \\
+          &                       & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& \citep{bov15}                               &               \\
+          &                       & relative contribution of the disk mass    &                                              &                                             &               \\
+          &                       & \hspace{0.3cm} to the total mass          & $k = 0.28$                                   &                                             &               \\  
+\tableline
+"MW13-Pot" & MW-like potential with        & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov13} \\          
+           & fixed Hernquist bulge,        & stellar disk scale length                & $R_d = 3$ kpc                                 & using "St\"{a}ckel Fudge"          &               \\
+           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{bin12}                      &               \\
+           & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation on action grid   &               \\
+           & spherical power-law halo   & "flatness" of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & \citep{bov15}                 &               \\
+\tableline
+"MW14-Pot" & MW-like potential with        &  -                                       & -                                             & see "MW13-Pot"                     & \citet{bov15} \\
+           & cutoff power-law bulge,       &                                          &                                               &                                    &               \\
+           & Miyamoto-Nagai stellar disk,  &                                          &                                               &                                    &               \\
+           & NFW halo                      &                                          &                                               &                                    &               \\
+\enddata
+\tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
+\end{deluxetable}
+
+\subsubsection{Selection function: observed volume and completeness}
+
+[TO DO]

@@ -1,0 +1,52 @@
+\subsection{Model parameter estimates in the limit of large data sets}
+
+The individual \MAP in \citet{bov13} contained typically 200 [CHECK] objects, so that each \MAP implied a quite broad \pdf  for the \pmodel .
+Here we explore what happens in the limit of very much larger samples for each \MAP , say 20,000 objects. As outlined in \S [TO DO CHECK] the immediate consequence of larger samples is given by the likelihood normalization requirement, $\log(1+{\mathrm rel. error})\le 1/N_{sample}$, (see Eq. 5 [TO DO CHECK]), which is the modelling aspect that drives the computing time. This issues aside, we would, however, expect that in the limit of large data sets with vanishing measurement errors the \pdf s of the \pmodel become Gaussian, with a \pdf~ width, $\sigma_p$ that scales as $1/N_{sample}$. Further, we must verify that any bias in the \pdf~ expectation value is far less than 
+$\sigma_p$, even for quite large samples.
+
+ Using sets of mock data ([ TO DO: describe by referencing to Section]) and our fiducial model for \pmodel , we verified that the \RM~ satisfies all these conditions and expectations. Fig. \ref{fig:triangleplot} illustrates the joint \pdf `s of all \pmodel . This figure illustrates that the \pdf `s are multivariate Gaussians that project into Gaussians when considering the marginalized \pdf for all the individual \pmodel . Note that some of the parameters are quite covariant, but the level of their actual covariance depends on the of the \pmodel~ from with the mock data were drawn.  Figure\ref{fig:sqrtN} then illustrates that the \pdf~ width, $\sigma_p$ indeed scales as $1/N_{sample}$.
+Fig.\ref{fig:centrallimittheorem} illustrates even more, that the \RM satisfies the central limit theorem. The average parameter estimates from many mock samples with identical underlying \pmodel are very close to the input \pmodel , and the distibution of the actual parameter estimates are a Gaussian around it. 
+
+%====================================================================
+
+%FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
+
+\begin{figure}
+\plotone{figs/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC_color.eps}
+\caption{The likelihood in eq. (???) in the parameter space $\{p_\Phi,\ln(p_\text{DF})\}$ for one example mock data set. This mock data set has 20,000 stars and was created in a isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, observed within a spherical volume around the sun of radius $r = 2 \text{ kpc }$, and represents a rather hot stellar population with DF parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $.  The true parameters are marked by dotted lines. The dark, medium and bright purple contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_\text{DF})$ to turn the likelihood into a full posterior distribution function). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem. [TO DO: Maybe re-do with higher accuracy??? This was done with $N_{sigma} = 4$.] [TO DO: Mention "Note: this was picked among 5 to have all 1sigma contours encompass the input values." ???}
+\label{fig:triangleplot}
+\end{figure}
+
+%====================================================================
+
+%FIGURE: width of likelihood propto 1/sqrt(N)
+
+\begin{figure}
+\plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
+\caption{The width of the likelihood for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set. All mock data sets were created in an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, for a qDF with $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ and within a spherical observation volume around the sun of radius $r = 3 \text{ kpc }$. The data sets have different sample sizes and contain between 100 and 40,000 stars, as indicated on the $x$-axis. The likelihood was evaluated on a grid in the parameters $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$, while all other parameters were assumed to be known and kept at their true values. For each fit parameter the likelihood was then marginalized by summing over the grid and then a Gauss curve was fitted to the marginalized likelihood. The standard deviation of these best fit Gaussians $\Delta$ is shown on the $y$-axis for $b$ in kpc (red dots) and for $\ln(h_R/8\text{kpc})$ in dimensionless units (blue). The black lines are fits of the functional form $\Delta(N) \propto 1/\sqrt{N}$ to the data points  of both shown parameters. As can be seen, for large data samples the width of the likelihood behaves as expected and scales with $1/\sqrt{N}$ as predicted by the central limit theorem.  [TO DO: Maybe re-do with higher accuracy??? This was done with $N_{sigma} = 4$.] [TO DO: rename width of likelhood into Standard Error (SE).???]} 
+\label{fig:sqrtN}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:triangleplot} and \ref{fig:sqrtN}:} The central limit theorem predicts that the likelihood will approach a Gaussian distribution $\mathscr{N}(\mu,\sigma/\sqrt{N})$ with $N$ being the number of data points.
+
+%====================================================================
+
+
+%FIGURE: central limit theorem is satisfied
+
+\begin{figure}
+\plotone{figs/isoSph_CLT.eps}
+\caption{(Un-)bias of the parameter estimate: According to the central limit theorem the likelihood will follow a Gaussian distribution for a large number of stars. From this follows that also for a large number of data sets the corresponding best fit values for the model parameters have to follow a Gaussian distribution, centered on the true model parameters. That our method satisfies this and is therefore an unbiased estimator [TO DO: can I say that????] is demonstrated here. We create 640 mock data sets. They come from two different isochrone potentials ($p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},b \}$ with $b = 0.9$ kpc (first column) and $b = 1.5$ kpc (second column)), two different stellar populations ('hot' with $p_{DF,hot} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (solid symbols) and 'cool' with $p_{DF,cool} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ (open symbols)) and five spherical observation volumes of different sizes (color coded, see legend). For each parameter set we therefore sample 32 mock data realisations and analyse them by evaluating the likelihood ??? on a grid. As numerical accuracy we use $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$. The fit parameters are $\{b,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$. All other model parameters are kept at their true value in the modelling. We determine the best fit value and the standard error (SE) for each fit parameter by fitting a Gaussian to the marginalized likelihood. The offset is the difference between the best fit and the true value of each model parameter. In the first two columns the offset in units of the SE is plotted vs. the SE in \% of the true model parameter. The first row shows the results for the isochrone scale length $b$ and the second row the qDF parameter $h_{\sigma_z}$, which corresponds to the scale length of the vertical velocity distribution. }
+\label{fig:centrallimittheorem}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The last column finally displays a histogram of the 640 offsets (in units of the corresponding SE). The black solid line is a Gaussian fit to a histogram. The dashed pink line is a normal distribution $\mathscr{N}(0,1)$. As they agree very well, our modelling method is therefore well-behaved and unbiased. For the 32 analyses belonging to one model we also determine the mean offset and SE, which are overplotted in black in the first two columns (with $1/\sqrt{32}$ as error).  [TO DO: Is the scatter of the black symbols too large??? Is the reason for this numerical inaccuracies???] [TO DO: units of b in title????????]} 
+  \end{figure}
+  
+ \paragraph{[TO DO] Stuff to explain about fig. \ref{fig:centrallimittheorem}:} Mention also that bigger volumes give most of the time better constraints and that there is no clear answer, if a hot or cooler population gives better constraints. Depends on parameter considered.
+
+%====================================================================
+
+\paragraph{[TO DO] Missing test and plot:}  Would be cool to have a plot, that shows that for the St\"ackel potential we don't get biases, but that there are some for the analytic Miyamoto-Nagai + power-law halo \& interpolated MW potential and therefore this bias is probably due to incorrect action calculation.

@@ -1,0 +1,55 @@
+\subsection{What if our assumed distribution function differs from the stars' DF?}
+
+\cite{san15} and ??? develop extended distribution functions (EDFs), that extend action-based DFs to also describe the distribution of the star's metallicities. While a full chemo-dynamical modelling,  including metallicity as well as $\alpha$- and other chemical abundances, is ultimately the right way to go, the form of the EDFs still depends on a lot of additional assumptions. By looking at fig. 6 in \cite{bov13} (other references???) we doubt that a final version of an EDF will have a simple form in action-metallicity space. Motivated by the findings of ???Bovy et al. 2012???, we therefore resign to the simpler approach outlined in \cite{bov13} and here, were metallicity and $\alpha$-abundances are implicitly taken into account by describing each MAP separately by one qDF. This procedure could have two caveats: 
+\\First, the binning of the stars according to their abundances could lead to pollution of one MAP, by either choosing the bin sizes too large, or too small compared to the stars' inherent abundance errors. 
+\\Second, while ???Bovy et al. 2012??? makes us confident that the qDF is indeed a good functional form to describe each MAP, it could very well be, that the stars' true distribution is close to but not exactly of the family of assumed qDFs. 
+\\We try to investigate both this issues with the following test: We draw two mock data sets, each from a different qDF, and mix the stars in different fractions together. We then analyse this mixture by assuming all stars sill came from a single qDF. The results are shown in fig. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. 
+\\In example 1 and 2 (fig. \ref{fig:isoSphFlexMixCont}) we consider two very different MAPs, a hotter and a cooler one, that are mixed together in different fractions. This test could be understood as the true distribution of stars being a linear combination of two very different qDFs and we investigate how this deviation from a single qDF affects the potential recovery. We find that for a MAP that follows approximately a hot population (polluted by up to $\sim30\%$ of cooler stars), the potential can still be very well recovered. The analysis of cooler MAPs are much more affected by pollution due to hotter MAP stars.
+\\In example 3 and 4 (fig. \ref{fig:isoSphFlexMixDiff}) it is investigated how different the qDF parameters of two MAPs are allowed to be to be still able to constrain the true potential. This test could be seen as a model scenario for decreasing bin sizes in the metallicity-$\alpha$ plane when sorting stars in different MAPs, assuming that there is a smooth variation of qDF within the metallicity-$\alpha$ plane. We find that differences of $20\%$ in the qDF parameters of two neighbouring MAPs can still give quite good constraints on the potential parameters. We compare this with the relative difference in the qDF parameters in the bins in fig. 6 of \cite{bov13}, which have sizes of $[Fe/H] = 0.1$ dex and $\Delta [\alpha/Fe] = 0.05$ dex. It seems that these bin sizes are large enough to make sure that $\sigma_{R,0}$ and $\sigma_{z,0}$ of neighbouring MAPs do not differ more than $20\%$. As fig. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff} suggests especially the tracer scale length $h_R$ needs to be recovered to get the potential right. For this parameter however the bin sizes in fig. 6 of \cite{bov13} might not yet be small enough to ensure no more than $20\%$ of difference in neighbouring $h_R$, especially in the low-$\alpha$ ($[\alpha/Fe] \lesssim 0.2$), intermediate-metallicity ($[Fe/H] \sim -0.5$) MAPs.
+
+[TO DO: think, if this might better be two different sections. ???? one for MixDiff about neighbouring MAPS and one for MixCont for difference in DF. ????]
+
+%====================================================================
+
+%FIGURE: isoSphFlexMixCont
+
+\begin{figure}
+\plotone{figs/isoSphFlexMixCont_mockdata.eps}
+\caption{Caption [TO DO]}
+\end{figure}
+
+\begin{figure}
+\plotone{figs/isoSphFlexMixCont_violins.eps}
+\caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixCont}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.)  The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a 'hot' stellar population by stars coming from a 'cool' population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. In total there are always 20,000 stars in the data set. Both populations come from same potential, an isochrone potential with $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$ (true parameters are indicated by green lines). The composite data set is then fit them with one single qDF. Example 1 (left) mixes the 'hot' population $p_\text{DF,hot,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'cool' population $p_\text{DF,cool,1} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}+50\%, 55 \text{ km s$^{-1}$}-50\%, 66 \text{ km s$^{-1}$}-50\%, 8 \text{ kpc}, 7 \text{ kpc }\}$. Example 2 (right) mixes the 'cool' population $p_{DF,cool,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}, 42 \text{ km s$^{-1}$}, 32 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $ with the 'hotter' population $p_{DF,hot,2} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{3.5 \text{ kpc}-50\%, 42+50\% \text{ km s$^{-1}$}, 32+50\% \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. The parameters were chosen such, that the two parameter sets have the same $\sigma_R/\sigma_z$ ratio and 'hotter' populations have shorter tracer scale lengths. The velocity dispersion scale lengths were fixed according to ???Bovy2012???. True parameters of the 'hotter' population are shown as red lines, those of the 'cooler' populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???] [TO DO: Change 'cold' in plot to 'cool'. ???] [TO DO: Write 'all hot' instead of '100\% hot'.??? X-labels are wrong ???? invert x-axis ???]}
+\end{figure}
+
+%FIGURE: isoSphFlexMixDiff
+
+\begin{figure}
+\plotone{figs/isoSphFlexMixDiff_violins.eps}
+\caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixDiff}
+\end{figure}
+
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The dependence of the parameter recovery on the difference in DF parameters of the mixture of two stellar populations and their 'hotness'.  [TO DO], Maybe different/same x-axis??? [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF. [TO DO] [TO DO: Add in plot a label, that it is a 50\%/50\% mix of a hot and a cold population.??])} 
+\end{figure}
+
+%====================================================================
+
+\paragraph{Collection of possible tests and plots}
+
+\begin{itemize}
+\item *Test 1:* mix hot and cold populations, 5 free qdf parameters in analysis!, use code that estimates the best velocity integration ranges. h\_sigma\_r \& h\_sigma\_z are the same for both populations, sigma\_r and sigma\_z have the same ratio, but are 50\% different for the two populations. h\_R is also 50\% different. Vary the fraction of pollution. Idea behind this: What if the stellar distribution has a different shape, e.g. added "wings", or had a different tracer density decrease with R. Would be however great, if we could show how the mixture of qdf's quanlitatively changes the shape of the df. Any ideas? \\
+*Plot 1:* Violin plot: x-axis - fraction of pollution. y-axis: b-parameter and one or two qdf parameters.
+\item *Test 2:* same as Test 1, but this time vary the degree of difference and make it 50\% pollution. Idea behind this: What happens, if we have errors in the abundances and mix different MAPs? For this it would be could to compare how much the qdf parameters of neighbouring MAPs differ and how big the difference between MAPs can be, such that it still can reproduce the potential. \\
+*Plot 2:* Violin plot: x-axis - difference in qdf parameters. y-axis: b-parameter and one or two qdf parameters.
+\end{itemize}

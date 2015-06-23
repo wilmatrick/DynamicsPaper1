@@ -1,0 +1,46 @@
+\subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
+
+The selection function of a survey is described by a spatial survey volume and a completeness function, which determines the fraction of stars observed at a given location within the Galaxy with a given brightness, metallicity etc (see \S[TO DO CHECK]). The completeness function depends on the characteristics and mode of the survey, can be very complex and is therefore sometimes not perfectly known. We investigate how much an imperfect knowledge of the selection function can affect the recovery of the potential. We model this by creating mock data with varying incompleteness and assuming constant completeness in the analysis. The mock data comes from a sphere of $r_\text{max} = 3$ kpc around the sun and an incompleteness function that drops linearly either with distance from the sun (left panels in fig. \ref{fig:incomp_mockdata}) or with distance from the Galactic plane (right panels in fig. \ref{fig:incomp_mockdata}). We demonstrate that the potential recovery with  \RM is very robust against somewhat wrong assumptions about the (in-)completeness of the data (see the tests for the radial incompleteness function in fig. \ref{fig:isoSphFlexIncompR_violins} and vertical incompleteness function in \ref{fig:isoSphFlexIncompZ_violins}). A lot of information about the potential comes from the rotation curve measurements in the plane, which is not affected by applying an incompleteness function. The robustness is however still given - at least for small deviations of true and assumed completeness ($\lesssim 10\%$) - if we do not include information about the rotation curve and marginalize the likelihood over the $v_T$ coordinate (see bright grey violins in fig. \ref{fig:isoSphFlexIncompR_violins} and \ref{fig:isoSphFlexIncompZ_violins}). For the radial incompleteness function we get better results than for the vertical incompleteness. As the former models the important effect of stars being less likely to be observed the further away they are, this is an encouraging result.
+
+\paragraph{Stuff that needs to be further examined:}
+\begin{itemize}
+\item Maybe instead of decreasing completeness with height above the plane, a completeness that INcreases with height above the plan, to model e.g. obscuration due to dust.
+\item Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this robustness is a special case for the isochrone potential.
+\end{itemize}
+
+
+
+%===============================================
+
+%FIGURE: isoSphFlexIncompR and isoSphFlexIncompZ in mock data space
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncomp_mockdata.eps}
+\caption{Caption [TO DO] ([TO DO] Re-do, if new analyses are in violin plot.)} 
+\label{fig:incomp_mockdata}
+\end{figure}
+
+%FIGURE: isoSphFlexIncompR
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompR_violins.eps}
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO] Redo marginalization calculations, and this time punish negative scale potential scale length.) [TO DO: Write that $\epsilon_r = 0$ in analysis]} 
+\label{fig:isoSphFlexIncompR_violins}
+\end{figure}
+
+%\begin{figure}
+%\plotone{~/Dropbox/PhD/Presentations/15-06-16IMPRSEvaluation/py/plots/isoSphFlexIncompR_violins.eps}
+%\caption{[NOTE: This plot will not be in the final paper. It is just to illustrate, how the isoSphFlexIncomp analyses could also be shown - no violins, but with error bars.] [TO DO: Add other parameters and tests to this plot to see how it looks. This is an alternative version of the isoSphFlexIncomR plot (test with hot population.)]} 
+%\end{figure}
+
+
+%FIGURE: isoSphFlexIncompZ
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompZ_violins.eps}
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough, though there is one analyse (hot, no3) for which it did not work. Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO])} 
+\label{fig:isoSphFlexIncompZ_violins}
+\end{figure}
+
+
+%===============================================

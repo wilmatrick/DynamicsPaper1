@@ -1,0 +1,90 @@
+\subsection{Likelihood}
+
+The idea behind our modeling approach is that the orbits of the stars belonging to one MAP [TO DO: explain MAP???], calculated from a phase-space observation for each star within a proposal potential,  will only follow a distribution function from the family of qDFs (cf. \S\ref{sec:qDF}) if this propsal potential is (close to) the true potential in which the stars move. This opens up the possibility to fit the qDF and the potential simultaneously to the stellar phase-space data of one MAP, using the orbits of the stars. 
+
+\subsubsection{Data and Selection Function} 
+
+We're fitting the potential and the qDF to the data
+\begin{eqnarray*}
+D_j  =\{ \vect{x}_i,\vect{v}_i \mid \text{(star $i$ belonging to MAP $j$)} \wedge (\text{sf}(\vect{x_i}) > 0) \},
+\end{eqnarray*}
+where  $\vect{x}_i$ and $\vect{v}_i$ are the position and velocity of one star. The phase-space volume within which stars are observed by a given survey is defined by the survey's selection function $\text{sf}(\vect{x},\vect{v})$, which is in general a function of the position only, $\text{sf}(\vect{x})$. To first order the shape of the selection function ("observed volume") is limited by the directions in which the survey is pointed and the sensitivity down to which limiting magnitude it can detect stars. In the simplest case, if all stars had the same brightness, the selection function is 1 everywhere inside the observed volume and 0 outside. Because stars have different brightness the selection function will usually decrease from 1 close to the sun to 0 at the edges of the observed volume ("completeness"). [TO DO: Explain selection function somewhere else????] Only stars for which the selection function is non-zero are contained in the data set $D_j$.
+\\Our modeling takes place in the Galactocentric rest-frame with cylindrical coordinates $\vect{x} = (R,\phi,z)$ and velocity components in the corresponding coordinate directions $\vect{v} = (v_R,v_\phi,v_z)$.\footnote{If the phase-space data is given in observed coordinates, position $\tilde{\vect{x}}=(\alpha,\delta,m-M)$ in right ascension $\alpha$, declination $\delta$ and distance modulus $m-M$ and velocity $\tilde{\vect{v}} = (\mu_\alpha,\mu_\delta,v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\alpha,\mu_\delta)$ [TO DO: cos somwhere???] and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity (cf. \S ???).}
+
+\subsubsection{Model Parameters} \label{kap:modpar}
+
+We fit the five free parameters of the qDF family, $h_R$, $\sigma_R$, $\sigma_z$, $h_{\sigma_R}$ and $h_{\sigma_z}$, in logarithmic scale, which corresponds to a logarithmically flat prior in the framework of Bayesian statistics. The set of qDF fit parameters is therefore 
+\begin{equation*}
+p_\text{DF} := \{ \ln \left(h_R/8\text{kpc}\right), \ln \left(\sigma_R/220\text{km s$^{-1}$}\right), \ln \left(\sigma_z/220\text{km s$^{-1}$}\right), \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\} .
+\end{equation*}
+To be able to control the number of degrees of freedom in the potential fit, we have to assume a certain family of potential models, parametrized by the parameters $p_\Phi$ (cf. \S\ref{sec:potentials}). 
+\\The total set of model parameters to fit is then
+\begin{eqnarray*}
+M =\{ p_\text{DF} , p_\Phi \},
+\end{eqnarray*}
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
+
+\subsubsection{Form of the Likelihood} 
+
+The likelihood of the data given the model $\mathscr{L}(M \mid D_j)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
+\begin{equation}
+\mathscr{L}(M \mid D_j) = \prod_i^{N_j} P(\vect{x}_i,\vect{v}_i \mid M), \label{eq:likelihood}
+\end{equation}
+where $N_j$ is the number of stars in the data set $D_j$. This probability is, properly normalized and in the correct units,
+\begin{eqnarray}
+P(\vect{x}_i,\vect{v}_i \mid M) &=& \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid M) \cdot \text{sf}(\vect{x})}\nonumber\\
+&\propto& \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x})}. \label{eq:prob}
+\end{eqnarray}
+In the second step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we use simply eq. (\ref{eq:prob}) in the likelihood calculation. We find the best set of model parameters by maximising the likelihood. 
+
+
+\subsubsection{A word on units}
+
+We evaluate the likelihood in a scale-free potential within a Galactocentric coordinate system which is defined as $v_\text{circ}(R = 1) = 1$. $v_\text{circ}(R_\odot = 8. \text{kpc}) \sim 230 \text{km s$^{-1}$}$ is the Galaxy potential parameter that determines the total Galaxy mass / amplitude of the potential. To switch into our modelling coordinate frame, we first have to re-scale the data and the model parameters: all spatial coordinates to units of $r_o := R_\odot$ and all velocities to units of $v_o := v_\text{circ}(R_\odot )$. The prefactor $1/\left(r_o v_o\right)^3$ in eq. (\ref{eq:prob}) makes sure that the likelihood has the correct units to satisfy:
+\begin{eqnarray*}
+\int P(\vect{x},\vect{v} \mid M) \Diff 3 x \Diff 3 v \propto 1
+\end{eqnarray*} 
+Including this prefactor is crucial when $v_\text{circ}(R_\odot )$ is a free fitting parameter.
+
+\subsubsection{Numerical accuracy in calculating the likelihood} \label{sec:numaccuracynormalisation}
+[TO DO: Consistent capitals in section titles. ????]
+
+To evaluate the likelihood at a given set of $(p_\Phi,p_\text{DF})$ we proceed in principle in the following way: The numerator in eq. (\ref{eq:prob}) can be calculated straightforward by calculating the actions of each star in the given potential (cf. \S ???) and then evaluating the qDF at each action. For the normalisation of the likelihood we first have to calculate the density $\rho_\text{DF}(R,|z| \mid M)$ on a grid as described in \S\ref{sec:density}. The density is then interpolated using bi-variate spline interpolation. In the case of $\text{sf}(\vect{x})=1$ everywhere inside the observed volume and $\text{sf}(\vect{x})=0$ outside, i.e. for a complete sample, the integral in the normalisation in eq. (\ref{eq:prob}) is essentially two-dimensional in $R$ and $z$ and we can use the shape of the observed volume to set finite integration limits. We perform this integral over the interpolated tracer density by using Gauss Legendre integration of order 40 in each $R$ and $z$ direction. The integration over $\phi$ is done analytically.
+\\Unfortunately the evaluation of the likelihood for only one set of model parameters is already very computationall expensive. The computation speed is set by the number of action calculations needed, i.e. the number of stars and the numerical accuracy of the integrals in the normalisation, which requires $N_\text{spatial}^2 \times N_\text{velocity}^3$ action calculations. The numerical accuracy has to be choosen high enough, such that the integrals in the normalisation are mostly converged and the error introduced by this does not dominate in the likelihood, i.e.
+\begin{eqnarray}
+\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N_j} \log \text{qDF}(\vect{J_i} \mid M) \nonumber\\
+& & -N_j \log(\text{true normalisation}) - N_j \log (1 + \text{rel. error}),\label{eq:relerrlikelihood}\\
+ \text{with }  & &N_j \log (1 + \text{rel. error}) \lesssim 1.\nonumber
+\end{eqnarray}
+[TO DO: Don't understand why 1 is the threshold here. ???]
+For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.\footnote{In case of the isochrone potential we already have high enough accuracy for $N_\text{spatial}=16$, $N_\text{velocity}=20$ and $N_{sigma}=4$.} [TO DO: Should we also show that 40th order GL integraiton over interpolated density is enough? as this is really a lot and well converged, I would simply state that this is enough, but not show anythin.????]
+[TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
+
+%====================================================================
+
+%FIGURE: accuracy in the likelihood normalisation 
+
+\begin{figure}
+\plotone{figs/normalisation_accuracy_2.eps}
+\caption{Relative error of the likelihood normalization in eq. (\ref{eq:prob}) and (\ref{eq:relerrlikelihood}) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_\text{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We show the results for three different potentials, an isochrone potential with parameters $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 2-component KK-Staeckel potential with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) We calculate the true normalization with high accuracy as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$. [TO DO: Introduce $M_{tot}$ as the likelihood normalization somewhere as formula... ???] The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for all three potential types. Only for the smallest volume in the MW potential (yellow line) the error is only $\sim 0.005\%$. This could be due to the fact, that, while we have analytical formulas to calculate the actions for the isochrone and the Staeckel potential exactly, we have to resort to an approximate action calculation (Staeckel Fudge by Binney) for the MW-like potential (cf. \S ???). [TO DO: larger labels???] [TO DO: Try to redo yellow curve in MW. Weird, that it does not depend on $N_{spatial}$.???]}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:norm_accuracy}:} When fitting a potential and DF model to stellar data, the numerical accuracy of the normalisation is very important. The tracer density changes smoothly with the potential and DF parameters. Systematic errors in the density calculation can therefore lead to systematic over- or underestimation of the true potential parameters. This effect is less severe for larger volumes: The density gradient within a large volume is larger and therefore the relative change of the normalisation with the model parameters is also larger as for smaller observation volumes. For small volumes it is therefore more important to get the density right, i.e. having high $N_\text{velocity}$ and $N_\text{sigma}$. For larger volumes it is also important to pre-calculate the density at enough spatial points, i.e. having high $N_\text{spatial}$, while at the same time smaller inaccuracies in the density calculation do not have a comparable severe effect. This could be also the reason, why the normalisation calculation for the smallest volume in fig. \ref{fig:norm_accuracy} is much more well behaved as long as we can calculate exact actions (isochrone and Staeckel potential) [TO DO: Is this really the reason????]. [TO DO: Should we demonstrate how a wrong accuracy introduces biases???] Using a fiducial qDF to fix the integration range over the velocity in the analysis  (cf. \S ???) can help to make the normalisation vary in a more controlled and smooth way. If the fiducial qDF is close to the true qDF parameters, we get already un-biased and well-behaved results for a data set with 20,000 stars in the isochrone potential and an accuracy of $N_\text{sigma}=4$ and $N_\text{velocity}=20$, as demonstrated in fig. \ref{fig:centrallimitheorem}. This lower accuracy leads to an relative error of  0.005\% in the normalisation and therefore to an error in the log-likelihood of $\sim1$ (cf. \S{sec:numaccuracynormalisation}). [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]\\If two hypotheses have a $\Delta \log \mathscr{L} = 1$, one hypothesis is 10 times more likely. Below this we cannot properly decide which hypothesis is better. [TO DO: This limit should be satisfied for the differential log likelihood error (i.e. the derivative of the likelihood w.r.t. the parameters.) than only the likelihood. How to do this? Probably not doing this....]
+
+
+%\paragraph{[TO DO] Possible other plots:} Maybe show also how the normalisation accuracy varies with the order of GL integration over the interpolated density. We use 40, which seems to be definitely enough. Demonstrate with a plot?
+
+%====================================================================
+
+\subsubsection{Marginalization over coordinates}
+[TO DO]
+
+\subsubsection{Measurement Errors}
+
+[TO DO]
