@@ -11,13 +11,15 @@
 
 %====================================================================
 
-%FIGURE: isoSphFlexMixCont
+%FIGURE: isoSphFlexMix_mockdata
 
 \begin{figure}
-\plotone{figs/isoSphFlexMixCont_mockdata.eps}
-\caption{Distribution of mock data in two coordinates ($R$ and $v_z$), created by mixing different amounts of stars drawn from two different qDFs. The red and blue histograms show data sets drawn from a single qDF only: the "hot" and the "cooler" \MAPs (Example 1) in the left panels, and the "cool" and "hotter" \MAPs (Example 2) in the right panels (see table \ref{tbl:referenceMAPs}). The gray histograms show data drawn from a superpositions of two qDFs. In total there are always 20,000 stars in the data set. The color coding represents the different mixing rates (black - all hot, bright gray - all cool) and is the same as in figure \ref{fig:isoSphFlexMixCont}, where the corresponding modelling results for each data set are shown. This demonstrates how mixing two qDFs can be used as a test case for adding or removing wings to a pure qDF or slightly changing the radial density profile. The distribution in $R$ is also strongly shaped by the selection function, which is, in this case, a sphere around the sun with $r_\text{max}=2$ kpc.}
+\plotone{figs/isoSphFlexMix_mockdata.eps}
+\caption{[TO DO: Re-write caption] Distribution of mock data in two coordinates ($R$ and $v_z$), created by mixing different amounts of stars drawn from two different qDFs. The red and blue histograms show data sets drawn from a single qDF only: the "hot" and the "cooler" \MAPs (Example 1) in the left panels, and the "cool" and "hotter" \MAPs (Example 2) in the right panels (see table \ref{tbl:referenceMAPs}). The gray histograms show data drawn from a superpositions of two qDFs. In total there are always 20,000 stars in the data set. The color coding represents the different mixing rates (black - all hot, bright gray - all cool) and is the same as in figure \ref{fig:isoSphFlexMixCont}, where the corresponding modelling results for each data set are shown. This demonstrates how mixing two qDFs can be used as a test case for adding or removing wings to a pure qDF or slightly changing the radial density profile. The distribution in $R$ is also strongly shaped by the selection function, which is, in this case, a sphere around the sun with $r_\text{max}=2$ kpc.}
 \label{fig:isoSphFlexMixCont_mockdata}
 \end{figure}
+
+%FIGURE: isoSphFlexMixCont
 
 \begin{figure}
 \plotone{figs/isoSphFlexMixCont_violins.eps}
@@ -27,7 +29,7 @@
 
 \addtocounter{figure}{-1}
 \begin{figure} [t!]
-  \caption{(Continued.)  The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a hot stellar population by stars coming from a cool population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. (The corresponding mock data sets are shown, in the same gray scales, in fig. \ref{fig:isoSphFlexMixCont_mockdata}.)  Both populations come from same potential, the isochrone potential "Iso-Pot" from table \ref{tbl:referencepotentials}  (true potential parameters are indicated by green lines). The composite data set is then fit with one single qDF. Example 1 (left) mixes the "hot" \MAP with the "cooler" \MAP in table \ref{tbl:referenceMAPs}, while example 2 (right) mixes the "cool" \MAP with the "hotter" \MAP. True parameters of the hotter of the two populations are shown as red lines, those of the cooler populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???]}
+  \caption{(Continued.)  [TO DO: Re-write caption] The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a hot stellar population by stars coming from a cool population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. (The corresponding mock data sets are shown, in the same gray scales, in fig. \ref{fig:isoSphFlexMixCont_mockdata}.)  Both populations come from same potential, the isochrone potential "Iso-Pot" from table \ref{tbl:referencepotentials}  (true potential parameters are indicated by green lines). The composite data set is then fit with one single qDF. Example 1 (left) mixes the "hot" \MAP with the "cooler" \MAP in table \ref{tbl:referenceMAPs}, while example 2 (right) mixes the "cool" \MAP with the "hotter" \MAP. True parameters of the hotter of the two populations are shown as red lines, those of the cooler populations as blue lines. The violines represent the marginalized likelihoods found from the MCMC analysis. [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???]}
 \end{figure}
 
 %FIGURE: isoSphFlexMixDiff
@@ -45,12 +47,3 @@
 \end{figure}
 
 %====================================================================
-
-\paragraph{Collection of possible tests and plots}
-
-\begin{itemize}
-\item *Test 1:* Vary the fraction of pollution. Idea behind this: What if the stellar distribution has a different shape, e.g. added "wings", or had a different tracer density decrease with R. Would be however great, if we could show how the mixture of qdf's quanlitatively changes the shape of the df. Any ideas? \\
-*Plot 1:* Violin plot: x-axis - fraction of pollution. y-axis: b-parameter and one or two qdf parameters.
-\item *Test 2:* same as Test 1, but this time vary the degree of difference and make it 50\% pollution. Idea behind this: What happens, if we have errors in the abundances and mix different MAPs? For this it would be could to compare how much the qdf parameters of neighbouring MAPs differ and how big the difference between MAPs can be, such that it still can reproduce the potential. \\
-*Plot 2:* Violin plot: x-axis - difference in qdf parameters. y-axis: b-parameter and one or two qdf parameters.
-\end{itemize}
