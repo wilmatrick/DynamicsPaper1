@@ -13,7 +13,7 @@
 \begin{deluxetable}{llllll}
 \tabletypesize{\scriptsize}
 \rotate
-\tablecaption{Graivtational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation. In the subsequent analyses we aim to recover these potential parameters again. All reference potentials assume the sun to be located at $(R_\odot,z_\odot)=(8~\text{kpc},0)$. \label{tbl:referencepotentials}}
+\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation. In the subsequent analyses we aim to recover these potential parameters again. All reference potentials assume the sun to be located at $(R_\odot,z_\odot)=(8~\text{kpc},0)$. \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
@@ -50,7 +50,7 @@
 
 \begin{figure}
 \plotone{figs/reference_potentials.eps}
-\caption{Density distribution of the four reference galaxy potentials in table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery.}
+\caption{Density distribution of the four reference galaxy potentials in table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery. [TO DO: Halo sichtbarer machen, evtl. mit isodensity contours]}
 \label{fig:ref_pots}
 \end{figure}
 
@@ -58,14 +58,14 @@
 
 \subsubsection{Distribution function} \label{sec:qDF}
 
-The structure of the MW disk is still under debate: While many still support the thin-thick disk dichotomy in the MW disk (references ???), \citet{bov12b} found indications that the MW disk might actually be a super-position of many stellar sub-popluations with a continuous spectrum of scale heights, scale lengths, metallicity and [$\alpha$/Fe] abundances (dubbed mono-abundance populations (\MAPs)). Further investigation lead to the findings that \MAPs in the MW disk have a simple spatial structure that follows an exponential in both radial and vertical direction \citep{bov12d}. The corresponding velocity dispersion profile of the \MAPs also decreases exponentially with radius and is nearly independent of height above the plane, i.e. quasi-isothermal \citep{bov12c}. The radial decrease in vertical velocity dispersion has, according to \citet{bov12c}, a long scale length of $h_{\sigma,z} \sim 7$ kpc for all \MAPs. Older \MAPs, which are characterized by lower metallicities and [$\alpha$/Fe] abundances, have in general shorter density scale lengths, larger scale heights and velocity dispersion \citep{bov12d}. \citet{tin13} and \citet{bov13} finally proposed that these findings could be employed for dynamical modelling techniques using action-based distribution functions. An action-based distribution function, that is flexible enough to describe the spectrum of simple phase-space distributions of different \MAPs, is the quasi-isothermal distribution function (qDF) by \citet{bin11}, as demonstrated by \citet{tin13}.  The qDF by \citet{bin11} is a function of the actions $\vect{J}=(J_R,J_z,L_z)$ and has the form
+Motivated by the findings of Bovy et al. 2012??? and \citet{tin13} about the simple phase-space structure of \MAPs (see \S\ref{sec:intro}), and following \citet{bov13} and their successful application, we also assume that each \MAP follows a single qDF of the form given by \citet{bin11}.  This qDF  is a function of the actions $\vect{J}=(J_R,J_z,L_z)$ and has the form
 \begin{eqnarray}
 \text{qDF}(\vect{J} \mid p_\text{DF}) &=& f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) \times f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF}\right)\label{eq:df_general}\\
 \text{with } f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi\sigma_R^2(R_g) \kappa}\left[1+\tanh\left(L_z/L_0\right) \right]\exp\left(-\frac{\kappa J_R}{\sigma_R^2(R_g)} \right) \\
 f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF} \right) &=& \frac{\nu}{2 \pi \sigma_z^2(R_g)} \exp\left( -\frac{\nu J_z}{\sigma_z^2(R_g)} \right) \\
 \end{eqnarray}
 Here $R_g \equiv R_g(L_z)$ and $\Omega\equiv \Omega(L_z)$ are the (guidig-center) radius and the circular frequency of the circular orbit with angular momentum $L_z$ in a given potential. $\kappa\equiv \kappa(L_z)$ and $\nu\equiv \nu(L_z)$ are the radial/epicycle ($\kappa$) and vertical ($\nu$) frequencies with which the star would oscillate around the circular orbit in $R$- and $z$-direction when slightly perturbed \citep{bin08}. The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with $L \gg L_0$ which we set to a random small value ($L_0 = 10 \times R_\odot/8 \times v_\text{circ}(R_\odot)/220$).
-\\For this qDF to be able to incorporate the findings by Bovy et al. 2012 about the phase-space structure of \MAPs summarized above, we set the functions $n$,  $\sigma_R$ and $\sigma_z$, which indirectly set the stellar number density and radial and vertical velocity dispersion profiles,
+\\For this qDF to be able to incorporate the findings by Bovy et al. 2012??? about the phase-space structure of \MAPs summarized in \S\ref{sec:intro}, we set the functions $n$,  $\sigma_R$ and $\sigma_z$, which indirectly set the stellar number density and radial and vertical velocity dispersion profiles,
 \begin{eqnarray}
 n(R_g) &\propto& \exp\left(-\frac{R_g}{h_R} \right)\\
 \sigma_R(R_g) &=& \sigma_{R,0} \times \exp\left(- \frac{R_g-R_\odot}{h_{\sigma_R}} \right)\\
