@@ -1,0 +1,57 @@
+\subsection{The Impact of Deviations of the Data from the Idealized qDF}
+
+Our modelling approach assumes that each \MAP follows a quasi-isothermal distribution function, qDF. In this Section we explore what happens if this idealization does not hold. This could bei, because even in the limit of perfectly measured abundances, MAPs do not follow a qDF. Or, even if they did do that, because the finite abundance errors effectively mix different MAPs.  We investigate both these issues by creating mock data sets 
+(Fig. \ref{fig:isoSphFlexMix_mockdata}) that are drawn from two distinct qDFs of different temperature, and illustrate these results in Figs. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. Following the observational evidence, MAPs with cooler qDFs also have longer tracer scale lengths. In the first set of test (Fig. \ref{fig:isoSphFlexMixCont}), we choose qDFs of widely different temperatures and vary their relative fraction (dubbed ``examples 1a/b") ; in the second set of tests (``examples 2a/b", Fig. \ref{fig:isoSphFlexMixDiff}), we always mit mock data points from two different qDFs in equal proportion, but vary by how much the qDF's temperatures differ. 
+The first set of tests mimicks a DF that has wider wings or a sharper core in velocity space than a qDF (Fig. \ref{fig:isoSphFlexMix_mockdata}). 
+
+It is worth considering separately the impact of the DF deviations on the recovery of the potential and of the DF parameters. 
+ We find from example 1 that the potential parameters can be better and more robustly recovered, if a mock-data MAP is polluted by a modest fraction ($\lesssim 30\%$) of stars drawn from a cooler qDF with a longer scale length, as opposed to the same pollution of stars drawn from a hotter qDF with a shorter scale length. 
+ When considering the case of a 50/50 mix of contributions from different qDFs , there is a systematic, but only small,
+ error in recovering the potential parameters, monotonically increasing with the qDF parameter difference (example 2); in particular for fractional differences in the qDF parameters of $\lesssim 20\%$ the systematics are insignificant even for samples sizes of 20,000, as used in the mock data.
+ 
+The recovery of the effective qDF parameters, in light of non qDF mock data is quite intuitive: the effective qDF temperature lies between the two temperatures from which the mixed DF of the mock data was drawn; in all cases the scale length of the velocity dispersion fall-off, $h_{\sigma R}$ and $h_{\sigma , z}$, is shorter, because the stars drawn form the hotter qDF dominate at small radii, while stars form the cooler qDF (with its longer tracer scae length) dominate at large radii. The recovered tracer scale lengths, $h_R$ vary smoothly between the input values of the two qDFs that enetered the mix of mock data, with again the impact of contamination by a hotter qDF (with its shorter scale length in this case) being more important. 
+
+%\\In example 3 and 4 (fig. \ref{fig:isoSphFlexMixDiff}) it is investigated how different the qDF parameters of two \MAPs are allowed to be to be still able to constrain the true potential. This test could be seen as a model scenario for decreasing bin sizes in the metallicity-$\alpha$ plane when sorting stars in different \MAPs assuming that there is a smooth variation of qDF within the metallicity-$\alpha$ plane. We find that, in the case of 20,000 stars in each \MAP, bin differences of $20\%$ in the qDF parameters of two neighbouring \MAPs can still give quite good constraints on the potential parameters. We compare this with the relative difference in the qDF parameters in the bins in fig. 6 of \cite{bov13}, which have sizes of $[Fe/H] = 0.1$ dex and $\Delta [\alpha/Fe] = 0.05$ dex. It seems that these bin sizes are large enough to make sure that $\sigma_{R,0}$ and $\sigma_{z,0}$ of neighbouring \MAPs do not differ more than $20\%$. As fig. \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff} suggests especially the tracer scale length $h_R$ needs to be recovered to get the potential right. For this parameter however the bin sizes in fig. 6 of \cite{bov13} might not yet be small enough to ensure no more than $20\%$ of difference in neighbouring $h_R$, especially in the low-$\alpha$ ($[\alpha/Fe] \lesssim 0.2$), intermediate-metallicity ($[Fe/H] \sim -0.5$) \MAPs.
+%\\In case there are less than 20,000 stars in each \MAP the constraints are less tight and due to Poisson noise one could also allow larger differences in neighbouring \MAPs while still getting reliable results.
+%
+%[TO DO: think, if this might better be two different sections. ???? one for MixDiff about neighbouring MAPS and one for MixCont for difference in DF. ????]
+
+%====================================================================
+
+%FIGURE: isoSphFlexMix_mockdata
+
+\begin{figure}
+\plotone{figs/isoSphFlexMix_mockdata.eps}
+\caption{Distribution of mock data in two coordinates ($R$ and $v_z$), created by mixing stars drawn from two different qDFs. This demonstrates how mixing two qDFs can be used as a test case for changing the shape of the DF to not follow a pure qDF anymore, e.g. by adding wings or slightly changing the radial density profile. The distribution in $R$ is also strongly shaped by the selection function, which is, in this case, a sphere around the sun with $r_\text{max}=2$ kpc. In total there are always 20,000 stars in each data set and all of them were created in the same potential, the isochrone potential "Iso-Pot" from table \ref{tbl:referencepotentials}. The dark red and dark blue histograms show data sets drawn from a single qDF only: the "hot" and "cooler" \MAPs (Example 1, first column), the "cool" and "hotter" \MAPs (Example 2, second column), the "hot" (Example 3, third column) and the "cool" \MAPs (Example 4, fourth column) from table \ref{tbl:referenceMAPs}. \emph{Example 1 \& 2:} The other histograms show data drawn from a superposition of the two reference qDFs. The color coding represents the different mixing rates (reddish: more hot stars, bluish: more cool stars, white: half/half) and is the same as in figure \ref{fig:isoSphFlexMixCont}, where the corresponding modelling results for each data set are depicted in the same color. \emph{Example 3 \& 4:} In this test suite the mixing rate of the two \MAPs is fixed to 50\%/50\%. In Example 3 (Example 4) in the third (fourth) column the "hot" ("cool") \MAP is shown in dark red (dark blue) and mixed with a qDF whose parameters describe a colder (warmer) population. The 'hotness' of these second \MAP is varied and approaches the "hot" ("cool") \MAP's qDF parameters as the histograms get redder (bluer). The color coding is the same as in fig. \ref{fig:isoSphFlexMixDiff}.}
+\label{fig:isoSphFlexMixCont_mockdata}
+\end{figure}
+
+%FIGURE: isoSphFlexMixCont
+
+\begin{figure}
+\plotone{figs/isoSphFlexMixCont_violins.eps}
+\caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixCont}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The dependence of the parameter recovery on degree of pollution and 'hotness' of the stellar population. To model the pollution of a hot stellar population by stars coming from a cool population and vice versa, we mix varying amounts of stars from two very different populations, as indicated on the $x$-axis. The composite mock data set is then fit with one single qDF. The violines represent the marginalized likelihoods found from the MCMC analysis. The mock data sets are shown in fig. \ref{fig:isoSphFlexMixCont_mockdata}, in the same colors as the violins here. All mock data sets come from the same potential ("Iso-Pot") and selection function (sphere with $r_\text{max} = 2$ kpc). The true potential parameters are indicated by green dotted lines. Example 1 (Example 2) in the left (right) panels mixes the "hot" ("cool") \MAP with the "cooler" ("hotter") \MAP in table \ref{tbl:referenceMAPs}. True parameters of the hotter (colder) of the two populations are shown as red (blue) dotted lines. We find, that a hot population is much less affected by pollution with stars from a cooler population than vice versa.  [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qDF to be consistent with MixDiff test. ???]}
+\end{figure}
+
+%FIGURE: isoSphFlexMixDiff
+
+\begin{figure}
+\plotone{figs/isoSphFlexMixDiff_violins.eps}
+\caption{(Caption on next page.)}
+\label{fig:isoSphFlexMixDiff}
+\end{figure}
+
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) The dependence of the parameter recovery on the difference in qDF parameters of the 50\%/50\% mixture of two stellar populations and their 'hotness'. Each mock data set in Example 3 (Example 4) consists of 20,000 stars, half of them drawn from the "hot" ("cool") qDF in table \ref{tbl:referenceMAPs}, and the other half drawn from a colder (warmer) population that has $X\%$ smaller (larger) $\sigma_R$ and $\sigma_z$ and $X\%$ larger (smaller) $h_R$. The difference $X$ in these qDF parameters is indicated on the $x$-axis, and the true parameters of the two qDFs are indicated by the dotted red and blue lines. Each composite mock data set is fitted by a single qDF and the marginalized MCMC likelihoods for the best fit parameters are shown as violines in the third (fourth) column of panels. The mock data was created within the same potential ("Iso-Pot") and selection function (sphere with $r_\text{max} = 2$ kpc). The true potential parameters are indicated by green dotted lines. The data sets are shown in figure \ref{fig:isoSphFlexMixCont_mockdata}, where the histograms have the same colors as the corresponding best fit violines here. By mixing \MAPs with varying difference in their qDF parameters, we model the effect of bin size in the [Fe/H]-[$\alpha$/Fe] plane when sorting stars into different \MAPs: The smaller the bin size, the smaller the difference in qDF parameters of stars in the same bin. We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs is less than 20\%.
+[TO DO: Maybe different/same x-axis???] [TO DO: This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is not high enough for the largest differences, i.e. grid search and MCMC converge to different values. Redo with fiducial qDF.] [TO DO: Add in plot a label, that it is a 50\%/50\% mix of a hot and a cold population.??])} 
+\end{figure}
+
+%====================================================================
