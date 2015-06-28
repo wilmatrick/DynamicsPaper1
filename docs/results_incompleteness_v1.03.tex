@@ -1,0 +1,32 @@
+\subsection{What if our assumptions on the (in-)completeness of the data set are incorrect?}
+
+The selection function of a survey is described by a spatial survey volume and a completeness function, which determines the fraction of stars observed at a given location within the Galaxy with a given brightness, metallicity etc (see \S[TO DO CHECK]). The completeness function depends on the characteristics and mode of the survey, can be very complex and is therefore sometimes not perfectly known. We investigate how much an imperfect knowledge of the selection function can affect the recovery of the potential. We model this by creating mock data with varying incompleteness, while assuming constant completeness in the analysis. The mock data comes from a sphere of $r_\text{max} = 3$ kpc around the sun and an incompleteness function that drops linearly with distance $r$ from the sun (fig. \ref{fig:isoSphFlexIncompR_mockdata}):
+\begin{equation*}
+\text{completeness}(r) = 1 − \epsilon_r \cdot \frac{r}{r_\text{max}}
+\end{equation*}
+This could be understood as a model for the important effect of stars being less likely to be observed the further away they are. We demonstrate that the potential recovery with \RM is very robust against somewhat wrong assumptions about the (in-)completeness of the data (see fig. \ref{fig:isoSphFlexIncompR}). A lot of information about the potential comes from the rotation curve measurements in the plane, which is not affected by applying an incompleteness function. In Appendix ??? we also show that the robustness is somewhat less striking but still given for small misjudgements of the incompleteness in vertical direction, parallel to the disk plane (fig. \ref{fig:isoSphFlexIncompZ_mockdata} and \ref{fig:isoSphFlexIncompZ}). This could model the effect of wrong corrections for dust obscurement in the plane. We also investigate in Appendix ??? if indeed most of the information is stored in the rotation curve. For this we use the same mock data sets as in fig. \ref{fig:isoSphFlexIncompR} and \ref{fig:isoSphFlexIncompZ}, but this time we’re not including the tangential velocities in the modelling, rather marginalizing the likelihood over $v_T$. In this case the potential is much less tightly constrained, even for 20,000 stars. For only small deviations of true and assumed completeness ($\lesssim 10\%$) we can however still incorporate the true potential in our fitting result (see fig. ???). 
+
+\paragraph{Stuff that needs to be further examined:}
+\begin{itemize}
+\item[[TO DO]] Maybe instead of decreasing completeness with height above the plane, a completeness
+that INcreases with height above the plan, to model e.g. obscuration due to dust.
+\item[[TO DO]] Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this
+robustness is a special case for the isochrone potential.
+\end{itemize}
+
+%FIGURE: isoSphFlexIncompR in mock data space
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompR_mockdata.eps}
+\caption{[TO DO: Rewrite caption] Selection function and mock data distribution for investigating radial (Example 1 \& 2, left) and vertical (Example 3 \& 4, right) incompleteness of the data. The survey volume is a sphere around the sun with $r_\text{max} = 3$ kpc. In Example 1 \& 2 (Example 3 \& 4) the percentage of observed stars is decreasing linearly with radius from the sun (height above the Galactic plane), as demonstrated in the first row of panels. How fast this detection rate drops is quantized by the factor $\epsilon_r$ ($\epsilon_z$) in eq. (\ref{eq:radial_incomp}) (eq. (\ref{eq:vertical_incomp})). Different mock data sets have different $\epsilon_r$ ($\epsilon_z$). Histograms for four data sets, each with 20,000 and drawn from two \MAPs ("hot" in red and "cool" in blue, see table \ref{tbl:referenceMAPs}) and with two different $\epsilon_r$ ($\epsilon_z$), 0 and 0.7, are shown in the lower two panels for illustration purposes.[TO DO: Re-do, if new analyses are in violin plot.]} 
+\label{fig:incomp_mockdata}
+\end{figure}
+
+%FIGURE: isoSphFlexIncompR
+
+\begin{figure}
+\plotone{figs/isoSphFlexIncompR_violins.eps}
+\caption{Caption [TO DO] (This was done using the current qDF to set the fitting range. Nvelocity=24 and Nsigma=5 is high enough (though not perfect). Maybe redo with fiducial qD. [TO DO] Also compare these results with the result when marginalizing over $vT$ [TO DO] Redo marginalization calculations, and this time punish negative scale potential scale length.) [TO DO: Write that $\epsilon_r = 0$ in analysis] [TO DO: reverse x-axis. Change x-axis label to e.g. radial (in-)completeness, $epsilon_r$.]} 
+\label{fig:isoSphFlexIncompR_violins}
+\end{figure}
+
