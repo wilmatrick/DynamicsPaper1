@@ -1,12 +1,28 @@
 \subsection{What if our assumed potential model differs from the real potential?}
 
-[TO DO]
+%Motivation for the Test
 
-\paragraph{Things to mention:}
-\begin{itemize}
-\item Result: With 20,000 stars it should be possible to distinguish between KKS-pote and MW14-Pot in reality
-\item We could make the model better, by including more staeckel components, i.e. a small bulge component or a second disk
-\end{itemize}
+In the long run we would like to incorporate a family of gravitational potential models in \RM that is flexible enough to reproduce the essential features of the MW's true mass distribution. Here we want to inspect if we can already give constraints on the true potential, even if our assumed potential is still too rigid - be it because of a low number of free potential parameters, or because our beliefs about the overall shape of the MW's potential are slightly wrong. While our fundamental assumption of axisymmetry springs immediately to mind, being at odds with the obvious existence of a bar and spiral arms in the MW, we will not dive into investigating the implications in the scope of this paper. We rather focus on the case where the mock data was drawn from one axisymmetric potential ("MW14-Pot") and is then analysed using another axisymmetric potential family ("KKS-Pot"), that does \emph{not} incorporate the true potential (compare the second and fourth panel in Fig. ???). The results are shown in Fig. \ref{fig:MW14vsKKS2SphFlex}.
+
+
+
+
+%Concrete results
+
+The set of reference potential parameters of the "KKS-Pot" in Table ??? were found by adjusting the 2-component Kuzmin-Kutuzov St\"{a}ckel potential by \citet{bat94} such that it looks like the "MW14-Pot" from \citet{bov15}: the radial and vertical force in $R \in [4,12]$ kpc, $|z| \in [0,4]$ kpc, and the rotation curve in $R \in [0,16]$ kpc (blue??? lines in Fig. \ref{fig:MW14vsKKS2SphFlex}). This could be understood as optimum, i.e. a fitting result from \RM will most likely not be better than a fit directly to the potential. Even though the analysis results from \RM shown in Fig. \ref{fig:MW14vsKKS2SphFlex} (yellow??? lines) fit the overall density shape less than the optimum (blue???), we only used tracers within the survey volume (marked in red???). And within the survey volume we actually capture the radial and vertical gravitational force very well - and it is the forces to which the stars' orbit are sensitive to. We also get the density structure of the disk inside the survey volume right, as well as the slope of the rotation curve at the sun. We used the "hot" \MAP from Table ???, which has a short tracer scale length, i.e. probes the inner regions better than the outer regions. This could explain why the halo shape in the outer regions of the survey volume is less well recovered than the disk in the inner regions.
+
+
+\paragraph{[TO DO:]} Also do the same thing for a cold population + redo the hot population analysis with using fiducial qDF.
+
+
+
+
+
+%Physical implications
+We note that the precision of the potential recovery (as opposed to its accuracy) is very tight. This means that 20,000 stars seem already to be enough stars per \MAP to be able to distinguish a "KKS-Pot"-like potential from a "MW14-Pot"-like potential, i.e. should encourage us to probe and compare different potential model families when actually fitting to real data sets of this size.
+\\The potential model used by \citet{bov13} had only two free parameters (disk scale lentgh and halo contribution to $v_\text{circ}(R_\odot)$. To circumvent the obvious disadvantage of this being at all not flexible enough, they fitted the potential separately for each \MAP and recovered the mass distribution for each \MAP only at that radius for which it was best constrained - assuming that \MAPs of different scale length would probe different regions of the Galaxy best. Based on our results in Fig. \ref{fig:MW14vsKKS2SphFlex} this seems to be indeed a sensible approach [TO DO: Check that this is indeed the case].
+\\Our choice of fitting a superposition of two St\"{a}ckel potentials to the mock data was motivated by the work of \citet{bat94} and \citet{fam03}, who aimed to create MW-like St\"{a}ckel potentials from a superposition of several Kuzmin-Kutuzov St\"{a}ckel potentials. The big advantage of this approach is the exact and fast action calculation in such a potential, which allows to explore a bigger potential parameter space in the same computation time. Our results in Fig. \ref{fig:MW14vsKKS2SphFlex} are also very encouraging that already two components alone can give relatively good constraints. Using more components could allow us also to model the bulge or to include more flexibility in modelling the disk structure.
+\\We suggest that combining the flexibility and computational advantages of a superposition of several St\"{a}ckel potential components with probing the potential in different regions with different \MAPs as done by \citet{bov13}, could be a promising approach to get the best possible constraints on the MW's potential.
 
 
 
@@ -14,7 +30,8 @@
 
 \begin{figure}
 \plotone{figs/MW14vdKKS2SphFlex_forcefields_compare.eps}
-\caption{Caption [TO DO] [TO DO: redo analyses with fiducial qDF for integration range] [TO DO: include selection function in legend]}
+\caption{Caption [TO DO] [TO DO: redo analyses with fiducial qDF for integration range] [TO DO: include selection function in legend] [TO DO: Correct typo in figure name.]}
+\label{fig:MW14vsKKS2SphFlex}
 \end{figure}
 
 %====================================================================
