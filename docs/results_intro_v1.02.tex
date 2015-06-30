@@ -13,3 +13,40 @@ But we also consider the more fundamental limitations:
 We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state.
 [{\bf hat shouldl also be at the end of the introduction..}
 [say: except for the case of ``errors'' we assume that thne phase-space errors are negligible..]
+
+
+%=========================================
+
+
+\begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
+\tabletypesize{\scriptsize}
+%\rotate
+\tablecaption{[TO DO: Caption]\label{tbl:tests}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
+\startdata
+\textcircled{1}                    & \emph{Potential:}             & "KKS-Pot"                  & -  & Fig. \ref{fig:mockdatadistr}\\
+Influence of                       &  \emph{\MAP:}                   & "hot" \& "cold" qDF   &   &                                                 \\
+survey volume on            & \emph{Survey volume:}   & a) $R \in [4,12]$ kpc,  &  & \\
+mock data distribution,  &                                             & $z \in [-4,4]$ kpc, &  & \\
+also in action space	   &                                             & $\phi \in [-20^\circ,20^\circ]$. &  & \\
+										   &                                             & b) $R \in [6,10]$ kpc, &  & \\
+										   &                                             & $z \in [1,5]$ kpc, &  & \\
+										   &                                             & $\phi \in [-20^\circ,20^\circ]$. &  & \\
+										   & \emph{\# stars per data set:} & 20,000 &  & \\
+										   & \emph{\# data sets:}   & 4 & & \\
+
+										   
+\tableline
+\textcircled{2}				& \emph{Potential:} & "Iso-Pot" & "Iso-Pot", free parameter: $b$ & Fig. ???\\
+Width of the					& \emph{\MAP:}        & "hot" qDF & "hot" qDF, free parameters: & \\
+likelihood scales			&                                  &                   & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
+with number of stars	& \emph{Survey volume:} & sphere around sun,   & & \\
+by $\propto 1/\sqrt{N}$&                                           & $r_\text{max} = 3$ kpc & & \\
+										   & \emph{\# stars per data set:} & between 100 and 40,000 &  & \\
+										   & \emph{\# data sets:}   & 132 & & \\
+\enddata
+\end{deluxetable}
+
+[TO DO: Make consistent $h_{\sigma_R}$ --> $h_{\sigma,R}$]
