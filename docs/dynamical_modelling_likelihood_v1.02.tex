@@ -87,4 +87,19 @@ For data sets as large as $N_j =$ 20,000 stars in one MAP, which in the age of G
 
 \subsubsection{Measurement Errors}
 
-[TO DO]
+We assume Gaussian errors in the observable space $\vect{y}_i \equiv (\tilde{\vect{x}}_i,\tilde{\vect{v}}_i)=(\alpha,\delta,(m-M),\mu_\alpha,\mu_\delta,v_\text{los})$,
+\begin{equation*}
+N[\vect{y}_i,\sigma_{y,i}](\vect{y}') = N[\vect{y}',\sigma_{y,i}](\vect{y}_i) \equiv  \prod_k \frac{1}{\sqrt{2\pi\sigma_{y,k}^2}} \exp\left( -\frac{(y_{i,k}-y_k')^2}{2\sigma_{y,k}^2}\right),
+\end{equation*}
+where $y_{i,k}$ are the coordinate components of $\vect{y}_i$. Observed stars follow the (quasi-isothermal) distribution function (DF$(\vect{y}) \equiv$ qDF$(\vect{J}[\vect{y} \mid p_\Phi] \mid p_\text{DF}])$ for short), convolved with the error distribution $N[0,\sigma_{y}](\vect{y})$. The selection function sf$(\vect{y})$ acts on the space of (error affected) observables. 
+Then the probability of one star coming from potential $p_\Phi$, distribution function $p_\text{DF}$ and being affected by the measurement errors $\sigma_{\vect{y}}$ becomes
+\begin{eqnarray*}
+\tilde{P}(\vect{y}_i \mid p_\Phi,p_\text{DF},\sigma_{\vect{y},i}) \equiv \frac{\text{sf}(\vect{y}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot  \int \Diff{6} y' \  \text{sf}(\vect{y}')  \cdot N[\vect{y},\sigma_{\vect{y},i}](\vect{y}')}.
+\end{eqnarray*}
+In case of errors in distance modulus $\mu \equiv (m-M)$, but not in position on the sky (i.e. $\sigma_\alpha = 0$ and $\sigma_\delta = 0$), and a purely spatial selection function, this reduces to
+\begin{eqnarray}
+\tilde{P}(\vect{y}_i \mid p_\Phi,p_\text{DF},\sigma_{\vect{y},i}) &\equiv& \frac{\text{sf}(\tilde{\vect{x}}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot  \int \diff \mu' \  \text{sf}(\tilde{\vect{x}}')  \cdot N[\mu,\sigma_{\mu,i}](\mu')},\nonumber\\
+&\approx& \frac{\text{sf}(\tilde{\vect{x}}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot   \text{sf}(\tilde{\vect{x}})}\label{eq:errapprox}\\
+&\approx& \frac{ \text{sf}(\tilde{\vect{x}}_i)}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot   \text{sf}(\tilde{\vect{x}})} \cdot \frac{1}{N_\text{error}} \sum_n^{N_\text{error}}  \text{DF}(\vect{y}'_{i,n}) \label{eq:errMC}
+\end{eqnarray}
+The first approximation, Eq. \ref{eq:errapprox}, is valid only in the case of small $\sigma_\mu$ [TO DO: check], but makes the normalisation much less computational expensive - especially in the case of heteroscedastic errors $\sigma_{\mu,i}$, for which the normalisation would have been calculated for each star separately. The second approximation, Eq. \ref{eq:errMC}, is how we compute the convolution using Monte Carlo integration with $N_\text{error}$ samples drawn from the error Gaussian, $y'_{i,n} \sim N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')$.
