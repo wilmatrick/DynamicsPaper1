@@ -20,32 +20,60 @@ We do not explore the breakdown of the assumption that the system is axisymmetri
 
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
-%\rotate
-\tablecaption{[TO DO: Caption]\label{tbl:tests}}
+\rotate
+\tablecaption{[TO DO: Caption] Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in ??? and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
 \startdata
-\textcircled{1}                    & \emph{Potential:}             & "KKS-Pot"                  & -  & Fig. \ref{fig:mockdatadistr}\\
-Influence of                       &  \emph{\MAP:}                   & "hot" \& "cold" qDF   &   &                                                 \\
-survey volume on            & \emph{Survey volume:}   & a) $R \in [4,12]$ kpc,  &  & \\
-mock data distribution,  &                                             & $z \in [-4,4]$ kpc, &  & \\
-also in action space	   &                                             & $\phi \in [-20^\circ,20^\circ]$. &  & \\
-										   &                                             & b) $R \in [6,10]$ kpc, &  & \\
-										   &                                             & $z \in [1,5]$ kpc, &  & \\
-										   &                                             & $\phi \in [-20^\circ,20^\circ]$. &  & \\
-										   & \emph{\# stars per data set:} & 20,000 &  & \\
-										   & \emph{\# data sets:}   & 4 & & \\
+\textcircled{1}         & \emph{Potential:}     & "KKS-Pot" & - & Fig. \ref{fig:mockdatadistr}\\
+Influence of            &  \emph{\MAP:}         & 2 \MAPs "hot" or "cold" qDF   &   & \\
+survey volume on        & \emph{Survey volume:} & a) $R \in [4,12]$ kpc,$z \in [-4,4]$ kpc, $\phi \in [-20^\circ,20^\circ]$. &  & \\
+mock data distribution, &                       & b) $R \in [6,10]$ kpc,$z \in [1,5]$ kpc, $\phi \in [-20^\circ,20^\circ]$.&  & \\
+also in action space	& \emph{\# stars per data set:} & 20,000 &  & \\
+						& \emph{\# data sets:}   & 4 (= $2\times 2$ models) & & \\
 
 										   
 \tableline
-\textcircled{2}				& \emph{Potential:} & "Iso-Pot" & "Iso-Pot", free parameter: $b$ & Fig. ???\\
-Width of the					& \emph{\MAP:}        & "hot" qDF & "hot" qDF, free parameters: & \\
-likelihood scales			&                                  &                   & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
-with number of stars	& \emph{Survey volume:} & sphere around sun,   & & \\
-by $\propto 1/\sqrt{N}$&                                           & $r_\text{max} = 3$ kpc & & \\
-										   & \emph{\# stars per data set:} & between 100 and 40,000 &  & \\
-										   & \emph{\# data sets:}   & 132 & & \\
+\textcircled{2}			& \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", free parameter: $b$ & Fig. \ref{fig:sqrtN}\\
+Width of the			& \emph{\MAP:}          & "hot" qDF & "hot" qDF, free parameters: & \\
+likelihood scales       &                       &           & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
+with number of stars    & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 3$ kpc   & (fixed \& known) & \\
+by $\propto 1/\sqrt{N}$.& \emph{\# stars per data set:} & between 100 and 40,000 &  & \\ 
+                        & \emph{\# data sets:}  & 132 & & \\                                       
+                        & \emph{Analysis method:} & & likelihood on grid & \\
+                        & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ (for speed) & \\
+
+\tableline
+\textcircled{3}         & \emph{Potential:}     & 2 "Iso-Pot" with & "Iso-Pot", free parameter: $b$ & Fig. \ref{fig:centrallimittheorem}\\
+Parameter estimates     &                       & $b=0.8$ kpc or $b=1.5$ kpc & \\
+are unbiased.           & \emph{\MAP:}          & 2 \MAPs, "hot" or "cool" qDF  & "hot"/"cool" qDF, free parameters: & \\
+                        &                       &                          & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
+                        & \emph{Survey volume:} & 5 spheres around sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc & (fixed \& known) & \\
+                        & \emph{\# stars per data set:} & 20,000 & & \\
+                        & \emph{\# data sets:}  & 640 (= $2\times2\times5$ models $\times 32$ realisations) & & \\
+                        & \emph{Analysis method:} & & likelihood on grid & \\
+                        & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ (for speed) & \\
+
+\tableline
+\textcircled{4} & [TO DO] & & & \\
+Influence of & & & & \\
+ position \& shape & & & & \\
+of survey volume & & & & \\
+on parameter recovery & & & & \\
+
+\tableline
+\textcircled{5}         & \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", all parameters free & Illustration \& mock data: \\
+Influence of            & \emph{\MAP:}          & 2 \MAPs, a) "hot" or b) "cool" qDF & qDF, all parameters free &  Fig. \ref{fig:incompR_mockdata} \& \ref{fig:incompZ_mockdata} \\
+wrong assumptions       & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & Analysis results: \\
+about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncompR_violins} \& ??? \\
+(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results\\
+on parameter recovery   &                       & $r \equiv$ distance from sun, & & when not using $v_T$ data: \\
+                        &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & \ref{fig:isoSphFlexIncomp_marginal_violins}\\
+                        &                       & completeness$(z) = 1-\epsilon_z \frac{|z|}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$, & completeness$(r)$ = 1, twenty $\epsilon_z=0$& \\
+                        &                       & $z \equiv$ distance from Gal. plane. & & \\
+                        & \emph{\# stars per data set:} & 20,000 & & \\
+                        & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
 \enddata
 \end{deluxetable}
 
