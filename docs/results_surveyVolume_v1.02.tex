@@ -17,12 +17,29 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 \paragraph{Stuff that needs to be further examined in fig. \ref{fig:obsvolumetest}:}
 \begin{itemize}
 \item [TO DO] There are biases. Do they get smaller with higher accuracy? Do they disappear for KKS potential?
-\item [TO DO]  As transparency doesn't work in eps, the orange volume looks smaller than the blue one.
 \item [TO DO] Maybe skip first row of plots?
 \item [TO DO] 'Larger is better' is also demonstrated in fig. \ref{fig:centrallimittheorem}
 \item [TO DO] We could compare these results with similar results for KKS pot. If the latter has no biases, we can state that to avoid biases when using an non-Staeckel potential, one should use a volume with comparable R \textit{and} z coverage, because for this the biases seem to be smallest.
 \item [TO DO] Maybe add volume at smaller radius with large vertical extent?
 \item [TO DO] Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?
 \end{itemize}
+
+\begin{figure}
+\plotone{figs/wedFlexVol_bias_vs_SE.eps}
+\caption{[TO DO: Caption] New plot (should replace Fig. \ref{fig:obsvolumetest}) for 4 differently shaped volumes and 3 different kinds of potentials. Higher numerical accuracy. MW13 and KKS both look fine. But: When leaving vcirc as a free parameter, we can't recover the true potential for the orange volume.}
+\end{figure}
+
+
+\begin{figure}
+\includegraphics[height=0.9\textheight]{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_bigRinsideR0.eps}
+\caption{Testplot for convergence of Isochrone / bigRinsideR0 survey volume. [TO DO: Remove again]}
+\end{figure}
+
+
+\begin{figure}
+\includegraphics[height=0.9\textheight]{~/BovyCode/analyzeFlexible/plots/wedFlexVol/wedFlexVol_KKS_violins.eps}
+\caption{Testplot for problem with using ActionAngleStaeckelGrid for both mock data and analysis (First 5 analyses in each color) and then changing the code such that mock data was created with the more exact ActionAngleStaeckel, while Analysis was still done with ActionAngleStaeckelGrid. [TO DO: Remove again]}
+\end{figure}
+
 
 %====================================================================
