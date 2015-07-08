@@ -1,0 +1,89 @@
+\subsection{Likelihood}
+
+\paragraph{Form of the likelihood}. As data we use the positions and velocities of stars coming from a given \MAP and survey selection function $\text{sf}(\vect{x})$,
+\begin{eqnarray*}
+D  =\{ \vect{x}_i,\vect{v}_i \mid \text{(star $i$ belonging to same MAP)} \wedge (\text{sf}(\vect{x_i}) > 0) \}.
+\end{eqnarray*}
+
+The model that we fit to the data is a parametrized potential and a single qDF with a given number of fixed and free parameters,
+\begin{eqnarray*}
+M =\{ p_\text{DF} , p_\Phi \},
+\end{eqnarray*}
+We fit the qDF parameters (see \S\ref{sec:qDF}) with a logarithmically flat prior, i.e. flat priors in
+\begin{eqnarray*}
+p_\text{DF} := \{&& \ln \left(h_R/8\text{kpc}\right), \\
+&& \ln \left(\sigma_R/220\text{km s$^{-1}$}\right), \ln \left(\sigma_z/220\text{km s$^{-1}$}\right), \\
+&& \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\ \}.
+\end{eqnarray*}
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
+
+The likelihood of the data given the model $\mathscr{L} = (D \mid M)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
+\begin{eqnarray}
+\mathscr{L}(M \mid D) &\equiv& \prod_i^{N} P(\vect{x}_i,\vect{v}_i \mid M) \nonumber\\
+&=& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid M) \cdot \text{sf}(\vect{x})}\nonumber\\
+&\propto& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x})}, \label{eq:prob}
+%\label{eq:likelihood}
+\end{eqnarray}
+where $N$ is the number of stars in the data set $D$.
+In the last step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we  simply evaluate Eq. (\ref{eq:prob}) in the likelihood calculation. We find the best set of model parameters by maximising the likelihood. 
+
+
+\paragraph{A word on units.} We evaluate the likelihood in a scale-free potential within a Galactocentric coordinate system which is defined as $v_\text{circ}(R = 1) = 1$. The circular velocity at the sun's radius, $v_\text{circ}(R_\odot = 8. \text{kpc}) \sim 230 \text{km s$^{-1}$}$, determines the total mass amplitude of the galaxy potential. In the modelling all data and model parameters are re-scaled to spatial units of $r_o := R_\odot$ or velocitiy units of $v_o := v_\text{circ}(R_\odot )$. The prefactor $1/\left(r_o v_o\right)^3$ in eq. (\ref{eq:prob}) makes sure that the likelihood has the correct units to satisfy:
+\begin{eqnarray*}
+\int P(\vect{x},\vect{v} \mid M) \Diff 3 x \Diff 3 v \propto 1
+\end{eqnarray*} 
+Including this prefactor is crucial when $v_\text{circ}(R_\odot )$ is a free fitting parameter.
+
+\paragraph{Numerical accuracy in calculating the likelihood.} In the case of $\text{sf}(\vect{x})=1$ everywhere inside the observed volume (i.e. a complete sample as assumed in most tests in this work), the normalisation in eq. (\ref{eq:prob}) is essentially a two-dimensional integral in $R$ and $z$ of the interpolated tracer density $\rho_{DF}$ ???(see Eq. ??? and surrounding text) over the survey volume (times the observation volume's angular contribution at each $(R,z)$). We perform this integral as a Gauss Legendre quadrature of order 40 in each $R$ and $z$ direction.
+\\Unfortunately the evaluation of the likelihood for only one set of model parameters is already very computationally expensive. The computation speed is set by the number of action calculations required, i.e. the number of stars and the numerical accuracy of the integrals in Eq. ??? needed for the normalisation, which requires $N_\text{spatial}^2 \times N_\text{velocity}^3$ action calculations. The accuracy has to be chosen high enough, such that a resulting numerical error does not dominate the likelihood, i.e.
+\begin{eqnarray}
+\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N} \log \text{qDF}(\vect{J_i} \mid M) - 3N \log \left( r_o v_o\right)\nonumber\\
+& & -N \log(\text{true normalisation}) - N \log (1 + \text{rel. error}),\label{eq:relerrlikelihood}\\
+ \text{with }  & &N \log (1 + \text{rel. error}) \lesssim 1.\footnote{In other words, this error is only small enough, if it does not affect the comparision of two adjacent models whose likelihoods differ by a factor of 10 to be clearly distinguishable.}\nonumber
+\end{eqnarray}
+For data sets as large as $N =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.
+[TO DO: Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.]
+
+%====================================================================
+
+%FIGURE: accuracy in the likelihood normalisation 
+
+\begin{figure}
+\plotone{figs/normalisation_accuracy_3.eps}
+\caption{[TO DO: Re-write caption. The second potential is not the potA-MW potential anymore but the reference potential "MW13-Pot".] Relative error of the likelihood normalization in eq. (\ref{eq:prob}) and (\ref{eq:relerrlikelihood}) depending on the accuracy of the density calculation in \S\ref{sec:density}. The different colors represent calculations for different radii of the spherical observation volume around the sun, as indicated in the legend. $N_\text{spatial}$ is the number of regular grid points in each $R$ and $z > 0$ within the observed volume on which the tracer density is evaluated according to eq. (\ref{eq:tracerdensity}). At each $(R,z)$ a Gauss-Legendre integration of order $N_{velocity}$ is performed over an integration range of $\pm N_\text{spatial}$ times the dispersion in $v_R$ and $v_z$ and $[0,1.5v_\text{circ}(R_\odot)]$ in $v_T$. To integrate the interpolated density over the observed volume to arrive at the likelihood normalization in eq. (???), we perform a 40th-order Gauss-Legendre integration in each $R$ and $z$ direction. The distribution function that was evaluated for these plots has the parameters $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We show the results for three different potentials, an isochrone potential with parameters $p_\Phi = \{v_\text{circ},b \}=\{230 \text{ km s$^{-1}$},0.9\text{ kpc } \}$, a MW-like potential (cf. ???) with parameters $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 2-component KK-Staeckel potential with parameters $p_\Phi = \{v_\text{circ}, \Delta, (a/c)_\text{disk},(a/c)_{halo},k)\} = \{230\text{ km s$^{-1}$},0.3,20.,1.07, 0.28\}$. (Caption continues on next page.)} 
+\label{fig:norm_accuracy}
+\end{figure}
+
+\addtocounter{figure}{-1}
+\begin{figure} [t!]
+  \caption{(Continued.) We calculate the true normalization with high accuracy as $M_\text{tot,true} \approx M_\text{tot}(N_\text{spatial}=20,N_\text{velocity}=56,N_\text{sigma}=7)$. [TO DO: Introduce $M_{tot}$ as the likelihood normalization somewhere as formula... ???] The relative error of the normalization is then calculated as $(M_\text{tot}[N_\text{spatial},N_\text{velocity},N_\text{sigma}] -  M_\text{tot,true} ) / M_\text{tot,true} $. The dashed lines indicate the accuracy used in our analyses: it is better than $0.001\%$ for all three potential types. Only for the smallest volume in the MW potential (yellow line) the error is only $\sim 0.005\%$. This could be due to the fact, that, while we have analytical formulas to calculate the actions for the isochrone and the Staeckel potential exactly, we have to resort to an approximate action calculation (Staeckel Fudge by Binney) for the MW-like potential (cf. \S ???). [TO DO: larger labels???] [TO DO: Try to redo yellow curve in MW. Weird, that it does not depend on $N_{spatial}$.???]}
+\end{figure}
+
+\paragraph{[TO DO] Stuff to explain about fig. \ref{fig:norm_accuracy}:} When fitting a potential and DF model to stellar data, the numerical accuracy of the normalisation is very important. The tracer density changes smoothly with the potential and DF parameters. Systematic errors in the density calculation can therefore lead to systematic over- or underestimation of the true potential parameters. This effect is less severe for larger volumes: The density gradient within a large volume is larger and therefore the relative change of the normalisation with the model parameters is also larger as for smaller observation volumes. For small volumes it is therefore more important to get the density right, i.e. having high $N_\text{velocity}$ and $N_\text{sigma}$. For larger volumes it is also important to pre-calculate the density at enough spatial points, i.e. having high $N_\text{spatial}$, while at the same time smaller inaccuracies in the density calculation do not have a comparable severe effect. This could be also the reason, why the normalisation calculation for the smallest volume in fig. \ref{fig:norm_accuracy} is much more well behaved as long as we can calculate exact actions (isochrone and Staeckel potential) [TO DO: Is this really the reason????]. [TO DO: Should we demonstrate how a wrong accuracy introduces biases???] Using a fiducial qDF to fix the integration range over the velocity in the analysis  (cf. \S ???) can help to make the normalisation vary in a more controlled and smooth way. If the fiducial qDF is close to the true qDF parameters, we get already un-biased and well-behaved results for a data set with 20,000 stars in the isochrone potential and an accuracy of $N_\text{sigma}=4$ and $N_\text{velocity}=20$, as demonstrated in fig. \ref{fig:centrallimitheorem}. This lower accuracy leads to an relative error of  0.005\% in the normalisation and therefore to an error in the log-likelihood of $\sim1$ (cf. \S{sec:numaccuracynormalisation}). [TO DO: Is this correct? $N \log(n+np) = N\log(n) + N\log(1+p)$ with $N\log(1+p)\sim 1$ for N=20000, p=0.00005. But why do we know that 1 is small enough? Argument is also different to Jo's argument with $N_{stars}*$precision=1, but I don't get that.???]  [TO DO: Does this higher accuracy make the biases in MW potential analyses smaller????]\\If two hypotheses have a $\Delta \log \mathscr{L} = 1$, one hypothesis is 10 times more likely. Below this we cannot properly decide which hypothesis is better. [TO DO: This limit should be satisfied for the differential log likelihood error (i.e. the derivative of the likelihood w.r.t. the parameters.) than only the likelihood. How to do this? Probably not doing this....]
+
+
+%====================================================================
+
+\subsubsection{Marginalization over coordinates}
+[TO DO: Mention only in Appendix]
+
+\paragraph{Dealing with measurement errors.} 
+
+We assume Gaussian errors in the observable space $\vect{y}_i \equiv (\tilde{\vect{x}}_i,\tilde{\vect{v}}_i)=(\alpha,\delta,(m-M),\mu_\alpha,\mu_\delta,v_\text{los})$,
+\begin{equation*}
+N[\vect{y}_i,\sigma_{y,i}](\vect{y}') = N[\vect{y}',\sigma_{y,i}](\vect{y}_i) \equiv  \prod_k \frac{1}{\sqrt{2\pi\sigma_{y,k}^2}} \exp\left( -\frac{(y_{i,k}-y_k')^2}{2\sigma_{y,k}^2}\right),
+\end{equation*}
+where $y_{i,k}$ are the coordinate components of $\vect{y}_i$. Observed stars follow the (quasi-isothermal) distribution function (DF$(\vect{y}) \equiv$ qDF$(\vect{J}[\vect{y} \mid p_\Phi] \mid p_\text{DF}])$ for short), convolved with the error distribution $N[0,\sigma_{y}](\vect{y})$. The selection function sf$(\vect{y})$ acts on the space of (error affected) observables. 
+Then the probability of one star coming from potential $p_\Phi$, distribution function $p_\text{DF}$ and being affected by the measurement errors $\sigma_{\vect{y}}$ becomes
+\begin{eqnarray*}
+\tilde{P}(\vect{y}_i \mid p_\Phi,p_\text{DF},\sigma_{\vect{y},i}) \equiv \frac{\text{sf}(\vect{y}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot  \int \Diff{6} y' \  \text{sf}(\vect{y}')  \cdot N[\vect{y},\sigma_{\vect{y},i}](\vect{y}')}.
+\end{eqnarray*}
+In case of errors in distance modulus $\mu \equiv (m-M)$, but not in position on the sky (i.e. $\sigma_\alpha = 0$ and $\sigma_\delta = 0$), and a purely spatial selection function, this reduces to
+\begin{eqnarray}
+\tilde{P}(\vect{y}_i \mid p_\Phi,p_\text{DF},\sigma_{\vect{y},i}) &\equiv& \frac{\text{sf}(\tilde{\vect{x}}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot  \int \diff \mu' \  \text{sf}(\tilde{\vect{x}}')  \cdot N[\mu,\sigma_{\mu,i}](\mu')},\nonumber\\
+&\approx& \frac{\text{sf}(\tilde{\vect{x}}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot   \text{sf}(\tilde{\vect{x}})}\label{eq:errapprox}\\
+&\approx& \frac{ \text{sf}(\tilde{\vect{x}}_i)}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot   \text{sf}(\tilde{\vect{x}})} \cdot \frac{1}{N_\text{error}} \sum_n^{N_\text{error}}  \text{DF}(\vect{y}'_{i,n}) \label{eq:errMC}
+\end{eqnarray}
+The first approximation, Eq. \ref{eq:errapprox}, is valid only in the case of small $\sigma_\mu$ [TO DO: check], but makes the normalisation much less computational expensive - especially in the case of heteroscedastic errors $\sigma_{\mu,i}$, for which the normalisation would have been calculated for each star separately. The second approximation, Eq. \ref{eq:errMC}, is how we compute the convolution using Monte Carlo integration with $N_\text{error}$ samples drawn from the error Gaussian, $y'_{i,n} \sim N[\vect{y}_i,\sigma_{\vect{y},i}](\vect{y}')$.
+
+[TO DO: Consistent capitals in section titles. ????]

@@ -1,0 +1,155 @@
+\section{Introduction} \label{sec:intro}
+
+Stellar dynamical modelling is the fundamental tool to infer the gravitational potential of the Milky Way from the positions and motions of its stars [REF]. The observational information on the phase-space coordinates of stars are currently growing at a rapid pace, and will be taken to a whole new level by the upcoming Gaia data. Yet, rigorous and practical modelling tool that turn this information into constraints both on the gravitational potential and on the distribution function (DF) of stellar orbits, are scarce [REF]. 
+
+Accurately determining the Galactic gravitational potential is fundamental for understanding its dark matter and baryonic structure [REF] [[: what is the local dark matter density? Is the Milky Way's dark matter halo flattened?...]]] Accurately determining the stellar-population dependent orbit distribution function is a fundamental contraint on the Galaxy's formation history.
+
+[TO DO: 
+* mention my notes on why potential is important
+* Actions: more or less referencing Binneys papers, just a brief paragraph in potential section]
+
+There is a variety of practical approaches to dynamical modelling of discrete collisionless tracers (such as the stars in the Milky Way) [REF]. Most of the -- explictly or implicitly -- describe the stellar distribution through a distribution function.  Actions are good ways to describe orbits, because they canonical variables with their corresponding angles, have immediate physical meaning, and obey adiabatic invariance [Binney 2011abcdefg]. 
+
+Recently, Binney and Bovy [REF] proposed to combine parameterized axisymmetric potentials with DF's that are simple analytic functions of the three orbital actions to model discrete data. Binney[REF] had proposed a set of simple action-based distribution functions. Ting/BR13 showed that these DF's
+may be good decriptions of the Galactic disk, when one only consideres so-called mono-abundance populations (MAP), i.e. sub-sets of stars with similar [Fe/H] and $[\alpha/FE]$ (Bovy12 abcde).
+
+BR13 implemented a modelling approach that put action-based DF modelling of the Galactic disk in an axisymmetric potential in practice. Given
+an assumed potential and an assumed DF, they directly calculated the likelihood of the observed ($\vec{x},\vec{v}$ for each sub-set of MAP among SEGUE Gdwarf [REF]. This modelling also accounted for the complex, but known selection function of the kinematic tracers.  For each MAP, the modelling resulted in a constraint of its DF, and an independent constraint on the gravitational potential, which members of all MAPs feel the same way. 
+Taken as an ensemble, the individual MAP models constrained the disk surface mass density over a wide range of radii (4-8kpc), and proved a powerful constraint on the disk mass scale length ($\sim 2~kpc$) and on the disk to dark matter ratio at the Solar radius. 
+
+Yet, these recent models still leave us poorly prepared with the wealth and quality of the existing and upcoming data sets [LAMOST, Gaia etc...]
+
+This is because BR13 made a number of quite severe and idealizing assumptions about the potential, the DF and the knowledge of observational effects (such as the selection function). All these idealizations are likely to translate into systematic error on the inferred potential or DF, well above the formal error bars of the upcoming data sets.
+
+It is therefore critical, to follow up on this initial modelling and explore the robustness of the method against breakdowns of its assumptions
+
+In this paper, we set out to analyze the most important ones..
+
+
+
+
+
+
+\begin{itemize}
+
+\item \textbf{Why is knowing the Gravitational potential of the MW important?}
+\begin{itemize}
+\item[1.] The dark MW: Knowing the DM distribution in our own Galaxy:
+\item[a)] shape of halo to constrain theories of Galaxy formation and therefore the nature of DM
+\item[b)] local DM density for DM experiments
+\item[2.] The visible MW: The star's orbits (and their distribution) together with their chemistry are (the best and only?) tracers of the MW's star formation and assembling history
+\item[$\rightarrow$] To calculate the orbits at least approximately, we need a good model for the gravitational potential to turn stellar positions and velocities into full orbits
+\item[$\rightarrow$] Vice versa, we can constrain the potential using chemo-dyanmical modelling
+\end{itemize}
+
+\item \textbf{Dynamical Modelling of the MW} other approaches not using actions [What kind of methods? What kind of references? What do we already know about the MW?]
+
+\item \textbf{Actions and Action-based distribution functions}
+\begin{itemize}
+\item full stellar orbits are the actual probes of the potential not just the current (and therefore random) positions and velocities of stars
+\item orbits are best described/labeled by integrals of motion. axi-symmetric potentials have three integrals of motion, e.g. energy and $L_z$ plus non-classical third integral. Or the three actions $J_R, J_z, J_\phi=L_z$.
+\item Advantages of using Actions: 
+\begin{itemize}
+\item They have easy physical meanings (quantify amount of oscillations in each of the coordinate directions), while $I_3$ doesn't.
+\item They are the canonical conjugate momenta to a set of coordinates, the so-called angles.
+\item[$\rightarrow$] canconical transformation between $(x,v)$ and action-angles conserves phase-space density of stars.
+\item[$\rightarrow$] angles simply increase linearly while the star proceedes along the orbit.
+\item[$\rightarrow$] The actions are therefore enough to fully describe an orbit and are the natural coordinates of orbits.
+\item[$\rightarrow$] The natural choice as arguments for the construction of distribution functions (as distribution in angle space is uniform and does not matter)
+\item Superposition of DFs with actions as arguments works, while superposition of DFs with E and $L_z$ as arguments does not work (see e.g. Piffl et al. 2015, §3.3). $\rightarrow$ We can construct a distribution function for a full galaxy from finding an action-based DF for each galactic component separately.
+\end{itemize}
+\item Disadvantages of using Actions:
+\begin{itemize}
+\item Calculating actions is expensive $\rightarrow$ conversion in case of Staeckel potential includes an integral
+\item Calculating actions is almost impossible for potentials that are not of Staeckel form
+\item In non-axisymmetric potentials actions can be calculated locally but are not conserved any more (radial migration)
+\end{itemize}
+\item Remedies:
+\begin{itemize}
+\item In the age of supercomputers computational costs are not a deal breaker anymore
+\item Binney's Staeckel fundge for calculating approximate actions in more complex potentials, which locally approximates actions with a Staeckel potential (e.g. implemented in Galpy)
+\item even in realistic galaxies with radial migration at least vertical actions are conserved
+\end{itemize} 
+\end{itemize}
+
+\item \textbf{Our modelling approach}
+\begin{itemize}
+\item ... is an orbit-based approach
+\item ... belongs to the distribution function modelling methods: Assumes the true orbits follow a distribution function of a given form
+\item ... fits simultaneously the orbit distribution function and potential to stellar positions $\rightarrow$ only in the true potential we get the true orbits and therefore their distribution follows indeed the DF.
+\item ... includes chemistry (at least implicitly): Kinematics of stars are intrinsically related to the stars' chemistry: A group of stars with same chemistry was born under similar conditions, or even at similar times in similar regions of the Galaxy $\rightarrow$ were subject to the same processes that shaped their distribution in phase-space (i.e. modified their orbits). Chemistry has to be taken into account.
+\item \underline{Motivation:} Findings by Bovy et al 2012, Ting et al. 2013: orbits of MAPs follow a single qDF (also explain MAP and binning)
+\begin{scriptsize}
+\begin{itemize}
+\item "Any dynamical modelling approach depends crucially on the assumption one makes about the structure of the galaxy and on the choices for the DFs: The structure of the MW disk is still under debate. While many support the thin-thick disk dichotomy in the MW disk (references ???), \cite{bov12b} found indications that the MW disk might actually be a super-position of many stellar sub-popluations with a continuous spectrum of scale heights, scale lengths, metallicity and [$\alpha$/Fe] abundances (dubbed mono-abundance populations (\MAPs)). Further investigation lead to the findings that \MAPs in the MW disk have a simple spatial structure that follows an exponential in both radial and vertical direction \cite{bov12d}. The corresponding velocity dispersion profile of the \MAPs also decreases exponentially with radius and is nearly independent of height above the plane, i.e. quasi-isothermal \cite{bov12c}. The radial decrease in vertical velocity dispersion has, according to \cite{bov12c}, a long scale length of $h_{\sigma,z} \sim 7$ kpc for all \MAPs. Older \MAPs, which are characterized by lower metallicities and [$\alpha$/Fe] abundances, have in general shorter density scale lengths, larger scale heights and velocity dispersion \cite{bov12d}. \cite{tin13} and \cite{bov13} finally proposed that these findings could be employed for dynamical modelling techniques using action-based distribution functions. An action-based distribution function, that is flexible enough to describe the spectrum of simple phase-space distributions of different \MAPs, is the quasi-isothermal distribution function (qDF) by \cite{bin11}, as demonstrated by \cite{tin13}."
+\end{itemize}
+\end{scriptsize}
+\item \underline{First application:} Bovy \& Rix 2013. [Most important results?]
+\item Acronym (Roadmapping)...
+\item Uses Galpy extensively.
+\item Bovy \& Rix 2013 used many assumptions/approximations/idealizations that they did not test thoroughly - but as they had only $\sim$ 100 [???] stars per MAP, their modelling was more affected by Poisson noise and less by the systematics of wrong assumptions.
+\end{itemize}
+
+\item \textbf{Other Action/DF-based modelling} Compare to our own approach
+\begin{itemize}
+\item \underline{Piffl et al. 2014:} They fitted a superposition of DFs (superposition of qDFs for cohorts in thin disk, single qDF for thick disk, other DF for halo) to the full RAVE data set. No chemical information at all. No treatment of selection function. Fitting of velocity dispersion histograms in density bins.
+\item  \underline{Sanders \& Binney 2015:} developed extended distribution functions, i.e. functions of both actions and metallicity for thin/thick disk + halo. Including of selection function. BUT: potential not fitted.
+\item \underline{Ultimate goal:} Fitting both a very flexible distribution function in both action/abundance space for the whole galaxy + flexible potential.
+\item \underline{Binney's group's focus:} rather on developing eDFs, potential recovery more secondary.
+\item \underline{Our focus:} getting very good constraints on potential with an optimum of simplicity in DF and flexibility in capturing the actual distribution. 
+\item \underline{Our philosophy:} We see our approach as intermediate/first step before ultimately using eDFs. We don't think that there is an easy to find and formulate eDF that describes the distribution of stars in both action and abundance space (metallicity AND alpha), see fig. 6 in Bovy \& Rix (2013). Bovy \& Rix 2013 were fitting each \MAP separately with a qDF and potential and used the best fit potential model only to give a mass constraint at one radius. By doing so they/we 
+\begin{itemize}
+\item[a)] separate out complexity / avoid explicitely dealing with the substructure of the DF in abundance space while still including abundance information (it's easier to see what goes right and wrong; less assumptions) 
+\item[b)] make use of different \MAPs constraining different regions of the potential best and are therefore less limited by having to get the potential model right.
+\item[c)] Quote HW: "It provides true cross-checking redundancy w.r.t. the potential estimates." [What does he mean by that?]
+\end{itemize}
+\end{itemize}
+
+\item \textbf{The era of big Galactic surveys (and the motivation for this paper)}:
+\begin{itemize}
+\item \underline{GAIA:} By end of 2016 we will have full 6D and very precise stellar phase-space coordinates, as well as stellar abundances for (how many???) stars in the MW disk $\rightarrow$ there needs to be reliable and well-tested dynamical modelling machinery in place to exploit this wealth of data
+\item \underline{existing surveys and the Cannon (by Melissa Ness):} Sophisticated machine learning tools like the Cannon will soon make it possible to also combine existing data sets like APOGEE [Reference?], LAMOST [Reference?], SEGUE [Reference?] [what else?], i.e. already in the pre-Gaia era we will soon have to deal with large data sets.
+\item \underline{This works motivation:} When the number of stars per \MAP becomes large, the actual assumptions that go into the modelling will start to dominate the Poisson noise and determine the successfullness of the approach.
+\item[$\rightarrow$] In this work we will re-visit some of the assumptions made in Bovy \& Rix (2013) and investigate, using mock data, how strong deviations between the real world and the model assumptions can affect the recovery of the grav. potential.
+\end{itemize}
+
+\item \textbf{Aspects to investigate in this work}
+\begin{itemize}
+
+\item[a)] \emph{How well does the modelling machinery behave in the limit of large data sets?} For a large number of stars per \MAP three things start to matter, that did not for smaller data sets:
+\begin{itemize} 
+\item[1.)] We want our modelling to be an un-biased and asymptotically normal estimator (investigated in \S\ref{sec:largedata}). 
+\item[2.)] numerical inaccuracies in the actual modelling machinery start to matter and need to be avoided (investigated in \S\ref{sec:numaccuracynormalisation}). 
+\item[3.)] Parameter estimates start becoming so precise, that we can distinguish between similar but different models, i.e. we need more flexibility/free parameters in the potential/DF models $\longrightarrow$ the modelling machinery itself needs to be flexible and fast in effectively finding the best fit parameters for a large set of parameters. Some improvements were made to the machinery used in Bovy \& Rix (2013) and are presented in \S\ref{sec:fitting}.
+\end{itemize}
+
+\item[b)] \emph{What aspects about the data limit the parameter recovery?}
+\begin{itemize} 
+\item[1.)] In an era where we can choose data from different MW surveys, it might be worth to explore if different regions within the MW (i.e. differently shaped or positioned survey volumes) are especially diagnostic to recover the potential. (\S\ref{sec:obsvolume})
+\item[2.)] What happens if our knowledge about the completeness / detection rate within the survey volume is not perfect?(\S\ref{sec:incompR})
+\item[3.)] Measurement errors
+\end{itemize}
+
+\item[c)] \emph{How well can we hope to recover the true potential, when our parametrized model family for potential and DF deviate from the true potential and DF?}
+\begin{itemize} 
+\item[1.)] What happens, if our assumed DF for the \MAPs deviates from the true DF of the stars?  (\S\ref{sec:mixedDFs}) There are two sub-aspects: 
+\begin{itemize}
+\item[i)] The \MAPs do intrinsically not follow the qDF. 
+\item[ii)] The \MAPs \emph{do} follow the qDF, but  \MAPs are polluted by stars from neighbouring \MAPs in the $\alpha$-Fe-plane, which could be either due to binning the stars in too large bins or due to abundance errors being larger than the bins. (By doing so we address the justified doubts by Sanders \& Binney 2015 about our binning approach)
+\item[2.)] What happens, if our assumed potential deviaties from the true potential? (\S\ref{sec:potential})
+\end{itemize}
+\end{itemize}
+
+\item[$\longrightarrow$] All of this is investigated using mock data. We cannot test everything, but we show some plausible and illustrative examples.
+
+\end{itemize}
+
+\item \textbf{Aspects we do not investigate in this paper:}
+\begin{itemize}
+\item[1.] Non-Axisymmetry
+\item[$\rightarrow$] Why the axysimmetric case is still interesting: ???
+\item[2.] Actions are not conserved in the real Galaxy
+\item[$\rightarrow$] Why assuming conserved actions is still interesting: ???
+\end{itemize}
+
+\end{itemize}
