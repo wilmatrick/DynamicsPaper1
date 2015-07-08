@@ -21,18 +21,24 @@ We do not explore the breakdown of the assumption that the system is axisymmetri
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
 \rotate
-\tablecaption{[TO DO: Caption] Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in ??? and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. \label{tbl:tests}}
+\tablecaption{[TO DO: Caption] Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in ??? and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. [TO DO: Change encircled numbers to proper order. Make sure the plots reference the right one.] \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
 \startdata
-\textcircled{1}         & \emph{Potential:}     & "KKS-Pot" & - & Fig. \ref{fig:mockdatadistr}\\
-Influence of            &  \emph{\MAP:}         & 2 \MAPs "hot" or "cold" qDF   &   & \\
+\textcircled{1}         & \emph{Potential:}     & "KKS-Pot" & - & Mock data: \\
+Influence of            & \emph{\MAP:}          & 2 \MAPs "hot" or "cold" qDF   &   & Fig. \ref{fig:mockdatadistr}\\
 survey volume on        & \emph{Survey volume:} & a) $R \in [4,12]$ kpc,$z \in [-4,4]$ kpc, $\phi \in [-20^\circ,20^\circ]$. &  & \\
 mock data distribution, &                       & b) $R \in [6,10]$ kpc,$z \in [1,5]$ kpc, $\phi \in [-20^\circ,20^\circ]$.&  & \\
 also in action space	& \emph{\# stars per data set:} & 20,000 &  & \\
 						& \emph{\# data sets:}   & 4 (= $2\times 2$ models) & & \\
 
+\tableline
+\textcircled{9}         & \emph{Potential:}     & "Iso-Pot", "MW13-Pot" \& "KKS-Pot" & - & Convergence\\
+Numerical accuracy      & \emph{\MAP:}          & "hot" qDF                          &   & of normalisation:\\
+in calculation          & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc &   & Fig. \ref{fig:norm_accuracy}\\
+of the likelihood       & \emph{Numerical accuracy:} & $N_\text{spatial}\in[5,20]$, $N_\text{velocity}\in[6,40]$, $N_\text{sigma}\in[3.5,7]$& & \\
+normalisation           &                       & & & \\
 										   
 \tableline
 \textcircled{2}			& \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", free parameter: $b$ & Fig. \ref{fig:sqrtN}\\
@@ -69,7 +75,7 @@ wrong assumptions       & \emph{Survey volume:} & sphere around sun, $r_\text{ma
 about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncompR_violins} \& ??? \\
 (in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results\\
 on parameter recovery   &                       & $r \equiv$ distance from sun, & & when not using $v_T$ data: \\
-                        &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & \ref{fig:isoSphFlexIncomp_marginal_violins}\\
+                        &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncomp_marginal_violins}\\
                         &                       & completeness$(z) = 1-\epsilon_z \frac{|z|}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$, & completeness$(r)$ = 1, twenty $\epsilon_z=0$& \\
                         &                       & $z \equiv$ distance from Gal. plane. & & \\
                         & \emph{\# stars per data set:} & 20,000 & & \\
