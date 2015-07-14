@@ -26,20 +26,10 @@ This Figure also implies that for these cases volume offsets in the radial or ve
 
 \begin{figure}
 \plotone{figs/wedFlexVol_bias_vs_SE.eps}
-\caption{[TO DO: Caption] New plot (should replace Fig. \ref{fig:obsvolumetest}) for 4 differently shaped volumes and 3 different kinds of potentials. Higher numerical accuracy. MW13 and KKS both look fine. But: When leaving vcirc as a free parameter, we can't recover the true potential for the orange volume.}
+\caption{[TO DO: Caption] New plot (should replace Fig. \ref{fig:obsvolumetest}) for 4 differently shaped volumes and 3 different kinds of potentials. Higher numerical accuracy in velocity integration. [TO DO: MW-Pot and KKS-Pot analyses suffer from too low accuracy in action calculation (with StaeckelGrid). Used the StaeckelGrid for BOTH mock data and analysis, but the mock data distribution would actually not look exactly like the desired qDF distribution, i.e. this plot basically tells us nothing. The orange Iso-Pot analysis suffers from too small integration range in vT. More coding required, before redoing this.]}
 \end{figure}
 
 
-\begin{figure}
-\includegraphics[height=0.9\textheight]{~/BovyCode/analyzeFlexible/plots/normalisation_accuracy/normalisation_accuracy_bigRinsideR0.eps}
-\caption{Testplot for convergence of Isochrone / bigRinsideR0 survey volume. [TO DO: Remove again]}
-\end{figure}
-
-
-\begin{figure}
-\includegraphics[height=0.9\textheight]{~/BovyCode/analyzeFlexible/plots/wedFlexVol/wedFlexVol_KKS_violins.eps}
-\caption{Testplot for problem with using ActionAngleStaeckelGrid for both mock data and analysis (First 5 analyses in each color) and then changing the code such that mock data was created with the more exact ActionAngleStaeckel, while Analysis was still done with ActionAngleStaeckelGrid. [TO DO: Remove again]}
-\end{figure}
 
 
 %====================================================================
