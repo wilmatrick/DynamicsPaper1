@@ -12,7 +12,7 @@ Fig.\ref{fig:centrallimittheorem} illustrates even more, that the \RM satisfies 
 %FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
 
 \begin{figure}
-\plotone{figs/isoSphFlex_short_cold_2kpc_1d_DF:5_POT:2_triangle_MCMC.eps}
+\plotone{figs/isoSphFlex_short_hot_2kpc_triangle_MCMC.eps}
 \caption{The likelihood in eq. (???) in the parameter space $\{p_\Phi,\ln(p_\text{DF})\}$ for one example mock data set. This mock data set has 20,000 stars and was created in the potential "Iso-Pot" and from the "hot" qDF, and was observed within a spherical volume around the sun of radius $r = 2 \text{ kpc }$.  The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_\text{DF})$ to turn the likelihood into a full posterior distribution function). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem. [TO DO: Maybe re-do with higher accuracy??? This was done with $N_{sigma} = 4$.] [TO DO: Mention "Note: this was picked among 5 to have all 1sigma contours encompass the input values." ???] [TO DO: it's the cold population, not the hot one??? I'm not sure]}
 \label{fig:triangleplot}
 \end{figure}
