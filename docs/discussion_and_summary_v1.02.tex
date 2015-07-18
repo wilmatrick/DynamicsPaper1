@@ -1,22 +1,23 @@
 \section{Discussion and Summary}
 
+We present \RM, an improved implementation of the dynamical modelling machinery by \citet{bov13}, to recover the potential and orbit distribution function of stellar \MAPs within the Galactic disk. In this work we investigated the capabilities, strengths and weaknesses of \RM by testing its robustness against the breakdown of some of its assumptions - for well defined, isolated test cases using mock data. Overall the method works very well and reliable, also if there are small deviations of the model assumptions from the real world galaxy.
+
+\paragraph{Improved implementation.} Large data sets in the age of Gaia require more and more accurate likelihood evaluations for more flexible models. To be able to deal with these increased computational demands and explore larger parameter spaces, we sped up the code by combining a nested grid approach with MCMC and by faster action calculation using the St\"{a}ckel \citep{bin12} interpolation grid by \citet{bov15}. Especially accurately determining the likelihood normalisation will be of crucial importance for large data sets. The nested-grid approach automatizes the search for the optimal normalisation integration ranges ("fiducial qDF") and start position for the MCMC walkers, which helps the MCMC to converge fast and to reduce biases due to insufficient accuracy.
+
 [TO DO]
 
 \begin{itemize}
 
 \item \textbf{Objective of this Paper in a Nutshell}
 \begin{itemize}
-\item We present \RM, an improved implementation of the dynamical modelling machinery by \citet{bov13}, to recover the potential and orbit distribution function of stellar \MAPs within the Galactic disk.
---  speed-up various aspects
-   (Jo's) Stäckel fudge grid
---  sampling of parameters via MCMC  --> more free parameters
+\item 
+
 --  nested grid to initialize MCMC: no need to set fiducial DF by hand <-- potential source of bias; speed-up; 
 -- straighforward implementation of different potential families..
 -- straighforward implementation of more potential/DF parameters, full 3D selection function (some symmetries) 
 -- far higher accuracy --> needed for larger samples; better convergence.....
 
-\item In this work we investigated the capabilities, strengths and weaknesses of \RM by testing its robustness against the breakdown of some of its assumptions - for well defined, isolated test cases using mock data.
-\item Overall the method works very well and reliable, also if there are small deviations of the model assumptions from the real world galaxy.
+
 \end{itemize}
 
 \item \textbf{Summary of Results - Machinery}
