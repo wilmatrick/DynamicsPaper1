@@ -2,44 +2,21 @@
 
 We present \RM, an improved implementation of the dynamical modelling machinery by \citet{bov13}, to recover the potential and orbit distribution function of stellar \MAPs within the Galactic disk. In this work we investigated the capabilities, strengths and weaknesses of \RM by testing its robustness against the breakdown of some of its assumptions - for well defined, isolated test cases using mock data. Overall the method works very well and reliable, also if there are small deviations of the model assumptions from the real world galaxy.
 
-\paragraph{Improved implementation.} Large data sets in the age of Gaia require more and more accurate likelihood evaluations for more flexible models. To be able to deal with these increased computational demands and explore larger parameter spaces, we sped up the code by combining a nested grid approach with MCMC and by faster action calculation using the St\"{a}ckel \citep{bin12} interpolation grid by \citet{bov15}. Especially accurately determining the likelihood normalisation will be of crucial importance for large data sets. The nested-grid approach automatizes the search for the optimal normalisation integration ranges ("fiducial qDF") and start position for the MCMC walkers, which helps the MCMC to converge fast and to reduce biases due to insufficient accuracy.
+\paragraph{\RM is statistically well-behaved.} \RM applies a full likelihood analysis. It allows for a straightforward implementation of different potential model families and a flexible number of free fit parameters in potential and qDF. It also accounts for selection effects by using full 3D selection functions (given some symmetries). \RM is an asymptotically normal, un-biased estimator and the precision of parameter recovery increases by $1/\sqrt{N}$ with the number of stars.
 
-[TO DO]
-
-\begin{itemize}
-
-\item \textbf{Objective of this Paper in a Nutshell}
-\begin{itemize}
-\item 
-
---  nested grid to initialize MCMC: no need to set fiducial DF by hand <-- potential source of bias; speed-up; 
--- straighforward implementation of different potential families..
--- straighforward implementation of more potential/DF parameters, full 3D selection function (some symmetries) 
--- far higher accuracy --> needed for larger samples; better convergence.....
+\paragraph{Improved implementation for large data sets.} Large data sets in the age of Gaia require more and more accurate likelihood evaluations for more flexible models. To be able to deal with these increased computational demands and explore larger parameter spaces, we sped up the code by combining a nested grid approach with MCMC and by faster action calculation using the St\"{a}ckel \citep{bin12} interpolation grid by \citet{bov15}. Especially accurately determining the likelihood normalisation will be of crucial importance for large data sets. The nested-grid approach automatizes the search for the optimal normalisation integration ranges ("fiducial qDF") and start position for the MCMC walkers, which helps the MCMC to converge fast and to reduce biases due to insufficient accuracy. However, application of \RM to millions of stars simultaneously with acceptable accuracy will still be a task for supercomputers and calls for even more improvements and speed-up in the fitting machinery.
 
 
-\end{itemize}
+\paragraph{\RM and characteristics of the data: Survey volume.} We found that the \emph{position} of the survey volume maters little, in the sense that there are no regions in the Galaxy that contain intrinsically stars on manifestly more diagnostic orbits than others. Closer to the disk and at smaller Galactocentric radii it is only the increased number of stars that will lead to tighter constraints. Concerning the \emph{shape} of the survey volume, a large radial \emph{and} vertical coverage is best. In the axisymmetric case phi coverage doesn't matter. Making a volume cut for stars, that lie around $R_\odot$ but at larger $phi$, could therefore improve the results, if their measurements are very uncertain.
+\\\MAPs of different scale length and temperature probe different regions of the Galaxy \citep{bov13}. But there is no easy rule of thumb for which survey volume and stellar population which potential and DF parameter is constrained best.
 
-\item \textbf{Summary of Results - Machinery}
+\paragraph{\RM and characteristics of the data: Selection function misjudgment.} Surprisingly \RM seems to be very robust against misjudgments in the selection function of the data. The reason for this robustness could be, that missing stars in the data set do not affect the connection between a star's velocity and position, which is given by the potential. A lot of information about the potential profile is stored in the rotation curve - but even when not including measurements of tangential velocities in the analysis, small misjudgments of the incompleteness do not affect the potential recovery. 
+\\That we reproduce the qDF equally well, could be due to the symmetry of our assumed incompleteness profiles around the sun. We investigated a decrease in knowledge of the data completeness in distance from the sun and Galactic plane. Our test with the radial incompleteness profile could be understood as a decreasing detection rate due to the lower apparent brightness of stars at larger distances. The test with the planar incompleteness profile could mimic a misjudgment of the dust obscuration within the Galactic plane. Both effects would show the same symmetries as tested in this work. 
+\\This result is especially encouraging for future studies, because selection functions usually depend in a non-trivial, and often not perfectly known way on the observables.
+
+\paragraph{\RM and characteristics of the data: Measurement errors.} Properly convolving the likelihood with measurement errors is computational very expensive. By ignoring positional errors and only including distance errors as part of the velocity error, we can drastically reduce the computational costs. [TO DO - No definite result after this disclaimer:] For stars within 3 kpc from the sun this approximation works well for distance errors of $\sim 10\%$ or smaller. The number of MC samples needed for the error convolution using MC integration scales by $N_\text{error} \propto (\sigma_{v,\text{max}})^2$ with the maximum velocity error at the edge of the sample. If we misjudge the size of the true measurement errors, we only can reproduce the true model parameters, as long as the velocity errors are smaller than the intrinsic velocity dispersion of the data set.
 
 \begin{itemize}
-\item Our fitting uses a full likelihood analysis, accounting for selection effects etc.
-\item The method is an asymptotically normal un-biased estimator and precision of the parameter recovery increases by $1/\sqrt{N}$ with the number of stars.
-\item Getting un-biased results also for very large data sets, requires us to calculate the normalisation with very high precision $\longrightarrow$ analysis of GAIA data will be a task for huge supercomputers and/or other ways to speed up the action calculation or the fitting routine have to be made.
-\item This was not yet a problem for the small sample sizes in BR13. Improvements in RoadMapping to make it more adept for large data sets and more free parameters: Nested-grid search with MCMC combination.
-\end{itemize}
-
-\item \textbf{Summary of Results - Data}
-
-\begin{itemize}
-\item \emph{Survey volume position:} The position of the survey volume matters little i.e. there are no regions that are intrinsically manifestly more diagnostic than others. Only difference: closer to the disk \& bulge there are more stars.
-\item \emph{Survey volume \& stellar population:} \MAPs of different scale length and temperature probe different regions of the Galaxy \citep{bov13}. However, there is no easy rule of thumb for which selection function and stellar population which potential and DF parameter is constrained best.
-\item \emph{Survey volume shape:} [No definite result yet] A large coverage in both R and z however is best; in the axisymmetric case phi coverage doesn't matter. Making a volume cut for stars, that lie around $R_\odot$ but at larger $phi$, could therefore improve the results, if their measurements are very uncertain.
-
-\item \emph{Incompleteness:} Surprisingly the method seems to be very robust against small to medium misjudgments in the incompleteness of the data. (We investigated a radial and a planar decrease in completeness while still assuming a complete data set.) This could be, because missing stars in the data set do not affect the connection between a star's velocity at a given position. A lot of information about the potential shape is stored in the rotation curve - but even when not including vT in the analysis, small misjudgments are not a deal breaker. This result is especially encouraging for future studies, because selection functions usually depend in a non-trivial, and often not perfectly known way on the observables.
-
-\item \emph{Measurement errors:} Properly convolving the likelihood with measurement errors is computational very expensive. By ignoring positional errors and only including distance errors as part of the velocity error, we can drastically reduce the computational costs. [No definite result yet] For stars within 3 kpc from the sun this approximation works well for distance errors of $\sim 10\%$ or smaller. The number of MC samples to do the error convolution using MC integration scales by $N_\text{error} \propto (\sigma_{v,\text{max}})^2$ with the maximum velocity error at the edge of the sample.
-\end{itemize}
 
 \item \textbf{Summary of Results - Model}
 
@@ -66,7 +43,7 @@ We present \RM, an improved implementation of the dynamical modelling machinery 
 \begin{itemize} 
 \item \underline{Assumption to test:} What happens if the true potential does not exactly belong to the familiy of fit potentials?
 \item \underline{Test case:} Fitting 2-component Staeckel potential to bulge+halo+disk potential.
-\item \underline{Result:} [Not a definite result yet.] Quite successful. Of course an exact reproduction is not possible, but the best fit potential is not much worse than a fit of the potential directly to the forces and rotation curve.  
+\item \underline{Result:} [TO DO - No definite result after this disclaimer:] Quite successful. Of course an exact reproduction is not possible, but the best fit potential is not much worse than a fit of the potential directly to the forces and rotation curve.  
 \item \underline{Additional thought:} Using a Staeckel potential as potential model would have the advantage of fast and exact action calculations. Plus, the model can be made more flexible by adding additional Staeckel components (see e.g. Famaey \& Dejonghe 2003 ???), e.g. more disk components of another roundish component for the bulge. And the model potential family will always deviate from the true potential model, so using a flexible enough Staeckel has no disadvantages. Only problem: Disentangling the potential in distinct halo and disk etc. components would be more difficult.
 \end{itemize}
 
