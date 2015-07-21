@@ -1,3 +1,5 @@
+\section{Dynamical Modelling}
+
 \subsection{Actions and Potential Models}  \label{sec:potentials}
 
 \paragraph{Actions.} Orbits in axisymmetric potentials are best described and fully specified by the three actions $J_R, J_z$ and $J_\phi=L_z$. They are integrals of motion and generally defined as
@@ -6,7 +8,7 @@ J_i = \frac{1}{2\pi} \int_\text{orbit} p_i(t) \diff x_i(t) \label{eq:action_gene
 \end{equation}
 and depend on the potential via the connection between position $x_i$ and momentum $p_i$ along the orbit. Actions have a clear physical meaning: They quantify the amount of oscillation in each coordinate direction of the full orbit [REF]. The position of a star along the orbit is denoted by a set of angles, which form together with the angles a set of canonical conjugate phase-space coordinates \citep{bin08}. Even though actions are the optimal choice as orbit labels and arguments for stellar distribution functions, their computation is very expensive.
 
-\paragraph{Action calculation.} The action calculation depends on the choice of potential in which the star moves: The spherical isochrone \citep{bin08} is the only potential for which Eq. (\ref{eq:action_general}) takes an analytic form. For axisymmetric St\"{a}ckel potentials actions can be calculated exactly by the (numerical) evaluation of a single integral. In all other potentials numerically calculated actions will always be approximations, unless Eq. (\ref{eq:action_general}) is integrated up to infinity.  A computational fast way to get actions for arbitrary axisymmetric potentials is the "St\"{a}ckel fudge" by \citet{bin12}, which locally approximates the potential by a St\"{a}ckel potential. To speed up the calculation even more, an interpolation grid can be build out of these St\"{a}ckel fudge actions, as described in \citet{bov15}. 
+\paragraph{Action calculation.} The action calculation depends on the choice of potential in which the star moves: The spherical isochrone \citep{bin08} is the only potential for which Eq. (\ref{eq:action_general}) takes an analytic form. For axisymmetric St\"{a}ckel potentials actions can be calculated exactly by the (numerical) evaluation of a single integral. In all other potentials numerically calculated actions will always be approximations, unless Eq. (\ref{eq:action_general}) is integrated up to infinity.  A computational fast way to get actions for arbitrary axisymmetric potentials is the "St\"{a}ckel fudge" by \citet{bin12}, which locally approximates the potential by a St\"{a}ckel potential. To speed up the calculation even more, an interpolation grid for $J_R$ and $J_z$ in energy $E$, angular momentum $L_z$ and [TO DO: what else???] can be build out of these St\"{a}ckel fudge actions, as described in \citet{bov15}.\footnote{[TO DO: Write which numerical accuracy I needed for the grid, as the default values were not good enough.]} 
 
 \paragraph{Potential models.} In our modelling we assume a family of parametrized potentials with a fixed number of free parameters. We use different kinds of potentials: Besides the Milky Way like potential from \citet{bov13} ("MW13-Pot" ) with bulge, disk and halo, we also extensively use the spherical isochrone potential ("Iso-Pot") in our test suites to make use of the analytic (and therefore exact and fast) way  to calculate actions. In addition we use the 2-component Kuzmin-Kutuzov St\"{a}ckel potential by \citet{bat94} ("KKS-Pot"), which displays a disk and halo structure and also provides exact actions. Table \ref{tbl:referencepotentials} summarizes all reference potentials together used in this work with their free parameters $p_\Phi$. The density distribution of these potentials is illustrated in Fig. \ref{fig:ref_pots}.
 
@@ -15,7 +17,7 @@ and depend on the potential via the connection between position $x_i$ and moment
 \begin{deluxetable}{llllll}
 \tabletypesize{\scriptsize}
 \rotate
-\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation. In the subsequent analyses we aim to recover these potential parameters again. The parameters of "MW13-Pot" and "KKS-Pot" were found as best fits to the "MW14-Pot". \label{tbl:referencepotentials}}
+\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of "MW13-Pot" and "KKS-Pot" were found as direct fits to the "MW14-Pot". \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
@@ -40,7 +42,7 @@ and depend on the potential via the connection between position $x_i$ and moment
            & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
 \tableline
 "MW14-Pot" & MW-like potential with        &  -                                       & -                                             & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov15} \\
-           & cutoff power-law bulge,       &                                          &                                               & (see "MW13-Pot")                   &               \\
+           & cut-off power-law bulge,       &                                          &                                               & (see "MW13-Pot")                   &               \\
            & Miyamoto-Nagai stellar disk,  &                                          &                                               &                                    &               \\
            & NFW halo                      &                                          &                                               &                                    &               \\
 \enddata
@@ -53,7 +55,7 @@ and depend on the potential via the connection between position $x_i$ and moment
 
 \begin{figure}
 \plotone{figs/reference_potentials.eps}
-\caption{Density distribution of the four reference galaxy potentials in table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery. [TO DO: Halo sichtbarer machen, evtl. mit isodensity contours]}
+\caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery. [TO DO: Halo sichtbarer machen, evtl. mit isodensity contours]}
 \label{fig:ref_pots}
 \end{figure}
 
@@ -109,7 +111,7 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 %======================================================================================
 
 
-\subsection{Selection Function}
+\subsection{Selection Function} \label{sec:selectionfunction}
 
 \paragraph{Galactic Coordinate System.} Our modelling takes place in the Galactocentric rest-frame with cylindrical coordinates $\vect{x} \equiv (R,\phi,z)$ and corresponding velocity components $\vect{v} \equiv (v_R,v_\phi,v_z)$. If the stellar phase-space data is given in observed coordinates, position $\tilde{\vect{x}} \equiv(\alpha,\delta,m-M)$ in right ascension $\alpha$, declination $\delta$ and distance modulus $(m-M)$, and velocity $\tilde{\vect{v}} \equiv (\mu_\alpha,\mu_\delta,v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\alpha,\mu_\delta)$ [TO DO: cos somwhere???] and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the Galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity. For simplicity we assume for the sun
 \begin{eqnarray*}

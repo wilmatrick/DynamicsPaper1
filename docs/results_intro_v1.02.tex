@@ -1,3 +1,5 @@
+\section{Results} \label{sec:results}
+
 We are now in a position to explore the questions about the ultimate limitations of action based modelling, posed in the introduction: 
 \begin{itemize}
 \item Can we still retrieve unbiased  model parameter estimates $p_M$ in the limit of large sample sizes? 
@@ -10,9 +12,7 @@ But we also consider the more fundamental limitations:
 \item What if the observed stars are not extacly drawn from the family of model distribution functions? 
 \item What happens to the estimate of the potential and the DF, if the actual potential is not contained in the family of model potentials?
 \end{itemize}
-We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state.
-[{\bf hat shouldl also be at the end of the introduction..}
-[say: except for the case of ``errors'' we assume that thne phase-space errors are negligible..]
+We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state. Except of the test suite on measurement errors in \S\ref{sec:results_errors}, we assume that the phase-space errors are negligible.
 
 
 %=========================================
@@ -21,7 +21,7 @@ We do not explore the breakdown of the assumption that the system is axisymmetri
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
 \rotate
-\tablecaption{[TO DO: Caption] Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in ??? and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. [TO DO: Change encircled numbers to proper order. Make sure the plots reference the right one.] \label{tbl:tests}}
+\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. [TO DO: Change encircled numbers to proper order. Make sure the plot references are the right ones.] \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
@@ -95,5 +95,12 @@ star's true DF          &                   & a) "hot" \& "cooler" qDF or b) "co
                         & \emph{Survey volume:}& sphere around sun, $r_\text{max}=2$ kpc & (fixed \& known) & \\
                         & \emph{\# stars per data set:} & 20,000 & & \\
                         & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
+                        \tableline
+\textcircled{8}			&  \emph{Potential:} & "MW14-Pot" & "KKS-Pot", all parameters free, & potential contours: \\
+Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230 \text{km s}^{-1}$ fixed & Fig. \ref{fig:MW14vsKKS2SphFlex} \\
+assumed potential model	& \emph{\MAP:}       & "hot" or "cool" qDF & single qDF, all parameters free & qDF recovery: \\
+from the star's			& \emph{Survey volume:} & sphere around sun, $r_\text{max} = 4$ kpc & (fixed \& known) & Fig. \ref{fig:MW14vsKKS2SphFlex_violins}\\
+true potential			& \emph{\# stars per data set:} & 20,000 & & \\
+						& \emph{\# data sets:} & 2 & & \\
 \enddata
 \end{deluxetable}
