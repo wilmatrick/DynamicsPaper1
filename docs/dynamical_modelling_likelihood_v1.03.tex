@@ -2,12 +2,12 @@
 
 \paragraph{Form of the likelihood.}  As data we use the positions and velocities of stars coming from a given \MAP and survey selection function $\text{sf}(\vect{x})$,
 \begin{eqnarray*}
-D  =\{ \vect{x}_i,\vect{v}_i \mid \text{(star $i$ belonging to same MAP)} \wedge (\text{sf}(\vect{x_i}) > 0) \}.
+D  =\{ \vect{x}_i,\vect{v}_i \mid \text{(star $i$ belonging to same \MAP)} \wedge (\text{sf}(\vect{x_i}) > 0) \}.
 \end{eqnarray*}
 
 The model that we fit to the data is a parametrized potential and a single qDF with a given number of fixed and free parameters,
 \begin{eqnarray*}
-M =\{ p_\text{DF} , p_\Phi \},
+\pmodel =\{ p_\text{DF} , p_\Phi \},
 \end{eqnarray*}
 We fit the qDF parameters (see \S\ref{sec:qDF}) with a logarithmically flat prior, i.e. flat priors in
 \begin{eqnarray*}
@@ -15,13 +15,13 @@ p_\text{DF} := \{&& \ln \left(h_R/8\text{kpc}\right), \\
 && \ln \left(\sigma_R/220\text{km s$^{-1}$}\right), \ln \left(\sigma_z/220\text{km s$^{-1}$}\right), \\
 && \ln \left(h_{\sigma_R}/8\text{kpc}\right), \ln \left(h_{\sigma_z}/8\text{kpc}\right)\ \}.
 \end{eqnarray*}
-The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid M) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid \pmodel) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
 
-The likelihood of the data given the model $\mathscr{L} = (D \mid M)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
+The likelihood of the data given the model $\mathscr{L} = (D \mid \pmodel)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
 \begin{eqnarray}
-\mathscr{L}(M \mid D) &\equiv& \prod_i^{N} P(\vect{x}_i,\vect{v}_i \mid M) \nonumber\\
-&=& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid M) \cdot \text{sf}(\vect{x})}\nonumber\\
-&\propto& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid M)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x})}, \label{eq:prob}
+\mathscr{L}(\pmodel \mid D) &\equiv& \prod_i^{N} P(\vect{x}_i,\vect{v}_i \mid \pmodel) \nonumber\\
+&=& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid \pmodel) \cdot \text{sf}(\vect{x}_i)}{\int \Diff 3 x \Diff 3 v \  \text{qDF}(\vect{J} \mid \pmodel) \cdot \text{sf}(\vect{x})}\nonumber\\
+&\propto& \prod_i^{N} \frac{1}{\left(r_o v_o\right)^3} \cdot \frac{\text{qDF}(\vect{J}_i \mid \pmodel)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \text{sf}(\vect{x})}, \label{eq:prob}
 %\label{eq:likelihood}
 \end{eqnarray}
 where $N$ is the number of stars in the data set $D$.
@@ -30,13 +30,13 @@ In the last step we used eq. (\ref{eq:tracerdensity_general}). The factor $\prod
 
 \paragraph{A word on units.} We evaluate the likelihood in a scale-free potential within a Galactocentric coordinate system which is defined as $v_\text{circ}(R = 1) = 1$. The circular velocity at the sun's radius, $v_\text{circ}(R_\odot = 8. \text{kpc}) \sim 230 \text{km s$^{-1}$}$, determines the total mass amplitude of the galaxy potential. In the modelling all data and model parameters are re-scaled to spatial units of $r_o := R_\odot$ or velocitiy units of $v_o := v_\text{circ}(R_\odot )$. The prefactor $1/\left(r_o v_o\right)^3$ in eq. (\ref{eq:prob}) makes sure that the likelihood has the correct units to satisfy:
 \begin{eqnarray*}
-\int P(\vect{x},\vect{v} \mid M) \Diff 3 x \Diff 3 v \propto 1
+\int P(\vect{x},\vect{v} \mid \pmodel) \Diff 3 x \Diff 3 v \propto 1
 \end{eqnarray*} 
 Including this prefactor is crucial when $v_\text{circ}(R_\odot )$ is a free fitting parameter.
 
 \paragraph{Numerical accuracy in calculating the likelihood.} The normalisation in Eq. (\ref{eq:prob}) is a measure for the total number of tracers inside the survey volume,
 \begin{equation}
-M_\text{tot} \equiv \int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid M) \cdot \text{sf}(\vect{x}).\label{eq:normalisation}
+M_\text{tot} \equiv \int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid p_model) \cdot \text{sf}(\vect{x}).\label{eq:normalisation}
 \end{equation}
 In the case of an axisymmetric galaxy model and $\text{sf}(\vect{x})=1$ everywhere inside the observed volume (i.e. a complete sample as assumed in most tests in this work), the normalisation is essentially a two-dimensional integral in $R$ and $z$ of the interpolated tracer density $\rho_{DF}$ (see Eq. (\ref{eq:tracerdensity}) and surrounding text) over the survey volume times the observation volume's geometric angular contribution at each $(R,z)$. We perform this integral as a Gauss Legendre quadrature of order 40 in each $R$ and $z$ direction.
 \\Unfortunately the evaluation of the likelihood for only one set of model parameters is computationally expensive. The computation speed is set by the number of action calculations required, i.e. the number of stars and the numerical accuracy of the integrals in Eq. ??? needed for the normalisation, which requires $N_\text{spatial}^2 \times N_\text{velocity}^3$ action calculations. The accuracy has to be chosen high enough, such that a resulting numerical error 
@@ -45,11 +45,11 @@ In the case of an axisymmetric galaxy model and $\text{sf}(\vect{x})=1$ everywhe
 \end{eqnarray}
 does not dominate the likelihood, i.e.
 \begin{eqnarray}
-\log \mathscr{L}(M \mid D_j) &=& \sum_i^{N} \log \text{qDF}(\vect{J_i} \mid M) - 3N \log \left( r_o v_o\right)\nonumber\\
+\log \mathscr{L}(\pmodel \mid D) &=& \sum_i^{N} \log \text{qDF}(\vect{J_i} \mid \pmodel) - 3N \log \left( r_o v_o\right)\nonumber\\
 & & -N \log(M_\text{tot,true}) - N \log (1 + \delta_{M_{tot}}),\label{eq:loglikelihood_relerr}\\
  \text{with }  & &N \log (1 + \delta_{M_{tot}}) \lesssim 1.\nonumber
 \end{eqnarray}
-In other words, this error is only small enough, if it does not affect the comparison of two adjacent models whose likelihoods differ, to be clearly distinguishable, by a factor of 10. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF fitting. For data sets as large as $N =$ 20,000 stars in one MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.
+In other words, this error is only small enough, if it does not affect the comparison of two adjacent models whose likelihoods differ, to be clearly distinguishable, by a factor of 10. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF fitting. For data sets as large as $N =$ 20,000 stars in one \MAP, which in the age of GAIA could very well be the case [TO DO: Really???], we would need a numerical accuracy of 0.005\% in the normalisation. Fig. \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_\text{spatial}=16$, $N_\text{velocity}=24$ and $N_{sigma}=5$, does satisfy this requirement.
 
 %====================================================================
 
