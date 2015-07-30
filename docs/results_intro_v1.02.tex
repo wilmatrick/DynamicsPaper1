@@ -70,12 +70,20 @@ are unbiased.           & \emph{\MAP:}          & 2 \MAPs, "hot" or "cool" qDF  
                         & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ (for speed) & \\
 
 \tableline
-\textcircled{4} & [TO DO] & & & \\
-Influence of & & & & \\
- position \& shape & & & & \\
-of survey volume & & & & \\
-on parameter recovery & & & & \\
-
+\textcircled{4} 		& \emph{Potential:} 	& i) "Iso-Pot", ii) "MW13-Pot" or iii) "KKS-Pot" 	& i) "Iso-Pot", all parameters free & Fig. \ref{fig:wedFlexVol_bias_vs_SE} \\
+Influence of 			& 						& 													& ii) "MW13-Pot", $R_d$ and $f_h$ free & \\
+position \& shape 		& 						& 													& iii) "KKS-Pot", all free except $v_\text{circ}(R_\odot)$ & \\
+of survey volume 		& \emph{\MAP:}			& "hot" qDF 										& i) \& iii) qDF, all parameters free & \\
+on parameter recovery 	& 						& 													& ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma_R}$ free& \\
+						& \emph{Survey volume:}	& 4 different wedges, see Fig. \ref{fig:wedFlexVol_bias_vs_SE}, upper right panel & (fixed \& known) & \\
+						& \emph{\# of stars per data set:} & 20,000 & & \\
+						& \emph{\# data sets:}	& 48 (= $4\times3$ models $\times 4$ realisations) & & \\
+						& \emph{Analysis method:} & & i) \& ii) MCMC, iii) likelihood on grid & \\
+						& \emph{Action calculation:} & ii) \& iii) low accuracy & (same as mock data creation) & \\
+						&						& "St\"{a}ckel Fudge" grid \citep{bov15} for speed && \\
+						&						& (\# grid points: 25 in each $E$ and $\psi$, && \\
+						&						& 30 in $L_z$, $R_\text{max}=5$  & & \\
+						&						& [TO DO: What is psi and Rmax (units)?]) & & \\
 \tableline
 \textcircled{5}         & \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", all parameters free & Illustration \& mock data: \\
 Influence of            & \emph{\MAP:}          & 2 \MAPs, a) "hot" or b) "cool" qDF & qDF, all parameters free &  Fig. \ref{fig:incompR_mockdata} \& \ref{fig:incompZ_mockdata} \\
