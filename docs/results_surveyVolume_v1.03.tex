@@ -1,0 +1,35 @@
+\subsection{The Role of the Survey Volume Geometry} \label{sec:results_obsvolume}
+
+Beyond the sample size, the survey volume {\it per se} must play a role; clearly, even a vast and perfect data set of stars within 100~pc of the Sun, has limited power to tell us about the potential at very different $R$. Intuitively, having dynamical tracers over a wide range in $R$ suggests to allow tighter contraints on the radial dependence of the potential. To this end, we devise a number mock data sets, drawn from a one single \pmodel , but drawn from six different volume wedges (see \S [TO DO CHECK]), as illustrated in the left panels of fig. \ref{fig:obsvolumetest}. To make the parameter inference comparison very differential, the mock data sets are equally large (20,000) in all cases, and are drawn from identical total survey volumes ($4.5~kpc^3$, achieved by adjusting the angular width of the edges). The right panels of Fig.\ref{fig:obsvolumetest} the illustrate the ability of \RM to constrain model parameters (in this case two $p_\Phi$ parameters). The two top right panels of Fig.\ref{fig:obsvolumetest} illustrate that the radial extent and the maximal height above the mid-plane matter. In the case shown, the standard error of the estimated parameters in twice as large for the volume with small $\Delta R$ and $\Delta |z|$; unsurprisingly, in the axisymmetic context the larger $\Delta\phi$ extent of that volume does not help to constrain the parameters. The panels in the bottom row explore whether the radial or vertical extent plays a dominant role: it appears that substantive radial and vertical extent are comparably important to constrain the parameters. 
+
+This Figure also implies that for these cases volume offsets in the radial or vertical direction have at most modest impact. While we believe the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel~ and volumina. Figure \ref{fig:centrallimittheorem}  amplifies the same point: it illustrates that at given sample size, drawing the data -- more sparsely -- from a larger volume provides better \pmodel~ constraints. 
+
+%====================================================================
+
+%FIGURE: Does shape and position of obs. volume matter?
+
+\begin{figure}
+\plotone{figs/wedge_volumetest.eps}
+\caption{We demonstrate that for a given size of the observation volume the shape and position of the volume does not matter much as long as we have both large radial and/or vertical coverage. The left column shows the position of our test observation volumes within the Galaxy with respect to the Galactic plane and the sun. The angular extent of each wedge-shaped observation volume was adapted such that all have the volume of $4.5 \text{ kpc}^3$, even though their extent in $(R,z)$ is different. Each data set contains 20,000 stars. We assume a Milky Way-like potential like in \citet{bov13}, with  $p_\Phi = \{v_\text{circ},R_d,z_h,f_h,\frac{\diff\ln v_c}{\diff\ln R}] \}=\{230 \text{ km s$^{-1}$},2.5\text{ kpc},400 \text{ pc }, 0.8,0\}$ and a 'hot' stellar population with $p_\text{DF} = \{ h_R, \sigma_R, \sigma_z,h_{\sigma_R},h_{\sigma_z}\} =\{2 \text{ kpc}, 55 \text{ km s$^{-1}$}, 66 \text{ km s$^{-1}$}, 8 \text{ kpc}, 7 \text{ kpc }\} $. We evaluate the likelihood on a grid in the fit parameter $\{R_d,f_h,\ln(h_R/8\text{kpc}),\ln(\sigma_{R}/230 \text{km s$^{-1}$}),\ln(h_{\sigma_R}/8\text{kpc}) \}$. All other parameters are kept at their true values in the modelling. Standard error and offset were determined as in fig. \ref{fig:centrallimittheorem}. The accuracy of the analyses is $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$. In an axisymmetric potential the coverage in angular direction does not matter, as long as there are enough stars in the observation volume.}
+\label{fig:obsvolumetest}
+\end{figure}
+
+\paragraph{Stuff that needs to be further examined in fig. \ref{fig:obsvolumetest}:}
+\begin{itemize}
+\item [TO DO] There are biases. Do they get smaller with higher accuracy? Do they disappear for KKS potential?
+\item [TO DO] Maybe skip first row of plots?
+\item [TO DO] 'Larger is better' is also demonstrated in fig. \ref{fig:centrallimittheorem}
+\item [TO DO] We could compare these results with similar results for KKS pot. If the latter has no biases, we can state that to avoid biases when using an non-Staeckel potential, one should use a volume with comparable R \textit{and} z coverage, because for this the biases seem to be smallest.
+\item [TO DO] Maybe add volume at smaller radius with large vertical extent?
+\item [TO DO] Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?
+\end{itemize}
+
+\begin{figure}
+\plotone{figs/wedFlexVol_bias_vs_SE.eps}
+\caption{[TO DO: Caption] New plot (should replace Fig. \ref{fig:obsvolumetest}) for 4 differently shaped volumes and 3 different kinds of potentials. Higher numerical accuracy in velocity integration. [TO DO: MW-Pot and KKS-Pot analyses suffer from too low accuracy in action calculation (with StaeckelGrid). Used the StaeckelGrid for BOTH mock data and analysis, but the mock data distribution would actually not look exactly like the desired qDF distribution, i.e. this plot basically tells us nothing. The orange Iso-Pot analysis suffers from too small integration range in vT. More coding required, before redoing this.]}
+\end{figure}
+
+ \paragraph{[TO DO] Stuff to explain about fig. \ref{fig:centrallimittheorem}:} Mention also that bigger volumes give most of the time better constraints and that there is no clear answer, if a hot or cooler population gives better constraints. Depends on parameter considered, selection function etc.
+
+
+%====================================================================

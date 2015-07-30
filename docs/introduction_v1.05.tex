@@ -1,43 +1,60 @@
 \section{Introduction} \label{sec:intro}
 
 %Everything in a nutshell
-Stellar dynamical modelling is the fundamental tool to infer the gravitational potential of the Milky Way from the positions and motions of its stars \citep{rix13,bin11b} [TO DO]. The observational information on the phase-space coordinates of stars are currently growing at a rapid pace, and will be taken to a whole new level by the upcoming Gaia data. Yet, rigorous and practical modelling tools that turn this information into constraints both on the gravitational potential and on the distribution function (DF) of stellar orbits, are scarce \citep{rix13,[TO DO]} [TO DO: References that explain that the modelling is scarce, or previous modelling approaches???] (previous modelling attempts were made e.g. by  [TO DO]) (Modelling tools: a) Made-to-measure: De Lorenzi et al. 2007 [De Lorenzi F., Debattista V.P., Gerhard O., Sambhus N., 2007, MNRAS, 376, 7] (based on [Syer D., Tremaine S., 1996, MNRAS, 282, 223] , best application to to bulge Bissantz et al. 2004 [http://adsabs.harvard.edu/abs/2004ApJ...601L.155B], Hunt \& Kawata 2015 [http://adsabs.harvard.edu/abs/2015arXiv150301778H] also have a tool for Gaia at hand, b) Streams: Johnston et al. 1999 [http://adsabs.harvard.edu/abs/1999ASPC..194...15J] ). \\
+Stellar dynamical modelling is the fundamental tool to infer the gravitational potential of the Milky Way from the positions and motions of its stars \citep{rix13,bin11b} [TO DO]. The observational information on the phase-space coordinates of stars are currently growing at a rapid pace, and will be taken to a whole new level by the upcoming Gaia data. Yet, rigorous and practical modelling tools that turn this information into constraints both on the gravitational potential and on the distribution function (DF) of stellar orbits, are scarce \citep{rix13} [TO DO: more references] [TO DO: References that explain that the modelling is scarce, or previous modelling approaches???]
+
+[TO DO: Modelling tools for the MW: 
+a) Made-to-measure: 
+\citet{lor07}(based on \citet{sye96} , best application to to bulge \citet{bis04}, 
+\citet{hun14} also have a tool for Gaia at hand, 
+b) Streams: 
+\citet{joh99} 
+c) Action-based distribution function modelling
+\citet{san15}
+\citet{pif4}
+d) torus modelling
+e) Jeans modelling
+\citet{bue15}
+\citet{loe12}]
+
+
 
 %Papers In which I am looking for references:
 %http://arxiv.org/pdf/1104.2839v1.pdf
-%http://arxiv.org/pdf/1301.3168v1.pdf
+%http://arxiv.org/pdf/1301.3168v1.pdf, Rix & Bovy 2013, continue on page 13
+%http://arxiv.org/pdf/1108.1749v2.pdf
 
 %Why potential + DF are important
 Accurately determining the Galactic gravitational potential is fundamental for understanding its dark matter and baryonic structure [REF]. Accurately determining the stellar-population dependent orbit distribution function is a fundamental contraint on the Galaxy's formation history. \\
 
 %In more detail: Why potential is important
-Open questions about the MW's potential and structure, on which future modelling attempts will hopefully give more definite answers are: What is the local dark matter density (\cite{zha13,bt12})? Is the Milky Way's dark matter halo flattened ([REF])? Is the MW disk maximal (\cite{sac97}) and, to be able to disentangle halo and disk contribution (\cite{deh98}), what is the disk's overall mass scale length (\cite{bov13})?  \\
+Open questions about the MW's potential and structure, on which future modelling attempts will hopefully give more definite answers are: What is the local dark matter density \citep{zha13,bt12}? Is the Milky Way's dark matter halo flattened ([REF])? Is the MW disk maximal \citep{sac97} and, to be able to disentangle halo and disk contribution \citep{deh98}, what is the disk's overall mass scale length \citep{bov13}?  \\
 
 %In more detail: Why DF is important
-Open questions about the star's distribution within the MW, which dynamical modelling can help to constrain, are: How are stellar kinematics and their chemical abundances are related (\cite{san15},[REF])? In particular, does the disk have a thin/thick disk dichotomy (\cite{gil83}) or is it a continuum of many exponential disks (\cite{bov12d})? How does radial migration affect the orbit distribution (Sellwood \& Binney 2002, Roskar et al. 2008a,b, Schonrich \& Binney 2008, Minchev et al. 2011) [TO DO: References from Rix \& Bovy 2013 - should I use all of them?]?\\
+Open questions about the star's distribution within the MW, which dynamical modelling can help to constrain, are: How are stellar kinematics and their chemical abundances are related (\cite{san15},[REF])? In particular, does the disk have a thin/thick disk dichotomy (\cite{gil83}) or is it a continuum of many exponential disks (\cite{bov12d})? How does radial migration affect the orbit distribution \citep{sel02,ros08a,ros08b,sch08,min11} [TO DO: These are References from Rix \& Bovy 2013 - should I use all of them?]?\\
 To address these questions, observed stellar positions and motions need to be turned into full orbits - which stresses again the importance of having a reliable model for the MW's gravitational potential. \\
 
 %The era of big Galactic surveys (the big motivation behind our work)
 In the era of big Galactic surveys all of this could soon be within our reach. Not only will there be full 6D stellar phase-space coordinates for a thousand million of stars measured by Gaia to unprecedented precision by the end of 2016. But already with existing surveys (e.g., SEGUE (Beers et al. 2006), RAVE (Steinmetz et al. 2006), LAMOST (Newberg et al. 2012), APOGEE (Majewski 2012), Gaia-ESO (Gilmore et al. 2012), GALAH (Freeman 2012) [TO DO: I just copied this from Melissas Cannon paper. Should I reference all of them??? Not in reference list yet.]) and sophisticated machine-learning tools (e.g. \emph{The Cannon} by \cite{nes15}) to combine them, we will soon have huge data sets at our disposal.
 
 %This works actual objective
-In this work we present a rigorous, robust and reliable dynamical modelling machinery, strongly building on previous work by \cite{bin11,bin12,bov13,bov15} and explicitly developed to exploit and deal with these large data sets in the future.
+In this work we present a rigorous, robust and reliable dynamical modelling machinery, strongly building on previous work by \citet{bin11,bin12,bov13,bov15} and explicitly developed to exploit and deal with these large data sets in the future.
 
 %Action-based DF modelling in general
 There is a variety of practical approaches to dynamical modelling of discrete collisionless tracers (such as the stars in the Milky Way) [REF]. Most of them -- explicitly or implicitly -- describe the stellar distribution through a distribution function.  Actions are good ways to describe orbits, because they are canonical variables with their corresponding angles, have immediate physical meaning, and obey adiabatic invariance [Binney 2011abcdefg???]. \\
 
 %The roots of our approach
-Recently, \cite{bin12b} and \cite{bov13} [TO DO: are these the correct references???] proposed to combine parametrized axisymmetric potentials with DF's that are simple analytic functions of the three orbital actions to model discrete data. \cite{bin10} and \cite{bin11} had proposed a set of simple action-based (quasi-isothermal) distribution functions (qDF). \cite{Tin13} and \cite{bov13} showed that these qDF's may be good descriptions of the Galactic disk, when one only considers so-called mono-abundance populations (MAP), i.e. sub-sets of stars with similar [Fe/H] and [$\alpha$/Fe] (\cite{bov12b}, \cite{bov12c}, \cite{bov12d}). \\
+Recently, \cite{bin12b} and \cite{bov13} [TO DO: are these the correct references???] proposed to combine parametrized axisymmetric potentials with DF's that are simple analytic functions of the three orbital actions to model discrete data. \cite{bin10} and \cite{bin11} had proposed a set of simple action-based (quasi-isothermal) distribution functions (qDF). \cite{Tin13} and \cite{bov13} showed that these qDF's may be good descriptions of the Galactic disk, when one only considers so-called mono-abundance populations (\MAP), i.e. sub-sets of stars with similar [Fe/H] and [$\alpha$/Fe] (\cite{bov12b}, \cite{bov12c}, \cite{bov12d}). \\
 
 %The first version of the code + first results
-\cite{bov13} implemented a modelling approach that put action-based DF modelling of the Galactic disk in an axisymmetric potential in practice. Given an assumed potential and an assumed DF, they directly calculated the likelihood of the observed ($\vec{x},\vec{v}$) for each sub-set of \MAP among SEGUE Gdwarf \citep{yan09}. This modelling also accounted for the complex, but known selection function of the kinematic tracers.  For each MAP, the modelling resulted in a constraint of its DF, and an independent constraint on the gravitational potential, which members of all MAPs feel the same way. \\
-Taken as an ensemble, the individual MAP models constrained the disk surface mass density over a wide range of radii ($\sim 4-9$ kpc), and proved a powerful constraint on the disk mass scale length ($\sim 2$ kpc) and on the disk to dark matter ratio at the Solar radius [TO DO: quote number???]. \\
+\cite{bov13} implemented a modelling approach that put action-based DF modelling of the Galactic disk in an axisymmetric potential in practice. Given an assumed potential and an assumed DF, they directly calculated the likelihood of the observed ($\vec{x},\vec{v}$) for each sub-set of \MAP among SEGUE Gdwarf \citep{yan09}. This modelling also accounted for the complex, but known selection function of the kinematic tracers.  For each \MAP, the modelling resulted in a constraint of its DF, and an independent constraint on the gravitational potential, which members of all \MAPs feel the same way. \\
+Taken as an ensemble, the individual \MAP models constrained the disk surface mass density over a wide range of radii ($\sim 4-9$ kpc), and proved a powerful constraint on the disk mass scale length ($\sim 2$ kpc) and on the disk to dark matter ratio at the Solar radius [TO DO: quote number???]. \\
 
 %Drawbacks of the first code version in the era of large surveys
 Yet, these recent models still leave us poorly prepared with the wealth and quality of the existing and upcoming data sets. This is because \cite{bov13} made a number of quite severe and idealizing assumptions about the potential, the DF and the knowledge of observational effects (such as the selection function). All these idealizations are likely to translate into systematic error on the inferred potential or DF, well above the formal error bars of the upcoming data sets. \\
 
 %Focus of this work: Not just follow-up of BR13, but presentation and investigation of much improved machinery
-In this work we present \RM ("Recovery of the Orbit Action Distribution of Mono-Abundance Populations and Potential INference for our Galaxy") - an improved and refined version of the original modelling machinery by \cite{bov13}, making extensive use of the \emph{galpy} python package (\cite{bov15}). \RM relaxes some of the restraining assumptions \cite{bov13} had to made, is more flexible and more adept in dealing with large data sets. In this paper we set out to explore the robustness of \RM against the breakdowns of some of the most important assumptions of DF-based dynamical modelling. What is it about the data, the model and the machinery itself, that limits our recovery of the true gravitational potential? \\
+In this work we present \RM ("\textsc{R}ecovery of the \textsc{O}rbit \textsc{A}ction \textsc{D}istribution of \textsc{M}ono-\textsc{A}bundance \textsc{P}opulations and \textsc{P}otential \textsc{IN}ference for our \textsc{G}alaxy") - an improved and refined version of the original modelling machinery by \cite{bov13}, making extensive use of the \emph{galpy} python package (\cite{bov15}). \RM relaxes some of the restraining assumptions \cite{bov13} had to made, is more flexible and more adept in dealing with large data sets. In this paper we set out to explore the robustness of \RM against the breakdowns of some of the most important assumptions of DF-based dynamical modelling. What is it about the data, the model and the machinery itself, that limits our recovery of the true gravitational potential? \\
 
 %Large Data + Machinery
 In the light of Gaia we explicitely analyze how well the modelling machinery behaves in the limit of large data. For a huge number of stars three statistical aspects become important, that are  hidden behind Poisson noise for smaller data sets: (i) We have to make sure that our modelling is an un-biased and asymptotically normal estimator (\S\ref{sec:largedata}). (ii) Numerical inaccuracies in the actual modelling machinery start to matter and need to be avoided (\S\ref{sec:numaccuracynormalisation}). (iii) Parameter estimates become so precise, that we start to be able to distinguish between similar models. We therefore want more flexibility and more free fit parameters in the potential and DF model. The modelling machinery itself needs to be flexible and fast in effectively finding the best fit parameters for a large set of parameters. The improvements made to the machinery used in \cite{bov13} are presented in \S\ref{sec:fitting}. \\
