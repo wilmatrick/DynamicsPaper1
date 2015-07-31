@@ -14,40 +14,7 @@ and depend on the potential via the connection between position $x_i$ and moment
 
 %======================================================================================
 
-\begin{deluxetable*}{llllll}
-\tabletypesize{\scriptsize}
-%\rotate
-\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of "MW13-Pot" and "KKS-Pot" were found as direct fits to the "MW14-Pot". \label{tbl:referencepotentials}}
-\tablewidth{0pt}
-\tablehead{
-\colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
-\startdata
-"Iso-Pot" & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{bin08} \\
-          &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
-          &                       &                                          &                                               & in eq. (???)                                             &               \\
-\tableline
-"KKS-Pot" & 2-component                  & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$       & \citet{bat94} \\
-          & Kuzmin-Kutuzov-              & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using "St\"{a}ckel Fudge"                   &               \\                                                                
-          & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{bin12}                               &               \\
-          & \hspace{0.3cm} (disk + halo) & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation                           &               \\
-          &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid                              &               \\
-          & (analytic potential)         & relative contribution of the disk mass    &                                              & \citep{bov15}                               &               \\
-          &                              & \hspace{0.3cm} to the total mass          & $k = 0.28$                                   &                                             &               \\  
-\tableline
-"MW13-Pot" & MW-like potential with        & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov13} \\          
-           & Hernquist bulge,              & stellar disk scale length                & $R_d = 3$ kpc                                 & using "St\"{a}ckel Fudge"          &               \\
-           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{bin12}                      &               \\
-           & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation                  &               \\
-           & spherical power-law halo      & "flatness" of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid                &               \\
-           & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
-\tableline
-"MW14-Pot" & MW-like potential with        &  -                                       & -                                             & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov15} \\
-           & cut-off power-law bulge,       &                                          &                                               & (see "MW13-Pot")                   &               \\
-           & Miyamoto-Nagai stellar disk,  &                                          &                                               &                                    &               \\
-           & NFW halo                      &                                          &                                               &                                    &               \\
-\enddata
-\tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
-\end{deluxetable*}
+
 
 %=============================================
 
@@ -65,8 +32,10 @@ and depend on the potential via the connection between position $x_i$ and moment
 
 \paragraph{Distribution Function.} Motivated by the findings of Bovy et al. 2012??? and \citet{tin13} about the simple phase-space structure of \MAPs, and following \citet{bov13} and their successful application, we also assume that each \MAP follows a single qDF of the form given by \citet{bin11}.  This qDF  is a function of the actions $\vect{J}=(J_R,J_z,L_z)$ and has the form
 \begin{eqnarray}
-\text{qDF}(\vect{J} \mid p_\text{DF}) &=& f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) \times f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF}\right)\label{eq:df_general}\\
-\text{with } f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi\sigma_R^2(R_g) \kappa}\left[1+\tanh\left(L_z/L_0\right) \right]\exp\left(-\frac{\kappa J_R}{\sigma_R^2(R_g)} \right) \\
+\text{qDF}(\vect{J} \mid p_\text{DF}) &=& f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) \nonumber\\
+&& \times f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF}\right)\label{eq:df_general}\\
+\text{with }&&\\
+f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi\sigma_R^2(R_g) \kappa}\left[1+\tanh\left(L_z/L_0\right) \right]\exp\left(-\frac{\kappa J_R}{\sigma_R^2(R_g)} \right) \\
 f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF} \right) &=& \frac{\nu}{2 \pi \sigma_z^2(R_g)} \exp\left( -\frac{\nu J_z}{\sigma_z^2(R_g)} \right) \\
 \end{eqnarray}
 Here $R_g \equiv R_g(L_z)$ and $\Omega\equiv \Omega(L_z)$ are the (guidig-center) radius and the circular frequency of the circular orbit with angular momentum $L_z$ in a given potential. $\kappa\equiv \kappa(L_z)$ and $\nu\equiv \nu(L_z)$ are the radial/epicycle ($\kappa$) and vertical ($\nu$) frequencies with which the star would oscillate around the circular orbit in $R$- and $z$-direction when slightly perturbed \citep{bin08}. The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with $L \gg L_0$ which we set to a random small value ($L_0 = 10 \times R_\odot/8 \times v_\text{circ}(R_\odot)/220$).

@@ -1,12 +1,12 @@
 %% Document class
-\documentclass[12pt,preprint]{aastex}
+%\documentclass[12pt,preprint]{aastex}
 %\documentclass[preprint2]{aastex}
-%\documentclass{emulateapj}
+\documentclass[iop,revtex4]{emulateapj}
 
 %general packages
 \usepackage{amsmath}	%for \text{} in math mode
 \usepackage{mathrsfs } %for likelihood L
-%\usepackage{lscape} % landscape environment
+\usepackage{lscape} % landscape environment
 
 %%Figure packages
 \usepackage{grffile}	%for dots in filenames
@@ -28,8 +28,9 @@
 
 \begin{document}
 
-%% Title
-\title{The {\sc RoadMapping} Code:\\How to deal with "Real World" Issues\\in Action-based Dynamical Modelling the Milky Way\\}
+%% Title [TO DO: Decide on one of them]
+%\title{The {\sc RoadMapping} Code:\\How to deal with "Real World" Issues\\in Action-based Dynamical Modelling the Milky Way\\}
+\title{\emph{RoadMapping} - Action-based Dynamical Models for the Milky Way Disk\\and our imperfect Knowledge of the "Real World"\\}
 
 %% Authors    
 \author{W. Trick\altaffilmark{1,2},  J. Bovy\altaffilmark{3,4}, and H.-W. Rix\altaffilmark{1}}
@@ -38,57 +39,57 @@
 %% Affiliations
 \altaffiltext{1}{Max-Planck-Institut f\"ur Astronomie, K\"onigstuhl 17, D-69117 Heidelberg, Germany}
 \altaffiltext{2}{Correspondence should be addressed to trick@mpia.de.}
-\altaffiltext{3}{Institute for Advanced Study, Einstein Drive, Princeton, NJ 08540, USA}
+\altaffiltext{3}{University of Toronto [TO DO: What is Jo's current address???]}
 \altaffiltext{4}{Hubble fellow}
 
 
 %%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Abstract
-\include{{docs/abstract_v1.03}}
+\input{docs/abstract_v1.03}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %% Keywords
 \keywords{Galaxy: disk --- Galaxy: fundamental parameters --- Galaxy: kinematics and dynamics --- Galaxy: structure}
 
 %table of contents (remove later [TO DO])
-\tableofcontents
+%\tableofcontents
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Introduction
-\include{{docs/introduction_v1.05}}
+\input{docs/introduction_v1.05}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Dynamical Modelling
-\include{{docs/dynamical_modelling_model_v1.03}}
-\include{{docs/dynamical_modelling_mockdata_v1.04}}
-\include{{docs/dynamical_modelling_likelihood_v1.03}}
-\include{{docs/dynamical_modelling_fitting_v1.03}}
+\input{docs/dynamical_modelling_model_v1.04}
+\input{docs/dynamical_modelling_mockdata_v1.04}
+\input{docs/dynamical_modelling_likelihood_v1.03}
+\input{docs/dynamical_modelling_fitting_v1.03}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Results
-\include{{docs/results_intro_v1.02}}
-\include{{docs/results_largeData_v1.02}}
-\include{{docs/results_surveyVolume_v1.03}}
-\include{{docs/results_incompleteness_v1.03}}
-\include{{docs/results_errors_v1.02}}
-\include{{docs/results_mixedDFs_v1.03}}
-\include{{docs/results_potentials_v1.03}}
+\input{docs/results_intro_v1.02}
+\input{docs/results_largeData_v1.02}
+\input{docs/results_surveyVolume_v1.03}
+\input{docs/results_incompleteness_v1.03}
+\input{docs/results_errors_v1.02}
+\input{docs/results_mixedDFs_v1.03}
+\input{docs/results_potentials_v1.03}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Discussion etc.
-\include{{docs/discussion_and_summary_v1.02}}
-\include{{docs/conclusion_v1.02}}
+\input{docs/discussion_and_summary_v1.03}
+\input{docs/conclusion_v1.02}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{appendix}
 \section{Appendix}
-\include{{docs/appendix_v1.02}}
+\input{docs/appendix_v1.02}
 \end{appendix}
 
-\include{{docs/TODO_v1.02}}
+\input{docs/TODO_v1.02}
 
 
 
@@ -142,7 +143,10 @@
 
 [TO DO: Mit wie vielen J. wird Binney geschrieben?] [TO DO: Kommas nach letztem Namen oder nicht?] [TO DO: In welcher Reihenfolge soll ich sortieren?] [TO DO: Wie viele Autoren nennen, bevor et al.???]
 
-
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%Long landscape tables
+\include{docs/tables_v1.01}
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{document}
 
