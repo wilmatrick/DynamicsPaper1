@@ -21,7 +21,7 @@ and depend on the potential via the connection between position $x_i$ and moment
 %FIGURE: reference potentials
 
 \begin{figure*}
-\plotone{figs/reference_potentials.eps}
+\includegraphics[width=\textwidth]{figs/reference_potentials.eps}
 \caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery. [TO DO: Halo sichtbarer machen, evtl. mit isodensity contours]}
 \label{fig:ref_pots}
 \end{figure*}
@@ -32,10 +32,10 @@ and depend on the potential via the connection between position $x_i$ and moment
 
 \paragraph{Distribution Function.} Motivated by the findings of Bovy et al. 2012??? and \citet{tin13} about the simple phase-space structure of \MAPs, and following \citet{bov13} and their successful application, we also assume that each \MAP follows a single qDF of the form given by \citet{bin11}.  This qDF  is a function of the actions $\vect{J}=(J_R,J_z,L_z)$ and has the form
 \begin{eqnarray}
-\text{qDF}(\vect{J} \mid p_\text{DF}) &=& f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) \nonumber\\
-&& \times f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF}\right)\label{eq:df_general}\\
-\text{with }&&\\
-f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi\sigma_R^2(R_g) \kappa}\left[1+\tanh\left(L_z/L_0\right) \right]\exp\left(-\frac{\kappa J_R}{\sigma_R^2(R_g)} \right) \\
+\text{qDF}(\vect{J} \mid p_\text{DF}) &=& f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) \nonumber \\ \times f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF}\right)\label{eq:df_general}\\
+\text{with}\hspace{2cm}&\nonumber\\
+f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi\sigma_R^2(R_g) \kappa}\exp\left(-\frac{\kappa J_R}{\sigma_R^2(R_g)} \right) \nonumber\\
+&& \times \left[1+\tanh\left(L_z/L_0\right) \right]\\
 f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF} \right) &=& \frac{\nu}{2 \pi \sigma_z^2(R_g)} \exp\left( -\frac{\nu J_z}{\sigma_z^2(R_g)} \right) \\
 \end{eqnarray}
 Here $R_g \equiv R_g(L_z)$ and $\Omega\equiv \Omega(L_z)$ are the (guidig-center) radius and the circular frequency of the circular orbit with angular momentum $L_z$ in a given potential. $\kappa\equiv \kappa(L_z)$ and $\nu\equiv \nu(L_z)$ are the radial/epicycle ($\kappa$) and vertical ($\nu$) frequencies with which the star would oscillate around the circular orbit in $R$- and $z$-direction when slightly perturbed \citep{bin08}. The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with $L \gg L_0$ which we set to a random small value ($L_0 = 10 \times R_\odot/8 \times v_\text{circ}(R_\odot)/220$).
@@ -49,35 +49,15 @@ The qDF for each \MAP has therefore a set of five free parameters $p_\text{DF}$:
 
 \paragraph{Tracer Density.} One crucial point in our dynamical modelling technique (\S ???), as well as in creating mock data (\S\ref{sec:mockdata}), is to calculate the (axisymmetric) spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_\text{DF})$ for a given qDF and potential . We do this by integrating the qDF at a given $(R,z)$ over all three velocity components, using a $N_\text{velocity}$-th order Gauss-Legendre quadrature for each integral:
 \begin{eqnarray}
-\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) &=& \int_{-\infty}^{\infty} \text{qDF}(\vect{J}[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
-&\approx& \int_{-N_\text{sigma} \sigma_R(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_R(R \mid p_\text{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_z(R \mid p_\text{DF})} \int_{0}^{1.5 v_\text{circ}(R_\odot)}  \nonumber\\
+&&\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) \nonumber\\
+&&= \int_{-\infty}^{\infty} \text{qDF}(\vect{J}[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
+&&\approx \int_{-N_\text{sigma} \sigma_R(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_R(R \mid p_\text{DF})} \int_{-N_\text{sigma}\sigma_z(R \mid p_\text{DF})}^{N_\text{sigma} \sigma_z(R \mid p_\text{DF})} \int_{0}^{1.5 v_\text{circ}(R_\odot)}  \nonumber\\
 & & \hspace{1cm} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \diff v_T \diff v_z \diff v_R, \label{eq:tracerdensity}
 \end{eqnarray}
 where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are given by eq. (\ref{eq:sigmaRRg}) and (\ref{eq:sigmazRg}) and the integration ranges are motivated by Fig. \ref{fig:mockdatadistr}. For a given $p_\Phi$ and $p_\text{DF}$ we explicitly calculate the density on $N_\text{spatial} \times N_\text{spatial}$ regular grid points in the $(R,z)$ plane; in between grid points the density is evaluated with a bivariate spline interpolation. The grid is chosen to cover the extent of the observations for $z>0$. The total number of actions that need to be calculated to set up the density interpolation grid is $N_\text{spatial}^2 \cdot N_\text{velocity}^3$. Fig. ??? shows the importance of choosing $N_\text{spatial}$, $N_\text{velocity}$ and $N_\text{sigma}$ sufficiently large in order to get the density with an acceptable numerical accuracy. 
 
 %======================================================================================
 
-\begin{turnpage}
-\begin{deluxetable}{lccccc}
-\tabletypesize{\scriptsize}
-%\rotate
-\tablecaption{Reference distribution function parameters for the qDF in eq. (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These qDFs describe the phase-space distribution of stellar \MAPs for which mock data is created and analysed throughout this work for testing purposes. The parameters of the "cooler" \& "colder"  ("hotter" \& "warmer") \MAPs were chosen such, that the they have the same $\sigma_R/\sigma_z$ ratio as the "hot" ("cool") \MAP. The "colder" and "warmer" \MAPs have a free parameter $X$ that governs how much colder/warmer they are then the reference "hot" and "cool" qDFs. Hotter populations have shorter tracer scale lengths \citep{bov12d} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
-\tablewidth{0pt}
-\tablehead{
-\colhead{name of \MAP} & \multicolumn{5}{c}{qDF parameters $p_\text{DF}$}\\
-                       & \colhead{$h_R$ [kpc]} & \colhead{$\sigma_R$ [km s$^{-1}$]} & \colhead{$\sigma_z$ [km s$^{-1}$]} & \colhead{$h_{\sigma_R}$ [kpc]} & \colhead{$h_{\sigma_z}$ [kpc]}}
-\startdata
-"hot"    & 2   & 55 & 66 & 8 & 7\\
-"cool"   & 3.5 & 42 & 32 & 8 & 7\\
-\tableline
-"cooler" & 2  +50\% & 55-50\% & 66-50\% & 8 & 7 \\
-"hotter" & 3.5-50\% & 42+50\% & 32+50\% & 8 & 7\\
-\tableline
-"colder" & 2  +X\% & 55-X\% & 66-X\% & 8 & 7 \\
-"warmer" & 3.5-X\% & 42+X\% & 32+X\% & 8 & 7\\
-\enddata
-\end{deluxetable}
-\end{turnpage}
 
 %======================================================================================
 
