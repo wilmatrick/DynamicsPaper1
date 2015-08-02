@@ -14,11 +14,11 @@ The left panels in Fig. \ref{fig:centrallimittheorem} and \ref{fig:wedFlexVol_bi
 %FIGURE: Does shape and position of obs. volume matter?
 
 
-\begin{figure}
+\begin{figure*}
 \plotone{figs/wedFlexVol_bias_vs_SE.eps}
 \caption{Bias vs. standard error in recovering the potential parameters for mock data stars drawn four different test observation volumes within the Galaxy (illustrated in the upper right panel) and three different potentials ("Iso-Pot", "MW13-Pot" and "KKS-Pot" from Table \ref{tbl:referencepotentials}, top to bottom row). Standard error and offset were determined as in fig. \ref{fig:centrallimittheorem}. Per volume and potential we analyse four different mock data realisations; all model parameters are shown as Test \textcircled{4} in Table \ref{tbl:tests}. The colour-coding represents the different wedge-shaped observation volumes. The angular extent of each wedge-shaped observation volume was adapted such that all have the volume of $4.5 \text{ kpc}^3$, even though their extent in $(R,z)$ is different.  Overall there is no clear trend, that an observation volume around the sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential the other volumes. [TO DO: MW-Pot and KKS-Pot analyses suffer from too low accuracy in action calculation (with StaeckelGrid). Used the StaeckelGrid for BOTH mock data and analysis, but the mock data distribution would actually not look exactly like the desired qDF distribution, i.e. this plot basically is created with a messed up DF. Don't know how higher accuracy would change the plot. The orange Iso-Pot analysis suffers from too small integration range in vT. More coding required, before redoing this.]}
 \label{fig:wedFlexVol_bias_vs_SE}
-\end{figure}
+\end{figure*}
 
 
 %====================================================================

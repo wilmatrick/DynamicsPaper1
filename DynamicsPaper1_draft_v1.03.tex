@@ -10,6 +10,10 @@
 
 %%Figure packages
 \usepackage{grffile}	%for dots in filenames
+\renewcommand{\dbltopfraction}{1.0} %for maximum fraction of space for figure
+
+%%Referencinb
+\usepackage{hyperref}
 
 %% Custom macros
 \newcommand{\vect}[1]{\boldsymbol{#1}} % Uncomment for BOLD vectors.
@@ -30,7 +34,7 @@
 
 %% Title [TO DO: Decide on one of them]
 %\title{The {\sc RoadMapping} Code:\\How to deal with "Real World" Issues\\in Action-based Dynamical Modelling the Milky Way\\}
-\title{\emph{RoadMapping} - Action-based Dynamical Models for the Milky Way Disk\\and our imperfect Knowledge of the "Real World"\\}
+\title{Action-based Dynamical Models for the Milky Way Disk with \emph{RoadMapping}\\and our imperfect Knowledge of the "Real World"\\}
 
 %% Authors    
 \author{W. Trick\altaffilmark{1,2},  J. Bovy\altaffilmark{3,4}, and H.-W. Rix\altaffilmark{1}}
@@ -69,19 +73,19 @@
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Results
-\input{docs/results_intro_v1.02}
+\input{docs/results_intro_v1.03}
 \input{docs/results_largeData_v1.02}
 \input{docs/results_surveyVolume_v1.03}
 \input{docs/results_incompleteness_v1.03}
 \input{docs/results_errors_v1.02}
-\input{docs/results_mixedDFs_v1.03}
+\input{docs/results_mixedDFs_v1.04}
 \input{docs/results_potentials_v1.03}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %Discussion etc.
 \input{docs/discussion_and_summary_v1.03}
-\input{docs/conclusion_v1.02}
+\input{docs/acknowledgments_v.1.01}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{appendix}
@@ -117,15 +121,24 @@
 \bibitem[Bovy(2015)]{bov15} Bovy, J. 2015, ApJS, 216, 29 [TO DO]
 \bibitem[B\"{u}denbender et al.(2015)]{bue15} B\"{u}denbender, A., van de Ven, G., \& Watkins, L. L. 2015, \mnras, 452, 956
 \bibitem[Dehnen \& Binney(1998)]{deh98} Dehnen, W., \& Binney, J. 1998, \mnras, 294, 429
+\bibitem[Dehnen(1998)]{1998AJ....115.2384D} Dehnen, W.\ 1998, \aj, 115, 
+2384 
 \bibitem[De Lorenzi et al.(2007)]{lor07} De Lorenzi F., Debattista V.P., Gerhard O., Sambhus N. 2007, \mnras, 376, 7
 \bibitem[Foreman-Mackey et al.(2013)]{for13} Foreman-Mackey, D., Hogg, D. W., Lang, D., \& Goodman, J. 2013, PASP [TO DO], 125, 306
 \bibitem[Gilmore \& Reid(1983)]{gil83} Gilmore, G. \& Reid, N. 1983, \mnras, 202, 1025
+\bibitem[Holmberg et al.(2009)]{2009A&A...501..941H} Holmberg, J., Nordstr{\"o}m, B., \& Andersen, J.\ 2009, \aap, 501, 941 
 \bibitem[Hunt \& Kawata(2014)]{hun14} Hunt, J. A. S., \& Kawata, D. 2014, \mnras, 443, 2112
 \bibitem[Johnston et al.(1999)]{joh99} Johnston, K. V., Zhao, H. S., Spergel, D. N., \& Hernquist, L. 1999, ASPC [TO DO], 194, 15
+\bibitem[Juri{\'c} et al.(2008)]{jur08} Juri{\'c}, M., Ivezi{\'c}, {\v Z}., Brooks, A., et al.\ 2008, \apj, 673, 864 
+\bibitem[Kawata et al.(2014)]{2014MNRAS.443.2757K} Kawata, D., Hunt, J.~A.~S., Grand, R.~J.~J., Pasetto, S., \& Cropper, M.\ 2014, \mnras, 443, 2757 
+\bibitem[Klement et al.(2008)]{2008ApJ...685..261K} Klement, R., Fuchs, B., \& Rix, H.-W.\ 2008, \apj, 685, 261 
 \bibitem[Loebman et al.(2012)]{loe12} Loebman, S. R., Ivezic, Z., Quinn, T. R. et al., 2012, \apj, 758L, 23
 \bibitem[McMillan(2011)]{mcm11} McMillan, P. 2011, \mnras, 414, 2446
-\bibitem[Minchev et al.(2011)]{min11} Minchev, I., Famaey, B., Combes, F., et al. 2011, A\& A [TO DO], 527, A147
+\bibitem[Minchev et al.(2011)]{2011A&A...527A.147M} Minchev, I., Famaey, B., Combes, F., et al.\ 2011, \aap, 527, A147 
+\bibitem[Navarro et al.(2004)]{2004ApJ...601L..43N} Navarro, J.~F., Helmi, 
+A., \& Freeman, K.~C.\ 2004, \apjl, 601, L43 
 \bibitem[Ness et al.(2015)]{nes15} Ness, M., Hogg, D. W., Rix, H.-W. et al., 2015, \apj, 808, 16
+\bibitem[Nordstr{\"o}m et al.(2004)]{2004A&A...418..989N} Nordstr{\"o}m, B., Mayor, M., Andersen, J., et al.\ 2004, \aap, 418, 989 
 \bibitem[Piffl et al.(2014)]{pif14} Piffl, T., Binney, J., \& McMillan, P. J. et al., 2014, \mnras, 455, 3133
 \bibitem[Rix \& Bovy(2013)]{rix13} Rix, H.-W., \& Bovy, J. 2013, [TO DO] A\& ARv, 21, 61
 \bibitem[Ro\v{s}kar et al.(2008a)]{ros08a} Ro\v{s}kar, R., Debattista, V. P., Stinson, G. S., Quinn, T. R., Kaufmann, T., \& Wadsley, J. 2008a, \apj, 675, L65
@@ -133,6 +146,7 @@
 \bibitem[Sackett(1997)]{sac97} Sackett, P. 1997, \apj, 483, 103
 \bibitem[Sanders \& Binney(2015)]{san15} Sanders J. L., Binney J. 2015, \mnras, 449, 3479
 \bibitem[Sch\"{o}nrich \& Binney(2008)]{sch08} Sch\"{o}nrich, R. \& Binney, J. J. 2008, \mnras, 396, 203
+\bibitem[Sellwood(2010)]{2010MNRAS.409..145S} Sellwood, J.~A.\ 2010, \mnras, 409, 145 
 \bibitem[Sellwood \& Binney(2002)]{sel02} Sellwood, J. A., \& Binney, J. J. 2002, \mnras, 336, 785
 \bibitem[Steinmetz et al.(2006)]{ste06} Steinmetz, M. et al., 2006, \aj, 132, 1645
 \bibitem[Syer \& Tremaine(1996)]{sye96} Syer D., Tremaine S. 1996, \mnras, 282, 223

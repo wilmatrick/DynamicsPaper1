@@ -8,11 +8,11 @@ Using sets of mock data, created according to \S\ref{sec:mockdata} and with our 
 
 %FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
 
-\begin{figure}
+\begin{figure*}
 \plotone{figs/isoSphFlex_short_hot_2kpc_triangle_MCMC.eps}
 \caption{The likelihood in Eq. (\ref{eq:prob}) in the parameter space $\pmodel = \{p_\Phi,\ln(p_\text{DF})\}$ for one example mock data set created according to Test \textcircled{10} in Table \ref{tbl:tests}. Blue indicates the likelihood for the potential parameters, green the qDF parameters. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions, respectively, and show weak or moderate covariances. This analysis was picked among five similar analyses, to have all 1 sigma contours encompass the input values. The likelihood here was sampled using MCMC (with flat priors in $p_\Phi$ and  $\ln(p_\text{DF})$ to turn the likelihood into a full \pdf). Because only 10,000 MCMC samples were used to create the histograms shown, the 2D distribution has noisy contours. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the likelihood approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem.}
 \label{fig:triangleplot}
-\end{figure}
+\end{figure*}
 
 %====================================================================
 
@@ -29,11 +29,11 @@ Using sets of mock data, created according to \S\ref{sec:mockdata} and with our 
 
 %FIGURE: central limit theorem is satisfied
 
-\begin{figure}
+\begin{figure*}
 \plotone{figs/isoSph_CLT.eps}
 \caption{(Un-)bias of the parameter estimate: According to the central limit theorem the likelihood will follow a Gaussian distribution for a large number of stars. From this follows that also for a large number of data sets the corresponding best fit values for the model parameters have to follow a Gaussian distribution, centered on the true model parameters. That our method satisfies this and is therefore an unbiased estimator [TO DO: can I say that????] is demonstrated here. We create 640 mock data sets. They come from two different "Iso-Pot" potentials (first and second column), two different stellar populations ("hot" \MAP (solid symbols) and "cool" \MAP (open symbols)) and five spherical observation volumes of different sizes (color coded, see legend). All model parameters are summarized in Table \ref{tbl:tests} as test \textcircled{3}. We determine the best fit value and the standard error (SE) for each fit parameter by fitting a Gaussian to the marginalized likelihood. The offset is the difference between the best fit and the true value of each model parameter. In the first two columns the offset in units of the SE is plotted vs. the SE in \% of the true model parameter. The first row shows the results for the isochrone scale length $b$ and the second row the qDF parameter $h_{\sigma_z}$, which corresponds to the scale length of the vertical velocity distribution. [TO DO: rename isochrone potential in title to "Iso-Pot".]}
 \label{fig:centrallimittheorem}
-\end{figure}
+\end{figure*}
 
 \addtocounter{figure}{-1}
 \begin{figure} [t!]
