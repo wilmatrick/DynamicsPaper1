@@ -14,9 +14,9 @@ and depend on the potential via the connection between position $x_i$ and moment
 
 %======================================================================================
 
-\begin{deluxetable}{llllll}
+\begin{deluxetable*}{llllll}
 \tabletypesize{\scriptsize}
-\rotate
+%\rotate
 \tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of "MW13-Pot" and "KKS-Pot" were found as direct fits to the "MW14-Pot". \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
@@ -47,17 +47,17 @@ and depend on the potential via the connection between position $x_i$ and moment
            & NFW halo                      &                                          &                                               &                                    &               \\
 \enddata
 \tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
-\end{deluxetable}
+\end{deluxetable*}
 
 %=============================================
 
 %FIGURE: reference potentials
 
-\begin{figure}
+\begin{figure*}
 \plotone{figs/reference_potentials.eps}
 \caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery. [TO DO: Halo sichtbarer machen, evtl. mit isodensity contours]}
 \label{fig:ref_pots}
-\end{figure}
+\end{figure*}
 
 %=============================================
 
@@ -88,6 +88,7 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 
 %======================================================================================
 
+\begin{turnpage}
 \begin{deluxetable}{lccccc}
 \tabletypesize{\scriptsize}
 %\rotate
@@ -107,6 +108,7 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 "warmer" & 3.5-X\% & 42+X\% & 32+X\% & 8 & 7\\
 \enddata
 \end{deluxetable}
+\end{turnpage}
 
 %======================================================================================
 

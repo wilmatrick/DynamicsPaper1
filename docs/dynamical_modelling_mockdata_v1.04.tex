@@ -1,3 +1,17 @@
+%====================================================================
+
+%FIGURE: distribution of mock data in action and configuration space
+
+\begin{figure*}
+\plotone{figs/kks2WedgeEx_mockdata.eps}
+\caption{Distribution of mock data in action space (2D iso-density contours enclosing 80\% of the stars, in the two central and the lower left panel) and configuration space (1D histograms in right panels), depending on shape and position of the survey observation volume and temperature of the stellar population. The parameters of the mock data model is given as Test \textcircled{1} in Table \ref{tbl:tests}. In the upper left panel we demonstrate the shape of the two different "wedge"-like observation volumes within which we were creating each a "hot" (red) and "cool" (blue) mock data set: a large volume centered on the Galactic plane (solid lines) and a smaller one above the plane (dashed lines).} 
+\label{fig:mockdatadistr}
+\end{figure*}
+
+
+%===========================================================================================================================================================================================
+
+
 \subsection{Mock Data} \label{sec:mockdata}
 
 One goal of this work is to test how the loss of information in the process of measuring stellar phase-space coordinates can affect the outcome of the modelling. To investigate this, we assume first that our measured stars do indeed come from our assumed families of potentials and distribution functions and draw mock data from a given true distribution. In further steps we can manipulate and modify these mock data sets to mimick observational effects.\\
@@ -24,18 +38,6 @@ The distribution function is given in terms of actions and angles. The transform
 %Explanation for asymmetric drift at a given radius: 1) density profile: more stars inside as compared to outside. stars from inside come from smaller radius and are currently at their apocenter --> slower as circular velocity. --> more likely to be observed as stars from outside at their pericenter. 2) dispersion profile: stars on larger radii are on more circular orbits, because lower velocity dispersion. --> there are even less pericenter stars from the outside in the sample. more stars on non-circular orbits in the inside --> more likely to reach out.
 
 
-%====================================================================
-
-%FIGURE: distribution of mock data in action and configuration space
-
-\begin{figure}[H]
-\plotone{figs/kks2WedgeEx_mockdata.eps}
-\caption{Distribution of mock data in action space (2D iso-density contours enclosing 80\% of the stars, in the two central and the lower left panel) and configuration space (1D histograms in right panels), depending on shape and position of the survey observation volume and temperature of the stellar population. The parameters of the mock data model is given as Test \textcircled{1} in Table \ref{tbl:tests}. In the upper left panel we demonstrate the shape of the two different "wedge"-like observation volumes within which we were creating each a "hot" (red) and "cool" (blue) mock data set: a large volume centered on the Galactic plane (solid lines) and a smaller one above the plane (dashed lines).} 
-\label{fig:mockdatadistr}
-\end{figure}
-
-
-%===========================================================================================================================================================================================
 
 
 \paragraph{Introducing measurement errors.} If we want to add measurement errors to the mock data, we need to apply two modifications to the above procedure.
