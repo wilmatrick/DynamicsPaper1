@@ -1,0 +1,83 @@
+\section{Stuff that still needs to be done or thought about}
+
+\paragraph{Questions that haven't been covered so far:}
+\begin{itemize}
+\item What happens, when the errors are not uniform?
+\item What if errors in distance matter for selection?
+\end{itemize}
+
+\paragraph{Stuff that needs to be further examined in fig. \ref{fig:wedFlexVol_bias_vs_SE} about the survey volume:}
+\begin{itemize}
+\item[[TO DO]] Do we still get the same results, if we use an acceptable high numerical accuracy for the action grid?
+\item[[TO DO]] Do the biases for the orange volume disappear, when we increase the integration range in vT?
+\item[[TO DO]] Add the previous two volumes again, that had small extent in both R and z, or large extent in both.
+\item[[TO DO]] Maybe add volume at smaller radius with large vertical extent?
+\item[[TO DO]] Do we explicitely want to test, if it matters, if the radial coverage is larger or smaller the disk scale length, and the vertical coverage is larger or smaller than the disk scale height?
+\end{itemize}
+
+\paragraph{Stuff that needs to be further examined about the robustness against data incompleteness:}
+\begin{itemize}
+\item[[TO DO]] Maybe instead of decreasing completeness with height above the plane, a completeness
+that INcreases with height above the plan, to model e.g. obscuration due to dust.
+\item[[TO DO]] Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this
+robustness is a special case for the isochrone potential.
+\end{itemize}
+
+\paragraph{General Stuff}
+\begin{itemize}
+\item[[TO DO:]] Rename everywhere $N_\text{sigma}$ to $n_\text{interval}$ or something like this.
+\item[[TO DO:]] Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.
+\item[[TO DO:]] Consistent capitals in section titles.
+\item[[TO DO:]] Make consistent: use of $\sigma_{R,0}$ and $\sigma_R$ as profile or dispersion at sun.
+\item[[TO DO:]] Make consistent $h_{\sigma_R}$ --> $h_{\sigma,R}$
+\item[[TO DO:]] Make consistent $M$ --> \pmodel
+\item[[TO DO:]] Make consistent MAP --> \MAP
+\item[[TO DO:]] Make consistent number of stars $N$ --> $N_\text{sample}$, introduce somewhere
+\item[[TO DO:]]  introduce \pdf somewhere
+\item[[TO DO:]]  Rename all cite in citet and citep
+\item[[TO DO:]] Make a backslash before the year in all references.
+\item[[TO DO:]] Make sure, MW, DF, qDF, pdf are somewhere written and introduced explicitely
+\item[[TO DO:]] Find out, if the bibitem references shold be the journal short cuts (e.g. to be able to be referenced on ADS)
+\item[[TO DO:]] Make Legends in figures consistent. (fancybox)
+\end{itemize}
+
+%=====================================================
+
+%15. May 2015 --> Meet with HW to write
+%
+%* just explain what the best solution in analysis section is, don't explain too much about other (worse) techniques
+%* Numerical accuracy plot is a result
+%* 20,000 stars --> much larger than current sample sizes (200 stars), but forecasting to larger sample sizes with Gaia (?)
+%* Fig. 3,4,5 --> Behaviour in the limit of large samples
+%* Change order of sections according to order in Results section intro
+%* mention in introduction that we do not investigate axisymmetry
+%* limit of lousy data --> model assumptions are not limiting. very good data --> model assumptions are limiting. Bovy & Rix: 150 stars per MAP. When we get larger samples sizes, the modelling will be limited by the model assumptions.
+%* rename model parameters $M$ into $p_M$
+%* mock data in action space plot --> in mock data section
+%* accuracy plot --> in "Numerical accuracy of the likelihood calculation" section
+%* in section on numerical accuracy erwähnen, dass wir in the limit of many stars aufpassen müssen, dass wir die normalisierung genau genug berechnen.
+%* Macro fuer MAP schreiben: In Kapitälchen, damit klar ist, dass das ein Akronym ist
+%* Citation korrigieren: bo13 --> bov13
+%* Check how many stars were typically in a Bovy&Rix13 MAP
+%* Triangle plot --> I talk about likelihood, but it is a pdf!
+%* Priors: We want parameter estimates that alre tight enough, such that it does not matter, if we had assumed a flat or a logarithmically flat prior
+%* Introduce somewhere the 20,000 stars 
+%* if the priors are sufficiently flat, likelihood and pdf are the same.
+%* rename $N_j$ into $N_sample$
+%* change <_ 1 in eq. 5 to <_ 1/N_sample
+%* Mach einheitlich: width of pdf, likelihood, Standard error --> $\sigma_p$ ???
+%* schwarze punkte in (un)-bias CLT plot: call "pdf expectation value"
+%* triangle plot: potential-potential, qdf-qdf und potential-qdf panels in unterschiedlichen Farbschemen.
+%* Error on the width of the likelihood scales also with 1/sqrt(N) or sqrt(N-1) --> nicht in sqrtN figure einzeichnen, weil mein scatter größer ist. Neu berechnen?
+%* Latex Tipp: ~ ist ein halber Abstand.
+%* TO DO: Test, if characteristic errors indeed smaller than disp --> negligible
+%* obsvolumetest: orange volume eine breite weiter nach oben, also leicht oberhalb der plane.
+%* replace "cf." with "see" everywhere
+%* Latex Tipp: Häufige Bennenungen als Befehle definieren. Lässt sich nachträglich leichter ändern.
+%* Check that CLT plot and volumetestplot have both 20,000 stars
+%* epsilon ist was kleines, sollte also nicht 100% sein (incompleteness ...)
+
+%26. June 2015 --> Meet with HW to write
+%* Make consistent: fig. --> Fig., table --> Table, eq. --> Eq.
+%* change examples 1-4 to examples 1a/b and 2a/b
+%* reference always in text that exact model parameters are mentioned in figure caption

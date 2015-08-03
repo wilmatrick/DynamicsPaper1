@@ -1,0 +1,164 @@
+\clearpage
+%\LongTables
+\begin{landscape}
+\begin{deluxetable}{llllll}
+\tabletypesize{\scriptsize}
+%\rotate
+\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of "MW13-Pot" and "KKS-Pot" were found as direct fits to the "MW14-Pot". \label{tbl:referencepotentials}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
+\startdata
+"Iso-Pot" & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{bin08} \\
+          &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
+          &                       &                                          &                                               & in Eq. (\ref{eq:df_general})                                             &               \\
+\tableline
+"KKS-Pot" & 2-component                  & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$       & \citet{bat94} \\
+          & Kuzmin-Kutuzov-              & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using "St\"{a}ckel Fudge"                   &               \\                                                                
+          & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{bin12}                               &               \\
+          & \hspace{0.3cm} (disk + halo) & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation                           &               \\
+          &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid\tablenotemark{b}                              &               \\
+          & (analytic potential)         & relative contribution of the disk mass    &                                              & \citep{bov15}                               &               \\
+          &                              & \hspace{0.3cm} to the total mass          & $k = 0.28$                                   &                                             &               \\  
+\tableline
+"MW13-Pot" & MW-like potential with        & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov13} \\          
+           & Hernquist bulge,              & stellar disk scale length                & $R_d = 3$ kpc                                 & using "St\"{a}ckel Fudge"          &               \\
+           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{bin12}                      &               \\
+           & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation                  &               \\
+           & spherical power-law halo      & "flatness" of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid\tablenotemark{a}                &               \\
+           & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
+\tableline
+"MW14-Pot" & MW-like potential with        &  -                                       & -                                             & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov15} \\
+           & cut-off power-law bulge,       &                                          &                                               & (see "MW13-Pot")                   &               \\
+           & Miyamoto-Nagai stellar disk,  &                                          &                                               &                                    &               \\
+           & NFW halo                      &                                          &                                               &                                    &               \\
+\enddata
+\tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
+\tablenotetext{b}{We use a finely spaced action interpolation grid with $R_\text{max}=10$ [TO DO: What's that??? units???] and 50 grid points in $E$ and $\psi$ [TO DO: Find out what's that???], and 60 grid points in $L_z$. [TO DO: more details?]}
+\end{deluxetable}
+
+\begin{deluxetable}{lccccc}
+\tabletypesize{\scriptsize}
+%\rotate
+\tablecaption{Reference distribution function parameters for the qDF in eq. (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These qDFs describe the phase-space distribution of stellar \MAPs for which mock data is created and analysed throughout this work for testing purposes. The parameters of the "cooler" \& "colder"  ("hotter" \& "warmer") \MAPs were chosen such, that the they have the same $\sigma_R/\sigma_z$ ratio as the "hot" ("cool") \MAP. The "colder" and "warmer" \MAPs have a free parameter $X$ that governs how much colder/warmer they are then the reference "hot" and "cool" qDFs. Hotter populations have shorter tracer scale lengths \citep{bov12d} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{name of \MAP} & \multicolumn{5}{c}{qDF parameters $p_\text{DF}$}\\
+                       & \colhead{$h_R$ [kpc]} & \colhead{$\sigma_R$ [km s$^{-1}$]} & \colhead{$\sigma_z$ [km s$^{-1}$]} & \colhead{$h_{\sigma_R}$ [kpc]} & \colhead{$h_{\sigma_z}$ [kpc]}}
+\startdata
+"hot"    & 2   & 55 & 66 & 8 & 7\\
+"cool"   & 3.5 & 42 & 32 & 8 & 7\\
+\tableline
+"cooler" & 2  +50\% & 55-50\% & 66-50\% & 8 & 7 \\
+"hotter" & 3.5-50\% & 42+50\% & 32+50\% & 8 & 7\\
+\tableline
+"colder" & 2  +X\% & 55-X\% & 66-X\% & 8 & 7 \\
+"warmer" & 3.5-X\% & 42+X\% & 32+X\% & 8 & 7\\
+\enddata
+\end{deluxetable}
+
+\begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
+\tabletypesize{\scriptsize}
+%\rotate
+\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. (\ref{eq:prob}) and (\ref{eq:tracerdensity}). [TO DO: Change encircled numbers to proper order. Make sure the plot references are the right ones.] \label{tbl:tests}}
+\tablewidth{0pt}
+\tablehead{
+\colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
+\startdata
+\textcircled{1}         & \emph{Potential:}     & "KKS-Pot" & - & Mock data: \\
+Influence of            & \emph{\MAP:}          & 2 \MAPs "hot" or "cold" qDF   &   & Fig. \ref{fig:mockdatadistr}\\
+survey volume on        & \emph{Survey volume:} & a) $R \in [4,12]$ kpc,$z \in [-4,4]$ kpc, $\phi \in [-20^\circ,20^\circ]$. &  & \\
+mock data distribution, &                       & b) $R \in [6,10]$ kpc,$z \in [1,5]$ kpc, $\phi \in [-20^\circ,20^\circ]$.&  & \\
+also in action space	& \emph{\# stars per data set:} & 20,000 &  & \\
+						& \emph{\# data sets:}   & 4 (= $2\times 2$ models) & & \\
+
+\tableline
+\textcircled{9}         & \emph{Potential:}     & "Iso-Pot", "MW13-Pot" \& "KKS-Pot" & - & Convergence\\
+Numerical accuracy      & \emph{\MAP:}          & "hot" qDF                          &   & of normalisation:\\
+in calculation          & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc &   & Fig. \ref{fig:norm_accuracy}\\
+of the likelihood       & \emph{Numerical accuracy:} & $N_\text{spatial}\in[5,20]$, $N_\text{velocity}\in[6,40]$, $N_\text{sigma}\in[3.5,7]$& & \\
+normalisation           &                       & & & \\
+										   
+\tableline
+\textcircled{10}        & \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", all parameters free & Fig. \ref{fig:triangleplot}\\
+\pdf is a               & \emph{\MAP:}          & "hot" qdf & qDF, all parameters free & \\
+multivariate            & \emph{Survey Volume:} & sphere around sun, $r_\text{max} = 2$ kpc & (fixed \& known) & \\
+Gaussian                & \emph{\# stars per data set:} & 20,000 & & \\
+for large data sets.	& \emph{\# data sets:}   & 5 (only one is shown) & & \\
+                        & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ & \\
+
+\tableline
+\textcircled{2}			& \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", free parameter: $b$ & Fig. \ref{fig:sqrtN}\\
+Width of the			& \emph{\MAP:}          & "hot" qDF & "hot" qDF, free parameters: & \\
+likelihood scales       &                       &           & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
+with number of stars    & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 3$ kpc   & (fixed \& known) & \\
+by $\propto 1/\sqrt{N}$.& \emph{\# stars per data set:} & between 100 and 40,000 &  & \\ 
+                        & \emph{\# data sets:}  & 132 & & \\                                       
+                        & \emph{Analysis method:} & & likelihood on grid & \\
+                        & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ (for speed) & \\
+
+\tableline
+\textcircled{3}         & \emph{Potential:}     & 2 "Iso-Pot" with & "Iso-Pot", free parameter: $b$ & Fig. \ref{fig:centrallimittheorem}\\
+Parameter estimates     &                       & $b=0.8$ kpc or $b=1.5$ kpc & \\
+are unbiased.           & \emph{\MAP:}          & 2 \MAPs, "hot" or "cool" qDF  & "hot"/"cool" qDF, free parameters: & \\
+                        &                       &                          & $\ln\left(\frac{h_R}{8\text{kpc}}\right),\ln\left(\frac{\sigma_{R}}{230 \text{km s}^{-1}}\right),\ln\left(\frac{h_{\sigma,R}}{8\text{kpc}}\right)$ & \\
+                        & \emph{Survey volume:} & 5 spheres around sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc & (fixed \& known) & \\
+                        & \emph{\# stars per data set:} & 20,000 & & \\
+                        & \emph{\# data sets:}  & 640 (= $2\times2\times5$ models $\times 32$ realisations) & & \\
+                        & \emph{Analysis method:} & & likelihood on grid & \\
+                        & \emph{Numerical accuracy:} & & $N_\text{velocity} = 20$ and $N_\text{sigma} = 4$ (for speed) & \\
+
+\tableline
+\textcircled{4} 		& \emph{Potential:} 	& i) "Iso-Pot", ii) "MW13-Pot" or iii) "KKS-Pot" 	& i) "Iso-Pot", all parameters free & Fig. \ref{fig:wedFlexVol_bias_vs_SE} \\
+Influence of 			& 						& 													& ii) "MW13-Pot", $R_d$ and $f_h$ free & \\
+position \& shape 		& 						& 													& iii) "KKS-Pot", all free except $v_\text{circ}(R_\odot)$ & \\
+of survey volume 		& \emph{\MAP:}			& "hot" qDF 										& i) \& iii) qDF, all parameters free & \\
+on parameter recovery 	& 						& 													& ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma_R}$ free& \\
+						& \emph{Survey volume:}	& 4 different wedges, see Fig. \ref{fig:wedFlexVol_bias_vs_SE}, upper right panel & (fixed \& known) & \\
+						& \emph{\# of stars per data set:} & 20,000 & & \\
+						& \emph{\# data sets:}	& 48 (= $4\times3$ models $\times 4$ realisations) & & \\
+						& \emph{Analysis method:} & & i) \& ii) MCMC, iii) likelihood on grid & \\
+						& \emph{Action calculation:} & ii) \& iii) low accuracy & (same as mock data creation) & \\
+						&						& "St\"{a}ckel Fudge" grid \citep{bov15} for speed && \\
+						&						& (\# grid points: 25 in each $E$ and $\psi$, && \\
+						&						& 30 in $L_z$, $R_\text{max}=5$  & & \\
+						&						& [TO DO: What is psi and Rmax (units)?]) & & \\
+\tableline
+\textcircled{5}         & \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", all parameters free & Illustration \& mock data: \\
+Influence of            & \emph{\MAP:}          & 2 \MAPs, a) "hot" or b) "cool" qDF & qDF, all parameters free &  Fig. \ref{fig:isoSphFlexIncompR_mockdata} \& \ref{fig:isoSphFlexIncompZ_mockdata} \\
+wrong assumptions       & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & Analysis results: \\
+about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncompR_violins} \& \ref{fig:isoSphFlexIncompZ_violins} \\
+(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results:\\
+on parameter recovery   &                       & $r \equiv$ distance from sun, & & when not using $v_T$ data: \\
+                        &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncomp_marginal_violins}\\
+                        &                       & completeness$(z) = 1-\epsilon_z \frac{|z|}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$, & completeness$(r)$ = 1, twenty $\epsilon_z=0$& \\
+                        &                       & $z \equiv$ distance from Gal. plane. & & \\
+                        & \emph{\# stars per data set:} & 20,000 & & \\
+                        & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
+\tableline
+\textcircled{6} & [TO DO] & & & \\
+Measurement errors & & & & \\
+\tableline
+\textcircled{7}         & \emph{Potential:} & "Iso-Pot" & "Iso-Pot", all parameters free & mock data:\\
+Deviations in the       & \emph{\MAP:}      & mix of two qDFs & single qDF, all parameters free & Fig. \ref{fig:isoSphFlexMix_mockdata_residuals}\\
+assumed DF              &                   & \emph{Example 1:} with fixed qDF parameters,  & & Analysis results:\\
+from the                &                   & but 20 different mixing rates: & & \ref{fig:isoSphFlexMixCont} \& Fig. \ref{fig:isoSphFlexMixDiff}\\
+star's true DF          &                   & a) "hot" \& "cooler" qDF or b) "cool" \& "hotter" qDF & & \\
+                        &                   & \emph{Example 2:} 20 fixed 50/50 mixtures,  & & \\
+                        &                   & with varying qDF parameters (by $X\%$): & & \\
+                        &                   & a) "hot" \& "colder" qDF or b) "cool" \& "warmer" qDF & & \\
+                        & \emph{Survey volume:}& sphere around sun, $r_\text{max}=2$ kpc & (fixed \& known) & \\
+                        & \emph{\# stars per data set:} & 20,000 & & \\
+                        & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
+                        \tableline
+\textcircled{8}			&  \emph{Potential:} & "MW14-Pot" & "KKS-Pot", all parameters free, & potential contours: \\
+Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230 \text{km s}^{-1}$ fixed & Fig. \ref{fig:MW14vsKKS2SphFlex} \\
+assumed potential model	& \emph{\MAP:}       & "hot" or "cool" qDF & qDF, all parameters free & qDF recovery: \\
+from the star's			& \emph{Survey volume:} & sphere around sun, $r_\text{max} = 4$ kpc & (fixed \& known) & Fig. \ref{fig:MW14vsKKS2SphFlex_violins}\\
+true potential			& \emph{\# stars per data set:} & 20,000 & & \\
+						& \emph{\# data sets:} & 2 & & \\
+\enddata
+\end{deluxetable}
+
+\clearpage
+\end{landscape}
