@@ -11,13 +11,13 @@
 \startdata
 "Iso-Pot" & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{bin08} \\
           &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
-          &                       &                                          &                                               & in eq. (???)                                             &               \\
+          &                       &                                          &                                               & in Eq. (\ref{eq:df_general})                                             &               \\
 \tableline
 "KKS-Pot" & 2-component                  & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$       & \citet{bat94} \\
           & Kuzmin-Kutuzov-              & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using "St\"{a}ckel Fudge"                   &               \\                                                                
           & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{bin12}                               &               \\
           & \hspace{0.3cm} (disk + halo) & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation                           &               \\
-          &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid                              &               \\
+          &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid\tablenotemark{b}                              &               \\
           & (analytic potential)         & relative contribution of the disk mass    &                                              & \citep{bov15}                               &               \\
           &                              & \hspace{0.3cm} to the total mass          & $k = 0.28$                                   &                                             &               \\  
 \tableline
@@ -25,7 +25,7 @@
            & Hernquist bulge,              & stellar disk scale length                & $R_d = 3$ kpc                                 & using "St\"{a}ckel Fudge"          &               \\
            & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{bin12}                      &               \\
            & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation                  &               \\
-           & spherical power-law halo      & "flatness" of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid                &               \\
+           & spherical power-law halo      & "flatness" of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid\tablenotemark{a}                &               \\
            & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
 \tableline
 "MW14-Pot" & MW-like potential with        &  -                                       & -                                             & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov15} \\
@@ -34,6 +34,7 @@
            & NFW halo                      &                                          &                                               &                                    &               \\
 \enddata
 \tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
+\tablenotetext{b}{We use a finely spaced action interpolation grid with $R_\text{max}=10$ [TO DO: What's that??? units???] and 50 grid points in $E$ and $\psi$ [TO DO: Find out what's that???], and 60 grid points in $L_z$. [TO DO: more details?]}
 \end{deluxetable}
 
 \begin{deluxetable}{lccccc}
@@ -59,7 +60,7 @@
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
 %\rotate
-\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. ???. [TO DO: Change encircled numbers to proper order. Make sure the plot references are the right ones.] \label{tbl:tests}}
+\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_\text{spatial} = 16$, $N_\text{velocity} = 24$, $N_\text{sigma} = 5$ as numerical accuracy for the likelihood normalisation in Eq. (\ref{eq:prob}) and (\ref{eq:tracerdensity}). [TO DO: Change encircled numbers to proper order. Make sure the plot references are the right ones.] \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
@@ -124,10 +125,10 @@ on parameter recovery 	& 						& 													& ii) qDF, only $h_R$, $\sigma_{z,
 						&						& [TO DO: What is psi and Rmax (units)?]) & & \\
 \tableline
 \textcircled{5}         & \emph{Potential:}     & "Iso-Pot" & "Iso-Pot", all parameters free & Illustration \& mock data: \\
-Influence of            & \emph{\MAP:}          & 2 \MAPs, a) "hot" or b) "cool" qDF & qDF, all parameters free &  Fig. \ref{fig:incompR_mockdata} \& \ref{fig:incompZ_mockdata} \\
+Influence of            & \emph{\MAP:}          & 2 \MAPs, a) "hot" or b) "cool" qDF & qDF, all parameters free &  Fig. \ref{fig:isoSphFlexIncompR_mockdata} \& \ref{fig:isoSphFlexIncompZ_mockdata} \\
 wrong assumptions       & \emph{Survey volume:} & sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & Analysis results: \\
-about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncompR_violins} \& ??? \\
-(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results\\
+about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncompR_violins} \& \ref{fig:isoSphFlexIncompZ_violins} \\
+(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results:\\
 on parameter recovery   &                       & $r \equiv$ distance from sun, & & when not using $v_T$ data: \\
                         &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & Fig. \ref{fig:isoSphFlexIncomp_marginal_violins}\\
                         &                       & completeness$(z) = 1-\epsilon_z \frac{|z|}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$, & completeness$(r)$ = 1, twenty $\epsilon_z=0$& \\
