@@ -1,0 +1,28 @@
+\subsection{Effect of measurement errors on recovery of potential?} \label{sec:results_errors}
+
+[TO DO]
+
+\paragraph{Collection tests and plots (tests are still running on the cluster)}
+
+\begin{itemize}
+\item \emph{Plot 1:} number of MC samples needed for the error convolution vs. maximum velocity error inside the observed volume, such that a given accuracy in potential and qDF parameters is reached. Similar to what I had on the poster. However, we still haven't tested, if this plot depends on: hotness of stars and or umber of stars.
+
+\item \emph{Plot 2:} 2 columns of panels (one row for each parameter), bias vs. standard error. First column: only proper motion and vlos errors $\longrightarrow$ shows that our error convolution works and should be bias free, plus, when knowing the errors perfectly we can get a perfect deconvolution and tight constraints. Second column: proper motion, vlos and distance modulus errors $\longrightarrow$ shows that for too large proper motion and distance errors our approximation for the error convolution does not work anymore.
+
+\end{itemize}
+
+\paragraph{Underestimation of the proper motion error.} We found that in case we perfectly knew the measurement errors (and the distance error is negligible), we can deconvolve the likelihood with the measurement errors and get precise and accurate constraints on the parameters - even if the error itself is quite large. Now we investigate what would happen if the quoted measurement errors, e.g. the proper motion errors, were actually smaller than the true errors. Figure \ref{fig:isoSphFlexErrSyst} shows the case for two different stellar populations and an error underestimation of 10\% and 50\%. 
+\\Overall the parameter recovery gets worse the larger the proper motion error and the stronger the underestimation. The relation between the bias due to error misjudgment and the size of the proper motion error seems to be linear.
+\\For the recovery of the isochrone potential scale length $b$ the hotness of the population does not matter (see lower left panel in Figure \ref{fig:isoSphFlexErrSyst}). The circular velocity $v_\text{circ}(R_\odot)$ is, as always, better measured by cooler than by hotter populations (see upper left panel in Figure \ref{fig:isoSphFlexErrSyst}). 
+\\We find that the recovery of the qDF parameters on the other hand is more strongly affected by the misjudgment of the velocity error for \emph{cooler} stellar popluations. The measured velocity dispersion is the convolution of the intrinsic dispersion with the measurement errors. If the proper motion error is underestimated, the deconvolved velocity dispersion is larger than the intrinsic velocity dispersion and the relative difference is bigger for a cooler population (see upper right panel for $\sigma_z$ in Figure \ref{fig:isoSphFlexErrSyst}). The intrinsic velocity dispersion is also cooler at larger radii than at smaller radii, therefore the deconvolved dispersion is overestimated more strongly at large $R$ and the velocity dispersion scale length will be overestimated as well (see lower left panel for $h_{\sigma_z}$ in Figure \ref{fig:isoSphFlexErrSyst}). We get analogous results for the qDF parameters $\sigma_R$ and $h_{\sigma_R}$. The recovery of the tracer density scale length $h_R$ is not affected by the misjudgment of velocity errors. 
+\\The most important and encouraging result from Figure \ref{fig:isoSphFlexErrSyst} is, that for an underestimation of $10\%$ the bias is still $\lesssim 2 \sigma$ - even for proper motion errors of $3$ mas/yr.
+
+%=============================================================
+
+\begin{figure*}
+\plotone{figs/isoSphFlexErrSyst_offset_vs_error.eps}
+\caption{Effect of an systematic underestimation of proper motion errors in the recovery of the model parameters. The true model parameters used to create the mock data are summarized as Test \textcircled{11} in Table \ref{tbl:tests}, four of them are given on the $y$-axes and the true values are indicated as black dashed lines. The velocities of the mock data were perturbed according to Gaussian errors in the $\alpha$ and $\delta$ proper motions as indicated on the $x$-axis.   The circles and triangles are the best fit parameters of several mock data set assuming the proper motion error, with which the likelihood was convolved, was underestimated in the analysis by 10\% or 50\%, respectively. The error bars correspond to $1\sigma$ confidence. The lines connect the mean of each two data realisations and are just guides to the eyes.}
+\label{fig:isoSphFlexErrSyst}
+\end{figure*}
+
+%=============================================================
