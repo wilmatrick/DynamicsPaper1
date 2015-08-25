@@ -138,10 +138,10 @@ on parameter recovery   &                       & $r \equiv$ distance from sun, 
 \tableline
 \textcircled{6} 		& \emph{Potential:} 	& "Iso-Pot" & "Iso-Pot, all parameters free" & Fig. \ref{fig:isoSphFlexErrConv_MC_vs_error}\\
 Numerical convergence 	& \emph{\MAP:}			& "hot" qDF & qDF, all parameters free & \\
-of deconvolution		& \emph{Survey Volume:}	& sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
-with measurement		& \emph{Errors:}		& $\delta(R.A.)=\delta(DEC.)=\delta(m-M)=0$	& Deconvolution with	& \\
-errors					&						& $\delta(v_\text{los}) = 2$ km/s	& perfectly known errors & \\
-						&						& $\delta(\mu_\text{R.A.})= \delta(\mu_\text{DEC.}) =$ 2,3,4 or 5 mas/yr & & \\
+of convolution		& \emph{Survey Volume:}	& sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
+with measurement		& \emph{Errors:}		& $\delta \text{RA} =\delta \text{DEC} =\delta(m-M)=0$	& Convolution with	& \\
+errors					&						& $\delta v_\text{los} = 2$ km/s	& perfectly known errors & \\
+						&						& $\delta \mu_\text{RA}= \delta \mu_\text{DEC}  =$ 2,3,4 or 5 mas/yr & & \\
 						& \emph{Numerical Accuracy:} & & convolution using MC integration & \\
 						&							 & & with between 25 and 1200 MC samples & \\
 						& \emph{\# stars per data set:} & 10,000 & & \\
@@ -149,11 +149,11 @@ errors					&						& $\delta(v_\text{los}) = 2$ km/s	& perfectly known errors & \
 \tableline
 \textcircled{12}
 Testing the 			& \emph{Potential:} 	& "Iso-Pot" & "Iso-Pot, all parameters free" & Fig. \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
-deconvolution 			& \emph{\MAP:}			& "hot" qDF & qDF, all parameters free & \\
+convolution 			& \emph{\MAP:}			& "hot" qDF & qDF, all parameters free & \\
 with measurement		& \emph{Survey Volume:}	& sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
-errors with \& without  & \emph{Errors:}		& $\delta(R.A.)=\delta(DEC.)=0$	& Deconvolution with errors,	& \\
-distance errors			&						& $\delta(v_\text{los}) = 2$ km/s & ignoring distance errors in position (see \S [TO DO: CHECK???]) & \\
-						&						& $\delta(\mu_\text{R.A.})= \delta(\mu_\text{DEC.}) =$ 1, 2,3,4 or 5 mas/yr & \\
+errors with \& without  & \emph{Errors:}		& $\delta \text{RA} =\delta \text{DEC} =0$	& Convolution with errors,	& \\
+distance errors			&						& $\delta v_\text{los}  = 2$ km/s & ignoring distance errors in position (see \S [TO DO: CHECK???]) & \\
+						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1, 2,3,4 or 5 mas/yr & \\
 						&						& a) $\delta(m-M) = 0$, b) $\delta(m-M) \neq 0$ (see Fig. \ref{fig:isoSphFlexErrConv_bias_vs_SE}) & \\
 						& \emph{Numerical Accuracy:} & & 800 or 1200 MC samples & \\
 						& \emph{\# stars per data set:} & 10,000 & & \\
@@ -162,7 +162,7 @@ distance errors			&						& $\delta(v_\text{los}) = 2$ km/s & ignoring distance e
 \textcircled{11}	& \emph{Potential:}		& "Iso-Pot" & "Iso-Pot", all parameters free & Fig. \ref{fig:isoSphFlexErrSyst}\\
 Underestimation 	& \emph{\MAP:}			& "hot" or "cool" qDF & qDF, all parameters free & \\
 of proper motion 	& \emph{Survey volume:}	& sphere around sun, $r_\text{max} = 3$ kpc [TO DO: CHECK]& (fixed \& known) & \\
-errors 			 	& \emph{Errors:}		& only proper motion errors & Deconvolution with proper motion errors & \\
+errors 			 	& \emph{Errors:}		& only proper motion errors & Convolution with proper motion errors & \\
 					&						& 1, 2 or 3 mas/yr & 10\% or 50\% underestimated & \\
 					& \emph{\# stars per data set:} & 10,000 & & \\
 					& \emph{\# data sets:}	& 24 (= $2 \times 2 \times 3 \times 3$ realisations ) & & \\
@@ -188,7 +188,6 @@ true potential			& \emph{\# stars per data set:} & 20,000 & & \\
 \enddata
 \end{deluxetable}
 
-[TO DO: Make alpha and delta to R.A. and DEC. everywhere.???]
 
 \clearpage
 \end{landscape}
