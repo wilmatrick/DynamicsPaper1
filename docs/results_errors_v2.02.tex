@@ -47,7 +47,7 @@ Figure \ref{fig:isoSphFlexErrConv_MC_vs_error} also demonstrates that different 
 
 \begin{figure*}
 \plotone{figs/isoSphFlexErrConv_bias_vs_SE.eps}
-\caption{[TO DO: Caption]}
+\caption{Parameter recovery using the approximation for the measurement error convolved likelihood in Equation (\ref{eq:errorconv}). All model parameters used to create the mock data sets analyzed for this figure are given as Test \textcircled{12} in Table \ref{tbl:tests}. The mock data sets in the left panels have only errors in line-of-sight velocity and proper motions, while the data sets in the right panels also have distance modulus errors, as indicated in the legends in the first row. The size of the error is color coded. The other panels plot the offset of the recovered model parameter to the true parameter vs. the relative standard error for two of the seven model parameters, the potential parameter $v_\text{circ}(R_\odot)$ and qDF parameter $\sigma_z$. For data sets with proper motion error errors $\delta(m-M) \leq 3 \text{mas yr}^{-1}$ Equation (\ref{eq:errorconv}) was evaluated with $N_\text{error}=800$, for $\delta(m-M) > 3 \text{mas yr}^{-1}$ we used $N_\text{error}=1200$. In the absence of distance errors Equation (\ref{eq:errorconv}) gives unbiased results, for $\delta(m-M) \geq 3 \text{mas yr}^{-1}$ (which corresponds to $\delta v_\text{max} = $ [TO DO: CHECK], see Equation (\ref{eq:vmax})) however biases of several sigma [TO DO: CAN I SAY THAT] are introduced as Equation (\ref{eq:errorconv}) in only an approximation for the true likelihood in this case.}
 \label{fig:isoSphFlexErrConv_bias_vs_SE}
 \end{figure*}
 
