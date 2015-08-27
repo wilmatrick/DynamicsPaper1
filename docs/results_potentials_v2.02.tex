@@ -1,0 +1,52 @@
+\subsection{The Implications of Assuming a Potential Model which Differs from the Real Potential} \label{sec:results_potential}
+
+%Motivation for the Test
+
+We inspect if we can give constraints on the true potential, if our beliefs about the overall parametric form of the MW's potential are slightly wrong. We ignore deviations from axisymmetry and focus on a test case where the mock data was drawn from one axisymmetric potential ("MW14-Pot") and is then analysed using another axisymmetric potential family ("KKS-Pot"), that does \emph{not} incorporate the true potential (compare the second and fourth panel in Figure \ref{fig:ref_pots}). In the analysis we assume the circular velocity at the sun to be fixed and known and only fit the parametric potential form. The results are shown in Figure \ref{fig:MW14vsKKS2SphFlex}.
+
+
+
+
+%Results on the potential
+
+The reference potential parameters of the "KKS-Pot" in Table \ref{tbl:referencepotentials} were found by adjusting the 2-component Kuzmin-Kutuzov St\"{a}ckel potential by \citet{bat94} such that it generates radial and vertical force profiles similar to the "MW14-Pot" from \citet{bov15} (dotted gray lines in Figure \ref{fig:MW14vsKKS2SphFlex}). The analysis results from \RM shown in Figure \ref{fig:MW14vsKKS2SphFlex}, red for a "hot" mock data \MAP and blue for a "cool" \MAP, give an comparable good or even better agreement with the true potential than the (by-eye) fit directly to the potential: especially the force contours, to which the orbits are sensitive, and the rotation curve are very tightly constrained and reproduce the true potential even outside of the observed volume of the mock tracers. This demonstrates that \RM provides an optimal best fit potential within the capabilities of the parametric potential model.
+\\The density contours are less tightly constrained than the forces, but we still capture the essentials: The "hot" \MAP from Table \ref{tbl:referenceMAPs} constrains the halo; especially at smaller radii it is equally good or better than the "cool" \MAP. The "cool" \MAP gives tighter constraints on the halo in the outer region and recovers the disk better than the "hot" \MAP. This is in concordance with expectations as the "cool" \MAP has a longer tracer scale length and is more confined to the disk than the "hot" \MAP and therefore also probes the Galaxy in these regions better.
+\\Overall the best fit disk is less dens in the midplane than the true disk. 
+
+%Results on the qDF
+
+Figure \ref{fig:MW14vsKKS2SphFlex_violins} compares the true qDF parameters with the best fit parameters. While tracer scale length and radial velocity dispersion profile are very well recovered, we misjudge the radial profile of the vertical velocity dispersion: $\sigma_{0,z}$ [TO DO: consistent] and $h_{\sigma,z}$ are both underestimated, which leads to a steeper profile and a lower dispersion around the sun. This is a direct result of the surface density underestimation in the midplane, the corresponding lower vertical forces around the sun (see also Figure \ref{fig:MW14vsKKS2SphFlex}) and therefore lower vertical actions [TO DO: I have honestly no idea, if this is a proper explanation. In configuration space both models, original mock data set and best fit, have exactly the same radial dispersion and velocity profile.]. Figure \ref{fig:MW14vsKKS2SphFlex_mockdata_residuals} demonstrates that even though the misjudgment of the potential lead to biases in the qDF parameters, the model is still a very good fit to the data.
+
+
+
+
+
+
+
+%====================================================================
+
+\begin{figure*}
+\plotone{figs/MW14vsKKS2SphFlex_contours_compare.eps}
+\caption{Recovery of the gravitational potential if the assumed potential model ("KKS-Pot" with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock) stars ("MW14-Pot" in Table \ref{tbl:referencepotentials}) is slightly different. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential with 50 [TO DO: CHECK] sample potentials drawn from the posterior distribution function found with the MCMC for a "hot" (red) and a "cool" \MAP (blue). All model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}. [TO DO: Do more analyses???] [TO DO: fancybox Legend]}
+\label{fig:MW14vsKKS2SphFlex}
+\end{figure*}
+
+\begin{figure*}
+\plotone{figs/MW14vsKKS2SphFlex_violins.eps}
+\caption{Recovery of the qDF parameters for the case where the true and assumed potential deviate from each other (Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}). The thick red (blue) lines represent the true qDF parameters of the "hot" ("cool") qDF in Table \ref{tbl:referenceMAPs} used to create the mock data, surrounded by a 10\% error region. The grey violins are the marginalized likelihoods for the qDF parameters found simultaneously with the potential constraints shown in Figure \ref{fig:MW14vsKKS2SphFlex}. [TO DO: rename $h_{\sigma R}$ to $h_{\sigma,R}$, $\sigma_R$ to $\sigma_{R,0}$ and analogous for $z$]}
+\label{fig:MW14vsKKS2SphFlex_violins}
+\end{figure*}
+
+\begin{figure*}
+\plotone{figs/MW14vsKKS2SphFlex_mockdata_residuals.eps}
+\caption{Comparison of the distribution of mock data in configuration space created in the "MW14-Pot" potential (solid lines) with a "hot" (red) and "cool" (blue) \MAP (Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}), and the best fit distribution using a "KKS-Pot" potential (dashed lines). The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The best fit }
+\label{fig:MW14vsKKS2SphFlex_mockdata_residuals}
+\end{figure*}
+
+
+
+%====================================================================
+
+
+
+
