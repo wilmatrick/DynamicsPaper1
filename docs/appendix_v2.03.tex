@@ -2,13 +2,13 @@
 
 In \S\ref{sec:results_incompR} we found a striking robustness of the \RM modelling approach against wrong assumptions about the radial incompleteness of the data set. To further test this result, we investigate a different completeness function that drops with distance from the Galactic plane (see Test \ref{test:isoSphFlexIncomp}, Example 2, in Table \ref{tbl:tests} and Figure \ref{fig:isoSphFlexIncompZ_mockdata}). We get a similar robust behaviour for small deviations, and only slightly less robustness for larger deviations. That an explanation for this robustness could be, that a lot of information about the potential comes from the rotation curve, which is not affected by incompleteness, is demonstrated in Figure \ref{fig:isoSphFlexIncomp_marginal_violins}.
 
-\paragraph{Marginalization over $v_T$.} The likelihood in Equation (\ref{eq:prob}) is marginalized over the coordinate $v_T$ as follows
+\paragraph{Marginalization over $v_T$.} The likelihood in Equation \ref{eq:prob} is marginalized over the coordinate $v_T$ as follows
 \begin{eqnarray*}
 &&\left. \mathscr{L}(\pmodel \mid D)\right|_\text{($v_T$ marg.)}\\
 &=& \prod_i^N P_\text{($v_T$ marg.)} (\vect{x}_i,v_{R,i},v_{z,i} \mid \pmodel)\\
 &\equiv& \prod_i^N v_0 \cdot \int_0^{1.5v_\text{circ}(R_\odot)} \diff v_T \ P(\vect{x}_i,v_{R,i},v_{T},v_{z,i} \mid \pmodel )
 \end{eqnarray*}
-where $P(\vect{x},\vect{v} \mid \pmodel)$ is the same as in Equation (\ref{eq:prob}) and the numerical integral over $v_T$ is performed as a 24th order Gauss-Legendre quadrature. The additional factor of $v_0$ is needed to get the units of $P_\text{($v_T$ marg.)} (\vect{x}_i,v_{R,i},v_{z,i} \mid \pmodel)$ right.
+where $P(\vect{x},\vect{v} \mid \pmodel)$ is the same as in Equation \ref{eq:prob} and the numerical integral over $v_T$ is performed as a 24th order Gauss-Legendre quadrature. The additional factor of $v_0$ is needed to get the units of $P_\text{($v_T$ marg.)} (\vect{x}_i,v_{R,i},v_{z,i} \mid \pmodel)$ right.
 
 %FIGURE: isoSphFlexIncompR and isoSphFlexIncompZ in mock data space
 
