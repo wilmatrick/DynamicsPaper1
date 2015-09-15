@@ -9,13 +9,13 @@
 \tablehead{
 \colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
 \startdata
-\texttt{Iso-Pot} & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{bin08} \\
+\texttt{Iso-Pot} & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{2008gady.book.....B} \\
           &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
           &                       &                                          &                                               & in Equation \ref{eq:df_general}                                             &               \\
 \tableline
 \texttt{KKS-Pot} & 2-component                  & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$       & \citet{bat94} \\
           & Kuzmin-Kutuzov-              & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using \emph{St\"{a}ckel Fudge}                   &               \\                                                                
-          & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{bin12}                               &               \\
+          & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{2012MNRAS.426.1324B}                               &               \\
           & \hspace{0.3cm} (disk + halo) & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation                           &               \\
           &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid\tablenotemark{b}                              &               \\
           & (analytic potential)         & relative contribution of the disk mass    &                                              & \citep{bov15}                               &               \\
@@ -23,7 +23,7 @@
 \tableline
 \texttt{MW13-Pot} & MW-like potential with        & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov13} \\          
            & Hernquist bulge,              & stellar disk scale length                & $R_d = 3$ kpc                                 & using \emph{St\"{a}ckel Fudge}          &               \\
-           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{bin12}                      &               \\
+           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{2012MNRAS.426.1324B}                      &               \\
            & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation                  &               \\
            & spherical power-law halo      & ``flatness'' of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid\tablenotemark{a}                &               \\
            & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
@@ -40,7 +40,7 @@
 \begin{deluxetable}{lccccc}
 \tabletypesize{\scriptsize}
 %\rotate
-\tablecaption{Reference distribution function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These qDFs describe the phase-space distribution of stellar \MAPs{} for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{hotter} \& \texttt{warmer}) \MAPs{} were chosen such, that the they have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) \MAP{}. The \texttt{colder} and \texttt{warmer} \MAPs{} have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{bov12d} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
+\tablecaption{Reference distribution function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These qDFs describe the phase-space distribution of stellar \MAPs{} for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{hotter} \& \texttt{warmer}) \MAPs{} were chosen such, that the they have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) \MAP{}. The \texttt{colder} and \texttt{warmer} \MAPs{} have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{2012ApJ...753..148B} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name of \MAP{}} & \multicolumn{5}{c}{qDF parameters $p_\text{DF}$}\\
