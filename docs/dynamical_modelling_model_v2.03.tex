@@ -64,7 +64,7 @@ which indirectly set the stellar number density and radial and vertical velocity
 One crucial point in our dynamical modelling technique (\S\ref{sec:likelihood}), as well as in creating mock data (\S\ref{sec:mockdata}), is to calculate the (axisymmetric) spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_\text{DF})$ for a given qDF and potential . We do this by integrating the qDF at a given $(R,z)$ over all three velocity components, using a $N_v$-th order Gauss-Legendre quadrature for each integral:
 \begin{eqnarray}
 &&\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) \nonumber\\
-&&= \int_{-\infty}^{\infty} \text{qDF}(\vect{J}[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \Diff3\vect{v}  \label{eq:tracerdensity_general}\\
+&&= \int_{-\infty}^{\infty} \text{qDF}(\vect{J}[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \Diff3\vect{v}  \\%\label{eq:tracerdensity_general}\\
 &&\approx \int_{-n_\sigma \sigma_R(R \mid p_\text{DF})}^{n_\sigma \sigma_R(R \mid p_\text{DF})} \int_{-n_\sigma\sigma_z(R \mid p_\text{DF})}^{n_\sigma \sigma_z(R \mid p_\text{DF})} \int_{0}^{1.5 v_\text{circ}(R_\odot)}  \nonumber\\
 & & \hspace{1cm} \text{qDF}(J[R,z,\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \diff v_T \diff v_z \diff v_R, \label{eq:tracerdensity}
 \end{eqnarray}

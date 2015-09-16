@@ -10,15 +10,13 @@ The model that we fit is specified by a number of fixed and free parameters,
 \begin{eqnarray*}
 \pmodel =\{ p_\text{DF} , p_\Phi \}.
 \end{eqnarray*}
-As qDF parameters (see Section \ref{sec:qDF}) we use
+For the qDF parameters (see Section \ref{sec:qDF}) we assume a prior that is flat in
 \begin{eqnarray}
-p_\text{DF} := \{&& \ln \left(h_R/8\text{kpc}\right), \nonumber\\
-&& \ln \left(\sigma_{R,0}/220\text{km s$^{-1}$}\right), \ln \left(\sigma_{z,0}/220\text{km s$^{-1}$}\right), \nonumber\\
-&& \ln \left(h_{\sigma,R}/8\text{kpc}\right), \ln \left(h_{\sigma,z}/8\text{kpc}\right)\ \}.\label{eq:p_DF}
+p_\text{DF} := \{ \ln h_R, \ln \sigma_{R,0}, \ln \sigma_{z,0}, \ln h_{\sigma,R}, \ln h_{\sigma,z} \}.\label{eq:p_DF}
 \end{eqnarray}
 The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the qDF evaluated for the $i$-th star is then $\text{qDF}(\vect{J}_i \mid \pmodel) := \text{qDF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.\\
 
-The likelihood of the data given the model $\mathscr{L} = (D \mid \pmodel)$ is the product of the probabilities for each star to move in the potential with $p_\Phi$, being within the survey's selection function and it's orbit to be drawn from the qDF with $p_\text{DF}$, i.e. 
+The likelihood of the data given the model $\mathscr{L} = (D \mid \pmodel)$ is
 \begin{eqnarray}
 &&\mathscr{L}(D \mid \pmodel) \nonumber\\
 &&\equiv \prod_i^{N} p(\vect{x}_i,\vect{v}_i \mid \pmodel) \nonumber\\
@@ -26,7 +24,7 @@ The likelihood of the data given the model $\mathscr{L} = (D \mid \pmodel)$ is t
 &&\propto \prod_i^{N} \frac{\text{qDF}(\vect{J}_i \mid \pmodel)}{\int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \text{sf}(\vect{x})}, \label{eq:prob}
 %\label{eq:likelihood}
 \end{eqnarray}
-where $N$ is the number of stars in the data set $D$, and in the last step we used Equation \ref{eq:tracerdensity_general}. The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters, so we  simply evaluate Equation \ref{eq:prob} in the likelihood calculation. We find the best set of model parameters by maximizing the posterior probability distribution \emph{pdf}$(\pmodel \mid D)$, which is according to Bayes' theorem proportional the likelihood $\mathscr{L}(D\mid \pmodel)$ times the prior. We assume flat priors in both $p_\Phi$ and $p_\text{DF}$ (see Equation \ref{eq:p_DF}) through out this work, then \emph{pdf} and likelihood can be used interchangeably.\\
+where $N$ is the number of stars in the data set $D$, and in the last step we used Equation \ref{eq:tracerdensity_general}. The factor $\prod_i\text{sf}(\vect{x}_i)$ is independent of the model parameters so we treat it as unimportant proportionality factor in the likelihood calculation. We find the best set of model parameters by maximizing the posterior probability distribution $\pdf{}(\pmodel \mid D)$, which is according to Bayes' theorem proportional the likelihood $\mathscr{L}(D\mid \pmodel)$ times the prior. We assume flat priors in both $p_\Phi$ and $p_\text{DF}$ (see Equation \ref{eq:p_DF}) through out this work, then \pdf{} and likelihood can and will be used interchangeably for the remainder of the work.\\
 
 The normalisation in Equation \ref{eq:prob} is a measure for the total number of tracers inside the survey volume,
 \begin{equation}
@@ -34,10 +32,9 @@ M_\text{tot} \equiv \int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \
 \end{equation}
 In the case of an axisymmetric galaxy model and $\text{sf}(\vect{x})=1$ everywhere inside the observed volume (i.e. a complete sample as assumed in most tests in this work), the normalisation is essentially a two-dimensional integral in $R$ and $z$ of the interpolated tracer density $\rho_{DF}$ in Equation \ref{eq:tracerdensity} over the differential survey volume, i.e. $\frac{\partial M_\text{tot}}{\partial \phi} (R,z) = \int \diff R \ \diff z \ \rho_\text{DF} \times \frac{\partial V}{\partial \phi}$ [TO DO: missing factor of R???]. We perform this integral as a Gauss Legendre quadrature of order 40 in each $R$ and $z$ direction. The angular integral, i.e. $M_\text{tot} = \int R \diff \phi \ \frac{\partial M_\text{tot}}{\partial \phi}$, can be solved analytically. 
 \\It turns out that the sufficiently accurate evaluation of the likelihood is computationally expensive, even for only one set of model parameters. This expense is dominated by the number of action calculations required, which in turn depends on the number of stars in the sample and the numerical accuracy of the integrals in Equation \ref{eq:tracerdensity} needed for the normalisation, which requires $N_x^2 \times N_v^3$ action calculations. The accuracy has to be chosen high enough, such that a resulting numerical error 
-\begin{eqnarray}
-&&\delta_{M_{tot}} \nonumber\\
-&&\equiv \frac{M_\text{tot,approx}(N_x,N_v,N_\sigma) -  M_\text{tot} }{M_\text{tot}}\label{eq:relerrlikelihood}
-\end{eqnarray}
+\begin{equation}
+\delta_{M_{tot}} \equiv \frac{M_\text{tot,approx}(N_x,N_v,N_\sigma) -  M_\text{tot} }{M_\text{tot}}\label{eq:relerrlikelihood}
+\end{equation}
 [TO DO: make sure every Mtottrue is replaced by Mtot]
 does not dominate the likelihood, i.e.
 \begin{eqnarray}
@@ -49,7 +46,7 @@ with
 \begin{eqnarray}
 N \log (1 + \delta_{M_{tot}}) \lesssim 1.\nonumber
 \end{eqnarray}
-In other words, this error is only small enough, if it does not affect the comparison of two adjacent models whose likelihoods differ, to be clearly distinguishable, by a factor of 10. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF fitting. For data sets as large as $N =$ 20,000 stars in one \MAP{}, which in the age of Gaia could very well be the case \HW{[TO DO: Really???]}, we would need a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $N_{sigma}=5$, does satisfy this requirement.\\
+In other words, this error is only small enough if it does not affect the comparison of two adjacent models whose log-likelihoods differ, to be clearly distinguishable, by 1. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF fitting. For data sets as large as $N =$ 20,000 stars, which in the age of Gaia could very well be the case \HW{[TO DO: Really???]}, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $N_{sigma}=5$, does satisfy this requirement.\\
 
 %====================================================================
 
@@ -64,21 +61,16 @@ In other words, this error is only small enough, if it does not affect the compa
 
 %====================================================================
 
-If the data is affected by measurement errors, they have to be accounted for in the likelihood. We assume Gaussian errors in the observable space $\vect{y} \equiv (\tilde{\vect{x}},\tilde{\vect{v}})=(\text{RA},\text{DEC},(m-M),\mu_\text{RA},\mu_\text{DEC},v_\text{los})$,
-\begin{eqnarray*}
-N[\vect{y}_i,\delta \vect{y}_i](\vect{y}') &=& N[\vect{y}',\delta \vect{y}_i](\vect{y}_i)\\ 
-&\equiv&  \prod_k \frac{1}{\sqrt{2\pi(\delta {y}_{i,k})^2}} \exp\left( -\frac{(y_{i,k}-y_k')^2}{2(\delta y_{i,k})^2}\right),
-\end{eqnarray*}
-where $y_{i,k}$ is the $k$-th coordinate in $\vect{y}_i$ of the $i$-th star. Observed stars follow the (quasi-isothermal) distribution function (DF$(\vect{y}) \equiv$ qDF$(\vect{J}[\vect{y} \mid p_\Phi] \mid p_\text{DF}])$ for short), convolved with the error distribution $N[0,\delta y](\vect{y})$. The selection function sf$(\vect{y})$ acts on the space of (error affected) observables. 
-Then the probability of one star coming from potential $p_\Phi$, distribution function $p_\text{DF}$ and being affected by the measurement errors $\delta \vect{y}$ becomes
+If the data is affected by measurement errors, they have to be incorporated in the likelihood. We assume Gaussian errors in the observable space $\vect{y} \equiv (\tilde{\vect{x}},\tilde{\vect{v}})=(\text{RA},\text{DEC},(m-M),\mu_\text{RA},\mu_\text{DEC},v_\text{los})$, i.e. the $i$-th star's observed $\vect{y}_i \sim N[{\vect{y}'}_i,\delta \vect{y}_i](\vect{y}) = N[\vect{y},\delta \vect{y}_i]({\vect{y}'}_i)$, with ${\vect{y}_i}'$ being the true position and velocity of the star. Stars follow the (quasi-isothermal) distribution function (DF$(\vect{y}') \equiv$ qDF$(\vect{J}[\vect{y}' \mid p_\Phi] \mid p_\text{DF})$ for short), convolved with the error distribution $N[0,\delta \vect{y}](\vect{y}')$ \Wilma{[TO DO: CHECK AGAIN]}. The selection function sf$(\vect{y})$ acts on the space of (error affected) observables. 
+Then the probability of one star becomes
 \begin{eqnarray*}
 &&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i)\\
-& \equiv& \frac{\text{sf}(\vect{y}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i](\vect{y}')}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot  \int \Diff{6} y' \  \text{sf}(\vect{y}')  \cdot N[\vect{y},\delta \vect{y}_i](\vect{y}')}.
+& \equiv& \frac{\text{sf}(\vect{y}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i](\vect{y}')}{\int \Diff{6}y'  \  \text{DF}(\vect{y}')  \cdot  \int \Diff{6} y \  \text{sf}(\vect{y})  \cdot N[\vect{y}',\delta \vect{y}_i](\vect{y})}.
 \end{eqnarray*}
-In the case of errors in distance or position, the evaluation of this is computational expensive - especially if the stars' have heteroscedastic errors $\delta \vect{y}_i$, for which the normalisation would have to be calculated for each star separately. In practice we apply the following approximation:
+In the case of errors in distance or position, the evaluation of this is computational expensive - especially if the stars have heteroscedastic errors $\delta \vect{y}_i$, for which the normalisation would have to be calculated for each star separately. In practice we apply the following approximation,
 \begin{eqnarray}
 &&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i) \nonumber\\
-&\approx& \frac{ \text{sf}(\vect{x}_i)}{\int \Diff{6}y  \  \text{DF}(\vect{y})  \cdot   \text{sf}(\vect{x})} \cdot \frac{1}{N_\text{error}} \sum_n^{N_\text{error}}  \text{DF}(\vect{x}_i,\vect{v}[\vect{y}'_{i,n}]) \label{eq:errorconv}
+&\approx& \frac{ \text{sf}(\vect{x}_i)}{\int \Diff{6}y'  \  \text{DF}(\vect{y}')  \cdot   \text{sf}(\vect{x}')} \cdot \frac{1}{N_\text{error}} \sum_n^{N_\text{error}}  \text{DF}(\vect{x}_i,\vect{v}[\vect{y}'_{i,n}]) \label{eq:errorconv}
 \end{eqnarray}
 with
 \begin{eqnarray}
