@@ -30,7 +30,11 @@
    \hypertarget{#1}{#2}
 }
 \makeatother
- 
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\Wilma}[1]{\textcolor{Fuchsia}{#1}}
+\newcommand{\HW}[1]{\textcolor{Green}{#1}}
+\newcommand{\Jo}[1]{\textcolor{Blue}{#1}}
+
 %% Abbreviations
 \shorttitle{Action-based Dynamical Models for the Milky Way}
 \shortauthors{Trick et al.}
@@ -73,12 +77,12 @@
 \input{docs/dynamical_modelling_model_v2.03}
 \input{docs/dynamical_modelling_mockdata_v2.03}
 \input{docs/dynamical_modelling_likelihood_v2.04}
-%\input{docs/dynamical_modelling_fitting_v2.03}
+\input{docs/dynamical_modelling_fitting_v2.03}
 %%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %
 %%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %%Results
-%\input{docs/results_intro_v2.01}
+\input{docs/results_intro_v2.02}
 %\input{docs/results_largeData_v2.03}
 %\input{docs/results_surveyVolume_v2.03}
 %\input{docs/results_incompleteness_v2.03}
