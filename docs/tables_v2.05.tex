@@ -76,29 +76,29 @@ on parameter recovery   &                       & $r \equiv$ distance from sun, 
 Test \testlabel{test:isoSphFlexErrConv_MC_vs_error}{6.1} :		& \emph{Potential:} 	& \texttt{Iso-Pot} & "Iso-Pot, all parameters free" & Figure \ref{fig:isoSphFlexErrConv_MC_vs_error}\\
 Numerical convergence 	& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
 of convolution		& \emph{Survey Volume:}	& sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
-with measurement		& \emph{Errors:}		& $\delta \text{RA} =\delta \text{DEC} =\delta(m-M)=0$	& Convolution with	& \\
-errors					&						& $\delta v_\text{los} = 2$ km/s	& perfectly known errors & \\
-						&						& $\delta \mu_\text{RA}= \delta \mu_\text{DEC}  =$ 2,3,4 or 5 mas/yr & & \\
-						& \emph{Numerical Accuracy:} & & convolution using MC integration & \\
-						&							 & & with between 25 and 1200 MC samples & \\
+with measurement		& \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{DEC} =\delta(m-M)=0$	& Convolution with	& \\
+uncertainties					&						& $\delta v_\text{los} = 2$ km/s	& perfectly known & \\
+						&						& $\delta \mu_\text{RA}= \delta \mu_\text{DEC}  =$ 2,3,4 or 5 mas/yr & measurement uncertainties & \\
+						& \emph{Numerical Accuracy:} & & $N_\text{error} \in [25,1200]$& \\
 						& \emph{\# stars per data set:} & 10,000 & & \\
-						& \emph{\# data sets:}	& 16 (= $4 \times 4$ realisations) & & \\
 \tableline
 Test \testlabel{test:isoSphFlexErrConv_bias_vs_SE}{6.2} : & \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
 Testing the			& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
 convolution 		& \emph{Survey Volume:}	& sphere around sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
-with measurement \& without  & \emph{Errors:}		& $\delta \text{RA} =\delta \text{DEC} =0$	& Convolution with errors,	& \\
-errors with			&						& $\delta v_\text{los}  = 2$ km/s & ignoring distance errors in position (see \S \ref{sec:likelihood}) & \\
-distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1, 2,3,4 or 5 mas/yr & \\
-						&						& a) $\delta(m-M) = 0$, b) $\delta(m-M) \neq 0$ (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}) & \\
-						& \emph{Numerical Accuracy:} & & 800 or 1200 MC samples & \\
+with measurement \& without  & \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{DEC} =0$,	& Convolution with	& \\
+uncertainties with			&						& $\delta v_\text{los}  = 2~\text{km s}^{-1}$, & measurement uncertainties,  & \\
+distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1, 2,3,4 or 5 mas/yr, & ignoring distance errors in position& \\
+						&						& a) $\delta(m-M) = 0$  or & (see Section \ref{sec:likelihood})&  \\
+						&                     & b) $\delta(m-M) \neq 0$.  & & \\
+						&                     &  (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE})  & & \\
+						& \emph{Numerical Accuracy:} & & $N_\text{error} = 800$ for $\delta \mu \leq 3 \text{mas yr}^{-1}$, & \\
+						&                     & & $N_\text{error} = 1200$ for $\delta \mu > 3 \text{mas yr}^{-1}$& \\
 						& \emph{\# stars per data set:} & 10,000 & & \\
-						& \emph{\# data sets:}	& 40 (= $2 \times 5 \times 4$ realisations) & & \\
 \tableline
 Test \testlabel{test:isoSphFlexErrSyst}{6.3} :	& \emph{Potential:}		& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrSyst}\\
 Underestimation 	& \emph{DF:}			& \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
 of proper motion 	& \emph{Survey volume:}	& sphere around sun, $r_\text{max} = 3$ kpc [TO DO: CHECK]& (fixed \& known) & \\
-errors 			 	& \emph{Errors:}		& only proper motion errors & Convolution with proper motion errors & \\
+errors 			 	& \emph{Uncertainties:}		& only proper motion errors & Convolution with proper motion errors & \\
 					&						& 1, 2 or 3 mas/yr & 10\% or 50\% underestimated & \\
 					& \emph{\# stars per data set:} & 10,000 & & \\
 					& \emph{\# data sets:}	& 24 (= $2 \times 2 \times 3 \times 3$ realisations ) & & \\
