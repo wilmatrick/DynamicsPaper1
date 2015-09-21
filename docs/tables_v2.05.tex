@@ -1,66 +1,10 @@
 \clearpage
-%\LongTables
+\LongTables
 \begin{landscape}
-\begin{deluxetable}{llllll}
-\tabletypesize{\scriptsize}
-%\rotate
-\tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were found as direct fits to the \texttt{MW14-Pot}. \label{tbl:referencepotentials}}
-\tablewidth{0pt}
-\tablehead{
-\colhead{name} & \colhead{potential type} & \multicolumn{2}{c}{potential parameters $p_\Phi$} & \colhead{action calculation} & \colhead{reference for potential type}}
-\startdata
-\texttt{Iso-Pot} & isochrone potential   & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{analytical and exact}} $J_r, J_\vartheta, L_z$;     & \citet{2008gady.book.....B} \\
-          &					      & isochrone scale length                   & $b$ = $0.9$ kpc                               & use $J_r \rightarrow J_R, J_\vartheta \rightarrow J_z $  &               \\
-          &                       &                                          &                                               & in Equation \ref{eq:df_general}                                             &               \\
-\tableline
-\texttt{KKS-Pot} & 2-component                  & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{exact}} $J_R, J_z, L_z$       & \citet{bat94} \\
-          & Kuzmin-Kutuzov-              & focal distance of coordinate system\tablenotemark{a}       & $\Delta = 0.3$              & using \emph{St\"{a}ckel Fudge}                   &               \\                                                                
-          & St\"{a}ckel potential        & axis ratio of the coordinate surfaces\tablenotemark{a} ... &                             & \citep{2012MNRAS.426.1324B}                               &               \\
-          & \hspace{0.3cm} (disk + halo) & \hspace{0.3cm} ...of the disk component   & $\left(\frac{a}{c}\right)_\text{Disk}$ = 20  & and interpolation                           &               \\
-          &                              & \hspace{0.3cm} ...of the halo component   & $\left(\frac{a}{c}\right)_\text{Halo}$ = 1.07& on action grid\tablenotemark{b}                              &               \\
-          & (analytic potential)         & relative contribution of the disk mass    &                                              & \citep{bov15}                               &               \\
-          &                              & \hspace{0.3cm} to the total mass          & $k = 0.28$                                   &                                             &               \\  
-\tableline
-\texttt{MW13-Pot} & MW-like potential with        & circular velocity at the sun             & $v_\text{circ}$ = $230$ km s$^{-1}$           & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov13} \\          
-           & Hernquist bulge,              & stellar disk scale length                & $R_d = 3$ kpc                                 & using \emph{St\"{a}ckel Fudge}          &               \\
-           & 2 exponential disks           & stellar disk scale height                & $z_h = 0.4$ kpc                               & \citep{2012MNRAS.426.1324B}                      &               \\
-           & \hspace{0.3cm} (stars + gas), & relative halo contribution to $v_\text{circ}^2(R_\odot)$ & $f_h = 0.5$                   & and interpolation                  &               \\
-           & spherical power-law halo      & ``flatness'' of rotation curve & $\frac{\diff \ln(v_\text{circ}(R_\odot))}{ \diff \ln(R)}$ = 0  & on action grid\tablenotemark{a}                &               \\
-           & (interpolated potential)      &                                          &                                               & \citep{bov15}                      &               \\
-\tableline
-\texttt{MW14-Pot} & MW-like potential with        &  -                                       & -                                             & \textbf{\emph{approximate}} $J_R, J_z, L_z$ & \citet{bov15} \\
-           & cut-off power-law bulge,       &                                          &                                               & (see \texttt{MW13-Pot})                   &               \\
-           & Miyamoto-Nagai stellar disk,  &                                          &                                               &                                    &               \\
-           & NFW halo                      &                                          &                                               &                                    &               \\
-\enddata
-\tablenotetext{a}{The coordinate system of each of the two St\"{a}ckel-potential components is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta = \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flattness of the corresponding St\"{a}ckel component.}
-\tablenotetext{b}{We use a finely spaced action interpolation grid with $R_\text{max}=10$ [TO DO: What's that??? units???] and 50 grid points in $E$ and $\psi$ [TO DO: Find out what's that???], and 60 grid points in $L_z$. [TO DO: more details?]}
-\end{deluxetable}
-
-\begin{deluxetable}{lccccc}
-\tabletypesize{\scriptsize}
-%\rotate
-\tablecaption{Reference distribution function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These qDFs describe the phase-space distribution of stellar \MAPs{} for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{hotter} \& \texttt{warmer}) \MAPs{} were chosen such, that the they have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) \MAP{}. The \texttt{colder} and \texttt{warmer} \MAPs{} have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{2012ApJ...753..148B} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
-\tablewidth{0pt}
-\tablehead{
-\colhead{name of \MAP{}} & \multicolumn{5}{c}{qDF parameters $p_\text{DF}$}\\
-                       & \colhead{$h_R$ [kpc]} & \colhead{$\sigma_{R,0}$ [km s$^{-1}$]} & \colhead{$\sigma_{z,0}$ [km s$^{-1}$]} & \colhead{$h_{\sigma,R}$ [kpc]} & \colhead{$h_{\sigma,z}$ [kpc]}}
-\startdata
-\texttt{hot}    & 2   & 55 & 66 & 8 & 7\\
-\texttt{cool}   & 3.5 & 42 & 32 & 8 & 7\\
-\tableline
-\texttt{cooler} & 2  +50\% & 55-50\% & 66-50\% & 8 & 7 \\
-\texttt{hotter} & 3.5-50\% & 42+50\% & 32+50\% & 8 & 7\\
-\tableline
-\texttt{colder} & 2  +X\% & 55-X\% & 66-X\% & 8 & 7 \\
-\texttt{warmer} & 3.5-X\% & 42+X\% & 32+X\% & 8 & 7\\
-\enddata
-\end{deluxetable}
-
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
 %\rotate
-\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_x = 16$, $N_v = 24$, $n_\sigma= 5$ as numerical accuracy for the likelihood normalisation in Equations (\ref{eq:prob}) and (\ref{eq:tracerdensity}). [TO DO: Change encircled numbers to proper order. Make sure the plot references are the right ones.] \label{tbl:tests}}
+\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_x = 16$, $N_v = 24$, $n_\sigma= 5$ as numerical accuracy for the likelihood normalisation in Equations (\ref{eq:prob}) and (\ref{eq:tracerdensity}). \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
@@ -81,7 +25,7 @@ normalisation           &                       & & & \\
 										   
 \tableline
 Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlex_triangleplot}\\
-\pdf} is a               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \\
+\pdf{} is a               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \\
 multivariate            & \emph{Survey Volume:} & sphere around sun, $r_\text{max} = 2$ kpc & (fixed \& known) & \\
 Gaussian                & \emph{\# stars per data set:} & 20,000 & & \\
 for large data sets.	& \emph{\# data sets:}   & 5 (only one is shown) & & \\
@@ -186,4 +130,6 @@ true potential			& \emph{\# stars per data set:} & 20,000 & & \\
 \end{landscape}
 
 
-[TO DO: Remove \# data sets, where it actually is not important.]
+\Wilma{[TO DO: Remove \# data sets, where it actually is not important.]}
+\Jo{[TO DO: Jo suggested to make many tables from this. But I actually like one big table at the end of the paper. Otherwise we had 6 additional tables interrupting the flow of text and figures all the time. And the parameters in the table are really just for reference.]}
+\Wilma{[TO DO: Overall, this table could do with a little less information.]}
