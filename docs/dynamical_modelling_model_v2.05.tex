@@ -3,7 +3,7 @@
 
 %=============================================
 
-\begin{deluxetable*}{lllrl}[h!]
+\begin{deluxetable*}{lllrl}[!htbp]
 \tabletypesize{\scriptsize}
 \tablecaption{Gravitational potentials of the reference galaxies used troughout this work and the respective ways to calculate actions in these potentials. All four potentials are axisymmetric. The potential parameters are fixed for the mock data creation at the values given in this table. In the subsequent analyses we aim to recover these potential parameters again. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230$ km s$^{-1}$ for all potentials in this work. \label{tbl:referencepotentials}}
 \tablewidth{0pt}
@@ -44,7 +44,7 @@
 
 %FIGURE: reference potentials
 
-\begin{figure*}[h!]
+\begin{figure*}[!htbp]
 \includegraphics[width=\textwidth]{figs/reference_potentials.eps}
 \caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work for mock data creation and potential recovery.}
 \label{fig:ref_pots}
@@ -55,7 +55,7 @@
 
 %=============================================
 
-\begin{deluxetable*}{lccccc}[h!]
+\begin{deluxetable*}{lccccc}[!htbp]
 \tabletypesize{\scriptsize}
 \tablecaption{Reference distribution-function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These DFs describe the phase-space distribution of stellar populations for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{hotter} \& \texttt{warmer}) qDFs were chosen to have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) qDF. The \texttt{colder} and \texttt{warmer} qDF have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{2012ApJ...753..148B} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
 \tablewidth{0pt}
@@ -130,11 +130,11 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 
 \subsection{Selection Functions} \label{sec:selectionfunction}
 
-Any survey's selection function (sf) can be understood as defining an effective sample sub-volume in the space of observables. We use simple spatial sfs, which describe the probability to observe a star at $\vect{x}$,
+Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). We use simple spatial SFs, which describe the probability to observe a star at $\vect{x}$,
 \begin{eqnarray*}
-\text{sf}(\vect{x}) \equiv \begin{cases}
+\text{SF}(\vect{x}) \equiv \begin{cases}
 \text{completeness}(\vect{x}) &\text{if $\vect{x}$ within observed volume}\\
 0 & \text{outside.}
 \end{cases}
 \end{eqnarray*}
-The sf of the SEGUE survey \Jo{[TO DO: Ask Jo for reference to SEGUE sf]} used by BR13 consists of many pencil-beams. In anticipation of \Jo{[TO DO: What is the word for surveys covering large volumes????]} like Gaia, we use sfs that span large observed volumes of simple geometrical shapes: a sphere of radius $r_\text{max}$ with the Sun at its center; or an angular segment of an cylindrical annulus (wedge), i.e. the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. The sharp outer edge of the survey volume could be interpreted as a detection limit in apparent brightness in the case where all stars have the same luminosity. Here $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$.
+The SF of the SEGUE survey \Jo{[TO DO: Ask Jo for reference to SEGUE SF]} used by BR13 consists of many pencil-beams. In anticipation of \Jo{[TO DO: What is the word for surveys covering large volumes????]} like Gaia, we use SFs that span large observed volumes of simple geometrical shapes: a sphere of radius $r_\text{max}$ with the Sun at its center; or an angular segment of an cylindrical annulus (wedge), i.e. the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. The sharp outer edge of the survey volume could be interpreted as a detection limit in apparent brightness in the case where all stars have the same luminosity. Here $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$.

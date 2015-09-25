@@ -4,22 +4,21 @@
 \begin{deluxetable}{lllll}%{p{0.1\textwidth}p{0.1\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.05\textwidth}}
 \tabletypesize{\scriptsize}
 %\rotate
-\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_x = 16$, $N_v = 24$, $n_\sigma= 5$ as numerical accuracy for the likelihood normalisation in Equations (\ref{eq:prob}) and (\ref{eq:tracerdensity}). \label{tbl:tests}}
+\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and selection function model etc. used for the mock data creation, the third model the corresponding model assumed in the analysis, and the last column lists the figures belonging to the test suite. Parameters that are not left free in the analyis, are always fixed to their true value. Unless otherwise stated we calculate the likelihood by the nested-grid and MCMC approach outlined in \S\ref{sec:fitting} and use $N_x = 16$, $N_v = 24$, $n_\sigma= 5$ as numerical accuracy for the likelihood normalisation in Equations (\ref{eq:prob}) and (\ref{eq:tracerdensity}). $N_{*}$ is the number of stars per mock data set. Unless stated otherwise, the all selection functions have completeness$(\vect{x}) = 1$. \Jo{[TO DO: Jo suggested to make many tables from this. But I actually like one big table at the end of the paper. Otherwise we had 6 additional tables interrupting the flow of text and figures all the time. And the parameters in the table are really just for reference.]} \Wilma{[TO DO: Overall, this table could do with a little less information.]} \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
-\colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figures}}
+\colhead{Test} & & \colhead{Model for Mock Data}  & \colhead{Model in Analysis} & \colhead{Figure}}
 \startdata
-Test \testlabel{test:kks2WedgeEx} {1}:        & \emph{Potential:}     & \texttt{KKS-Pot} & - & Mock data: \\
-Influence of            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF   &   & Figure \ref{fig:kks2WedgeEx}\\
+Test \testlabel{test:kks2WedgeEx} {1}:        & \emph{Potential:}     & \texttt{KKS-Pot} & - & Figure \ref{fig:kks2WedgeEx}\\
+Influence of            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF   &   & \\
 survey volume on        & \emph{Survey volume:} & a) $R \in [4,12]$ kpc,$z \in [-4,4]$ kpc, $\phi \in [-20^\circ,20^\circ]$. &  & \\
 mock data distribution, &                       & b) $R \in [6,10]$ kpc,$z \in [1,5]$ kpc, $\phi \in [-20^\circ,20^\circ]$.&  & \\
-also in action space	& \emph{\# stars per data set:} & 20,000 &  & \\
-						& \emph{\# data sets:}   & 4 (= $2\times 2$ models) & & \\
+also in action space	& \emph{$N_{*}$:} & 20,000 &  & \\
 
 \tableline
-Test \testlabel{test:norm_accuracy} {2}:         & \emph{Potential:}     & \texttt{KKS-Pot} & - & Convergence\\
-Numerical accuracy      & \emph{DF:}          & \texttt{hot} qDF                          &   & of normalisation:\\
-in calculation          & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc &   & Figure \ref{fig:norm_accuracy}\\
+Test \testlabel{test:norm_accuracy} {2}:         & \emph{Potential:}     & \texttt{KKS-Pot} & - & Figure \ref{fig:norm_accuracy}\\
+Numerical accuracy      & \emph{DF:}          & \texttt{hot} qDF                          &   & \\
+in calculation          & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc &   & \\
 of the likelihood       & \emph{Numerical accuracy:} & $N_x\in[5,20]$, $N_v\in[6,40]$, $n_\sigma\in[3.5,7]$& & \\
 normalisation           &                       & & & \\
 										   
@@ -27,17 +26,15 @@ normalisation           &                       & & & \\
 Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlex_triangleplot}\\
 \pdf{} is a               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \\
 multivariate            & \emph{Survey Volume:} & sphere around Sun, $r_\text{max} = 2$ kpc & (fixed \& known) & \\
-Gaussian                & \emph{\# stars per data set:} & 20,000 & & \\
-for large data sets.	& \emph{\# data sets:}   & 5 (only one is shown) & & \\
-                        & \emph{Numerical accuracy:} & & $N_v = 20$ and $n_\sigma = 4$ & \\
+Gaussian                & \emph{$N_{*}$:} & 20,000 & & \\
+for large data sets.	&  \emph{Numerical accuracy:} & & $N_v = 20$ and $n_\sigma = 4$ & \\
 
 \tableline
 Test \testlabel{test:sqrtNiso} {3.2}:			& \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:sqrtNiso}\\
 Width of the			& \emph{DF:}          & \texttt{hot} qDF & \texttt{hot} qDF, free parameters: & \\
 likelihood scales       &                       &           & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
 with number of stars    & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3$ kpc   & (fixed \& known) & \\
-by $\propto 1/\sqrt{N}$.& \emph{\# stars per data set:} & between 100 and 40,000 &  & \\ 
-                        & \emph{\# data sets:}  & 132 & & \\                                       
+by $\propto 1/\sqrt{N_{*}}$.& \emph{$N_{*}$:} & between 100 and 40,000 &  & \\                              
                         & \emph{Analysis method:} & & likelihood on grid & \\
                         & \emph{Numerical accuracy:} & & $N_v = 20$ and $n_\sigma = 4$ (for speed) & \\
 
@@ -46,8 +43,7 @@ Test \testlabel{test:isoSph_CLT} {3.3}:        & \emph{Potential:}     & \texttt
 Parameter estimates     & \emph{DF:}       &\texttt{hot} or \texttt{cool} qDF & \texttt{hot}/\texttt{cool} qDF, free parameters:\\
 are unbiased.           &          &    & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
                         & \emph{Survey volume:} & 5 spheres around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4$ kpc & (fixed \& known) & \\
-                        & \emph{\# stars per data set:} & 20,000 & & \\
-                        & \emph{\# data sets:}  & 640 (= $2\times2\times5$ models $\times 32$ realisations) & & \\
+                        & \emph{$N_{*}$:} & 20,000 & & \\
                         & \emph{Analysis method:} & & likelihood on grid & \\
                         & \emph{Numerical accuracy:} & & $N_v = 20$ and $N_\sigma = 4$ (for speed) & \\
 
@@ -57,29 +53,25 @@ Influence of 			& 						& 													& ii) \texttt{MW13-Pot}, $R_d$ and $f_h$ 
 position \& shape 		& \emph{DF:}			& \texttt{hot} qDF 										& i) qDF, all parameters free & \\
 of survey volume 		& 						& 													& ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free& \\
 on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper right panel & (fixed \& known) & \\
-						& \emph{\# of stars per data set:} & 20,000 & & \\
+						& \emph{$N_{*}$:} & 20,000 & & \\
 						& \emph{Analysis method:} & & i) MCMC, ii) likelihood on grid & \\
 \tableline
-Test \testlabel{test:isoSphFlexIncomp}{5} :        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Illustration \& mock data: \\
-Influence of            & \emph{DF:}          & a) \texttt{hot} or b) \texttt{cool} qDF & qDF, all parameters free &  Figures \ref{fig:isoSphFlexIncompR_mockdata} \& \ref{fig:isoSphFlexIncompZ_mockdata} \\
-wrong assumptions       & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & Analysis results: \\
-about the data set      & \emph{Completeness:}  & \emph{Example 1:} radial incompleteness,  & data set complete, & Figures \ref{fig:isoSphFlexIncompR_violins} \& \ref{fig:isoSphFlexIncompZ_violins} \\
-(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, twenty $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& Analysis results:\\
-on parameter recovery   &                       & $r \equiv$ distance from Sun, & & when not using $v_T$ data: \\
-                        &                       & \emph{Example 2:} planar incompleteness,  & data set complete, & Figure \ref{fig:isoSphFlexIncomp_marginal_violins}\\
-                        &                       & completeness$(z) = 1-\epsilon_z \frac{|z|}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$, & completeness$(r)$ = 1, twenty $\epsilon_z=0$& \\
-                        &                       & $z \equiv$ distance from Gal. plane. & & \\
-                        & \emph{\# stars per data set:} & 20,000 & & \\
-                        & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
+Test \testlabel{test:isoSphFlexIncomp}{5} :        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexIncompR_violins} \& \ref{fig:isoSphFlexIncompR_marginal_violins}\\
+Influence of            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free &   \\
+wrong assumptions       & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
+about the data set      & \emph{Completeness:}  & radial incompleteness (see Figure \ref{fig:isoSphFlexIncompR_completeness_shapes}),  & data set complete, & \\
+(in-)completeness       &                       & completeness$(r) = 1-\epsilon_r \frac{r}{r_\text{max}}$, $\epsilon_r \in [0,0.7]$ & completeness$(r)$ = 1, $\epsilon_r=0$& \\
+on parameter recovery   &                       & $r \equiv$ distance from Sun, & & \\
+                        & \emph{$N_{*}$:} & 20,000 & & \\
 \tableline
-Test \testlabel{test:isoSphFlexErrConv_MC_vs_error}{6.1} :		& \emph{Potential:} 	& \texttt{Iso-Pot} & "Iso-Pot, all parameters free" & Figure \ref{fig:isoSphFlexErrConv_MC_vs_error}\\
+Test \testlabel{test:isoSphFlexErrConv_MC_vs_error}{6.1} :		& \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free" & Figure \ref{fig:isoSphFlexErrConv_MC_vs_error}\\
 Numerical convergence 	& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
 of convolution		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
 with measurement		& \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{DEC} =\delta(m-M)=0$	& Convolution with	& \\
 uncertainties					&						& $\delta v_\text{los} = 2$ km/s	& perfectly known & \\
 						&						& $\delta \mu_\text{RA}= \delta \mu_\text{DEC}  =$ 2,3,4 or 5 mas/yr & measurement uncertainties & \\
 						& \emph{Numerical Accuracy:} & & $N_\text{error} \in [25,1200]$& \\
-						& \emph{\# stars per data set:} & 10,000 & & \\
+						& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
 Test \testlabel{test:isoSphFlexErrConv_bias_vs_SE}{6.2} : & \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
 Testing the			& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
@@ -92,15 +84,14 @@ distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1
 						&                     &  (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE})  & & \\
 						& \emph{Numerical Accuracy:} & & $N_\text{error} = 800$ for $\delta \mu \leq 3 \text{mas yr}^{-1}$, & \\
 						&                     & & $N_\text{error} = 1200$ for $\delta \mu > 3 \text{mas yr}^{-1}$& \\
-						& \emph{\# stars per data set:} & 10,000 & & \\
+						& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
 Test \testlabel{test:isoSphFlexErrSyst}{6.3} :	& \emph{Potential:}		& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrSyst}\\
 Underestimation 	& \emph{DF:}			& \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
 of proper motion 	& \emph{Survey volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc [TO DO: CHECK]& (fixed \& known) & \\
 errors 			 	& \emph{Uncertainties:}		& only proper motion errors & Convolution with proper motion errors & \\
 					&						& 1, 2 or 3 mas/yr & 10\% or 50\% underestimated & \\
-					& \emph{\# stars per data set:} & 10,000 & & \\
-					& \emph{\# data sets:}	& 24 (= $2 \times 2 \times 3 \times 3$ realisations ) & & \\
+					& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
 Test \testlabel{test:isoSphFlexMix}{7} :       & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & mock data:\\
 Deviations in the       & \emph{DF:}      & mix of two qDFs & single qDF, all parameters free & Figure \ref{fig:isoSphFlexMix_mockdata_residuals}\\
@@ -111,14 +102,13 @@ star's true DF          &                   & a) \texttt{hot} \& \texttt{cooler}
                         &                   & with varying qDF parameters (by $X\%$): & & \\
                         &                   & a) \texttt{hot} \& \texttt{colder} qDF or b) \texttt{cool} \& \texttt{warmer} qDF & & \\
                         & \emph{Survey volume:}& sphere around Sun, $r_\text{max}=2$ kpc & (fixed \& known) & \\
-                        & \emph{\# stars per data set:} & 20,000 & & \\
-                        & \emph{\# data sets:}  & 40 (= $2 \times 2 \times 20$) & & \\
+                        & \emph{$N_{*}$:} & 20,000 & & \\
                         \tableline
 Test \testlabel{test:MW14vsKKS2SphFlex}{8} :			&  \emph{Potential:} & \texttt{MW14-Pot} & \texttt{KKS-Pot}, all parameters free, & potential contours: \\
 Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230 \text{km s}^{-1}$ fixed & Figure \ref{fig:MW14vsKKS2SphFlex} \\
 assumed potential model	& \emph{DF:}       & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & qDF recovery: \\
 from the star's			& \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 4$ kpc & (fixed \& known) & Figure \ref{fig:MW14vsKKS2SphFlex_violins}\\
-true potential			& \emph{\# stars per data set:} & 20,000 & & \\
+true potential			& \emph{$N_{*}$:} & 20,000 & & \\
 \enddata
 \end{deluxetable}
 
@@ -127,8 +117,3 @@ true potential			& \emph{\# stars per data set:} & 20,000 & & \\
 \clearpage
 \end{landscape}
 
-
-\Wilma{[TO DO: Remove \# data sets, where it actually is not important.]}
-\Jo{[TO DO: Jo suggested to make many tables from this. But I actually like one big table at the end of the paper. Otherwise we had 6 additional tables interrupting the flow of text and figures all the time. And the parameters in the table are really just for reference.]}
-\Wilma{[TO DO: Overall, this table could do with a little less information.]}
-\Wilma{[TO DO: $N_* = $ in front of number of stars]}
