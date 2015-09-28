@@ -78,7 +78,7 @@ Testing the			& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
 convolution 		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
 with measurement \& without  & \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{DEC} =0$,	& Convolution with	& \\
 uncertainties with			&						& $\delta v_\text{los}  = 2~\text{km s}^{-1}$, & measurement uncertainties,  & \\
-distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1, 2,3,4 or 5 mas/yr, & ignoring distance errors in position& \\
+distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1,2,3,4 or 5 mas/yr, & ignoring distance errors in position& \\
 						&						& a) $\delta(m-M) = 0$  or & (see Section \ref{sec:likelihood})&  \\
 						&                     & b) $\delta(m-M) \neq 0$.  & & \\
 						&                     &  (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE})  & & \\
@@ -88,19 +88,22 @@ distance errors						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DEC} =$ 1
 \tableline
 Test \testlabel{test:isoSphFlexErrSyst}{6.3} :	& \emph{Potential:}		& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrSyst}\\
 Underestimation 	& \emph{DF:}			& \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
-of proper motion 	& \emph{Survey volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc [TO DO: CHECK]& (fixed \& known) & \\
+of proper motion 	& \emph{Survey volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
 errors 			 	& \emph{Uncertainties:}		& only proper motion errors & Convolution with proper motion errors & \\
 					&						& 1, 2 or 3 mas/yr & 10\% or 50\% underestimated & \\
 					& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
-Test \testlabel{test:isoSphFlexMix}{7} :       & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & mock data:\\
-Deviations in the       & \emph{DF:}      & mix of two qDFs & single qDF, all parameters free & Figure \ref{fig:isoSphFlexMix_mockdata_residuals}\\
-assumed DF              &                   & \emph{Example 1:} with fixed qDF parameters,  & & Analysis results:\\
-from the                &                   & but 20 different mixing rates: & & Figures \ref{fig:isoSphFlexMixCont} \& \ref{fig:isoSphFlexMixDiff}\\
-star's true DF          &                   & a) \texttt{hot} \& \texttt{cooler} qDF or b) \texttt{cool} \& \texttt{hotter} qDF & & \\
-                        &                   & \emph{Example 2:} 20 fixed 50/50 mixtures,  & & \\
+Test \testlabel{test:isoSphFlexMix}{7} :       & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figures \ref{fig:isoSphFlexMixCont} \& \ref{fig:isoSphFlexMixDiff}\\
+Deviations in the       & \emph{DF:}      & mix of two qDFs (see Figure \ref{fig:isoSphFlexMix_mockdata_residuals})& single qDF, all parameters free & \\
+assumed DF              &                   & \emph{Example 1:}   & & \\
+from the                &                   & fixed qDF parameters & & \\
+star's true DF          &                   & (\texttt{hot} \& \texttt{cooler} qDF from Table \ref{tbl:referenceMAPs}) & & \\
+                        &                   & but different mixing rates. & & \\
+                        &                   & \emph{Example 2:} & & \\
+                        &                   & 50/50 mixture & & \\
                         &                   & with varying qDF parameters (by $X\%$): & & \\
-                        &                   & a) \texttt{hot} \& \texttt{colder} qDF or b) \texttt{cool} \& \texttt{warmer} qDF & & \\
+                        &                   & a) \texttt{hot} \& \texttt{colder} qDF or & & \\
+                        &					  & b) \texttt{cool} \& \texttt{warmer} qDF (see Table \ref{tbl:referenceMAPs}) & & \\
                         & \emph{Survey volume:}& sphere around Sun, $r_\text{max}=2$ kpc & (fixed \& known) & \\
                         & \emph{$N_{*}$:} & 20,000 & & \\
                         \tableline

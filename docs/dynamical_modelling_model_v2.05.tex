@@ -31,7 +31,7 @@
                                & cut-off power-law bulge, & & & (same as \texttt{KKS-Pot}) \\
                                & Miyamoto-Nagai stellar disk, & & & \\
                                & NFW halo & & & \\
-                               & \citep{2015ApJS..216...29B} & & & \\
+                               & \citep{2015ApJS..216...29B} & & & 
 \enddata
 \tablenotetext{(a)}{The isochrone potential \texttt{Iso-Pot} has one free parameter, the scale length $b$.} 
 \tablenotetext{(b)}{The coordinate system of each of the two St\"{a}ckel-potential components of the \texttt{KKS-Pot} is $\frac{R^2}{\tau_{i,p}+\alpha_p} + \frac{z^2}{\tau_{i,p}+\gamma_p}=1$ with $p \in \{\text{Disk},\text{/Halo}\}$ and $\tau_{i,p} \in \{\lambda_p,\nu_p\}$. Both components have the same focal distance $\Delta \equiv \sqrt{\gamma_p-\alpha_p}$, to make sure that the superposition of the two components itself is still a St\"{a}ckel potential. The axis ratio of the coordinate surfaces $\left(\frac{a}{c}\right)_p := \sqrt{\frac{\alpha_p}{\gamma_p}}$ describes the flatness of the corresponding St\"{a}ckel component. The parameter $k$ describes the relative contribution of the disk mass to the total mass.} 
@@ -57,7 +57,7 @@
 
 \begin{deluxetable*}{lccccc}[!htbp]
 \tabletypesize{\scriptsize}
-\tablecaption{Reference distribution-function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These DFs describe the phase-space distribution of stellar populations for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{hotter} \& \texttt{warmer}) qDFs were chosen to have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) qDF. The \texttt{colder} and \texttt{warmer} qDF have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{2012ApJ...753..148B} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
+\tablecaption{Reference distribution-function parameters for the qDF in Equations (\ref{eq:df_general})-(\ref{eq:sigmazRg}). These DFs describe the phase-space distribution of stellar populations for which mock data is created and analysed throughout this work for testing purposes. The parameters of the \texttt{cooler} \& \texttt{colder}  (\texttt{warmer}) qDFs were chosen to have the same $\sigma_{R,0}/\sigma_{z,0}$ ratio as the \texttt{hot} (\texttt{cool}) qDF. The \texttt{colder} and \texttt{warmer} qDF have a free parameter $X$ that governs how much colder/warmer they are then the reference \texttt{hot} and \texttt{cool} qDFs. Hotter populations have shorter tracer scale lengths \citep{2012ApJ...753..148B} and the velocity dispersion scale lengths were fixed according to \citet{bov12c}. \label{tbl:referenceMAPs}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \multicolumn{5}{c}{qDF parameters $p_\text{DF}$}\\
@@ -66,11 +66,9 @@
 \texttt{hot}    & 2   & 55 & 66 & 8 & 7\\
 \texttt{cool}   & 3.5 & 42 & 32 & 8 & 7\\
 \tableline
-\texttt{cooler} & 2  +50\% & 55-50\% & 66-50\% & 8 & 7 \\
-\texttt{hotter} & 3.5-50\% & 42+50\% & 32+50\% & 8 & 7\\
-\tableline
-\texttt{colder} & 2  +X\% & 55-X\% & 66-X\% & 8 & 7 \\
-\texttt{warmer} & 3.5-X\% & 42+X\% & 32+X\% & 8 & 7\\
+\texttt{cooler}    & $2  +50\%$ & $55-50\%$ & $66-50\%$ & $8$ & $7$ \\
+\texttt{colder}    & $2  +X  \%$ & $55-X  \%$  & $66-X  \%$ & $8$ & $7$ \\
+\texttt{warmer} & $3.5-X  \%$ & $42+X  \%$ & $32+X  \%$ & $8$ & $7$
 \enddata
 \end{deluxetable*}
 
@@ -82,7 +80,7 @@ In this section we summarize the basic elements of \RM{}, the dynamical modellin
 
 \subsection{Coordinate System} \label{sec:coordinates}
 
-Our modelling takes place in the Galactocentric rest-frame with cylindrical coordinates $\vect{x} \equiv (R,\phi,z)$ and corresponding velocity components $\vect{v} \equiv (v_R,v_\phi,v_z)$. If the stellar phase-space data is given in observed heliocentric coordinates, position $\tilde{\vect{x}} \equiv(\text{RA},\text{DEC},m-M)$ in right ascension RA, declination DEC and distance modulus $(m-M)$ as proxy for the distance from the sun, and velocity $\tilde{\vect{v}} \equiv (\mu_\text{RA},\mu_\text{DEC},v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\text{RA},\mu_\text{DEC})$ \Jo{[TO DO: cos somwhere???]} in both RA and DEC direction and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the Galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the sun's position and velocity. We assume for the sun
+Our modelling takes place in the Galactocentric rest-frame with cylindrical coordinates $\vect{x} \equiv (R,\phi,z)$ and corresponding velocity components $\vect{v} \equiv (v_R,v_\phi,v_z)$. If the stellar phase-space data is given in observed heliocentric coordinates, position $\tilde{\vect{x}} \equiv(\text{RA},\text{DEC},m-M)$ in right ascension RA, declination DEC and distance modulus $(m-M)$ as proxy for the distance from the Sun, and velocity $\tilde{\vect{v}} \equiv (\mu_\text{RA},\mu_\text{DEC},v_\text{los})$ as proper motions $\vect{\mu}=(\mu_\text{RA},\mu_\text{DEC})$ \Jo{[TO DO: cos somwhere???]} in both RA and DEC direction and line-of-sight velocity $v_\text{los}$, the data $(\tilde{\vect{x}},\tilde{\vect{v}})$ has to be converted first into the Galactocentric rest-frame coordinates $(\vect{x},\vect{v})$ using the Sun's position and velocity. We assume for the Sun
 \begin{eqnarray*}
 (R_\odot,\phi_\odot,z_\odot) &=&(8 \text{ kpc}, 0^\circ, 0 \text{ kpc})\\
 (v_{R,\odot},v_{T,\odot},v_{z,\odot}) &=& (0,230,0) \text{ km s}^{-1}.
