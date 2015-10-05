@@ -1,15 +1,15 @@
 %====================================================================
 
-%FIGURE: distribution of mock data in action and configuration space
+%FIGURE: accuracy in the likelihood normalisation 
 
 \begin{figure*}[!htbp]
-\plotone{figs/kks2WedgeEx_mockdata.eps}
-\caption{Distribution of mock data in action space (2D iso-density contours, enclosing 80\% of the stars, the two central and the lower left panels) and configuration space (1D histograms, right panels), depending on shape and position of a wedge-like survey observation volume (upper right panel) and temperature of the stellar population (indicated in the legend). The \pmodel{} of the mock data, created in the \texttt{KKS-Pot} potential, are given as Test \ref{test:kks2WedgeEx} in Table \ref{tbl:tests}. The distribution in action space visualizes how orbits with different actions reach into different regions within the Galaxy. The 1D histograms on the right illustrate that qDFs generate realistic stellar distributions in Galactocentric coordinates $(R,z,\phi,v_R,v_z,vT)$. \Jo{[TO DO: Jo suggests to make two or three separate figures out of this. I'm not yet convinced, as I think it is nice and tidy like this.]}} 
-\label{fig:kks2WedgeEx}
+\centering
+\plotone{figs/normalisation_accuracy_4.eps}
+\caption{Relative error  $\delta M_\text{tot}$ of the likelihood normalization in Equation \ref{eq:relerrlikelihood} depending on the accuracy of the grid-based density calculation in Equation \ref{eq:tracerdensity} (and surrounding text) in five spherical observation volumes with different radius $r_\text{max}$. (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests} summarizes the model parameters.) The tracer density in Equation \ref{eq:tracerdensity} is calculated on $N_x\times N_x$ spatial grid points in $R \in [R_\odot \pm r_\text{max}]$ and $|z| \in [0,r_\text{max}]$. The integration over the velocities is performed with Gauss-Legendre quadratures of order $N_v$ within an integration range of $\pm n_\sigma$ times the dispersion $\sigma_R(R)$ and $\sigma_z(R)$ (and $[0,1.5v_\text{circ}]$ in $v_T$). (We vary $N_x$, $N_v$ and $n_\sigma$ separately and keep the other two fixed at the values indicated above the columns.) We calculate the ``true'' normalization in Equation \ref{eq:relerrlikelihood} with high accuracy as $M_\text{tot} \approx M_\text{tot,approx}(N_x=20,N_v=56,n_\sigma=7)$. The black dots indicate the accuracy used in our analyses: It is better than $0.001\%$ (dotted line). We find that the accuracy depends on the \emph{spatial} resolution of the grid and requires more accurate integrations over the \emph{velocity} for larger volumes within which the density varies more strongly.}
+\label{fig:norm_accuracy}
 \end{figure*}
 
-
-%===========================================================================================================================================================================================
+%=============================================================
 
 
 \subsection{Mock Data} \label{sec:mockdata}

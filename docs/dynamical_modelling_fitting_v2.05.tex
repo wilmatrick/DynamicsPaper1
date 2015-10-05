@@ -1,3 +1,29 @@
+%====================================================================
+
+%FIGURE: width of likelihood propto 1/sqrt(N)
+
+\begin{figure}[!htbp]
+\plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
+\caption{The width of the \pdf{} (see Equation \ref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as predicted by the central limit theorem.} 
+\label{fig:sqrtNiso}
+\end{figure}
+
+%====================================================================
+
+%====================================================================
+
+%FIGURE: central limit theorem is satisfied
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figs/isoSph_CLT_2.eps}
+\caption{(Un-)bias of the parameter estimates: According to the central limit theorem the the best fit values for a large number of data sets, each containing a large number of stars, will follow the Normal distribution. To test this, we create 320 mock data sets, which come from two different stellar populations and five spherical observation volumes (see legends). (All model parameters are summarized in Table \ref{tbl:tests} as Test \ref{test:isoSph_CLT}.) Bias and relative standard error (SE) are derived from the marginalized \pdf{} for one potential parameter (isochrone scale length $b$ in first row) and one qDF parameter ($h_{\sigma,z}$ in second row). The second column displays a histogram of the 320 offsets. As it closely follows a Normal distribution, our modelling method is therefore well-behaved and unbiased. The black dots show the mean offset and SE for the 32 analyses belonging to one model.}
+\label{fig:isoSph_CLT}
+\end{figure}
+
+%====================================================================
+
+
 \subsection{Fitting Procedure} \label{sec:fitting}
 
 To search the $(p_\Phi,p_\text{DF})$ parameter space for the maximum of the \pdf{} in Equation \ref{eq:normalisation}, we go beyond the single fixed grid search by BR13 and employ an effective two-step procedure: Nested-grid search and Monte-Carlo Markov Chain (MCMC).\\

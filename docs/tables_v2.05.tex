@@ -73,7 +73,16 @@ uncertainties					&						& $\delta v_\text{los} = 2$ km/s	&  & \\
 						& \emph{Numerical Accuracy:} & & $N_\text{error} \in [25,1200]$& \\
 						& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
-Test \testlabel{test:isoSphFlexErrConv_bias_vs_SE}{6.2} : & \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
+Test \testlabel{test:isoSphFlexErrConv_SE_vs_error}{6.2} : & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_SE_vs_error}\\
+Effect of proper motion & \emph{DF:} & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
+uncertainties on & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \\
+precision of & \emph{Uncertainties:} & a) $\delta\text{RA}=\delta\text{DEC}=\delta(m-M)=0,$ & (fixed \& known) & \\
+potential recovery & & $\delta v_\text{los} = 2~\text{km s}^{-1},$ & & \\
+& & $\delta \mu_\text{RA}=\delta \mu_\text{DEC}=$ 1,2,3,4 or 5 $\text{mas yr}^{-1}$ & & \\
+& & b) no measurement uncertainties & & \\
+ & \emph{$N_{*}$:} & 10,000 & & \\
+\tableline
+Test \testlabel{test:isoSphFlexErrConv_bias_vs_SE}{6.3} : & \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
 Testing the	convolution		& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
 with measurement 		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3$ kpc & (fixed \& known) & \\
  uncertainties  & \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{DEC} =0$,	& fixed \& known,	& \\
@@ -83,14 +92,6 @@ distance uncertainties						&						& $\delta \mu_\text{RA} = \delta \mu_\text{DE
 						&                     & b) $\delta(m-M) \neq 0$.  & & \\
 						&                     &  (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE})  & & \\
 						& \emph{$N_{*}$:} & 10,000 & & \\
-\tableline
-Test \testlabel{test:isoSphFlexErrConv_SE_vs_error}{6.3} : & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_SE_vs_error}\\
-Effect of proper motion & \emph{DF:} & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
-uncertainties on & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \\
-precision of & \emph{Uncertainties:} & $\delta\text{RA}=\delta\text{DEC}=\delta(m-M)=0,$ & (fixed \& known) & \\
-potential recovery & & $\delta v_\text{los} = 2~\text{km s}^{-1},$ & & \\
-& & $\delta \mu_\text{RA}=\delta \mu_\text{DEC}=$ 1,2,3,4 or 5 $\text{mas yr}^{-1}$ & & \\
- & \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
 Test \testlabel{test:isoSphFlexErrSyst}{6.4} :	& \emph{Potential:}		& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrSyst}\\
 Underestimation 	& \emph{DF:}			& \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\

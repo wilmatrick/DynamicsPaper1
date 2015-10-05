@@ -1,17 +1,5 @@
-\subsection{Data Likelihood} \label{sec:likelihood}
-
-%====================================================================
-
-%FIGURE: accuracy in the likelihood normalisation 
-
-\begin{figure*}[!htbp]
-\centering
-\plotone{figs/normalisation_accuracy_4.eps}
-\caption{Relative error  $\delta M_\text{tot}$ of the likelihood normalization in Equation \ref{eq:relerrlikelihood} depending on the accuracy of the grid-based density calculation in Equation \ref{eq:tracerdensity} (and surrounding text) in five spherical observation volumes with different radius $r_\text{max}$. (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests} summarizes the model parameters.) The tracer density in Equation \ref{eq:tracerdensity} is calculated on $N_x\times N_x$ spatial grid points in $R \in [R_\odot \pm r_\text{max}]$ and $|z| \in [0,r_\text{max}]$. The integration over the velocities is performed with Gauss-Legendre quadratures of order $N_v$ within an integration range of $\pm n_\sigma$ times the dispersion $\sigma_R(R)$ and $\sigma_z(R)$ (and $[0,1.5v_\text{circ}]$ in $v_T$). (We vary $N_x$, $N_v$ and $n_\sigma$ separately and keep the other two fixed at the values indicated above the columns.) We calculate the ``true'' normalization in Equation \ref{eq:relerrlikelihood} with high accuracy as $M_\text{tot} \approx M_\text{tot,approx}(N_x=20,N_v=56,n_\sigma=7)$. The black dots indicate the accuracy used in our analyses: It is better than $0.001\%$ (dotted line). We find that the accuracy depends on the \emph{spatial} resolution of the grid and requires more accurate integrations over the \emph{velocity} for larger volumes within which the density varies more strongly.}
-\label{fig:norm_accuracy}
-\end{figure*}
-
 %=============================================================
+
 
 \begin{figure}[!htbp]
 \centering
@@ -21,6 +9,23 @@
 \end{figure}
 
 %=============================================================
+
+%====================================================================
+
+%FIGURE: Triangle plot, shape of likelihood, multi-variate Gaussian
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{figs/isoSphFlex_short_hot_2kpc_triangle_MCMC.eps}
+\caption{The \pdf{} (proportional to the likelihood in Equation \ref{eq:prob}) in the parameter space $\pmodel{} = \{p_\Phi,p_\text{DF}\}$ for one example mock data set created according to Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}. Blue indicates the \pdf{} for the potential parameters, green the qDF parameters. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions \HW{[TO DO: HW: "likelihood vs. pdf - This is where this matters: is this a confidence on the data or on the parameters?" Don't understand, what he means...]}, respectively. The parameters are weakly to moderately covariant, but their level of covariance depends on the actual choice of the mock data's \pmodel{}. The \pdf{} here was sampled using MCMC. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the \pdf{} approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem \Jo{[TO DO: Jo wrote, that he is not sure if the central limit theorem is directly relevant here]}.}
+\label{fig:isoSphFlex_triangleplot}
+\end{figure*}
+
+%====================================================================
+
+
+\subsection{Data Likelihood} \label{sec:likelihood}
+
 
 As data we consider here the positions and velocities of a population of stars within a given survey selection function $\text{SF}(\vect{x})$,
 \begin{eqnarray*}
