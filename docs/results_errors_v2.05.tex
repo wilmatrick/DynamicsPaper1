@@ -8,12 +8,6 @@ We also note that in this case the relative and absolute difference in recovered
 
 Secondly, we investigate the impact of additional measurement uncertainties in distance (modulus). In absence of distance uncertainties the uncertainty-convolved likelihood given in Equation \ref{eq:errorconv} is unbiased.  When including distance (modulus) uncertainties, Equation \ref{eq:errorconv} is just an approximation for the true likelihood. The systematic bias thus introduced in the parameter recovery gets larger with the size of the error, as demonstrated in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}.  We find however that in case of $\delta(m-M) \lesssim 0.2 \text{ mag}$ (if also $\delta \mu \lesssim 2 \text{ mas yr}^{-1}$ and a maximum distance of $r_\text{max} = 3 \text{ kpc}$, see Test \ref{test:isoSphFlexErrConv_bias_vs_SE} in Table \ref{tbl:tests}) the potential parameters can still be recovered within 2 sigma \Wilma{[TO DO: Make sure this is what I claim in abstract and discussion.]}. This corresponds to a relative distance error of $\sim10\%$. The overall precision of the potential recovery is also not degraded much by introducing distance uncertainties of less than $10\%$.
 
-We therefore found that in case we perfectly knew the measurement errors (and the distance uncertainty is negligible), the convolution of the model probability with the measurement uncertainties gives precise and accurate constraints on the model parameters - even if the measurement uncertainty itself is quite large.
-
-Lastly, Figure \ref{fig:isoSphFlexErrSyst} now investigates the effect of a systematic \emph{underestimation} of the true proper motion uncertainties $\delta \mu$ by 10\% and 50\%. We find that this causes a bias in the parameter recovery that grows seemingly linear with $\delta \mu$. For an underestimation of only $10\%$ however, the bias is still $\lesssim 2$ sigma for 10,000 stars \Wilma{[TO DO: Check]} - even for $\delta \mu \sim 3~\text{mas yr}^{-1}$.
-
-The size of the bias also depends on the kinematic temperature of the stellar population and the model parameter considered (see Figure \ref{fig:isoSphFlexErrSyst}). The qDF parameters are for example better recovered by hotter populations. This is, because the \emph{relative} difference between the true $\sigma_i(R)$ (with $i \in \{R,z\}$) and measured $\sigma_i(R)$ (which comes from the deconvolution with an underestimated velocity uncertainty) is smaller for hotter populations. 
-
 %=============================================================
 
 \begin{figure}[!htbp]
@@ -46,5 +40,13 @@ The size of the bias also depends on the kinematic temperature of the stellar po
 \end{figure}
 
 %=============================================================
+
+We therefore found that in case we perfectly knew the measurement errors (and the distance uncertainty is negligible), the convolution of the model probability with the measurement uncertainties gives precise and accurate constraints on the model parameters - even if the measurement uncertainty itself is quite large.
+
+Lastly, Figure \ref{fig:isoSphFlexErrSyst} now investigates the effect of a systematic \emph{underestimation} of the true proper motion uncertainties $\delta \mu$ by 10\% and 50\%. We find that this causes a bias in the parameter recovery that grows seemingly linear with $\delta \mu$. For an underestimation of only $10\%$ however, the bias is still $\lesssim 2$ sigma for 10,000 stars \Wilma{[TO DO: Check]} - even for $\delta \mu \sim 3~\text{mas yr}^{-1}$.
+
+The size of the bias also depends on the kinematic temperature of the stellar population and the model parameter considered (see Figure \ref{fig:isoSphFlexErrSyst}). The qDF parameters are for example better recovered by hotter populations. This is, because the \emph{relative} difference between the true $\sigma_i(R)$ (with $i \in \{R,z\}$) and measured $\sigma_i(R)$ (which comes from the deconvolution with an underestimated velocity uncertainty) is smaller for hotter populations. 
+
+
 
 \Wilma{[TO DO: Comment from Jo: Always use 'uncertainty' when describing how ou deal with the errors. 'Error' means the actual error (difference between observed and true).]}
