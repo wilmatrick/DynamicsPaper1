@@ -5,38 +5,11 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexMix_mockdata_residuals_2.eps}
-\caption{Distribution of mock data created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, with the qDF parameters refereed to in the legend given in Table \ref{tbl:referenceMAPs}. The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are color-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For intermediate to large deviations it becomes already obvious from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the star's true DF. \Wilma{[TO DO: Replace Example 2b analyses.]}}
+\caption{Distribution of mock data created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, with the qDF parameters refereed to in the legend given in Table \ref{tbl:referenceMAPs}. The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are color-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For intermediate to large deviations it becomes already obvious from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the star's true DF. \Wilma{[TO DO: Replace Example 2b analyses.] [TO DO: Remove panels. E.g. 2b) and z distribution]}}
 \label{fig:isoSphFlexMix_mockdata_residuals}
 \end{figure}
 
 %============================================================
-
-%====================================================================
-
-
-
-
-%FIGURE: isoSphFlexMixCont
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[scale=0.45]{figs/isoSphFlexMixCont_violins_2.eps}
-\caption{The dependence of the parameter recovery on degree of pollution and temperature of the stellar population. We mix (i.e., pollute) varying amounts of stars from a \texttt{hot} stellar population with stars from a very different \texttt{cooler} population (see Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (All model parameters used to create the mock data are given as Test \ref{test:isoSphFlexMix}, \emph{Example 1}, in Table \ref{tbl:tests}.) The composite polluted mock data set follows a true DF that has a slightly different shape than the qDF. We then analyse it using \RM{} and fit a \emph{single} qDF only. The violins represent the marginalized \pdf{}s for the best fit model parameters.  Some mock data sets are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, first row, in the same colors as the violins here.  We find that a hot population is much less affected by pollution with stars from a cooler population than vice versa. \Wilma{[TO DO: Replace Example 2b analyses.]}}
-\label{fig:isoSphFlexMixCont}
-\end{figure}
-
-
-
-%FIGURE: isoSphFlexMixDiff
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[scale=0.45]{figs/isoSphFlexMixDiff_violins_2.eps}
-\caption{The dependence of the parameter recovery on the difference in qDF parameters of a 50\%/50\% mixture of two stellar populations and their temperature. The two qDFs from which the stars in each mock data set were drawn are indicated in the legend, with the qDF parameters $\sigma_{R,0}, \sigma_{z,0}$ and $h_R$ differing by $X\%$ (see also Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (The model parameters used for the mock data creation are given as Test \ref{test:isoSphFlexMix}, \emph{Example 2a \& b}, in Table \ref{tbl:tests}.) Each composite mock data set is fitted with a single qDF and the marginalized \pdf{}s are shown as violins. Some mock data sets are shown in figure \ref{fig:isoSphFlexMix_mockdata_residuals}, last two rows (color-coded analogous to the violins here). By mixing populations with varying difference in their qDF parameters, we model the effect of finite bin size or abundance errors when sorting stars into different \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane and assuming they follow single qDFs (cf. BR13). We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs{} is less than 20\%. \Wilma{[TO DO: Replace Example 2b analyses.]}} 
-\label{fig:isoSphFlexMixDiff}
-\end{figure}
-
-%====================================================================
 
 \subsection{The Impact of Deviations of the Data from the Idealized qDF} \label{sec:results_mixedDFs}
 
@@ -44,6 +17,7 @@
 Our modelling approach assumes that each stellar population follows a simple DF (here: the qDF). In this section we explore what happens if this idealization does not hold. We investigate this issue by creating mock data sets that are drawn from two distinct qDFs of different temperature\footnote{Following the observational evidence, our mock data populations with cooler qDFs also have longer tracer scale lengths.} (see Table \ref{tbl:referenceMAPs} and Test \ref{test:isoSphFlexMix} in Table \ref{tbl:tests}), and analyze the composite mock data set by fitting a single qDF to it. The mock data sets and best fit qDF are illustrated in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, and the comparison of input and best fit parameters in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. In \emph{Example 1} we choose qDFs of widely different temperatures and vary their relative fraction (Figure \ref{fig:isoSphFlexMixCont}); in \emph{Example 2} we always mix mock data stars from two different qDFs in equal proportion, but vary by how much the qDF's temperatures differ (Figure \ref{fig:isoSphFlexMixDiff}). 
 
 The first set of tests mimics a DF that has wider wings or a sharper core in velocity space than a qDF (see Figure \ref{fig:isoSphFlexMix_mockdata_residuals}). The second test could be understood as mixing neighbouring \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane due to large bin sizes or abundance measurement errors (cf. BR13). 
+
 
 %What we see in the plot
 We consider the impact of the DF deviations on the recovery of the potential and of the qDF parameters separately. 
@@ -61,7 +35,6 @@ Overall, we find that the potential inference is quite robust to modest deviatio
 
 \Wilma{[TO DO: Make sure that the vcirc is better recovered from cooler qDF is mentioned here for the first time]}
 \Wilma{[TO DO: Mention somewhere but only once that in case the offsets are big, one can already see in the mock data distribution, that the assumed DF is not the correct DF.]}
-
-
+\Wilma{[TO DO: Mention that overall the relative bias in vcirc is very small.]}
 
 

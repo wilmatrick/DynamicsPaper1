@@ -1,9 +1,5 @@
 \section{Summary and Discussion} \label{sec:discussionsummary}
 
-\Wilma{[TO DO: Introduce DF somewhere - use DF wherever we don't need qDF.] [TO DO: Introduce MW somewhere.]}
-\\\Wilma{[TO DO: Compare these sections with the results. Points should be made detailed in the results section and short here in the discussion. Says Hans-Walter.]}
-\\\Wilma{[TO DO: Absätze mit Indent. Keine Leerzeilen.]}
-
 %Setting the Context
 Recently, implementations of action DF-based modelling of 6D data in the Galactic disk have been put forth, in part to lay the ground-work fo Gaia (BR13; \citealt{,2013MNRAS.433.1411M,2014MNRAS.445.3133P,2015MNRAS.449.3479S}).
 
@@ -23,15 +19,15 @@ For the results to be accurate within 2 sigma (for 10,000 stars), we need to kno
 
 We also found that the \emph{location} of the survey volume within the Galaxy matters little. At given sample size a larger survey \emph{volume} with large coverage in \emph{both radial and vertical} direction will give the tightest constraints on the model parameters.
 
-Stellar populations of different scale length and temperature probe different regions of the Galaxy (BR13). But there is no easy rule of thumb for which survey volume and stellar population which potential and DF parameter is constrained best.\HW{[TO DO: Ask HW, if he wants this to be discussed somewhere in detail.]}
+Surprisingly, (cf. \citealt{2013A&ARv..21...61R}) \RM{} seems to be very robust against misjudgements of the spatial data selection function. We speculate that this is because missing stars in the data set do not affect the measured rotation curve, which contains information about the potential.
 
-Surprisingly, (cf. \citealt{2013A&ARv..21...61R}) \RM{} seems to be very robust against misjudgements of the spatial data selection function. We speculate that this is because missing stars in the data set do not affect the measured rotation curve, which contains information about the potential.\\
+We found indications that populations of different scale lengths and temperature probe different regions of the Galaxy best. This supports the approach by BR13, who constrained for each \MAP{} the surface mass density only at one single best radius to account for missing flexibility in their potential model. While cooler populations probe to Galaxy rotation curve better and hotter populations are less sensitive to pollution, overall stellar populations of different kinematic temperature seem to be equally well-suited for dynamical modelling.\\
 
 %\subsection{Data Deviations from the Modelling Assumptions about the Distribution Function and the Potential}
 
-\noindent {\bf Deviations from the qDF Assumption:~} \RM{} assumes that stellar sub-populations can be described by simple DFs. We investigated how much the modelling would be affected if the assumed family of DFs would differ from the star's true DF.
+\noindent {\bf Deviations from the DF Assumption:~} \RM{} assumes that stellar sub-populations can be described by simple DFs. We investigated how much the modelling would be affected if the assumed family of DFs would differ from the star's true DF.
 
-In Example 1 in Section \ref{sec:results_mixedDFs} we considered true stellar DFs being i) hot with less stars at small radii and more stars with low velocities than assumed (reddish data sets in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}), or ii) cool with broader velocity dispersion wings and less stars at large radii than assumed (bluish data sets). \HW{[TO DO: I removed the radius mock data distribution from the figure, because you couldn't see differences. Should I put it back in, so people understand this comment better?]} We find that case i) would give more reliable results for the potential parameter recovery, but in both cases biases are small if the contamination is less than [TO DO: CHECK] \Jo{[TO DO: Jo suggested this last part of the sentence, but I'm not sure, this is the case]}. In other words, hotter stellar populations appear to be more robust against pollution of stars coming from a cooler population than vice versa. 
+In Example 1 in Section \ref{sec:results_mixedDFs} we considered true stellar DFs being i) hot with less stars at small radii and more stars with low velocities than assumed (reddish data sets in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}), or ii) cool with broader velocity dispersion wings and less stars at large radii than assumed (bluish data sets). We find that case i) would give more reliable results for the potential parameter recovery.
 
 Binning of stars into \MAPs{} in $[\alpha/\mathrm{Fe}]$ and $[\mathrm{Fe}/\mathrm{H}]$, as done by BR13, could introduce biases due to abundance errors or too large bin sizes---always assuming \MAPs{} follow simple DF families (e.g., the qDF). In Example 2 in Section \ref{sec:results_mixedDFs} we found that, in the case of 20,000 stars per bin, differences of $20\%$ in the qDF parameters of two neighbouring bins can still give quite good constraints on the potential parameters.
 
@@ -44,11 +40,9 @@ The qDF is a specific example for a simple DF for stellar sub-populations which 
 
 For as many as 20,000 stars constraints become so tight, that it should be already possible to distinguish between different parametric MW potential models (e.g. the \texttt{MW13-Pot} used by BR13 and the \texttt{KKS-Pot}). \HW{[TO DO: I did not really do the test with the MW13-Pot, can I still claim this???]} 
 
-We also found indications that populations of different scale lengths and temperature indeed probe different regions of the Galaxy best. \Jo{[TO DO: Check that this is indeed the case - it is not clear to me from the plot. ???]} This supports the approach by BR13, who constrained for each \MAP{} the surface mass density only at one single best radius to account for missing flexibility in their potential model.
-
 BR13 fitted a MW-like model potential and calculated actions using the St\"{a}ckel approximation \citep{2012MNRAS.426.1324B}; in this case study we directly fitted a St\"{a}ckel potential to the data, with exact actions in the model potential. The latter is computationally much less expensive due to the simple analytic form for the potential. It would also allow flexibility by expressing the MW potential as a superposition of many more simple Kuzmin-Kutuzov St\"{a}ckel components (\citet{2003MNRAS.340..752F} used for example 3 components). The former approach by BR13 however allows to parametrize the potential with intuitive and physically motivated building blocks (exponential disks, power-law dark matter halo etc.). While both approaches are formally similar, it remains to decide which is better.\\
 
-\noindent {\bf Different Modelling Approaches using Action-based Distribution Functions:~} BR13 have focussed on \MAPs{} for a number of reasons: First, they seem to permit simple DFs \citep{bov12b,bov12c,2012ApJ...753..148B}, i.e., approximately qDFs \citep{2013MNRAS.434..652T}. Second, all stars must orbit in the same potential. While each \MAP{} can yield different DF parameters, it will also provide a (statistically) independent estimate of the potential. This allows for a valuable cross-checking reference. In some sense, the\RM{} approach focusses on constraining the potential, treating the DF parameters as nuisance parameters. That we were able to show in this work that \RM{} results are quite robust to the form of the DF not being entirely correct motivates this approach further. 
+\noindent {\bf Different Modelling Approaches using Action-based DFs:~} BR13 have focussed on \MAPs{} for a number of reasons: First, they seem to permit simple DFs \citep{bov12b,bov12c,2012ApJ...753..148B}, i.e., approximately qDFs \citep{2013MNRAS.434..652T}. Second, all stars must orbit in the same potential. While each \MAP{} can yield different DF parameters, it will also provide a (statistically) independent estimate of the potential. This allows for a valuable cross-checking reference. In some sense, the\RM{} approach focusses on constraining the potential, treating the DF parameters as nuisance parameters. That we were able to show in this work that \RM{} results are quite robust to the form of the DF not being entirely correct motivates this approach further. 
 
 The main drawback is that---for reasons of galaxy and chemical evolution---the DF properties are astrophysically linked between different \MAPs{}. Ultimately, the goal is to do a consistent chemodynamical model that simultaneously fits the potential and $\text{DF}(\vect{J},\text{[X/H]})$ (where [X/Fe] denotes the whole abundance space) with a full likelihood analysis. This has not yet been attempted with \RM{}, because the behaviour is quite complex. 
 
@@ -63,7 +57,3 @@ Since the first application of \RM{} by BR13 there have been two similar efforts
 We know that real galaxies, including the MW, are not axisymmetric. Using N-body models, we will explore in a subsequent paper how the recovery of the gravitational potential with \RM{} will be affected when data from a non-axisymmetric system get interpreted through axisymmetric models.
 
 \HW{[TO DO: Comment from Jo: Maybe we also want a conclusion with a simple bullet-point list of the main conclusions discussed in detail in the Discussion section.]}
-
-\Wilma{[TO DO: Make sure that MW is introduced once and Milky way is always abbreviated]}
-
-\Wilma{[TO DO: Somewhere a footnote with code reference to galpy]}
