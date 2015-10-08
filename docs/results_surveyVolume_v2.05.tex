@@ -7,6 +7,11 @@ To explore the role of the survey volume at given sample size, we devise two sui
 The first suite draws mock data from the same \pmodel{}, two different potentials (\texttt{Iso-Pot} and \texttt{MW13-Pot}, see Test \ref{test:wedFlexVol} in Table \ref{tbl:tests}), and volume wedges (see Section \ref{sec:selectionfunction}) at {\it different positions within the Galaxy}, illustrated in the right upper panel of Figure \ref{fig:wedFlexVol_bias_vs_SE}. To isolate the role of the survey volume geometry, the mock data sets are equally large ($N_{*} = 20,000$) in all cases, and are drawn from identical total survey volumes ($4.5~\text{kpc}^3$, achieved by adjusting the angular width of the wedges). The results are shown in Figure \ref{fig:wedFlexVol_bias_vs_SE}.
 \\The second suite of mock data sets was already introduced in Section \ref{sec:largedata} (see also Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests}), where mock data sets were drawn from five spherical volumes around the Sun with different maximum radius, for two different stellar populations. The results of this second suite are shown in Figure \ref{fig:isoSph_CLT} and demonstrate the effect of the {\it size of the survey volume}.
 
+Figure \ref{fig:isoSph_CLT} demonstrates that, given a choice of $p_\text{DF}$, a larger volume always results in tighter constraints. There is no obvious trend that a hotter or cooler population will always give better results; it depends on the survey volume and the model parameter in question. In Figure \ref{fig:wedFlexVol_bias_vs_SE} the wedges all have the same volume and all give results of similar precision. Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume. In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. In addition Figure \ref{fig:wedFlexVol_bias_vs_SE} implies that for these cases volume offsets in the radial or vertical direction have at most a modest impact - even in case of the very large sample size at hand.
+
+While it appears that the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel{} and volumina.
+
+
 %==================================================
 
 %FIGURE: isoSphFlexIncompR
@@ -26,9 +31,3 @@ The first suite draws mock data from the same \pmodel{}, two different potential
 \end{figure}
 
 %==================================================
-
-Figure \ref{fig:isoSph_CLT} demonstrates that, given a choice of $p_\text{DF}$, a larger volume always results in tighter constraints. There is no obvious trend that a hotter or cooler population will always give better results; it depends on the survey volume and the model parameter in question. In Figure \ref{fig:wedFlexVol_bias_vs_SE} the wedges all have the same volume and all give results of similar precision. Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume. In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. In addition Figure \ref{fig:wedFlexVol_bias_vs_SE} implies that for these cases volume offsets in the radial or vertical direction have at most a modest impact - even in case of the very large sample size at hand.
-
-While it appears that the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel{} and volumina.
-
-

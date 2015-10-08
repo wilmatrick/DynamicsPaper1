@@ -17,7 +17,7 @@
 \begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figs/isoSphFlex_short_hot_2kpc_triangle_MCMC.eps}
-\caption{The \pdf{} (proportional to the likelihood in Equation \ref{eq:prob}) in the parameter space $\pmodel{} = \{p_\Phi,p_\text{DF}\}$ for one example mock data set created according to Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}. Blue indicates the \pdf{} for the potential parameters, green the qDF parameters. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions \HW{[TO DO: HW: "likelihood vs. pdf - This is where this matters: is this a confidence on the data or on the parameters?" Don't understand, what he means...]}, respectively. The parameters are weakly to moderately covariant, but their level of covariance depends on the actual choice of the mock data's \pmodel{}. The \pdf{} here was sampled using MCMC. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the \pdf{} approaches the shape of a multi-variate Gaussian, as expected from the central limit theorem \Jo{[TO DO: Jo wrote, that he is not sure if the central limit theorem is directly relevant here]}.}
+\caption{The \pdf{} (proportional to the likelihood in Equation \ref{eq:prob}) in the parameter space $\pmodel{} = \{p_\Phi,p_\text{DF}\}$ for one example mock data set created according to Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}. Blue indicates the \pdf{} for the potential parameters, green the qDF parameters. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent 1, 2 and 3 sigma confidence regions \HW{[TO DO: HW: "likelihood vs. pdf - This is where this matters: is this a confidence on the data or on the parameters?" Don't understand, what he means...]}, respectively. The parameters are weakly to moderately covariant, but their level of covariance depends on the actual choice of the mock data's \pmodel{}. The \pdf{} here was sampled using MCMC. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the \pdf{} approaches the shape of a multi-variate Gaussian, as expected for an maximum likelihood estimator.}
 \label{fig:isoSphFlex_triangleplot}
 \end{figure*}
 
@@ -62,16 +62,15 @@ In the case of an axisymmetric galaxy model and $\text{SF}(\vect{x})=1$ within t
 \begin{equation}
 \delta_{M_\text{tot}} \equiv \frac{M_\text{tot,approx}(N_x,N_v,n_\sigma) -  M_\text{tot} }{M_\text{tot}}\label{eq:relerrlikelihood}
 \end{equation}
-\Wilma{[TO DO: make sure every Mtottrue is replaced by Mtot]}
-does not dominate the log-likelihood, i.e.,
+does not dominate the numerically calculated log-likelihood, i.e.,
 \begin{eqnarray}
-& &\log \mathscr{L}_\text{approx}(\pmodel \mid D) \nonumber\\
+& &\log \mathscr{L}_\text{approx}(D \mid \pmodel) \nonumber\\
 && = \sum_i^{N_*} \log \text{DF}(\vect{J_i} \mid \pmodel) - N_* \log(M_\text{tot})\nonumber\\
 && - N_* \log (1 + \delta_{M_\text{tot}}),\label{eq:loglikelihood_relerr}
 \end{eqnarray}
 with
 \begin{eqnarray}
-N_* \log (1 + \delta_{M_{tot}}) \lesssim 1.\nonumber
+N_* \log (1 + \delta_{M_{tot}}) \leq 1.\nonumber
 \end{eqnarray}
 Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case \HW{[TO DO: Really???]}, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_* \sim 100$ \Wilma{[TO DO: CHECK]}.\\
 
