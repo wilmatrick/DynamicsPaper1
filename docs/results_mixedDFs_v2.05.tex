@@ -5,13 +5,13 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexMix_mockdata_residuals_2.eps}
-\caption{Distribution of mock data created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, with the qDF parameters refereed to in the legend given in Table \ref{tbl:referenceMAPs}. The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are color-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For intermediate to large deviations it becomes already obvious from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the star's true DF. \Wilma{[TO DO: Replace Example 2b analyses.] [TO DO: Remove panels. E.g. 2b) and z distribution]}}
+\caption{Distribution of mock data created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). (The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, with the qDF parameters refereed to in the legend given in Table \ref{tbl:referenceMAPs}.) The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are color-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For intermediate to large deviations it becomes already obvious from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the star's true DF. \Wilma{[TO DO: Replace Example 2b analyses.] [TO DO: Remove panels. E.g. 2b) and z distribution]} \Wilma{[TO DO: $\text{km s}^{-1}$ and $\text{mas yr}^{-1}$]}}
 \label{fig:isoSphFlexMix_mockdata_residuals}
 \end{figure}
 
 %============================================================
 
-\subsection{The Impact of Deviations of the Data from the Idealized DF} \label{sec:results_mixedDFs}
+\subsection{The impact of deviations of the data from the idealized distribution function} \label{sec:results_mixedDFs}
 
 %Motivation of the test and what we're doing
 Our modelling approach assumes that each stellar population follows a simple DF (here: the qDF). In this section we explore what happens if this idealization does not hold. We investigate this issue by creating mock data sets that are drawn from two distinct qDFs of different temperature\footnote{Following the observational evidence, our mock data populations with cooler qDFs also have longer tracer scale lengths.} (see Table \ref{tbl:referenceMAPs} and Test \ref{test:isoSphFlexMix} in Table \ref{tbl:tests}), and analyze the composite mock data set by fitting a single qDF to it. The mock data sets and best fit qDF are illustrated in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, and the comparison of input and best fit parameters in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. In \emph{Example 1} we choose qDFs of widely different temperatures and vary their relative fraction (Figure \ref{fig:isoSphFlexMixCont}); in \emph{Example 2} we always mix mock data stars from two different qDFs in equal proportion, but vary by how much the qDF's temperatures differ (Figure \ref{fig:isoSphFlexMixDiff}). 
@@ -24,17 +24,12 @@ We consider the impact of the DF deviations on the recovery of the potential and
 
 We find from \emph{Example 1} that the potential parameters can be more robustly recovered, if a mock data population is polluted by a modest fraction ($\lesssim 30\%$) of stars drawn from a much cooler qDF, as opposed to the same pollution of stars from a hotter qDF. When considering the case of a 50/50 mix of contributions from different qDFs in \emph{Example 2}, there is a systematic, but only small, bias in recovering the potential parameters, monotonically increasing with the qDF parameter difference. In particular for fractional differences in the qDF parameters of $\lesssim 20\%$ the systematics are insignificant even for sample sizes of 20,000, as used in the mock data.
 
-Overall, mock data drawn from a cooler DF always seem to give tighter constraints on the circular velocity at the Sun, because the rotation curve can be constrained easier if more stars are on near-circular orbits. But we found the recovered $v_\text{circ}(R_\odot)$ not always to be unbiased at the implied precision.
+Overall, the circular velocity at the sun is very reliably recovered to within $2\%$ in all these tests. But the best fit $v_\text{circ}(R_\odot)$ is not always unbiased at the implied precision.
 
 The recovery of the effective qDF parameters, in light of non-qDF mock data, is quite intuitive: the effective qDF temperature lies between the two temperatures from which the mixed DF of the mock data was drawn; in all cases the scale length of the velocity dispersion fall-off, $h_{\sigma,R}$ and $h_{\sigma,z}$, is shorter, because the stars drawn form the hotter qDF dominate at small radii, while stars from the cooler qDF (with its longer tracer scale length) dominate at large radii; the recovered tracer scale lengths, $h_R$, vary smoothly between the input values of the two qDFs that entered the mix of mock data, with again the impact of contamination by a hotter qDF (with its shorter scale length in this case) being more important. 
 
 We note, that in the cases where the systematic bias in the potential parameter recovery becomes several sigma large, a direct comparison of the true mock data set and best fit distribution (see Figure \ref{fig:isoSphFlexMix_mockdata_residuals}) already reveals that the assumed DF is not a good model for the data.
 
 Overall, we find that the potential inference is quite robust to modest deviations of the data from the assumed DF. 
-
-
-\Wilma{[TO DO: Make sure that the vcirc is better recovered from cooler qDF is mentioned here for the first time]}
-\Wilma{[TO DO: Mention somewhere but only once that in case the offsets are big, one can already see in the mock data distribution, that the assumed DF is not the correct DF.]}
-\Wilma{[TO DO: Mention that overall the relative bias in vcirc is very small.]}
 
 
