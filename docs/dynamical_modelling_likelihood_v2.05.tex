@@ -4,7 +4,7 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexErrConv_MC_vs_error_2.eps}
-\caption{Number of Monte Carlo (MC) samples $N_\text{samples}$ needed for the numerical convolution of the model probability with the measurement uncertainties in Equation \ref{eq:errorconv}, given the maximum velocity uncertainty $\delta v_\text{max}$ within the stellar sample. Insufficient sampling introduces systematic biases in the parameter recovery as indicated in the legend. The relation found here, $N_\text{samples} \propto \delta v_\text{max}^2$, was distilled from a set of analyses of mock data sets with different proper motion uncertainties $\delta \mu \in [2,5]~\text{mas yr}^{-1}$ in the absence of distance uncertainties (see Test \ref{test:isoSphFlexErrConv_MC_vs_error} in Table \ref{tbl:tests}). The proper motion uncertainty $\delta \mu$ translates to heteroscedastic velocity uncertainties according to $\delta v [\text{km s}^{-1}] \equiv 4.74047 \cdot r[\text{kpc}] \cdot \delta \mu [\text{mas yr}^{-1}]$, with $r$ being the distance of the star from the Sun. Stars with larger $\delta v$ require more $N_\text{samples}$ for the integral over its measurement uncertainties to converge. We therefore show how the $N_\text{samples}$ needed for the potential \pdf{} of the whole data set to be converged, depends on the largest velocity error $\delta v_\text{max} \equiv \delta v(r_\text{max})$ within the data set. We used $N_\text{samples} = 800$ and  $1200$ for $\delta \mu \leq 3~\text{mas yr}^{-1}$ and $\delta \mu > 3~\text{mas yr}^{-1}$, respectively, as the reference for the converged convolution integral (see also left panels in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}). This figure was generated from mock data sets with $N_{*}=10,000$. We found that for $N_{*}=5,000$ the required $N_\text{samples}$ remains similar for $b$, but gets smaller for $v_\text{circ}(R_\odot)$. Overall we expect that we need less accuracy and therefore smaller $N_\text{samples}$ for smaller $N_{*}$. \Wilma{[TO DO: some of the 25 MC sample analyses have to be re-done.] [TO DO: on x-axis: $\delta v_\text{max} / \bar{\sigma}$ with $\bar{\sigma}$ geometric mean of $\sigma_z$ and $\sigma_R$] [TO DO: $N_\text{samples}$ on y axis] [TO DO: $\text{km s}^{-1}$]}}
+\caption{Number of MC samples $N_\text{samples}$ needed for the numerical convolution of the model probability with the measurement uncertainties in Equation \ref{eq:errorconv}, given the maximum velocity uncertainty $\delta v_\text{max}$ within the stellar sample with respect to the sample's kinematic temperature $\bar{\sigma}$. Insufficient sampling introduces systematic biases in the parameter recovery---the size of the bias is indicated in the legend. The relation found here, $N_\text{samples} \propto \delta v_\text{max}^2$, was distilled from analyses of mock data sets with different proper motion uncertainties $\delta \mu \in [2,5]~\text{mas yr}^{-1}$ in the absence of position uncertainties (see Test \ref{test:isoSphFlexErrConv_MC_vs_error} in Table \ref{tbl:tests}). The proper motion uncertainty $\delta \mu$ translates to heteroscedastic velocity uncertainties according to $\delta v [\text{km s}^{-1}] \equiv 4.74047 \cdot r[\text{kpc}] \cdot \delta \mu [\text{mas yr}^{-1}]$, with $r$ being the distance of the star from the Sun. Stars with larger $\delta v$ require more $N_\text{samples}$ for the integral over its measurement uncertainties to converge; we therefore show how the $N_\text{samples}$---needed for the \pdf{} of the \emph{whole} data set to be converged---depends on the \emph{largest} velocity error $\delta v_\text{max} \equiv \delta v(r_\text{max})$ within the data set. We used $N_\text{samples} = 800$ and  $1200$ for $\delta \mu \leq 3~\text{mas yr}^{-1}$ and $\delta \mu > 3~\text{mas yr}^{-1}$, respectively, as the reference for the converged convolution integral (see also left panels in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}). We plot $\delta v_\text{max}$ in units of the sample temperature, which we quantify by $\bar{\sigma} \equiv (\sigma_{R,0} + \sigma_{z,0})/2$ (see Table \ref{tbl:referenceMAPs} for the \texttt{hot} qDF). This figure was generated from mock data sets with $N_{*}=10,000$. We found that for $N_{*}=5,000$ the required $N_\text{samples}$ remains similar for $b$, but gets smaller for $v_\text{circ}(R_\odot)$. Overall we expect that we need less accuracy and therefore smaller $N_\text{samples}$ for smaller $N_{*}$. \Wilma{[TO DO: some of the 25 MC sample analyses have to be re-done.]}}
 \label{fig:isoSphFlexErrConv_MC_vs_error}
 \end{figure}
 
@@ -27,17 +27,17 @@
 \subsection{Data likelihood} \label{sec:likelihood}
 
 
-As data we consider here the positions and velocities of a population of stars within a given survey selection function $\text{SF}(\vect{x})$,
+As data $D$ we consider here the positions and velocities of a sub-population of stars within a given survey selection function $\text{SF}(\vect{x})$,
 \begin{eqnarray*}
-D  =\{ \vect{x}_i,\vect{v}_i \mid && \text{(star $i$ in given stellar population)}\nonumber\\
-&\wedge& (\text{SF}(\vect{x_i}) > 0) \}.
+D  \equiv \{ \vect{x}_i,\vect{v}_i \mid && \text{(star $i$ being in given sub-population)}\nonumber\\
+&\wedge& (\text{SF}(\vect{x}_i) > 0) \}.
 \end{eqnarray*}
 
-We fit a model potential and DF (here: the qDF) which are specified by a number of fixed and free parameters,
+We fit a model potential and DF (here: the qDF) which are specified by a number of fixed and free model parameters,
 \begin{eqnarray*}
 \pmodel \equiv \{ p_\text{DF} , p_\Phi \}.
 \end{eqnarray*}
-The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the DF evaluated for the $i$-th star is then $\text{DF}(\vect{J}_i \mid \pmodel) := \text{DF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.\\
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labeled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the DF evaluated for the $i$-th star is then $\text{DF}(\vect{J}_i \mid \pmodel) := \text{DF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
 
 The likelihood of the data given the model is, following BR13,
 \begin{eqnarray}
@@ -57,8 +57,10 @@ The normalisation in Equation \ref{eq:prob} is a measure for the total number of
 \begin{equation}
 M_\text{tot} \equiv \int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \text{SF}(\vect{x}).\label{eq:normalisation}
 \end{equation}
-In the case of an axisymmetric galaxy model and $\text{SF}(\vect{x})=1$ within the observation volume (as in most tests in this work), the normalisation is essentially a two-dimensional integral in the $R$-$z$ plane over $\rho_{DF}$. We evaluate the integrals using Gauss-Legendre quadratures of order 40. The integral over the azimuthal direction can be solved analytically. 
-\\It turns out that a sufficiently accurate evaluation of the likelihood is computationally expensive, even for only one set of model parameters. This expense is dominated by the number of action calculations required, which in turn depends on the number of stars in the sample ($N_*$ action calculations) and the numerical accuracy of the tracer density grid in Equation \ref{eq:tracerdensity} needed for the likelihood normalization in Equation \ref{eq:normalisation} ($N_x^2 \times N_v^3$ action calculations). The accuracy has to be chosen high enough, such that the resulting numerical error 
+In the case of an axisymmetric Galaxy model and $\text{SF}(\vect{x})=1$ within the observation volume (as in most tests in this work), the normalisation is essentially a two-dimensional integral in the $R$-$z$ plane over $\rho_{DF}$ with finite integration limits. We evaluate the integrals using Gauss-Legendre quadratures of order 40. The integral over the azimuthal direction can be solved analytically. 
+\Wilma{[TO DO: Write normalisation everywhere in the same waz.]}
+
+It turns out that a sufficiently accurate evaluation of the likelihood is computationally expensive, even for only one set of model parameters. This expense is dominated by the number of action calculations required, which in turn depends on $N_*$ and the numerical accuracy of the tracer density interpolation grid with $N_x^2+N_v^3$ grid points in Equation \ref{eq:tracerdensity} needed for the likelihood normalization in Equation \ref{eq:normalisation}. The accuracy of the normalization has to be chosen high enough, such that the resulting numerical error 
 \begin{equation}
 \delta_{M_\text{tot}} \equiv \frac{M_\text{tot,approx}(N_x,N_v,n_\sigma) -  M_\text{tot} }{M_\text{tot}}\label{eq:relerrlikelihood}
 \end{equation}
@@ -70,7 +72,7 @@ does not dominate the numerically calculated log-likelihood, i.e.,
 \end{eqnarray}
 with
 \begin{eqnarray}
-N_* \log (1 + \delta_{M_{tot}}) \leq 1.\nonumber
+N_* \log (1 + \delta_{M_\text{tot}}) \leq 1.\nonumber
 \end{eqnarray}
 Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case \HW{[TO DO: Really???]}, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_* \sim 100$ \Wilma{[TO DO: CHECK]}.\\
 
