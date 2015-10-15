@@ -3,7 +3,7 @@
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figs/isoSphFlexErrConv_MC_vs_error_2.eps}
+\includegraphics[width=\columnwidth]{figs/isoSphFlexErrConv_MC_vs_error_3.eps}
 \caption{Number of MC samples $N_\text{samples}$ needed for the numerical convolution of the model probability with the measurement uncertainties in Equation \ref{eq:errorconv}, given the maximum velocity uncertainty $\delta v_\text{max}$ within the stellar sample with respect to the sample's kinematic temperature $\bar{\sigma}$. Insufficient sampling introduces systematic biases in the parameter recovery---the size of the bias is indicated in the legend. The relation found here, $N_\text{samples} \propto \delta v_\text{max}^2$, was distilled from analyses of mock data sets with different proper motion uncertainties $\delta \mu \in [2,5]~\text{mas yr}^{-1}$ in the absence of position uncertainties (see Test \ref{test:isoSphFlexErrConv_MC_vs_error} in Table \ref{tbl:tests}). The proper motion uncertainty $\delta \mu$ translates to heteroscedastic velocity uncertainties according to $\delta v [\text{km s}^{-1}] \equiv 4.74047 \cdot r[\text{kpc}] \cdot \delta \mu [\text{mas yr}^{-1}]$, with $r$ being the distance of the star from the Sun. Stars with larger $\delta v$ require more $N_\text{samples}$ for the integral over its measurement uncertainties to converge; we therefore show how the $N_\text{samples}$---needed for the \pdf{} of the \emph{whole} data set to be converged---depends on the \emph{largest} velocity error $\delta v_\text{max} \equiv \delta v(r_\text{max})$ within the data set. We used $N_\text{samples} = 800$ and  $1200$ for $\delta \mu \leq 3~\text{mas yr}^{-1}$ and $\delta \mu > 3~\text{mas yr}^{-1}$, respectively, as the reference for the converged convolution integral (see also left panels in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}). We plot $\delta v_\text{max}$ in units of the sample temperature, which we quantify by $\bar{\sigma} \equiv (\sigma_{R,0} + \sigma_{z,0})/2$ (see Table \ref{tbl:referenceMAPs} for the \texttt{hot} qDF). This figure was generated from mock data sets with $N_{*}=10,000$. We found that for $N_{*}=5,000$ the required $N_\text{samples}$ remains similar for $b$, but gets smaller for $v_\text{circ}(R_\odot)$. Overall we expect that we need less accuracy and therefore smaller $N_\text{samples}$ for smaller $N_{*}$. \Wilma{[TO DO: some of the 25 MC sample analyses have to be re-done.]}}
 \label{fig:isoSphFlexErrConv_MC_vs_error}
 \end{figure}
@@ -58,7 +58,7 @@ The normalisation in Equation \ref{eq:prob} is a measure for the total number of
 M_\text{tot} \equiv \int \Diff 3 x \  \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \text{SF}(\vect{x}).\label{eq:normalisation}
 \end{equation}
 In the case of an axisymmetric Galaxy model and $\text{SF}(\vect{x})=1$ within the observation volume (as in most tests in this work), the normalisation is essentially a two-dimensional integral in the $R$-$z$ plane over $\rho_{DF}$ with finite integration limits. We evaluate the integrals using Gauss-Legendre quadratures of order 40. The integral over the azimuthal direction can be solved analytically. 
-\Wilma{[TO DO: Write normalisation everywhere in the same waz.]}
+\Wilma{[TO DO: Write normalisation everywhere in the same way.]}
 
 It turns out that a sufficiently accurate evaluation of the likelihood is computationally expensive, even for only one set of model parameters. This expense is dominated by the number of action calculations required, which in turn depends on $N_*$ and the numerical accuracy of the tracer density interpolation grid with $N_x^2+N_v^3$ grid points in Equation \ref{eq:tracerdensity} needed for the likelihood normalization in Equation \ref{eq:normalisation}. The accuracy of the normalization has to be chosen high enough, such that the resulting numerical error 
 \begin{equation}
@@ -74,29 +74,30 @@ with
 \begin{eqnarray}
 N_* \log (1 + \delta_{M_\text{tot}}) \leq 1.\nonumber
 \end{eqnarray}
-Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case \HW{[TO DO: Really???]}, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_* \sim 100$ \Wilma{[TO DO: CHECK]}.\\
+Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_*$ was only a few $\sim 100$.
 
 
 %====================================================================
 
-Measurement uncertainties of the data have to be incorporated in the likelihood. We assume Gaussian uncertainties in the observable space $\vect{y} \equiv (\tilde{\vect{x}},\tilde{\vect{v}})=(\text{RA},\text{Dec},(m-M),\mu_\text{RA} \cdot \cos \text{Dec},\mu_\text{Dec},v_\text{los})$, i.e., the $i$-th star's observed $\vect{y}_i$ are drawn from the normal distribution $N[{\vect{y}'}_i,\delta \vect{y}_i]$, with ${\vect{y}_i}'$ being the star's true phase-space position and $\delta \vect{y}_i$ its uncertainty . Stars follow the distribution function (DF$(\vect{y}') \equiv$ DF$(\vect{J}[\vect{y}' \mid p_\Phi] \mid p_\text{DF})$ for short), convolved with the measurement uncertainties $N[0,\delta \vect{y}]$ \Wilma{[TO DO: CHECK AGAIN]}. The selection function SF$(\vect{y})$ acts on the space of (error affected) observables. Then the probability of one star becomes
+Measurement uncertainties of the data have to be incorporated in the likelihood. We assume Gaussian uncertainties in the observable space $\vect{y} \equiv (\tilde{\vect{x}},\tilde{\vect{v}})=(\text{RA},\text{Dec},(m-M),\mu_\text{RA} \cdot \cos (\text{Dec}),\mu_\text{Dec},v_\text{los})$, i.e., the $i$-th star's observed $\vect{y}_i$ is drawn from the normal distribution $N[{\vect{y}_i}',\delta \vect{y}_i] \equiv \prod_i^6 N[{y_{i,k}}',\delta y_{i,k}] =  \prod_i^6 \exp \{-(y_{k}-{y_{i,k}}')^2/ (2 \delta y_{i,k}^2) \} / \sqrt{2 \pi \delta y_{i,k}^2}$, with ${\vect{y}_i}'$ being the star's true phase-space position, $\delta \vect{y}_i$ its uncertainty, and $y_k$ the $k$-th coordinate component of $\vect{y}$. Stars follow the $\text{DF}(\vect{J}[\vect{y}' \mid p_\Phi] \mid p_\text{DF})$ ($\equiv \text{DF}(\vect{y}') \equiv$  for short) convolved with the measurement uncertainties $N[0,\delta \vect{y}_i]$. The selection function SF$(\vect{y})$ acts on the space of (uncertainty affected) observables. Then the probability of one star becomes
 \begin{eqnarray*}
 &&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i)\\
-& \equiv& \frac{\text{SF}(\vect{y}_i) \cdot \int \Diff{6} y' \  \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i]}{\int \Diff{6}y'  \  \text{DF}(\vect{y}')  \cdot  \int \Diff{6} y \  \text{SF}(\vect{y})  \cdot N[\vect{y}',\delta \vect{y}_i]}.
+& \equiv& \frac{\text{SF}(\vect{y}_i) \cdot \int \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i] \ \Diff{6} y'}{\int \left(  \text{DF}(\vect{y}')  \cdot  \int \text{SF}(\vect{y})  \cdot N[\vect{y}',\delta \vect{y}_i] \ \Diff{6} y \right) \ \Diff{6}y'}.
 \end{eqnarray*}
-In the case of uncertainties in distance or (RA,Dec), the evaluation of this is computational expensive - especially if the stars have heteroscedastic $\delta \vect{y}_i$. In practice we apply the following approximation,
+In the case of uncertainties in distance or (RA,Dec) the evaluation of this is computational expensive---especially if the stars have heteroscedastic $\delta \vect{y}_i$. In practice we apply the following approximation,
 \begin{eqnarray}
-&&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i) \nonumber\\
-&&\approx \frac{ \text{SF}(\vect{x}_i)}{M_\text{tot}} \cdot \frac{1}{N_\text{samples}} \sum_n^{N_\text{samples}}  \text{DF}(\vect{x}_i,\vect{v}[\vect{y}'_{i,n}]) \label{eq:errorconv}
+&&\tilde{p}_\text{approx}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i) \nonumber\\
+&&\approx \frac{ \text{SF}(\tilde{\vect{x}}_i)}{M_\text{tot}} \cdot \frac{1}{N_\text{samples}} \sum_n^{N_\text{samples}}  \text{DF}(\tilde{\vect{x}}_i,\vect{v}[\vect{y}'_{i,n}]) \label{eq:errorconv}
 \end{eqnarray}
 with
 \begin{eqnarray}
 \vect{y}'_{i,n} \sim N[\vect{y}_i,\delta \vect{y}_i]\nonumber
 \end{eqnarray}
-We calculate the convolution using Monte Carlo (MC) integration with $N_\text{samples}$ samples. The above approximation assumes that the star's \emph{position} $\vect{x}_i$ is perfectly measured. As the selection function is also velocity independent, this simplifies the normalisation drastically to Equation \ref{eq:normalisation}. Measurement uncertainties in $\mathrm{RA}$ and $\mathrm{Dec}$ are often negligible anyway. The uncertainties in the Galactocentric \emph{velocities} $\vect{v}_i = (v_{R,i},v_{T,i},v_{z,i})$ depend besides on $\delta \vect{\mu}$ and $\delta v_\text{los}$ also on the distance and its uncertainty, which we do \emph{not} neglect when drawing MC samples $\vect{y}'_{i,n}$ from the full uncertainty distribution $N[\vect{y}_i,\delta \vect{y}_i]$. Figure \ref{fig:isoSphFlexErrConv_MC_vs_error} demonstrates that in the absence of position uncertainties the $N_\text{samples}$ needed for the convolution integral to converge depends as
+We calculate the convolution using Monte Carlo (MC) integration with $N_\text{samples}$ samples. The above approximation assumes that the star's \emph{position} $\tilde{\vect{x}}_i$ is perfectly measured. As the SF is also velocity independent, this simplifies the normalisation drastically to Equation \ref{eq:normalisation}. Measurement uncertainties in $\mathrm{RA}$ and $\mathrm{Dec}$ are often negligible anyway. The uncertainties in the Galactocentric \emph{velocities} $\vect{v}_i = (v_{R,i},v_{T,i},v_{z,i})$ depend besides on $\delta \vect{\mu}$ and $\delta v_\text{los}$ also on the distance and its uncertainty, which we do \emph{not} neglect when drawing MC samples $\vect{y}'_{i,n}$ from the full uncertainty distribution $N[\vect{y}_i,\delta \vect{y}_i]$. Figure \ref{fig:isoSphFlexErrConv_MC_vs_error} demonstrates that in the absence of position uncertainties the $N_\text{samples}$ needed for the convolution integral to converge depends as
 \begin{equation*}
 N_\text{samples} \propto \delta v^2
 \end{equation*}
 on the uncertainties in the (1D) velocities. We found that the required $N_\text{samples}$ to reach a given accuracy does not depend strongly on the number of stars in the sample. But in general we expect that we need higher accuracy and therefore more $N_\text{samples}$ for larger data sets.
-\\A similar but only one-dimensional treatment of measurement uncertainties in $v_z$ was already applied by BR13.
+
+A similar but one-dimensional treatment of measurement uncertainties in only $v_z$ was already applied by BR13.
 
