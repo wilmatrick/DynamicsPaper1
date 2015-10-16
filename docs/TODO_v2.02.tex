@@ -1,4 +1,61 @@
-\section{Stuff that still needs to be done or thought about}
+\section{Collection of TO DOs removed from the paper on 16. Oktober}
+
+\paragraph{Stuff to ask HW}
+\begin{itemize}
+\item Explain HW the structure of the introduction. Does he think this is ok?
+\item Are we going to use MAPs also in the future? Is this the distinctive property of our modelling? If not, it does not make sense to introduce the Acronym \RM{}.
+\item What about the title of the paper?
+\item In which order should I give the references?
+\item How to reference Galactic Dynamics?
+\item How to reference bovy12abcd in literature list?
+\item Would the Journal mess up the reference in Figure 18, because of different table order?
+\item The Binney 2012b reference on "use axisymmetric potential + DF" for recovering the potential is not quite the thing - he is more focused on DF in this paper. Is there another reference I should use?
+\item Find out, how to leftflush the column heads in deluxetable.
+\item Should I give each equation a label or only those I'm referencing somewhere?
+\item What else do we to have acknowledge?
+\end{itemize}
+
+\paragraph{Stuff to be worked out by Wilma}
+\begin{itemize}
+\item In Figure 11 die dunkelgrauen Violinen erklaeren.
+\item Koennte sein, dass in Figure 16 die Examble 2b analysen ersaetzt werden muessen.
+\item emulateapj doesn't know NAR in the http://adsabs.harvard.edu/abs/2013NewAR..57...29B reference
+\item How did I loose the McMillan 2011 reference: %\bibitem[McMillan(2011)]{2011MNRAS.414.2446M} McMillan, P.~J.\ 2011, \mnras, 414, 2446 %[TO DO] mcm11
+\item Don't forget to reference correct Table in Figure 18
+\item Potential tests, Figures 18-20: Redo whole analysis with vcirc not being fixed (HW is not sure if this really doesn't make a difference.]
+\item Potential Tests, Figures 18: Mention that high precision is needed.
+\item Figure 19: $\text{km s}^{-1}$ and $\text{mas yr}^{-1}$
+\item Figure 20: $\text{km s}^{-1}$ and $\text{mas yr}^{-1}$
+\item Ask Glenn, if this is true: "Overall the best fit disk is less dense in the midplane than the true disk, because the generation of very flattened components like exponential disks with St\"{a}ckel potentials is not possible."
+\item Check, that Figure 14 (ErrSyst) was indeed generated with 10,000 stars
+\item Introduction mentions Binney 2011 reference in first sentence. Check, what this reference says, and if we can reference it here.
+\item Check again, that all references are used.
+\item Solar überall groß.
+\item Check qDF formulas.
+\item Check that all integrals have the diff behind the integrand.
+\item Error plots: some of the 25 MC sample analyses have to be re-done.
+\item Triangle plot: schraege tick labels
+\item Write normalisation and colour everywhere in the same way.
+\item Check that CLT plot and volumetestplot have both 20,000 stars
+\item remove small black errors in CLT plot
+\item schwarze punkte in (un)-bias CLT plot: call "pdf expectation value"
+\item mention: width of pdf is quantified by the SE
+\item change <_ 1 in eq. normalisation to <_ 1/N_sample --> also give the equation a label and reference it in large data section
+\item When introducing N=20,000 in large data section, mention that we use this throught the paper for most tests; 20,000 stars --> much larger than current sample sizes (200 stars), but forecasting to larger sample sizes with Gaia (?)
+\item Make sure there are no Tables overlapping with the page numbers.
+\item For all Binney \& Tremaine 2008 references include the corresponding section.
+\end{itemize}
+
+\paragraph{Stuff I might ignore}
+\begin{itemize}
+\item Overall, Table 3 could do with a little less information.
+\item Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.
+\end{itemize}
+
+
+%=====================================================
+
+\section{Bigger questions that I will ignore}
 
 \paragraph{Questions that haven't been covered so far:}
 \begin{itemize}
@@ -14,36 +71,14 @@
 
 \paragraph{Stuff that needs to be further examined about the robustness against data incompleteness:}
 \begin{itemize}
-\item[[TO DO]] Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this
-robustness is a special case for the isochrone potential.
-\end{itemize}
-
-\paragraph{General Stuff}
-\begin{itemize}
-\item[[TO DO:]] Look up what McMillan \& Binney 2013 have to say about the numerical accuracy of the normalisation. Sanders \& Binney (2015) are quoting them on that matter.
-\item[[TO DO:]] einheitlich, convolution of model probability with measurement errors, nicht deconvolution of likelihood
-\item[[TO DO:]] For all Binney \& Tremaine 2008 references include the corresponding section.
-\item[[TO DO:]] Make sure that probabilities have lowercase $p$ everywhere.
-\item[[TO DO:]] Make sure there are no Tables overlapping with the page numbers.
+\item[[TO DO]] Make similar test as isoSphFlexIncompR, but with KKS potential, to test, if this robustness is a special case for the isochrone potential.
 \end{itemize}
 
 %=====================================================
 
 %15. May 2015 --> Meet with HW to write
 %
-%* 20,000 stars --> much larger than current sample sizes (200 stars), but forecasting to larger sample sizes with Gaia (?)
-%* Fig. 3,4,5 --> Behaviour in the limit of large samples
-%* Change order of sections according to order in Results section intro
-%* mention in introduction that we do not investigate axisymmetry
-%* limit of lousy data --> model assumptions are not limiting. very good data --> model assumptions are limiting. Bovy & Rix: 150 stars per MAP. When we get larger samples sizes, the modelling will be limited by the model assumptions.
-%* in section on numerical accuracy erwähnen, dass wir in the limit of many stars aufpassen müssen, dass wir die normalisierung genau genug berechnen.
-%* Check how many stars were typically in a Bovy&Rix13 MAP
 %* Priors: We want parameter estimates that alre tight enough, such that it does not matter, if we had assumed a flat or a logarithmically flat prior
-%* Introduce somewhere the 20,000 stars 
-%* change <_ 1 in eq. 5 to <_ 1/N_sample
-%* Mach einheitlich: width of pdf, likelihood, Standard error --> $\sigma_p$ ???
-%* schwarze punkte in (un)-bias CLT plot: call "pdf expectation value"
-%* Error on the width of the likelihood scales also with 1/sqrt(N) or sqrt(N-1) --> nicht in sqrtN figure einzeichnen, weil mein scatter größer ist. Neu berechnen?
-%* obsvolumetest: orange volume eine breite weiter nach oben, also leicht oberhalb der plane.
-%* Check that CLT plot and volumetestplot have both 20,000 stars
+
+
 

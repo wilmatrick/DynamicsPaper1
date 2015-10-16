@@ -5,7 +5,7 @@
 
 \begin{deluxetable*}{llcll}[!htbp]
 \tabletypesize{\scriptsize}
-\tablecaption{Axisymmetric Galactic gravitational potential models used troughout this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover again with \RM{}. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \Wilma{[TO DO: Find out, how to leftflus the column heads.]} \label{tbl:referencepotentials}}
+\tablecaption{Axisymmetric Galactic gravitational potential models used troughout this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover again with \RM{}. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential model} & \multicolumn{2}{c}{parameters $p_\Phi$} & \colhead{action calculation}}
@@ -75,7 +75,7 @@
 
 %============================================
 
-In this section we summarize the basic elements of \RM{}, the dynamical modelling machinery presented in this work, which in many respects follows BR13 and makes extensive use of the \texttt{galpy} Python package\footnote{\texttt{galpy} is an open-source code that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}.} \citep{2015ApJS..216...29B}. \HW{[TO DO: Should I give each equation a label or only those I'm referencing somwhere?]} \Wilma{[TO DO: Such nach - und ersetze alle durch ---]}
+In this section we summarize the basic elements of \RM{}, the dynamical modelling machinery presented in this work, which in many respects follows BR13 and makes extensive use of the \texttt{galpy} Python package\footnote{\texttt{galpy} is an open-source code that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}.} \citep{2015ApJS..216...29B}.
 
 \subsection{Coordinate system} \label{sec:coordinates}
 
@@ -104,7 +104,7 @@ f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi
 && \times \left[1+\tanh\left(L_z/L_0\right) \right]\\
 f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF} \right) &=& \frac{\nu}{2 \pi \sigma_z^2(R_g)} \exp\left( -\frac{\nu J_z}{\sigma_z^2(R_g)} \right)
 \end{eqnarray}
-\citep{2011MNRAS.413.1889B}. \Wilma{[TO DO: Check formula.]} Here $R_g$, $\Omega$,  $\kappa$ and $\nu$ are functions of $L_z$ and denote respectively the (guiding-center) radius, circular, radial/epicycle and vertical frequency of the circular orbit with angular momentum $L_z$ in a given potential (\citealt{2008gady.book.....B}, \S 3.2.3). The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with $L \gg L_0$ (with $L_0 = 10 \times R_\odot/8 \times v_\text{circ}(R_\odot)/220$).
+\citep{2011MNRAS.413.1889B}. Here $R_g$, $\Omega$,  $\kappa$ and $\nu$ are functions of $L_z$ and denote respectively the (guiding-center) radius, circular, radial/epicycle and vertical frequency of the circular orbit with angular momentum $L_z$ in a given potential (\citealt{2008gady.book.....B}, \S 3.2.3). The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with $L \gg L_0$ (with $L_0 = 10 \times R_\odot/8 \times v_\text{circ}(R_\odot)/220$).
 
 Following BR13, we choose the functional forms
 \begin{eqnarray}
@@ -113,7 +113,7 @@ n(R_g \mid p_\text{DF}) &\propto& \exp\left(-\frac{R_g}{h_R} \right)\\
 \sigma_z(R_g \mid p_\text{DF}) &=& \sigma_{z,0} \times \exp\left(- \frac{R_g-R_\odot}{h_{\sigma,z}} \right)\label{eq:sigmazRg},
 \end{eqnarray}
 which indirectly set the stellar number density and radial and vertical velocity dispersion profiles. The qDF has therefore a set of five free parameters $p_\text{DF}$: the density scale length of the tracers $h_R$, the radial and vertical velocity dispersion at the Solar position $R_\odot$, $\sigma_{R,0}$ and $\sigma_{z,0}$, and the scale lengths $h_{\sigma,R}$ and $h_{\sigma,z}$, that describe the radial decrease of the velocity dispersion. \RM{} allows to fit any number of DF parameters simultaneously, while BR13 kept $\{\sigma_{R,0},h_{\sigma,R}\}$ fixed. Throughout this work we make use of a few example stellar populations whose qDF parameters are given in in Table \ref{tbl:referenceMAPs}: Most tests use the \texttt{hot} and \texttt{cool} qDFs, which correspond to kinematically hot and cool populations, respectively.
-\Wilma{[TO DO: In integralen das d nach hinten.]}
+
 One crucial point in our dynamical modelling technique (Section \ref{sec:likelihood}), as well as in creating mock data (Section \ref{sec:mockdata}), is to calculate the (axisymmetric) spatial tracer density $\rho_\text{DF}(\vect{x} \mid p_{\Phi},p_\text{DF})$ for a given DF and potential. Analogously to BR13, 
 \begin{eqnarray}
 &&\rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) \nonumber\\
