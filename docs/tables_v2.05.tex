@@ -56,13 +56,13 @@ are unbiased.           &          &    & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma
                         & \emph{Numerical accuracy:} & & $N_v = 20$ and $N_\sigma = 4$ (for speed) & \\
 
 \tableline
-Test \testlabel{test:wedFlexVol} {5} :		& \emph{Potential:} 	& i) \texttt{Iso-Pot} or ii) \texttt{MW13-Pot} & i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
-Influence of 			& 						& 													& ii) \texttt{MW13-Pot}, $R_d$ and $f_h$ free & \\
-position \& shape 		& \emph{DF:}			& \texttt{hot} qDF 										& i) qDF, all parameters free & \\
-of survey volume 		& 						& 													& ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free& \\
+Test \testlabel{test:wedFlexVol} {5} :		& \emph{Potential:} 	& (i) \texttt{Iso-Pot} or (ii) \texttt{MW13-Pot} & (i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
+Influence of 			& 						& 													& (ii) \texttt{MW13-Pot}, $R_d$ and $f_h$ free & \\
+position \& shape 		& \emph{DF:}			& \texttt{hot} qDF 										& (i) qDF, all parameters free & \\
+of survey volume 		& 						& 													& (ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free& \\
 on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper right panel & (fixed \& known) & \\
 						& \emph{$N_{*}$:} & 20,000 & & \\
-						& \emph{Analysis method:} & & i) MCMC, ii) likelihood on grid & \\
+						& \emph{Analysis method:} & & (i) MCMC, (ii) likelihood on grid & \\
 \tableline
 Test \testlabel{test:isoSphFlexIncomp}{6} :        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexIncompR_violins} \& \ref{fig:isoSphFlexIncompR_marginal_violins}\\
 Influence of            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free &   \\
