@@ -1,6 +1,3 @@
-\section{Dynamical modelling}
-
-
 %=============================================
 
 \begin{deluxetable*}{llcll}[!htbp]
@@ -43,11 +40,11 @@
 
 %FIGURE: reference potentials
 
-\begin{figure}[!htbp]
-\includegraphics[width=\column]{figs/reference_potentials.eps}
+\begin{figure*}[!htbp]
+\includegraphics[width=\textwidth]{figs/reference_potentials.eps}
 \caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}, for illustration purposes. These potentials are used throughout this work to create and model mock data with \RM{}.}
 \label{fig:ref_pots}
-\end{figure}
+\end{figure*}
 
 
 %======================================================================================
@@ -73,6 +70,8 @@
 
 %=============================================
 
+\section{Dynamical modelling}
+
 %============================================
 
 In this section we summarize the basic elements of \RM{}, the dynamical modelling machinery presented in this work, which in many respects follows BR13 and makes extensive use of the \texttt{galpy} Python package\footnote{\texttt{galpy} is an open-source code that is being developed on \url{http://github.com/jobovy/galpy}. The latest documentation can be found at \url{http://galpy.readthedocs.org/en/latest/}.} \citep{2015ApJS..216...29B}.
@@ -90,7 +89,6 @@ Our modelling takes place in the Galactocentric rest-frame with cylindrical coor
 Orbits in an axisymmetric gravitational potential $\Phi$ are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi\equiv L_z)$ (\citealt{2008gady.book.....B}, \S 3.5). Their computation from a star's phase-space coordinates, $(\vect{x},\vect{v}) \stackrel{\Phi}{\longrightarrow} \vect{J}$, is typically very expensive. The spherical isochrone potential \citep{1959AnAp...22..126H} and axisymmetric St\"{a}ckel potential \citep{1985MNRAS.216..273D} are the most general (Galactic) potentials, that allow exact action calculations (\citealt{2008gady.book.....B}, \S 3.5.2 and \S 3.5.3). In all other potentials actions have to be numerically estimated. We use the \emph{St\"{a}ckel fudge} by \citet{2012MNRAS.426.1324B} for axisymmetric potentials and action interpolation grids \citep{2015ApJS..216...29B,2012MNRAS.426.1324B} to speed up the calculation. The latter is one of the improvements employed by \RM{}, which was not used in BR13.
 
 For the gravitational potential in our modelling we assume a family of parametrized models. We use: The MW-like potential from BR13 (\texttt{MW13-Pot}) with bulge, disks and halo; the spherical isochrone potential (\texttt{Iso-Pot}); and the 2-component Kuzmin-Kutuzov St\"{a}ckel potential (\citealt{1994AA...287...43B}; \texttt{KKS-Pot}), which also displays a disk and halo structure. Table \ref{tbl:referencepotentials} summarizes all reference potentials used in this work together with their free parameters $p_\Phi$. The density distribution of these potentials is illustrated in Figure \ref{fig:ref_pots}.
-
 
 \subsection{Stellar distribution functions} \label{sec:qDF}
 

@@ -1,31 +1,3 @@
-%====================================================================
-
-\begin{figure*}[!htbp]
-\centering
-\includegraphics[width=0.7\textwidth]{figs/MW14vsKKS2SphFlex_contours_compare.eps}
-\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential with 100 sample potentials drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.)}
-\label{fig:MW14vsKKS2SphFlex}
-\end{figure*}
-
-\begin{figure*}[!htb]
-\plotone{figs/MW14vsKKS2SphFlex_violins.eps}
-\caption{Recovery of the qDF parameters for the case where the true and assumed potential deviate from each other (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}). The thick red (blue) lines represent the true qDF parameters of the \texttt{hot} (\texttt{cool}) qDF in Table \ref{tbl:referenceMAPs} used to create the mock data, surrounded by a 10\% error region. The grey violins are the marginalized \pdf{}s for the qDF parameters found simultaneously with the potential constraints shown in Figure \ref{fig:MW14vsKKS2SphFlex}.}
-\label{fig:MW14vsKKS2SphFlex_violins}
-\end{figure*}
-
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=\columnwidth]{figs/MW14vsKKS2SphFlex_mockdata_residuals_2.eps}
-\caption{Comparison of the distribution of mock data $v_T$ and $v_z$ created in the \texttt{MW14-Pot} potential and with two different stellar populations (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests} for all mock data model parameters), and the best fit distribution recovered by fitting the family of \texttt{KKS-Pot} potentials to the data. The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The data is very well recovered, even though the fitted potential family did not incorporate the true potential.}
-\label{fig:MW14vsKKS2SphFlex_mockdata_residuals}
-\end{figure}
-
-
-
-
-%====================================================================
-
 \subsection{The implications of a gravitational potential not from the space of model potentials} \label{sec:results_potential}
 
 We now explore what happens when the mock data were drawn from one axisymmetric potential family, here \texttt{MW14-Pot}, and is then modelled considering potentials from only another axisymmetric family, here \texttt{KKS-Pot} (see Table \ref{tbl:referencepotentials} and Figure \ref{fig:ref_pots}). In the analysis we assume the circular velocity at the Sun to be fixed and known and only fit the parametric potential form.\footnote{We made sure that $v_\text{circ}(R_\odot)$ can be very well recovered when included in the fit of a \texttt{cool} population. The model assumption that $v_\text{circ}(R_\odot)$ is known does therefore not affect the discussion qualitatively.}
