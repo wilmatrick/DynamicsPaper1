@@ -79,10 +79,10 @@ Otherwise numerical inaccuracies could lead to systematic biases in the potentia
 %====================================================================
 
 Measurement uncertainties of the data have to be incorporated in the likelihood. We assume Gaussian uncertainties in the observable space $\vect{y} \equiv (\tilde{\vect{x}},\tilde{\vect{v}})=(\text{RA},\text{Dec},(m-M),\mu_\text{RA} \cdot \cos (\text{Dec}),\mu_\text{Dec},v_\text{los})$, i.e., the $i$-th star's observed $\vect{y}_i$ is drawn from the normal distribution $N[{\vect{y}_i}',\delta \vect{y}_i] \equiv \prod_i^6 N[{y_{i,k}}',\delta y_{i,k}] =  \prod_i^6 \exp \{-(y_{k}-{y_{i,k}}')^2/ (2 \delta y_{i,k}^2) \} / \sqrt{2 \pi \delta y_{i,k}^2}$, with ${\vect{y}_i}'$ being the star's true phase-space position, $\delta \vect{y}_i$ its uncertainty, and $y_k$ the $k$-th coordinate component of $\vect{y}$. Stars follow the $\text{DF}(\vect{J}[\vect{y}' \mid p_\Phi] \mid p_\text{DF})$ ($\equiv \text{DF}(\vect{y}') \equiv$  for short) convolved with the measurement uncertainties $N[0,\delta \vect{y}_i]$. The selection function SF$(\vect{y})$ acts on the space of (uncertainty affected) observables. Then the probability of one star becomes
-\begin{eqnarray*}
-&&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i)\\
+\begin{eqnarray}
+&&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i)\nonumber\\
 & \equiv& \frac{\text{SF}(\vect{y}_i) \cdot \int \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i] \ \Diff{6} y'}{\int \left(  \text{DF}(\vect{y}')  \cdot  \int \text{SF}(\vect{y})  \cdot N[\vect{y}',\delta \vect{y}_i] \ \Diff{6} y \right) \ \Diff{6}y'}.
-\end{eqnarray*}
+\end{eqnarray}
 In the case of uncertainties in distance or (RA,Dec) the evaluation of this is computational expensive---especially if the stars have heteroscedastic $\delta \vect{y}_i$. In practice we apply the following approximation,
 \begin{eqnarray}
 &&\tilde{p}_\text{approx}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i) \nonumber\\

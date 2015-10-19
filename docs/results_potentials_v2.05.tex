@@ -3,7 +3,7 @@
 \begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figs/MW14vsKKS2SphFlex_contours_compare.eps}
-\caption{Recovery of the gravitational potential if the assumed potential model (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) are slightly different. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential with 100 sample potentials drawn from the\pdf{} found with the MCMC for a \texttt{hot} (red) and a \texttt{cool} stellar population (blue). (All model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.)}
+\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential with 100 sample potentials drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.)}
 \label{fig:MW14vsKKS2SphFlex}
 \end{figure*}
 
@@ -15,8 +15,9 @@
 
 
 \begin{figure}[!htbp]
-\plotone{figs/MW14vsKKS2SphFlex_mockdata_residuals_2.eps}
-\caption{Comparison of the distribution of mock data in configuration space created in the \texttt{MW14-Pot} potential and with two different stellar populations (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests} for all mock data model parameters), and the best fit distribution recovered by fitting the family of \texttt{KKS-Pot} potentials to the data. The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The data is very well recovered, even though the fitted potential family did not incorporate the true potential.}
+\centering
+\includegraphics[width=\columnwidth]{figs/MW14vsKKS2SphFlex_mockdata_residuals_2.eps}
+\caption{Comparison of the distribution of mock data $v_T$ and $v_z$ created in the \texttt{MW14-Pot} potential and with two different stellar populations (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests} for all mock data model parameters), and the best fit distribution recovered by fitting the family of \texttt{KKS-Pot} potentials to the data. The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The data is very well recovered, even though the fitted potential family did not incorporate the true potential.}
 \label{fig:MW14vsKKS2SphFlex_mockdata_residuals}
 \end{figure}
 
@@ -27,24 +28,17 @@
 
 \subsection{The implications of a gravitational potential not from the space of model potentials} \label{sec:results_potential}
 
-%Motivation for the Test
+We now explore what happens when the mock data were drawn from one axisymmetric potential family, here \texttt{MW14-Pot}, and is then modelled considering potentials from only another axisymmetric family, here \texttt{KKS-Pot} (see Table \ref{tbl:referencepotentials} and Figure \ref{fig:ref_pots}). In the analysis we assume the circular velocity at the Sun to be fixed and known and only fit the parametric potential form.\footnote{We made sure that $v_\text{circ}(R_\odot)$ can be very well recovered when included in the fit of a \texttt{cool} population. The model assumption that $v_\text{circ}(R_\odot)$ is known does therefore not affect the discussion qualitatively.}
 
-We now explore what happens when the mock data were drawn from one axisymmetric potential family, here \texttt{MW14-Pot}, and is then modelled considering potentials from only another axisymmetric family, here \texttt{KKS-Pot} (see Table \ref{tbl:referencepotentials} and Figure \ref{fig:ref_pots}). In the analysis we assume the circular velocity at the Sun to be fixed and known and only fit the parametric potential form. 
-
-
-%Results on the potential
-
-We analyse a mock data set from each a \texttt{hot} and \texttt{cool} stellar population (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}). The distributions generated from the best fit parameters reproduce the data in configuration space very well (see Figure \ref{fig:MW14vsKKS2SphFlex_mockdata_residuals}).
+We analyse a mock data set from each a \texttt{hot} and \texttt{cool} stellar population (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}) with high numerical accuracy. The distributions generated from the best fit parameters reproduce the data in configuration space very well (see Figure \ref{fig:MW14vsKKS2SphFlex_mockdata_residuals}).
 
 The results for the potential are shown in Figure \ref{fig:MW14vsKKS2SphFlex}. We find that the potential recovered by \RM{} is in good agreement with the true potential. Especially the force contours, to which the orbits are sensitive, and the rotation curve are very tightly constrained and reproduce the true potential even outside of the observed volume of the mock tracers.
 
 Overplotted in Figure \ref{fig:MW14vsKKS2SphFlex} is also the \texttt{KKS-Pot} with the parameters from Table \ref{tbl:referencepotentials}, which were fixed based on a (by-eye) fit \emph{directly} to the force field (within $r_\text{max}=4~\text{kpc}$ from the Sun) and rotation curve of the \texttt{MW14-Pot}. The potential found with the \RM{} analysis is an equally good or even slightly better fit. This demonstrates that \RM{} fitting infers a potential that in its actual properties resembles the input potential for the mock data as closely as possible, given the differences in functional forms.
 
-The density contours are less tightly constrained than the forces, but we still capture the essentials. Overall the best fit disk is less dense in the midplane than the true disk, because the generation of very flattened components like exponential disks with St\"{a}ckel potentials is not possible.
+The density contours are less tightly constrained than the forces, but we still capture the essentials. Overall the best fit disk is less dense in the midplane than the true disk, because the generation of very flattened components like exponential disks with St\"{a}ckel potentials is very difficult.
 
-%Results on the qDF
-
-Figure \ref{fig:MW14vsKKS2SphFlex_violins} compares the true qDF parameters with the best fit qDF parameters belonging to the potentials in Figure \ref{fig:MW14vsKKS2SphFlex}. While we recover $h_R$, $\sigma_{R,0}$ and $h_{\sigma,R}$ within the errors, we misjudge the parameters of the vertical velocity dispersion ($\sigma_{0,z}$ and $h_{\sigma,z}$), even though the actual mock data distribution is well produced. This discrepancy could be connected to the \texttt{KKS-Pot} not being able to reproduce the flattness of the disk. Also, $\sigma_z$ and $\sigma_R$ in Equations \ref{eq:sigmaRRg}-\ref{eq:sigmazRg} are scaling profiles for the qDF (cf. BR13) and how close they are to the actual velocity profile depends on the choice of potential.
+Figure \ref{fig:MW14vsKKS2SphFlex_violins} compares the true qDF parameters with the best fit qDF parameters belonging to the best fit potentials from Figure \ref{fig:MW14vsKKS2SphFlex}. While we recover $h_R$, $\sigma_{R,0}$ and $h_{\sigma,R}$ within the errors, we misjudge the parameters of the vertical velocity dispersion ($\sigma_{0,z}$ and $h_{\sigma,z}$), even though the actual mock data distribution is well reproduced. This discrepancy could be connected to the \texttt{KKS-Pot} not being able to reproduce the flattness of the disk. Also, $\sigma_z$ and $\sigma_R$ in Equations \ref{eq:sigmaRRg}-\ref{eq:sigmazRg} are scaling profiles for the qDF (cf. BR13) and how close they are to the actual velocity profile depends on the choice of potential.
 
 
 
