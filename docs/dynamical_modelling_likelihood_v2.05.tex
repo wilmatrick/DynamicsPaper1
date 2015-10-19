@@ -71,7 +71,7 @@ does not dominate the numerically calculated log-likelihood, i.e.,
 \end{eqnarray}
 with
 \begin{eqnarray}
-N_* \log (1 + \delta_{M_\text{tot}}) \leq 1.\nonumber
+\log (1 + \delta_{M_\text{tot}}) \leq \frac{1}{N_{*}}.\label{eq:accuracycondition}
 \end{eqnarray}
 Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_*$ was only a few $\sim 100$.
 
