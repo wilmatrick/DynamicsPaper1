@@ -1,1 +1,1 @@
- 
+* Removed some latex makros, that are not needed. (Forgot them in the latex file.... oups...) 
