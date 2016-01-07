@@ -141,188 +141,129 @@ the most general potential in which the actions are not computed as a quadrature
 \item 5. The footnote says 'should be chosen as' -- add a forward reference to Fig. 4
 \end{itemize}
 
-\Wilma{[TO DO: Continue here]}
+\subsection{Section 2.4}
+\begin{itemize}
+\item 1. An entire section dedicated to this topic seems unnecessary. See below.
+\end{itemize}
 
-Section 2.4
------------
-1. An entire section dedicated to this topic seems unnecessary. See below.
+\subsection{Section 2.5}
+\begin{itemize}
+\item 1. As this section only explains technical details rather than testing the apparatus I think that this section can be put in an appendix along with Fig. 2 and 3. Fig 2 and 3 are illustrative but I think that they are similar to BR13 Fig2 and 3 so do not need to appear in the main body. I don't think it is a 'test' so should be removed from Table 3.
+\item 2. \HW{The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?}
+\end{itemize}
 
-Section 2.5
------------
-1. As this section only explains technical details rather than testing the apparatus
-I think that this section can be put in an appendix along with Fig. 2 and 3. Fig 2
-and 3 are illustrative but I think that they are similar to BR13 Fig2 and 3 so do
-not need to appear in the main body. I don't think it is a 'test' so should be
-removed from Table 3.
-2. The discussion of selection on very errorneous x coordinates is interesting but
-surely this isn't the way the data will actually be handled?
+\subsection{Section 2.6}
+\begin{itemize}
+\item 1. The selection function can be briefly mentioned at the beginning of this section and stated that you assume here for simplicity it is a function of $\vec{x}$.
+\item 2. \Jo{The Jacobian from J,theta to x,v should be mentioned here.}
+\item 3. pdf should be defined in a separate equation.
+\item 4. Figure 4. -- it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to.
+\item 5. Make the normalization discussion a separate section.
+\item 6. The discussion of the likelihood normalization should reference and compare with McMillan and Binney (2013) as the discussion is very similar.
+\item 7. \HW{Is there any general advice on how to choose $N_x$, $N_v$ and $N_sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?}
+\item 8. Put error discussion in separate section.
+\item 9. Reduce size of caption for Fig 5. More of the details could go in the text.
+\item 10. \HW{Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?}
+\item 11. The penultimate sentence of this section contradicts the previous sentence without validation. Why is this?
+\end{itemize}
 
-Section 2.6
------------
-1. The selection function can be briefly mentioned at the beginning of this section
-and stated that you assume here for simplicity it is a function of $\vec{x}$.
-2. The Jacobian from J,theta to x,v should be mentioned here.
-3. pdf should be defined in a separate equation.
-4. Figure 4. -- it wasn't clear to me that the 'truth' normalization used a high
-enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than
-the values actually compared to.
-5. Make the normalization discussion a separate section.
-6. The discussion of the likelihood normalization should reference and compare with
-McMillan and Binney (2013) as the discussion is very similar.
-7. Is there any general advice on how to choose $N_x$, $N_v$ and $N_sigma$? The authors
-have shown it is OK for the mock datasets but do I have to redo the authors'
-exercise when I have a real dataset?
-8. Put error discussion in separate section.
-9. Reduce size of caption for Fig 5. More of the details could go in the text.
-10. Equation (15) is a novelty. It is troubling that the tests that use this
-approximation all seem to use the isochrone but the approximation is still
-necessary. Is that because it is computationally awkward to calculate this integral
-or just very slow?
-11. The penultimate sentence of this section contradicts the previous sentence
-without validation. Why is this?
+\subsection{Section 2.7}
+\begin{itemize}
+\item 1. I liked this section -- it was well thought out and informative. \Comment{Thanks. :-)}
+\item 2. Here a fixed sampling is used for the error samples. I think again you should reference McMillan \& Binney (2013) as they discussed the numerical stability of this method.
+\end{itemize}
+
+\section{Section 3}
+\begin{itemize}
+\item 1. It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \HW{I wonder as well about the impact of resonances, particularly when the data are very high quality.} This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach.
+\end{itemize}
 
 
-Section 2.7
------------
-1. I liked this section -- it was well thought out and informative.
-2. Here a fixed sampling is used for the error samples. I think again you should
-reference McMillan \& Binney (2013) as they discussed the numerical stability of this
-method.
-
-Section 3
----------
-1. It is stated that the breakdown of axisymmetry and steady state assumptions is
-not explored. I wonder as well about the impact of resonances, particularly when the
-data are very high quality. This cannot be explored in the current setup as the data
-are generated from an action-based DF but perhaps should be mentioned as a potential
-limitation of the approach.
-
-Section 3.1
------------
-1. This seems a good sanity check but should it be published? Fig 6. seems
-sufficient to me to demonstrate that your code works. I don't think the paper would
-miss this section.
+\subsection{Section 3.1}
+\begin{itemize}
+\item 1. \HW{This seems a good sanity check but should it be published? Fig 6. seems sufficient to me to demonstrate that your code works. I don't think the paper would miss this section.}
+\end{itemize}
 
 
-Section 3.2
------------
-1. I understand that the selections used in Fig 9 are illustrative but the pink
-selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration
-of the difference between different selections. Fig. 9 doesn't add anything and is
-barely discussed in the text. Also, without observational uncertainties (which will
-be greater for the more distant boxes) the discussion seems superficial. I would
-consider removing this.
+\subsection{Section 3.2}
+\begin{itemize}
+\item 1. \HW{I understand that the selections used in Fig 9 are illustrative but the pink selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration of the difference between different selections. Fig. 9 doesn't add anything and is barely discussed in the text. Also, without observational uncertainties (which will be greater for the more distant boxes) the discussion seems superficial. I would consider removing this.}
+\end{itemize}
 
-Section 3.3
-------------
-1. Isn't the reason for the cold population being more robust that it doesn't have
-as many stars at large distance as the hot population so it is less affected by the
-cuts? I suppose this not necessarily true for lines-of-sight in the plane.
+\subsection{Section 3.3}
+\begin{itemize}
+\item 1. \HW{Isn't the reason for the cold population being more robust that it doesn't have as many stars at large distance as the hot population so it is less affected by the cuts? I suppose this not necessarily true for lines-of-sight in the plane.}
+\end{itemize}
 
-Section 3.4
-------------
-1. It would be nice to state how the considered errors are related to the
-anticipated Gaia errors or other surveys. What is the motivation for considering
-these errors?
+\subsection{Section 3.4}
+\begin{itemize}
+\item 1. It would be nice to state how the considered errors are related to the anticipated Gaia errors or other surveys. \HW{What is the motivation for considering these errors?}
+\end{itemize}
 
-Section 3.5
------------
-1. I think this and section 3.6 are the most valuable in the paper as they really
-explore potential systematics. In my opinion, these are the key results.
-2. Fig 15. -- it would be interesting to see the difference between the fits and the
-truth. Do the fits break down in particular places?
+\subsection{Section 3.5}
+\begin{itemize}
+\item 1. I think this and section 3.6 are the most valuable in the paper as they really explore potential systematics. In my opinion, these are the key results.
+\item 2. \HW{Fig 15. -- it would be interesting to see the difference between the fits and the truth. Do the fits break down in particular places?}
+\end{itemize}
 
-Section 3.6
------------
-1. Fig 19 is difficult to interpret. Is it possible to display the difference?
-2. The fact the density is not well recovered seems interesting as it points to
-possible biases in the surface density of the disc/dark matter measurements if one
-uses the wrong potential. It would be good to have the discreapncy quantized in the
-text.
-3. I think Fig. 20 could be removed. As mentioned it doesn't make sense to compare
-the DF parameters between different potentials so I am not sure what Fig 20 is
-telling us.
+\subsection{Section 3.6}
+\begin{itemize}
+\item 1. \HW{Fig 19 is difficult to interpret. Is it possible to display the difference?}
+\item 2. The fact the density is not well recovered seems interesting as it points to possible biases in the surface density of the disc/dark matter measurements if one uses the wrong potential. \HW{It would be good to have the discreapncy quantized in the text.}
+\item 3. \HW{I think Fig. 20 could be removed. As mentioned it doesn't make sense to compare the DF parameters between different potentials so I am not sure what Fig 20 is telling us.}
+\end{itemize}
 
-Section 3.7
------------
-1. Should this section be moved to the discussion section?
+\subsection{Section 3.7}
+\begin{itemize}
+\item 1. Should this section be moved to the discussion section?
+\end{itemize}
 
-Summary \& Discussion
---------------------
-1. Perhaps add statements comparing the errors explored to those anticipated from Gaia.
-2. The two approaches mentioned at the end of 'Gravitational potential beyond
-the...' are stated as formally similar but I think it is clear that one is better
-than the other. The true Staeckel approach limits you to potentials with the same
-foci. This is an obvious limitation and has been discussed before.
-3. The definition of X in f(J,[X/H]) doesn't seem to make sense.
-4. The first section in future work is very interesting. Use of different DFs and
-potentials as explored in this paper is interesting but a true test of the apparatus
-on a more realistic galaxy would make the 'RoadMapping' tool much more attractive.
-5. I think that the final two questions of the future work section are weak. Clearly
-the rotation curve is only describing the in-plane force not the force everywhere.
-Parametrizations will naturally convince you that the rotation curve is well
-measured but I think there is a lot more flexibility. Also, the advantage of using
-the approximate actions is that more realistic potentials can be considered.
+\section{Summary \& Discussion}
+\begin{itemize}
+\item 1. Perhaps add statements comparing the errors explored to those anticipated from Gaia.
+\item 2. The two approaches mentioned at the end of 'Gravitational potential beyond the...' are stated as formally similar but I think it is clear that one is better than the other. The true Staeckel approach limits you to potentials with the same foci. This is an obvious limitation and has been discussed before.
+\item 3. \HW{The definition of X in f(J,[X/H]) doesn't seem to make sense.}
+\item 4. The first section in future work is very interesting. \HW{Use of different DFs and potentials as explored in this paper is interesting but a true test of the apparatus on a more realistic galaxy} would make the 'RoadMapping' tool much more attractive.
+\item 5. \HW{I think that the final two questions of the future work section are weak. Clearly the rotation curve is only describing the in-plane force not the force everywhere. Parametrizations will naturally convince you that the rotation curve is well measured but I think there is a lot more flexibility. Also, the advantage of using the approximate actions is that more realistic potentials can be considered.}
+\end{itemize}
 
-Table 3
--------
-1. Can you add a summary column that summarizes the result? This would make the
-paper much more 'usable'.
+\subsection{Table 3}
+\begin{itemize}
+\item 1. Can you add a summary column that summarizes the result? This would make the paper much more 'usable'.
+\end{itemize}
 
 
-Typos
------
-Abstract
---------
-1. 3rd sentence -- 'rules of thumb' for how data, model and machinery most affect
-... and DF.
+\section{Typos \Comment{Done}}
 
-Introduction
---------
-1. Start of 3rd para: 'to constrain' -> 'constraining'
-2. Start of penultimate para: 'to restrict' -> 'restricting'
+\paragraph{Abstract.} 1. 3rd sentence -- 'rules of thumb' for how data, model and machinery most affect ... and DF. \Comment{Done.}
 
-Table 1
--------
-1. 'troughout' in caption.
+\paragraph{Introduction.} 1. Start of 3rd para: 'to constrain' -> 'constraining'  \Comment{Done.} 2. Start of penultimate para: 'to restrict' -> 'restricting' \Comment{Done.}
 
-Section 2.3
------------
-1. Second sentence: 'about'->'on'
-2. 'the circular orbit' to 'near-circular orbit'?
-3. Top of page 4 two 'in's
+\paragraph{Table 1.} 1. 'troughout' in caption. \Comment{Done.}
 
-Section 2.6
------------
-1. Top of right column page 7 -- replace 'besides' with 'not only... but also'
+\paragraph{Section 2.3.} 1. Second sentence: 'about'->'on' \Comment{Done.} 2. 'the circular orbit' to 'near-circular orbit'? \Comment{Done.} 3. Top of page 4 two 'in's \Comment{Done.}
 
-Section 2.7
------------
-1. Need '(MCMC)' after MCMC
+\paragraph{Section 2.6} 1. Top of right column page 7 -- replace 'besides' with 'not only... but also' \Comment{Done.}
 
-Fig 14
-------
-1. 'pest'->'best'
+\paragraph{Section 2.7} 1. Need '(MCMC)' after MCMC \Comment{Done.}
 
-Fig 15
-------
-1. 'refereed'->'referred'
+\paragraph{Fig 14.} 1. 'pest'->'best' \Comment{Done.}
 
-Section 3.5
------------
-1. Second paragraph right column page 13 -- 'sun'->'Sun'
+\paragraph{Fig 15.} 1. 'refereed'->'referred'  \Comment{Done.}
 
-Table 3
--------
-1. 'analyis'->'analysis'
+\paragraph{Section 3.5.} 1. Second paragraph right column page 13 -- 'sun'->'Sun' \Comment{Done.}
+
+\paragraph{Table 3.} 'analyis'->'analysis'  \Comment{Done.}
+
+\section{Comment from Dr. Eric Feigelson}
 
 
-==========================================================================
+==========================================================================\\
 Below are comments on statistical aspects of the manuscript: ApJ submissions with a
 statistical component are previewed by Dr. Eric Feigelson, the member of the ApJ
 editorial board with a broad expertise in statistical matters in an astrophysical
-context.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+context.\\
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\\\\
 
 An elaborate Bayesian inferential procedure is described in sec 2.6-2.7 for
 parameter estimation with results shown in Fig 6. But with uninformative uniform
@@ -331,6 +272,6 @@ distribution, this effort is unnecessary. The same result would be obtained with
 maximum likelihood estimation via the EM Algorithm (probably >>100 iterations with
 convergence guaranteed by theorem) and parameter uncertainties estimated from the
 Fisher Information Matrix. The confluence of Bayesian and MLE procedures in this
-case should be presented.
+case should be presented. \HW{[TO DO: Jo said, we could ignore that...]}
 
 \end{document}
