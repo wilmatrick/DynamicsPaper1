@@ -9,6 +9,7 @@
 \newcommand{\HW}[1]{\textcolor{Cyan}{#1}}
 \newcommand{\Comment}[1]{\textsl{\textcolor{Blue}{$\Longrightarrow$ {#1}}}}
 \newcommand{\Jo}[1]{\textcolor{YellowOrange}{#1}}
+\usepackage{soul}
 
 \begin{document}
 December 18, 2015\\\\
@@ -90,15 +91,20 @@ problem for three reasons:
 \begin{itemize}
 \item 1. The selection volumes considered seem unrealistic. It is unclear how they relate to what one might use with the Gaia data.\\
 \Wilma{[Comment from HW: E.g. how to deal with complex sampling volumes has been demonstrated in Bovy et al 2013 and 2015; the point here is to make a generic exploration of search volume shapes.]}
-\item 2. It is unclear how the error distributions relate to the anticipated errors from the Gaia data.
+\item 2. It is unclear how the error distributions relate to the anticipated errors from the Gaia data. \\
+\Wilma{[TO DO: Good point. I will try to compare the Gaia error regimes with my results. Rene helped me already a little bit and found out that a magnitude cut at G=15 should keep the distance errors below 10\% at a maximum distance of 3 kpc.]}
 \item 3. The majority of the tests seem to be done with the isochrone potential. This is obviously done for speed reasons. A few cases are tackled with the KKS-Pot and one
-case with the MW13-Pot. \HW{It is then not clear how the precision of the potential
+case with the MW13-Pot. \hl{It is then not clear how the precision of the potential
 parameter recovery for the isochrone relates to more realistic potentials (e.g.
 will the circular velocity always be so well constrained irrespective of the
-potential form?).} \HW{The issue of computational speed is mentioned in the discussion
-but I think this issue is slightly glossed over.} \HW{Using more realistic potentials in all cases would obviously be much better and would also test the `Staeckel fudge'
-apparatus more fully.} \HW{The improvements to this apparatus are highlighted in the
-paper but I don't think that it is shown that it has been fully tested.} I think
+potential form?).}
+\HW{[Comment from Wilma: This is a valid point. Relating the parameters isochrone <-> realistic potential is not possible. But at least we could maybe have one example that shows that vcirc is well recovered also for a realistic potential? Idea 1: I tried to make Figure 19 with vcirc not being fixed. While vcirc was indeed tightly constrained for the cool population, unfortunately I did not manage to make the analysis of the hot population converge. I probably need higher numerical accuracy. I could try again. I hope that 7 days of computation time on 50 cores suffice. Idea 2: I also could make Figure 6 for the KKS-Potential instead of the isochrone potential. That should be a bit quicker, I think.]}
+\hl{The issue of computational speed is mentioned in the discussion
+but I think this issue is slightly glossed over.}
+\HW{[Comment from Wilma: No idea what he wants...]}
+\hl{Using more realistic potentials in all cases would obviously be much better and would also test the `Staeckel fudge'
+apparatus more fully. The improvements to this apparatus are highlighted in the paper but I don't think that it is shown that it has been fully tested.} 
+\HW{[Comment from Wilma: The Staeckel fudge was tested by other people excessively. I think we do not have to do that. Concerning the use of realistic potentials in all my tests: Just not possible. Sorry. But maybe we could do the following: I could have a potential with a fixed Hernquist halo+bulge and a Miyamoto-Nagai disk with scale length a=0.9kpc (or would that make the potential too unrealistic?). Then isochrone and this more realistic potential have the same free parameters. I could for a few selected test cases in 3.3 (incomplete data) and 3.5 (deviations from qDF) do the analysis with this more realistic potential and overplot these violins with my existing violin plots. Let's hope that we get the same trend...]} I think
 that the heavy use of the isochrone potential should be flagged in the abstract.
 \end{itemize}
 
@@ -149,7 +155,7 @@ the most general potential in which the actions are not computed as a quadrature
 \subsection{Section 2.5}
 \begin{itemize}
 \item 1. As this section only explains technical details rather than testing the apparatus I think that this section can be put in an appendix along with Fig. 2 and 3. Fig 2 and 3 are illustrative but I think that they are similar to BR13 Fig2 and 3 so do not need to appear in the main body. I don't think it is a 'test' so should be removed from Table 3. \Comment{I agree. I moved the mock data section and figures to the appendix and removed the parameters belonging to Figure 2 + 3 from the 'tests' Table 3.}
-\item 2. \HW{The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?}
+\item 2. \hl{The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?} \HW{[Comment by Wilma: No idea what he means.]}
 \end{itemize}
 
 \subsection{Section 2.6}
@@ -160,10 +166,10 @@ the most general potential in which the actions are not computed as a quadrature
 \item 4. Figure 4. -- it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to.
 \item 5. Make the normalization discussion a separate section.
 \item 6. The discussion of the likelihood normalization should reference and compare with McMillan and Binney (2013) as the discussion is very similar.
-\item 7. \HW{Is there any general advice on how to choose $N_x$, $N_v$ and $N_sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?}
+\item 7. \hl{Is there any general advice on how to choose $N_x$, $N_v$ and $N_\sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?} \HW{[Comment by Wilma: My honest answer is "If you have 20,000 stars, you can start with the same parameters as me. But yes, ultimately you would have to do the full exercise to find out, if for your special case this accuracy is fine.". Is it okay to say it like this? I have no idea what other general advice I should give...]}
 \item 8. Put error discussion in separate section.
 \item 9. Reduce size of caption for Fig 5. More of the details could go in the text.
-\item 10. \HW{Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?}
+\item 10. \hl{Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?} \HW{[Comment by Wilma: MC integration/convolution over the errors is incredibly slow (but the only idea we had so far). To do some statistics as for Figure 5 I HAD to use the isochrone potential. If we would not use the cheat to ignore the errors in the normalisation, the computation time to do one single analysis would explode. So I think the computation time is the problem. What does he mean by "computationally awkward"?]}
 \item 11. The penultimate sentence of this section contradicts the previous sentence without validation. Why is this?
 \end{itemize}
 
