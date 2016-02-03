@@ -31,14 +31,18 @@
 
 %[TO DO: Do not forget to delete makros]
 \usepackage[usenames,dvipsnames]{xcolor}
-\newcommand{\Wilma}[1]{\textcolor{Magenta}{#1}}
+
 \newcommand{\HW}[1]{\textcolor{Cyan}{#1}}
 \newcommand{\Jo}[1]{\textcolor{YellowOrange}{#1}}
 \usepackage{soul}
+\usepackage[normalem]{ulem} 
 \newcommand{\NEW}[1]{\textbf{\textcolor{ForestGreen}{#1}}}
-\newcommand{\OLD}[1]{\st{#1}}
+%\newcommand{\OLD}[1]{\st{#1}}
+\newcommand{\Wilma}[1]{\textcolor{Magenta}{#1}}
+
 %\newcommand{\NEW}[1]{#1}
-%\newcommand{\OLD}[1]{}
+\newcommand{\OLD}[1]{}
+%\newcommand{\Wilma}[1]{}
 
 %% Abbreviations
 \shorttitle{Action-based Dynamical Modelling for the Milky Way Disk}
@@ -66,11 +70,11 @@
 \begin{abstract}
 We present \RM{}, a full-likelihood dynamical modelling machinery that aims to recover the Milky Way's (MW) gravitational potential from large samples of stars in the Galactic disk. 
 \RM{} models the observed positions and velocities of stars with a parametrized, three-integral distribution function (DF) in a parametrized axisymmetric potential. 
-\OLD{We create and analyse a large suite of mock data sets and develop qualitative ``rules of thumb'' how data, model and machinery affect constraints on the potential and DF most}. 
+\OLD{We create and analyse a large suite of mock data sets and develop qualitative ``rules of thumb'' how data, model and machinery affect constraints on the potential and DF most.}
 \NEW{We investigate how properties of data, model and machinery affect constraints on the potential and DF. By analyzing large sets of idealized mock data---using, e.g., the isochrone potential, axisymmetric DFs, contiguous survey selection functions (SF) and negligible measurement errors in many tests---we perform a differential diagnosis of different isolated modelling aspects.} Overall, we find that the potential can be reliably recovered with \RM{}, even if the model assumptions are slightly wrong. \NEW{Specifically, our key results are: (i)} If the MW's true gravitational potential is not included in the assumed family of parametrized model potentials, we can---at least in the axisymmetric case---still find a potential that robustly approximates the potential within the limitations of the model. 
 \NEW{(ii)}  Modest systematic differences between the true and best-fit model DF are inconsequential. \NEW{For example, when} \OLD{When} defining sub-populations by binning stars according to their chemical abundances, finite bin sizes and abundance errors do not affect the modelling as long as the DF parameters of neighbouring bins do not differ by more than $20\%$.
 \NEW{(iii)} \OLD{While hotter} \NEW{Hotter} populations are less affected by pollution \OLD{and} \NEW{or} misjudgements of the proper motion uncertainty\NEW{. Cooler} \OLD{, cooler} populations recover the Galactic rotation curve more reliably. 
-\NEW{In general, we showed that} \RM{} gives constraints of high precision \NEW{on both potential and DF parameters (iv)} \OLD{(i)} for large sample sizes, \NEW{(v)} \OLD{(ii)} for survey volumes of large radial and vertical coverage, \OLD{and (iii)} \NEW{or (vi)} as long as the proper motion uncertainties are well known and even as large as $5 \ \text{mas yr}^{-1}$. Unbiased potential estimates are ensured, \NEW{(vii)} \OLD{(i)} for small to moderate misjudgements of the spatial \NEW{SF} \OLD{selection function}, \NEW{(viii)} \OLD{(ii)} if distances are known only to within $10\%$, or \NEW{(ix)} \OLD{(iii)} if proper motion uncertainties are known within $10\%$. 
+\NEW{In general, we showed that} \RM{} gives constraints of high precision \NEW{on both potential and DF parameters (iv)} \OLD{(i)} for large sample sizes, \NEW{(v)} \OLD{(ii)} for survey volumes of large radial and vertical coverage, \OLD{and (iii)} \NEW{or (vi)} as long as the proper motion uncertainties are well known and even as large as $5 \ \text{mas yr}^{-1}$. Unbiased potential estimates are ensured, \NEW{(vii)} \OLD{(i)} for small to moderate misjudgements of the spatial \NEW{SF,} \OLD{selection function,} \NEW{(viii)} \OLD{(ii)} if distances are known only to within $10\%$, or \NEW{(ix)} \OLD{(iii)} if proper motion uncertainties are known within $10\%$. 
 Challenges are the rapidly increasing computational costs for high precision likelihood evaluations required for large sample sizes. 
 Overall, \RM{} is well suited to making precise new measurements of the MW's potential with data from the 2017 Gaia release. 
 
@@ -135,11 +139,20 @@ Our modelling takes place in the Galactocentric rest-frame with cylindrical coor
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Actions and potential models}  \label{sec:potentials}
+\subsection{Actions}  
 
-\Wilma{[TO DO: A slightly fuller introduction of the actions is merited. Mention why the actions are introduced. What advantages do they present? Also state that the action-angles are canonical -- this is important later for transformation of the pdf.]}
 
-Orbits in an axisymmetric gravitational potential $\Phi$ are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi\equiv L_z)$ (\citealt{2008gady.book.....B}, \S 3.5). Action calculation from a star's phase-space coordinates, $(\vect{x},\vect{v}) \stackrel{\Phi}{\longrightarrow} \vect{J}$, is typically very computationally expensive. \Wilma{[TO DO: The third sentence isn't quite right -- the most general are the triaxial Staeckel potentials of which the axisymmetric Staeckel potentials are special cases and all spherical potentials are special cases of these. The isochrone potential is the most general potential in which the actions are not computed as a quadrature.]} The spherical isochrone potential \citep{1959AnAp...22..126H} and axisymmetric St\"{a}ckel potential \citep{1985MNRAS.216..273D} are the most general (Galactic) potentials, that allow exact action calculations (\citealt{2008gady.book.....B}, \S 3.5.2 and \S 3.5.3). In all other potentials actions have to be numerically estimated. We use the \emph{St\"{a}ckel fudge} by \citet{2012MNRAS.426.1324B} for axisymmetric potentials and action interpolation grids \citep{2012MNRAS.426.1324B,2015ApJS..216...29B} to speed up the calculation. The latter is one of the improvements employed by \RM{}, which was not used in BR13.
+\NEW{Stellar orbits in (axisymmetric) gravitational potentials are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi=L_z)$, defined as
+\begin{equation}
+J_i \equiv \frac{1}{2\pi} \oint_\text{orbit} p_i \diff x_i, \label{eq:action_general}
+\end{equation}
+which is evaluated along the orbit with position $\vect{x}(t)$ and momentum $\vect{p}(t)$ in a given potential $\Phi$. Actions have several convenient properties which make them excellent orbit labels and ideal as arguments for orbit DFs: They are integrals of motion; they have an intuitive physical meaning as they quantify the amount of oscillation of the orbit in each coordinate direction; together with a set of angle coordinates $\vect{\theta}$ actions form a set of canonical conjugate phase-space coordinates, i.e., $\diff \vect{x} \diff \vect{p} = \diff \vect{\theta} \diff \vect{J}$. The angles $\vect{\theta}(t)\propto t$ evolve linearly in time and specify the position of the star along the orbit.  (For a full introduction to angle-action variables see \citealt{2008gady.book.....B}, \S 3.5.)}
+
+\OLD{Orbits in an axisymmetric gravitational potential $\Phi$ are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi\equiv L_z)$ (Binney \& Tremaine 2008, \S 3.5).} 
+
+Action calculation from a star's phase-space coordinates, $(\vect{x},\vect{v}) \stackrel{\Phi}{\longrightarrow} \vect{J}$, is typically very computationally expensive. \NEW{Only for or some special, separable potentials Equation \eqref{eq:action_general} simplifies significantly.} \OLD{The spherical isochrone potential 1959AnAp...22..126H and axisymmetric} \NEW{The triaxial} St\"{a}ckel potential\NEW{s} \citep{1985MNRAS.216..273D} are the most general  \OLD{(Galactic)} potentials, that allow exact action calculations \NEW{using a single quadrature} \OLD{(2008gady.book.....B, \S 3.5.2 and \S 3.5.3)}. \NEW{Some flattened axisymmetric St\"{a}ckel potentials are quite similar to our Galaxy's potential (\citealt{2008gady.book.....B}, \S 3.5.3; \citealt{1994AA...287...43B,2003MNRAS.340..752F}). The spherical isochrone potential (\citealt{1959AnAp...22..126H,2008gady.book.....B}, \S 3.5.3) is the most general special case for which the action calculation is analytic without any integration.} In all other potentials actions have to be numerically estimated\NEW{; see \cite{2015arXiv151108213S} for a recent review of action estimation methods}. \NEW{According to \cite{2015arXiv151108213S} the best compromise of speed and accuracy for the Galactic disk is the} \OLD{We use the} \emph{St\"{a}ckel fudge} by \citet{2012MNRAS.426.1324B} for axisymmetric potentials\NEW{. In addition we use} \OLD{and} action interpolation grids \citep{2012MNRAS.426.1324B,2015ApJS..216...29B} to speed up the calculation. The latter is one of the improvements employed by \RM{}, which was not used in BR13. 
+
+\subsection{Potential models} %\label{sec:potentials} --> because I changed the structure, the referencing has to be re-checked.
 
 For the gravitational potential in our modelling we assume a family of parametrized models. We use: The MW-like potential from BR13 (\texttt{MW13-Pot}) with bulge, disks and halo; the spherical isochrone potential (\texttt{Iso-Pot}); and the 2-component Kuzmin-Kutuzov St\"{a}ckel potential (\citealt{1994AA...287...43B}; \texttt{KKS-Pot}), which also displays a disk and halo structure. Table \ref{tbl:referencepotentials} summarizes all reference potentials used in this work together with their free parameters $p_\Phi$. The density distribution of these potentials is illustrated in Figure \ref{fig:ref_pots}.
 
@@ -606,7 +619,7 @@ Overall, the circular velocity at the \OLD{sun} \NEW{Sun} is very reliably recov
 \begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figs/MW14vsKKS2SphFlex_contours_compare.eps}
-\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential (black lines) with 100 sample potentials (red and blue lines) drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.) Overall, the true potential is well recovered. \HW{[TO DO: The referee writes: "Fig 19 is difficult to interpret. Is it possible to display the difference?"]}}
+\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential (black lines) with 100 sample potentials (red and blue lines) drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.) Overall, the true potential is well recovered. \HW{[TO DO: The referee writes: "Fig 19 is difficult to interpret. Is it possible to display the difference?"]} \Wilma{[TO DO: Make frame lines and ticks thick.]} \Wilma{[TO DO: replace with analyses with Delta=0.45.]}}
 \label{fig:MW14vsKKS2SphFlex}
 \end{figure*}
 %====================
@@ -776,6 +789,7 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 \bibitem[Read(2014)]{2014JPhG...41f3101R} Read, J.~I.\ 2014, Journal of Physics G Nuclear Physics, 41, 063101 
 \bibitem[Rix \& Bovy(2013)]{2013A&ARv..21...61R} Rix, H.-W., \& Bovy, J.\ 2013, \aapr, 21, 61
 \bibitem[Sanders \& Binney(2015)]{2015MNRAS.449.3479S} Sanders, J.~L., \& Binney, J.\ 2015, \mnras, 449, 3479
+\bibitem[Sanders \& Binney(2015)]{2015arXiv151108213S} \NEW{Sanders, J.~L., \& Binney, J.\ 2015, arXiv:1511.08213}
 \bibitem[Steinmetz et al.(2006)]{2006AJ....132.1645S} Steinmetz, M., Zwitter, T., Siebert, A., et al.\ 2006, \aj, 132, 1645 
 \bibitem[Strigari(2013)]{2013PhR...531....1S} Strigari, L.~E.\ 2013, \physrep, 531, 1 
 \bibitem[Syer \& Tremaine(1996)]{1996MNRAS.282..223S} Syer, D., \& Tremaine, S.\ 1996, \mnras, 282, 223 
