@@ -159,7 +159,7 @@ For the gravitational potential in our modelling we assume a family of parametri
 %====================
 \begin{deluxetable*}{llcll}[!htbp]
 \tabletypesize{\scriptsize}
-\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
+\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \Wilma{[TO DO: Replace MW13-Pot with DHB-Pot]} \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential model} & \multicolumn{2}{c}{parameters $p_\Phi$} & \colhead{action calculation}}
@@ -197,7 +197,7 @@ For the gravitational potential in our modelling we assume a family of parametri
 %====================
 \begin{figure*}[!htbp]
 \includegraphics[width=\textwidth]{figs/reference_potentials.eps}
-\caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}. These potentials are used throughout this work to create and model mock data with \RM{}.}
+\caption{Density distribution of the four reference galaxy potentials in Table \ref{tbl:referencepotentials}. These potentials are used throughout this work to create and model mock data with \RM{}. \Wilma{[TO DO: Replace MW13-Pot with DHB-Pot]}}
 \label{fig:ref_pots}
 \end{figure*}
 %====================
@@ -216,7 +216,7 @@ f_{\sigma_R}\left(J_R,L_z \mid p_\text{DF}\right) &=& n \times \frac{\Omega}{\pi
 && \times \left[1+\tanh\left(L_z/L_0\right) \right]\\
 f_{\sigma_z}\left(J_z,L_z \mid p_\text{DF} \right) &=& \frac{\nu}{2 \pi \sigma_z^2(R_g)} \exp\left( -\frac{\nu J_z}{\sigma_z^2(R_g)} \right)
 \end{eqnarray}
-\citep{2011MNRAS.413.1889B}. Here $R_g$, $\Omega$,  $\kappa$ and $\nu$ are functions of $L_z$ and denote respectively the \OLD{(guiding-center)}\NEW{guiding-center} radius, circular, radial/epicycle and vertical frequency of the \NEW{near-}circular orbit with angular momentum $L_z$ in a given potential. The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with \OLD{$L \gg L_0$}\NEW{$L_z \ll L_0$} \Jo{[TO DO: Not sure, if the correction by the referee is correct. Ask Jo.]} (with $L_0 \sim 10~\text{km s}^{-1}~ \text{kpc}$).
+\citep{2011MNRAS.413.1889B}. Here $R_g$, $\Omega$,  $\kappa$ and $\nu$ are functions of $L_z$ and denote respectively the \OLD{(guiding-center)}\NEW{guiding-center} radius, circular, radial/epicycle and vertical frequency of the \NEW{near-}circular orbit with angular momentum $L_z$ in a given potential. The term $\left[1+\tanh\left(L_z/L_0\right) \right]$ suppresses counter-rotation for orbits in the disk with \OLD{$L \gg L_0$}\NEW{$L_z < L_0$} (with $L_0 \sim 10~\text{km s}^{-1}~ \text{kpc}$).
 
 %====================
 \begin{deluxetable*}{lccccc}[!htbp]
@@ -258,9 +258,13 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 
 \subsection{Selection functions} \label{sec:selectionfunction}
 
-\Wilma{[TO DO: Referee thinks the selection volumes are unrealistic. Hans-Walter comments: "how to deal with complex sampling volumes has been demonstrated in Bovy et al 2013 and 2015; the point here is to make a generic exploration of search volume shapes." Stress this in this text.]}
+\Wilma{[TO DO: Referee thinks the selection volumes are unrealistic. Hans-Walter comments: "how to deal with complex sampling volumes has been demonstrated in Bovy et al 2013 and 2015; the point here is to make a generic exploration of search volume shapes." Stress this in this text. Further comments by HW: "We think of the survey SF as having small scale structure (pencil beams, dust) and some overall basic characteristics (mean height above the plane, mean radius). Bovy et al. 2015 showed that this separation is okay for general and basic explorations." or "
+WE think of the survey SF as having a small scale structure (pencil beam
+and dust) and some overall characteristics. Bovy et al. 2015 showed that
+it is okay to separate it for basic investigations. The basic
+characteristics are mean height above plane and mean radius of the stars."]}
 
-\Wilma{[TO DO: An entire section dedicated to this topic seems unnecessary. Mention quickly at beginning of "Data likelihood" section.]}
+\Wilma{[TO DO: Referee: "An entire section dedicated to this topic seems unnecessary. Mention quickly at beginning of "Data likelihood" section.]}
 
 Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). In our modelling we use simple spatial SFs, which describe the probability to observe a star at position $\vect{x}$,
 \begin{eqnarray*}
@@ -294,12 +298,12 @@ The orbit of the $i$-th star in a potential with $p_\Phi$ is labelled by the act
 \begin{figure*}[!htbp]
 \centering
 \plotone{figs/normalisation_accuracy_4.eps}
-\caption{Relative error of the likelihood normalisation, $\delta M_\text{tot}$, in Equation \eqref{eq:relerrlikelihood} depending on the accuracy of the grid-based density calculation in Equation \eqref{eq:tracerdensity} (and surrounding text) in five spherical observation volumes with different radius $r_\text{max}$. (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests} summarizes the model parameters.) The tracer density in Equation \eqref{eq:tracerdensity} is calculated on $N_x\times N_x$ spatial grid points in $R \in [R_\odot \pm r_\text{max}]$ and $|z| \in [0,r_\text{max}]$. The integration over the velocities is performed with Gauss-Legendre quadratures of order $N_v$ within an integration range of $\pm n_\sigma$ times the dispersion $\sigma_R(R)$ and $\sigma_z(R)$ (and $[0,1.5v_\text{circ}]$ in $v_T$). (We vary $N_x$, $N_v$ and $n_\sigma$ separately and keep the other two fixed at the values indicated above each panel.) We calculate the ``true'' normalisation $M_\text{tot}$ in Equation \eqref{eq:relerrlikelihood} with high accuracy as $M_\text{tot} \equiv M_\text{tot,approx}(N_x=20,N_v=56,n_\sigma=7)$. The black dots indicate the accuracy used in our analyses: It is better than $0.001\%$ (dotted line). We find that the accuracy depends on the \emph{spatial} resolution of the grid and requires more accurate integrations over the \emph{velocity} for larger volumes within which the density varies more strongly. \Wilma{[TO DO: it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to.]}}
+\caption{Relative error of the likelihood normalisation, $\delta M_\text{tot}$, in Equation \eqref{eq:relerrlikelihood} depending on the accuracy of the grid-based density calculation in Equation \eqref{eq:tracerdensity} (and surrounding text) in five spherical observation volumes with different radius $r_\text{max}$. (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests} summarizes the model parameters.) The tracer density in Equation \eqref{eq:tracerdensity} is calculated on $N_x\times N_x$ spatial grid points in $R \in [R_\odot \pm r_\text{max}]$ and $|z| \in [0,r_\text{max}]$. The integration over the velocities is performed with Gauss-Legendre quadratures of order $N_v$ within an integration range of $\pm n_\sigma$ times the dispersion $\sigma_R(R)$ and $\sigma_z(R)$ (and $[0,1.5v_\text{circ}]$ in $v_T$). (We vary $N_x$, $N_v$ and $n_\sigma$ separately and keep the other two fixed at the values indicated above each panel.) We calculate the ``true'' normalisation $M_\text{tot}$ in Equation \eqref{eq:relerrlikelihood} with high accuracy as $M_\text{tot} \equiv M_\text{tot,approx}(N_x=20,N_v=56,n_\sigma=7)$. The black dots indicate the accuracy used in our analyses: It is better than $0.001\%$ (dotted line). We find that the accuracy depends on the \emph{spatial} resolution of the grid and requires more accurate integrations over the \emph{velocity} for larger volumes within which the density varies more strongly. \Wilma{[TO DO: it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to. HW says: Nsigma = 7, and Nx = 32 and Nv = 2 times what I would use for Nsigma=7 in "usual" accuracy.]} \Wilma{[TO DO: Redo this plot for KKS-Pot and DHB-Pot and for both hot and cool DF] [TO DO: write at dotted line that it scales like 1/N and if zou have more stars you need to scale it correspondingly down. Might have to redo it anyway for other potentials and DF.]}}
 \label{fig:norm_accuracy}
 \end{figure*}
 %====================
 
-\Jo{[TO DO: The referee writes: "The Jacobian from J,theta to x,v should be mentioned here." - I don't know, where this is important. We treat the normalisation integral never as integral over J, theta, but always as integral over x,v and qDF as function of xv.]}
+\Jo{[TO DO: The referee writes: "The Jacobian from J,theta to x,v should be mentioned here." - I don't know, where this is important. We treat the normalisation integral never as integral over J, theta, but always as integral over x,v and qDF as function of xv. Jo says: we can consider the qDF as probability of x,v or as a function of the actions (theta uniform). But the difference does not matter as det J = 1 anyway.]}
 
 The likelihood of the data given the model is, following BR13,
 \begin{eqnarray}
@@ -317,6 +321,12 @@ where $p(\pmodel)$ is some prior probability distribution on the model parameter
 p_\text{DF} := \{ \ln h_R, \ln \sigma_{R,0}, \ln \sigma_{z,0}, \ln h_{\sigma,R}, \ln h_{\sigma,z} \} \label{eq:p_DF}
 \end{eqnarray}
 (see Section \ref{sec:qDF}) throughout this work. Then \pdf{} and likelihood are proportional to each other and differ only in units.
+
+\Wilma{[TO DO: we think that this is the right framework. It may not different to EL
+algorithm because we use uninformative priors. In the limit of
+uninfrmative priors this might not be a difference. But in due course
+increasingly informative priors come in (rotation curve measurements from
+masers (reid in harvard)).]}
 
 \subsection{\NEW{Likelihood normalisation}}
 
@@ -344,7 +354,9 @@ with
 \end{eqnarray}
 and therefore $\delta M_\text{tot} \lesssim 1/N_*$. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case, one needs a numerical accuracy of 0.005\% in the normalisation. Figure \ref{fig:norm_accuracy} demonstrates that the numerical accuracy we use in the analysis, $N_x=16$, $N_v=24$ and $n_\sigma=5$, does satisfy this requirement. This is slightly higher than in BR13, where $N_*$ was only a few $\sim 100$.
 
-\HW{[TO DO: The referee writes "Is there any general advice on how to choose $N_x$, $N_v$ and $N_sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?"]}
+\HW{[TO DO: The referee writes "Is there any general advice on how to choose $N_x$, $N_v$ and $N_sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?" --> It is not obvious that these numbers are generic for different
+situations, we therefore recommend that they are tested for specific
+applications]}
 
 %====================
 \begin{figure}[!htbp]
@@ -372,7 +384,7 @@ with
 \vect{y}'_{i,n} \sim N[\vect{y}_i,\delta \vect{y}_i].\nonumber
 \end{eqnarray}
 
-\HW{[TO DO: The referee writes: "Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?"]}
+\Wilma{[TO DO: The referee writes: "Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?"] [Make clear the otherwise we have to calculate normalization for each star] [Is a reason why we have to restrict the analysis to stars with good distance such that this approximation is not too far off.]}
 
 The above approximation also assumes that the star's \emph{position} $\tilde{\vect{x}}_i$ is perfectly measured. As the SF is also velocity independent, this simplifies the normalisation drastically to Equation \eqref{eq:normalisation}. Measurement uncertainties in $\mathrm{RA}$ and $\mathrm{Dec}$ are often negligible anyway. The uncertainties in the Galactocentric \emph{velocities} $\vect{v}_i = (v_{R,i},v_{T,i},v_{z,i})$ depend \OLD{besides}\NEW{not only} on $\delta \vect{\mu}$ and $\delta v_\text{los}$ \NEW{but} also on the distance and its uncertainty, which we do \emph{not} neglect when drawing MC samples $\vect{y}'_{i,n}$ from the full uncertainty distribution $N[\vect{y}_i,\delta \vect{y}_i]$. Figure \ref{fig:isoSphFlexErrConv_MC_vs_error} demonstrates that in the absence of position uncertainties the $N_\text{samples}$ needed for the convolution integral to converge depends as
 \begin{equation*}
@@ -380,7 +392,7 @@ N_\text{samples} \propto \left( \delta v \right)^2
 \end{equation*}
 on the uncertainties in the (1D) velocities. We found that the required $N_\text{samples}$ to reach a given accuracy does not depend strongly on the number of stars in the sample. But in general we expect that we need higher accuracy and therefore more $N_\text{samples}$ for larger data sets.
 
-\Wilma{[TO DO: The penultimate sentence of this section contradicts the previous sentence without validation. Why is this?]}
+\Wilma{[TO DO: The penultimate sentence of this section contradicts the previous sentence without validation. Why is this?] [Make more clear that we did not see a very pronounced trend but expect it in generall.]}
 
 A similar but one-dimensional treatment of measurement uncertainties in only $v_z$ was already applied by BR13.
 
@@ -427,13 +439,17 @@ We are now in a position to examine the limitations of action-based modelling po
 
 \NEW{We will rely on mock data as input to explore the limitations of the modelling. The mock data is generated directly from the potential and DF models introduced in Sections \ref{sec:potentials} and \ref{sec:qDF}, following the procedure described in Appendix \ref{sec:mockdata}.} With the exception of the test suite on measurement uncertainties in Section \ref{sec:results_errors}, we assume that phase-space uncertainties are negligible. All tests are also summarized in Table \ref{tbl:tests}. 
 
-\Wilma{[TO DO: It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \HW{I wonder as well about the impact of resonances, particularly when the data are very high quality.} This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach.]}
+\Wilma{[TO DO: It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \HW{I wonder as well about the impact of resonances, particularly when the data are very high quality. --> pragmatic way look at simulations where that happens
+--> we presume that the data deviation residuals from the best fit
+axisymmetric model may be a good way to investiagte resonances
+} This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach.]}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Model parameter estimates in the limit of large data sets} \label{sec:largedata}
 
 \HW{[TO DO: The referee writes: "This seems a good sanity check but should it be published? Fig 6. seems sufficient to me to demonstrate that your code works. I don't think the paper would miss this section."]}
+\Wilma{[TO DO: Text should be much shorter in this section. Simply mention that we confirmed that the width scales as 1/sqrt(N).]}
 
 The individual \MAP{}s in BR13 contained typically between 100 and 800 objects, so that each \MAP{} implied a quite broad \pdf{} for the model parameters $\pmodel{}$. Here we explore what happens in the limit of much larger samples, say $N_{*} = 20,000$ objects.  As outlined in Section \ref{sec:likelihood}, the immediate consequence of larger samples is given by the likelihood normalisation requirement $\delta M_\text{tot} \lesssim 1/N_{*}$ (see Equation \eqref{eq:accuracycondition}), which is the modelling aspect that drives the computing time. This issue aside, we would expect that in the limit of large data sets with vanishing measurement uncertainties the \pdf{}s of the \pmodel{} become Gaussian, with a \pdf{} width (i.e., the standard error (SE) on the parameter estimate) that scales as $1/\sqrt{N_{*}}$. Further, we must verify that any bias in the \pdf{} expectation value is considerably less than the error, even for quite large samples.
 
@@ -443,7 +459,7 @@ Using sets of mock data, created according to the procedure in \OLD{Section}\NEW
 %====================
 \begin{figure}[!htbp]
 \plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
-\caption{The width of the \pdf{} (see Equation \eqref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set, $N_{*}$. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as expected.} 
+\caption{The width of the \pdf{} (see Equation \eqref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set, $N_{*}$. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as expected. \Wilma{[TO DO: remove this figure]}} 
 \label{fig:sqrtNiso}
 \end{figure}
 %====================
@@ -468,7 +484,8 @@ The first suite draws mock data for two different potentials (\texttt{Iso-Pot} a
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/wedFlexVol_bias_vs_SE.eps}
-\caption{Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \texttt{MW13-Pot} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedFlexVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. Overall there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes. \HW{[TO DO: the referee writes: I understand that the selections used in Fig 9 are illustrative but the pink selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration of the difference between different selections. Fig. 9 doesn't add anything and is barely discussed in the text. Also, without observational uncertainties (which will be greater for the more distant boxes) the discussion seems superficial. I would consider removing this.]}}
+\caption{Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \texttt{MW13-Pot} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedFlexVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. Overall there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes. \HW{[TO DO: the referee writes: I understand that the selections used in Fig 9 are illustrative but the pink selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration of the difference between different selections. Fig. 9 doesn't add anything and is barely discussed in the text. Also, without observational uncertainties (which will be greater for the more distant boxes) the discussion seems superficial. I would consider removing this.]} \Wilma{[TO DO: I will keep this figure but explain it more in the text and what the idea behind this figure was.]} \Wilma{[TO DO: we have chosen extreme cases to see the effects most dramatic, but we
+don't claim that all of them are realistic]}}
 \label{fig:wedFlexVol_bias_vs_SE}
 \end{figure}
 %====================
@@ -495,13 +512,13 @@ Figure \ref{fig:isoSphFlexIncompR_violins} demonstrates that the potential recov
 
 We found similarly robust results also for a misjudgement of spatial completeness functions varying with the distance from the plane, $|z|$.
 
-\HW{[TO DO: The referee writes: "Isn't the reason for the cold population being more robust that it doesn't have as many stars at large distance as the hot population so it is less affected by the cuts? I suppose this not necessarily true for lines-of-sight in the plane."]}
+\HW{[TO DO: The referee writes: "Isn't the reason for the cold population being more robust that it doesn't have as many stars at large distance as the hot population so it is less affected by the cuts? I suppose this not necessarily true for lines-of-sight in the plane." In general the SF is not so important for cool populatoins, while for hot populations getting the radial profile right matters more.]}
 
 %====================
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexIncompR_violins_2.eps}
-\caption{Impact of misjudging the completeness of the data on the parameter recovery with \RM{}. Each mock data set was created with a different incompleteness parameter $\epsilon_r$ (shown on the $x$-axis, see Equation \eqref{eq:rad_incomp}). (The model parameters are given as Test \ref{test:isoSphFlexIncomp} in Table \ref{tbl:tests}.) The analysis however assumed that all data sets had constant completeness within the survey volume ($\epsilon_r = 0$). The violins show the full shape of the projected \pdf{}s for each model parameter, and the solid lines their true values. The \RM{} method seems to be very robust against small to intermediate deviations between the true and the assumed data incompleteness. (The qDF parameters not shown here exhibit a similar robustness as $h_R$.)} 
+\caption{Impact of misjudging the completeness of the data on the parameter recovery with \RM{}. Each mock data set was created with a different incompleteness parameter $\epsilon_r$ (shown on the $x$-axis, see Equation \eqref{eq:rad_incomp}). (The model parameters are given as Test \ref{test:isoSphFlexIncomp} in Table \ref{tbl:tests}.) The analysis however assumed that all data sets had constant completeness within the survey volume ($\epsilon_r = 0$). The violins show the full shape of the projected \pdf{}s for each model parameter, and the solid lines their true values. The \RM{} method seems to be very robust against small to intermediate deviations between the true and the assumed data incompleteness. (The qDF parameters not shown here exhibit a similar robustness as $h_R$.) \Wilma{[TO DO: redo with DHB potential]}} 
 \label{fig:isoSphFlexIncompR_violins}
 \end{figure}
 %====================
@@ -510,7 +527,7 @@ We found similarly robust results also for a misjudgement of spatial completenes
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexIncompR_marginal_violins_3.eps}
-\caption{Same as Figure \ref{fig:isoSphFlexIncompR_violins}, but without including information about the tangential velocities in the analysis. This was done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$ (bright grey violins; the dark grey violins are the same as in Figure \ref{fig:isoSphFlexIncompR_violins} for comparison). The parameter recovery is much worse than in Figure \ref{fig:isoSphFlexIncompR_violins}. This could indicate that much of the information about the potential is actually stored in the rotation curve, i.e., $v_T(R)$, which is not affected by removing stars from the data set. But even if we do not include $v_T$ we can still recover the potential within the errors, at least for small ($\epsilon_r \lesssim 0.15$).} 
+\caption{Same as Figure \ref{fig:isoSphFlexIncompR_violins}, but without including information about the tangential velocities in the analysis. This was done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$ (bright grey violins; the dark grey violins are the same as in Figure \ref{fig:isoSphFlexIncompR_violins} for comparison). The parameter recovery is much worse than in Figure \ref{fig:isoSphFlexIncompR_violins}. This could indicate that much of the information about the potential is actually stored in the rotation curve, i.e., $v_T(R)$, which is not affected by removing stars from the data set. But even if we do not include $v_T$ we can still recover the potential within the errors, at least for small ($\epsilon_r \lesssim 0.15$). \Wilma{[TO DO: redo with DHB potential]}} 
 \label{fig:isoSphFlexIncompR_marginal_violins}
 \end{figure}
 %====================
@@ -536,7 +553,7 @@ Secondly, we investigate the impact of additional measurement uncertainties in d
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexErrConv_SE_vs_error.eps}
-\caption{Effect of proper motion uncertainties $\delta \mu$ on the precision of potential parameter recovery for two stellar populations of different kinematic temperature (see Test \ref{test:isoSphFlexErrConv_SE_vs_error} in Table \ref{tbl:tests} for all model parameters). The relative standard error (SE) derived from the marginalized \pdf{} for each model parameter was determined for precise data sets without measurement uncertainties (solid lines, with dotted lines indicating the error) and for data sets affected by different proper motion uncertainties $\delta \mu$ and $\delta v_\text{los}=2~\text{km s}^{-1}$ (data points with error bars), but no uncertainties in position. The errors come from taking the mean over several data sets. \Wilma{[TO DO: Find out where the typical GAIA threshold is and draw vertical line. Comment on this in the caption as well.]}}
+\caption{Effect of proper motion uncertainties $\delta \mu$ on the precision of potential parameter recovery for two stellar populations of different kinematic temperature (see Test \ref{test:isoSphFlexErrConv_SE_vs_error} in Table \ref{tbl:tests} for all model parameters). The relative standard error (SE) derived from the marginalized \pdf{} for each model parameter was determined for precise data sets without measurement uncertainties (solid lines, with dotted lines indicating the error) and for data sets affected by different proper motion uncertainties $\delta \mu$ and $\delta v_\text{los}=2~\text{km s}^{-1}$ (data points with error bars), but no uncertainties in position. The errors come from taking the mean over several data sets. \Wilma{[TO DO: Find out where the typical GAIA threshold is and draw vertical line. Comment on this in the caption as well.]} \Wilma{[TO DO: 1 mas yr is approximately the accuracy of Pan Stars and 3 is approximately SDSS photographic plates accuracy, i.e. ground based surveys, approximate range that brackets the accuracy ranges for the best ground based proper motion surveys]}}
 \label{fig:isoSphFlexErrConv_SE_vs_error}
 \end{figure}
 %====================
@@ -567,7 +584,7 @@ Lastly, Figure \ref{fig:isoSphFlexErrSyst} investigates the effect of a systemat
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexMix_mockdata_residuals_3.eps}
-\caption{Distribution of mock data $v_T$ and $v_z$ created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). (The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, \emph{Example 1 \& 2a}, with the qDF parameters \OLD{refereed}\NEW{referred} to in the legend given in Table \ref{tbl:referenceMAPs}.) The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are colour-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For large deviations it might already become visible from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the stars' true DF. \HW{[TO DO: The referee writes: "it would be interesting to see the difference between the fits and the truth. Do the fits break down in particular places?"]}}
+\caption{Distribution of mock data $v_T$ and $v_z$ created by mixing stars drawn from two different qDFs (solid lines), and the distribution predicted by the best fit of a single qDF and potential to the data (dotted lines). (The model parameters used to create the mock data are given in Table \ref{tbl:tests} as Test \ref{test:isoSphFlexMix}, \emph{Example 1 \& 2a}, with the qDF parameters \OLD{refereed}\NEW{referred} to in the legend given in Table \ref{tbl:referenceMAPs}.) The corresponding single qDF best-fit curves were derived from the best fit parameters found in Figures \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}. (The data sets are colour-coded in the same way as the corresponding analyses in Figures  \ref{fig:isoSphFlexMixCont} and \ref{fig:isoSphFlexMixDiff}.) We use the mixtures of two qDFs to demonstrate how \RM{} behaves for data sets following DFs with shapes slightly differing from a single qDF. For large deviations it might already become visible from directly comparing the mock data and best fit distribution, that a single qDF is a bad assumption for the stars' true DF. \HW{[TO DO: The referee writes: "it would be interesting to see the difference between the fits and the truth. Do the fits break down in particular places?"]} \Wilma{[TO DO: Add a residual plot with log(data/model)]} \Wilma{[TO DO: redo with DHB potential]}}
 \label{fig:isoSphFlexMix_mockdata_residuals}
 \end{figure}
 %====================
@@ -590,7 +607,7 @@ We consider the impact of the DF deviations on the recovery of the potential and
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.55]{figs/isoSphFlexMixCont_violins_2.eps}
-\caption{The dependence of the parameter recovery on degree of pollution and temperature of the stellar population. We mix (i.e., ``pollute'') varying amounts of stars from a \texttt{hot} stellar population with stars from a very different \texttt{cooler} population (see Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (All model parameters used to create the mock data are given as Test \ref{test:isoSphFlexMix}, \emph{Example 1}, in Table \ref{tbl:tests}.) The composite polluted mock data set follows a true DF that has a slightly different shape than the qDF. We then analyse it using \RM{} and fit a \emph{single} qDF only. The violins represent the marginalized \pdf{}s for the best fit model parameters.  Some mock data sets are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, first row, in the same colours as the violins here.  We find that a hot population is much less affected by pollution with stars from a cooler population than vice versa.}
+\caption{The dependence of the parameter recovery on degree of pollution and temperature of the stellar population. We mix (i.e., ``pollute'') varying amounts of stars from a \texttt{hot} stellar population with stars from a very different \texttt{cooler} population (see Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (All model parameters used to create the mock data are given as Test \ref{test:isoSphFlexMix}, \emph{Example 1}, in Table \ref{tbl:tests}.) The composite polluted mock data set follows a true DF that has a slightly different shape than the qDF. We then analyse it using \RM{} and fit a \emph{single} qDF only. The violins represent the marginalized \pdf{}s for the best fit model parameters.  Some mock data sets are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, first row, in the same colours as the violins here.  We find that a hot population is much less affected by pollution with stars from a cooler population than vice versa. \Wilma{[TO DO: redo with DHB potential]}}
 \label{fig:isoSphFlexMixCont}
 \end{figure}
 %====================
@@ -599,7 +616,7 @@ We consider the impact of the DF deviations on the recovery of the potential and
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.55]{figs/isoSphFlexMixDiff_violins_2.eps}
-\caption{The dependence of the parameter recovery on the difference in qDF parameters of a 50/50 mixture of two stellar populations and their temperature. The two qDFs from which the stars in each mock data set were drawn are indicated in the legend, with the qDF parameters $\sigma_{R,0}, \sigma_{z,0}$ and $h_R$ differing by $X\%$ (see also Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (The model parameters used for the mock data creation are given as Test \ref{test:isoSphFlexMix}, \emph{Example 2a \& b}, in Table \ref{tbl:tests}.) Each composite mock data set is fitted with a \emph{single} qDF and the marginalized \pdf{}s are shown as violins. Some mock data sets of Example 2a are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, last row (colour-coded analogous to the violins here). By mixing populations with varying difference in their qDF parameters, we model the effect of finite bin size or abundance errors when sorting stars into different \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane and assuming they follow single qDFs (cf. BR13). We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs{} is less than 20\%.} 
+\caption{The dependence of the parameter recovery on the difference in qDF parameters of a 50/50 mixture of two stellar populations and their temperature. The two qDFs from which the stars in each mock data set were drawn are indicated in the legend, with the qDF parameters $\sigma_{R,0}, \sigma_{z,0}$ and $h_R$ differing by $X\%$ (see also Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (The model parameters used for the mock data creation are given as Test \ref{test:isoSphFlexMix}, \emph{Example 2a \& b}, in Table \ref{tbl:tests}.) Each composite mock data set is fitted with a \emph{single} qDF and the marginalized \pdf{}s are shown as violins. Some mock data sets of Example 2a are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, last row (colour-coded analogous to the violins here). By mixing populations with varying difference in their qDF parameters, we model the effect of finite bin size or abundance errors when sorting stars into different \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane and assuming they follow single qDFs (cf. BR13). We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs{} is less than 20\%. \Wilma{[TO DO: redo with DHB potential]}} 
 \label{fig:isoSphFlexMixDiff}
 \end{figure}
 %====================
@@ -612,7 +629,7 @@ Overall, the circular velocity at the \OLD{sun}\NEW{Sun} is very reliably recove
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/MW14vsKKS2SphFlex_mockdata_residuals_3.eps}
-\caption{Comparison of the distribution of mock data $v_T$ and $v_z$ created in the \texttt{MW14-Pot} potential and with two different stellar populations (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests} for all mock data model parameters), and the best fit distribution recovered by fitting the family of \texttt{KKS-Pot} potentials to the data. The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The data is very well recovered, even though the fitted potential family did not incorporate the true potential.}
+\caption{Comparison of the distribution of mock data $v_T$ and $v_z$ created in the \texttt{MW14-Pot} potential and with two different stellar populations (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests} for all mock data model parameters), and the best fit distribution recovered by fitting the family of \texttt{KKS-Pot} potentials to the data. The best fit potentials are shown in Figure \ref{fig:MW14vsKKS2SphFlex} and the corresponding best fit qDF parameters in Figure \ref{fig:MW14vsKKS2SphFlex_violins}. The data is very well recovered, even though the fitted potential family did not incorporate the true potential. \Wilma{[TO DO: include residual panels???]}}
 \label{fig:MW14vsKKS2SphFlex_mockdata_residuals}
 \end{figure}
 %====================
@@ -621,7 +638,7 @@ Overall, the circular velocity at the \OLD{sun}\NEW{Sun} is very reliably recove
 \begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figs/MW14vsKKS2SphFlex_contours_compare.eps}
-\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential (black lines) with 100 sample potentials (red and blue lines) drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.) Overall, the true potential is well recovered. \HW{[TO DO: The referee writes: "Fig 19 is difficult to interpret. Is it possible to display the difference?"]} \Wilma{[TO DO: Make frame lines and ticks thick.]} \Wilma{[TO DO: replace with analyses with Delta=0.45.]}}
+\caption{Recovery of the gravitational potential if the assumed potential model family (\texttt{KKS-Pot} with fixed $v_\text{circ}(R_\odot)$) and the true potential of the (mock data) stars (\texttt{MW14-Pot} in Table \ref{tbl:referencepotentials}) have slightly different parametric forms. We show the circular velocity curve, as well as contours of equal density, radial and vertical force in the $R$-$z$-plane, and compare the true potential (black lines) with 100 sample potentials (red and blue lines) drawn from the \pdf{} found with MCMC for a \texttt{hot} (red) and a \texttt{cool} (blue) stellar population. (All mock data model parameters are given as Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}.) Overall, the true potential is well recovered. \HW{[TO DO: The referee writes: "Fig 19 is difficult to interpret. Is it possible to display the difference?"]} \Wilma{[TO DO: Make frame lines and ticks thick.]} \Wilma{[TO DO: replace with analyses with Delta=0.45.]} \Wilma{[TO DO: make sure you use physical units.]} \Wilma{[TO DO: Add in the plot titles of the contour plots $\rho(R,z)$ and $F_R(R,z)$ etc.]} \Wilma{[TO DO: Noch zwei panels with density comparison along R and z to show the quantitative difference better.]}}
 \label{fig:MW14vsKKS2SphFlex}
 \end{figure*}
 %====================
@@ -645,7 +662,7 @@ The results for the potential are shown in Figure \ref{fig:MW14vsKKS2SphFlex}. W
 %====================
 \begin{figure*}[!htb]
 \plotone{figs/MW14vsKKS2SphFlex_violins.eps}
-\caption{Recovery of the qDF parameters for the case where the true and assumed potential deviate from each other (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}). The thick red (blue) lines represent the true qDF parameters of the \texttt{hot} (\texttt{cool}) qDF in Table \ref{tbl:referenceMAPs} used to create the mock data, surrounded by a 10\% error region. The grey violins are the marginalized \pdf{}s for the qDF parameters found simultaneously with the potential constraints shown in Figure \ref{fig:MW14vsKKS2SphFlex}. \HW{[TO DO: I think Fig. 20 could be removed. As mentioned it doesn't make sense to compare the DF parameters between different potentials so I am not sure what Fig 20 is telling us.]}}
+\caption{Recovery of the qDF parameters for the case where the true and assumed potential deviate from each other (see Test \ref{test:MW14vsKKS2SphFlex} in Table \ref{tbl:tests}). The thick red (blue) lines represent the true qDF parameters of the \texttt{hot} (\texttt{cool}) qDF in Table \ref{tbl:referenceMAPs} used to create the mock data, surrounded by a 10\% error region. The grey violins are the marginalized \pdf{}s for the qDF parameters found simultaneously with the potential constraints shown in Figure \ref{fig:MW14vsKKS2SphFlex}. \HW{[TO DO: I think Fig. 20 could be removed. As mentioned it doesn't make sense to compare the DF parameters between different potentials so I am not sure what Fig 20 is telling us.]} \Wilma{[TO DO: keep this figure but make more clear why it is "important". e.g. EDF fitting as in sanders and binney in a wrong potential --> not so much importance to the actual best fit df parameters.]} \Wilma{[TO DO: overplott true Gaussian velocity dispersion at sun.]}}
 \label{fig:MW14vsKKS2SphFlex_violins}
 \end{figure*}
 %====================
@@ -724,7 +741,7 @@ BR13 fitted a MW-like model potential and calculated actions using the St\"{a}ck
 
 \noindent {\bf Different modelling approaches using action-based DFs:~} BR13 focussed on \MAPs{} for a number of reasons: First, they seem to permit simple DFs \citep{2012ApJ...751..131B,2012ApJ...755..115B,2012ApJ...753..148B}, i.e., approximately qDFs \citep{2013MNRAS.434..652T}. Second, all stars must orbit in the same potential. While each \MAP{} can yield different DF parameters, it will also provide a (statistically) independent estimate of the potential. This allows for a valuable cross-checking reference. In some sense, the \RM{} approach focusses on constraining the potential, treating the DF parameters as nuisance parameters. That we were able to show in this work that \RM{} results are quite robust to the form of the DF not being entirely correct motivates this approach further. 
 
-For reasons of galaxy and chemical evolution, the DF properties are astrophysically linked between different \MAPs{} \citep{2015MNRAS.449.3479S}. In its current implementation, \RM{} treats all \MAPs{} as independent and dos not exploit such correlations. Ultimately, the goal is to do a consistent chemodynamical model that simultaneously fits the potential and $\text{DF}(\vect{J},\text{[X/H]})$ (where $[\mathrm{X}/\mathrm{Fe}]$ denotes the whole abundance space) with a full likelihood analysis. This has not yet been attempted with \RM{}, because the behaviour is quite complex. 
+For reasons of galaxy and chemical evolution, the DF properties are astrophysically linked between different \MAPs{} \citep{2015MNRAS.449.3479S}. In its current implementation, \RM{} treats all \MAPs{} as independent and dos not exploit such correlations. Ultimately, the goal is to do a consistent chemodynamical model that simultaneously fits the potential and $\text{DF}(\vect{J},\text{[X/H]})$ (where $[\mathrm{X}/\mathrm{Fe}]$ \Wilma{[TO DO: Typo --> [X/H]. Also write: x/H is Fe/H and other elements either referenced to H or Fe.]} denotes the whole abundance space) with a full likelihood analysis. This has not yet been attempted with \RM{}, because the behaviour is quite complex. 
 
 \HW{[TO DO: The referee writes: "The definition of X in f(J,[X/H]) doesn't seem to make sense."]}
 
@@ -739,6 +756,17 @@ Since the first application of \RM{} by BR13 there have been two similar efforts
 \Wilma{[TO DO: The first section in future work is very interesting. \HW{Use of different DFs and potentials as explored in this paper is interesting but a true test of the apparatus on a more realistic galaxy} would make the 'RoadMapping' tool much more attractive.]}
 
 \Wilma{[TO DO: I think that the final two questions of the future work section are weak. Clearly the rotation curve is only describing the in-plane force not the force everywhere. Parametrizations will naturally convince you that the rotation curve is well measured but I think there is a lot more flexibility. Also, the advantage of using the approximate actions is that more realistic potentials can be considered.]}
+
+\Wilma{[TO DO: Yes, the final questions are weak. Remove them. Better questions: Stress the upcoming test with a simulation and spiral arms. also: Do we get potential good enough to calculate actions accurate enough to identify clumps? To compare it to clumps in abundance space vs. clustering of stars in action space. Also: How do results from RM (potential and DF) compare with results from Jeans models?]}
+
+\Wilma{[TO DO: mention (somwhere???) that machinery is not yet ready for the application to actual data because of computational speed]}
+
+\Wilma{[TO DO: mention (somewhere???) that if we use suitable giant tracers (which are bright and have therefore small errors) within 4 kpc the proper motion errors are probably negligible (compare with tabe 1 in de bruijne) and the distance errors are only 5\% which is small enough for our method. There are therefore sub-sets of Gaia stars with almost no errors to which we could RM apply. / APGEE: Giant stars, absolut helligkeit 0 mag, bei 3 kpc distance modulus
+of 12, --> m=12 mag <-- bright limit of gaia
+De Bruijne Paper --> Post launch
+the proper motions are infinitely accurate bei 3 kpc --> nachrechnen]}
+
+\Wilma{[TO DO: mention how long new tests took on how many cores]}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -924,7 +952,14 @@ In the first step we draw stellar positions $\vect{x}_i$. We start by setting up
 
 In the second step we draw velocities $\vect{v}_i$. For each of the positions $(R_i,z_i)$ we first sample velocities from a Gaussian envelope function in velocity space which is then shaped towards DF$(\vect{J}[R_i,z_i,\vect{v} \mid p_{\Phi}] \mid p_\text{DF})$ using a rejection method. We now have a mock data set satisfying $(\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{DF}(\vect{J}[\vect{x},\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \times \text{SF}(\vect{x})$.
 
-\HW{[TO DO: The referee wrote: "The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?" - What does he mean? What's wrong?]}
+\HW{[TO DO: The referee wrote: "The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?" - What does he mean? What's wrong? --> we are not 100\% sure that we understand the referee's main point but
+given 10% distance errors at 3kpc (surveys edge) the volume from which
+data can get
+in practice it's likeliy to be a magnitude cut but for intrisnic standard
+candles like red clump stars a magnitude cut translates to a distance cut
+we realise it's idealized and there won't be a sharp distance cut
+scatter in and out of survey volume will play a role and we explore an
+ideal case]}
 
 Measurement uncertainties can be added to the mock data by applying the following modifications to the above procedure. We assume Gaussian uncertainties in the heliocentric phase-space coordinates $\tilde{\vect{x}} = (\text{RA},\text{Dec},(m-M)), \tilde{\vect{v}} = (\mu_\text{RA} \cdot \cos \text{Dec} ,\mu_\text{Dec},v_\text{los})$ (see Section \ref{sec:coordinates}). In the case of distance and position uncertainties stars virtually scatter in and out of the observed volume. To account for this, we draw the \emph{true} $\vect{x}_i$ from a volume that is larger than the actual observation volume, perturb the $\vect{x}_i$ according to the position uncertainties and then reject all stars that lie now outside of the observed volume. This mirrors the Poisson scatter around the detection threshold for stars whose distances are determined from the apparent brightness and the distance modulus. We then sample \emph{true} $\vect{v}_i$ (given the \emph{true} $\vect{x}_i$) as described above and perturb them according to the velocity uncertainties.
 
