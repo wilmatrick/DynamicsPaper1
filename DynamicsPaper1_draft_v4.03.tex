@@ -36,7 +36,8 @@
 \newcommand{\Jo}[1]{\textcolor{YellowOrange}{#1}}
 \usepackage{soul}
 \usepackage[normalem]{ulem} 
-\newcommand{\NEW}[1]{\textbf{\textcolor{ForestGreen}{#1}}}
+%\newcommand{\NEW}[1]{\textbf{\textcolor{ForestGreen}{#1}}}
+\newcommand{\NEW}[1]{\textcolor{ForestGreen}{#1}}
 %\newcommand{\OLD}[1]{\st{#1}}
 \newcommand{\Wilma}[1]{\textcolor{Magenta}{#1}}
 
@@ -265,37 +266,15 @@ where $\sigma_R(R \mid p_\text{DF})$ and $\sigma_z(R \mid p_\text{DF})$ are give
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Selection functions} \label{sec:selectionfunction}
-
-\Wilma{[TO DO: Referee thinks the selection volumes are unrealistic. Hans-Walter comments: "how to deal with complex sampling volumes has been demonstrated in Bovy et al 2013 and 2015; the point here is to make a generic exploration of search volume shapes." Stress this in this text. Further comments by HW: "We think of the survey SF as having small scale structure (pencil beams, dust) and some overall basic characteristics (mean height above the plane, mean radius). Bovy et al. 2015 showed that this separation is okay for general and basic explorations." or "
-WE think of the survey SF as having a small scale structure (pencil beam
-and dust) and some overall characteristics. Bovy et al. 2015 showed that
-it is okay to separate it for basic investigations. The basic
-characteristics are mean height above plane and mean radius of the stars."]}
-
-\Wilma{[TO DO: Referee: "An entire section dedicated to this topic seems unnecessary. Mention quickly at beginning of "Data likelihood" section.]}
-
-Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). In our modelling we use simple spatial SFs, which describe the probability to observe a star at position $\vect{x}$,
-\begin{eqnarray*}
-\text{SF}(\vect{x}) \equiv \begin{cases}
-\text{completeness}(\vect{x}) &\text{if $\vect{x}$ within obs. volume,}\\
-0 & \text{if $\vect{x}$ outside.}
-\end{cases}
-\end{eqnarray*}
-
-The SF of the SEGUE survey \citep{2012ApJ...753..148B} used by BR13 consists of many pencil-beams. In anticipation of large contiguous volume surveys like Gaia, we use SFs that span large observed volumes of simple geometrical shapes: a sphere of radius $r_\text{max}$ with the Sun at its center; or an angular segment of an cylindrical annulus (wedge), i.e., the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. The sharp outer edge of the survey volume could be interpreted as a detection limit in apparent brightness in the case where all stars have the same luminosity. We set $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$.
-
-%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 \subsection{Data likelihood} %\label{sec:likelihood} -> neue abschnitte eingefuehrt. Referenzen muessen noch gecheckt werden.
-
-\Wilma{[TO DO: The selection function can be briefly mentioned at the beginning of this section and stated that you assume here for simplicity it is a function of $\vec{x}$.]}
 
 As data $D$ we consider here the positions and velocities of a sub-population of stars within a given survey selection function $\text{SF}(\vect{x})$,
 \begin{eqnarray*}
 D  \equiv \{ \vect{x}_i,\vect{v}_i \mid && \text{(star $i$ in given sub-population)}\nonumber\\
 &\wedge& (\text{SF}(\vect{x}_i) > 0) \}.
 \end{eqnarray*}
+
+\NEW{(For simplicity we assume in most tests of this study contiguous SFs of spherical shape around the Sun, which are functions of $\vect{x}$ only and which we motivate in Appendix \ref{sec:selectionfunction}.)}
 
 We fit a model potential and DF (here: the qDF) which are specified by a number of fixed and free model parameters,
 \begin{eqnarray*}
@@ -331,11 +310,7 @@ p_\text{DF} := \{ \ln h_R, \ln \sigma_{R,0}, \ln \sigma_{z,0}, \ln h_{\sigma,R},
 \end{eqnarray}
 (see Section \ref{sec:qDF}) throughout this work. Then \pdf{} and likelihood are proportional to each other and differ only in units.
 
-\Wilma{[TO DO: we think that this is the right framework. It may not different to EL
-algorithm because we use uninformative priors. In the limit of
-uninfrmative priors this might not be a difference. But in due course
-increasingly informative priors come in (rotation curve measurements from
-masers (reid in harvard)).]}
+\NEW{In the limit of uninformative priors a maximum-likelihood estimation procedure (e.g., via the expectation–maximization (EM) algorithm and parameter uncertainty estimates from the Fisher information matrix) would lead to the same result as the Bayesian inferential procedure described in this work. We expect however that in due course increasingly informative priors will become available (like, e.g., rotation curve measurements from maser sources by \citet{2009ApJ...700..137R}) and Bayesian inference is therefore the preferred framework.}
 
 \subsection{\NEW{Likelihood normalisation}}
 
@@ -557,7 +532,7 @@ Secondly, we investigate the impact of additional measurement uncertainties in d
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/isoSphFlexErrConv_SE_vs_error.eps}
-\caption{Effect of proper motion uncertainties $\delta \mu$ on the precision of potential parameter recovery for two stellar populations of different kinematic temperature (see Test \ref{test:isoSphFlexErrConv_SE_vs_error} in Table \ref{tbl:tests} for all model parameters). The relative standard error (SE) derived from the marginalized \pdf{} for each model parameter was determined for precise data sets without measurement uncertainties (solid lines, with dotted lines indicating the error) and for data sets affected by different proper motion uncertainties $\delta \mu$ and $\delta v_\text{los}=2~\text{km s}^{-1}$ (data points with error bars), but no uncertainties in position. The errors come from taking the mean over several data sets. \Wilma{[TO DO: Find out where the typical GAIA threshold is and draw vertical line. Comment on this in the caption as well.]} \Wilma{[TO DO: 1 mas yr is approximately the accuracy of Pan Stars and 3 is approximately SDSS photographic plates accuracy, i.e. ground based surveys, approximate range that brackets the accuracy ranges for the best ground based proper motion surveys]}}
+\caption{Effect of proper motion uncertainties $\delta \mu$ on the precision of potential parameter recovery for two stellar populations of different kinematic temperature (see Test \ref{test:isoSphFlexErrConv_SE_vs_error} in Table \ref{tbl:tests} for all model parameters). The relative standard error (SE) derived from the marginalized \pdf{} for each model parameter was determined for precise data sets without measurement uncertainties (solid lines, with dotted lines indicating the error) and for data sets affected by different proper motion uncertainties $\delta \mu$ and $\delta v_\text{los}=2~\text{km s}^{-1}$ (data points with error bars), but no uncertainties in position. The errors come from taking the mean over several data sets. \Wilma{[TO DO: Find out where the typical GAIA threshold is and draw vertical line. Comment on this in the caption as well.]} \Wilma{[TO DO: 1 mas yr is approximately the accuracy of Pan Stars (http://arxiv.org/abs/1501.00581, see what Brani and Bertrand wrote in Email) and 3 is approximately SDSS photographic plates accuracy (http://iopscience.iop.org/article/10.1086/382529/pdf, http://adsabs.harvard.edu/abs/2008IAUS..248..537I, http://adsabs.harvard.edu/abs/2010ApJ...716....1B), i.e. ground based surveys, approximate range that brackets the accuracy ranges for the best ground based proper motion surveys]}}
 \label{fig:isoSphFlexErrConv_SE_vs_error}
 \end{figure}
 %====================
@@ -799,6 +774,9 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 \bibitem[Bovy \& Tremaine(2012)]{2012ApJ...756...89B} Bovy, J., \& Tremaine, S.\ 2012, \apj, 756, 89
 \bibitem[Bovy \& Rix(2013)]{2013ApJ...779..115B} Bovy, J., \& Rix, H.-W.\ 2013, \apj, 779, 115 (BR13)
 \bibitem[Bovy(2015)]{2015ApJS..216...29B} Bovy, J.\ 2015, \apjs, 216, 29
+
+\bibitem[Bovy et al.(2016)]{2016ApJ...818..130B} Bovy, J., Rix, H.-W., 
+Green, G.~M., Schlafly, E.~F., \& Finkbeiner, D.~P.\ 2016, \apj, 818, 130 
 \bibitem[B{\"u}denbender et al.(2015)]{2015MNRAS.452..956B} B{\"u}denbender, A., van de Ven, G., \& Watkins, L.~L.\ 2015, \mnras, 452, 956 
 \bibitem[Casagrande et al.(2011)]{2011A&A...530A.138C} Casagrande, L., Sch{\"o}nrich, R., Asplund, M., et al.\ 2011, \aap, 530, A138 
 \bibitem[Dehnen \& Binney(1998)]{1998MNRAS.294..429D} Dehnen, W., \& Binney, J.\ 1998, \mnras, 294, 429 
@@ -821,6 +799,7 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 \bibitem[Perryman et al.(2001)]{2001A&A...369..339P} Perryman, M.~A.~C., de Boer, K.~S., Gilmore, G., et al.\ 2001, \aap, 369, 339 
 \bibitem[Piffl et al.(2014)]{2014MNRAS.445.3133P} Piffl, T., Binney, J., McMillan, P.~J., et al.\ 2014, \mnras, 445, 3133
 \bibitem[Read(2014)]{2014JPhG...41f3101R} Read, J.~I.\ 2014, Journal of Physics G Nuclear Physics, 41, 063101 
+\bibitem[Reid et al.(2009)]{2009ApJ...700..137R} Reid, M.~J., Menten, K.~M., Zheng, X.~W., et al.\ 2009, \apj, 700, 137-148 
 \bibitem[Rix \& Bovy(2013)]{2013A&ARv..21...61R} Rix, H.-W., \& Bovy, J.\ 2013, \aapr, 21, 61
 \bibitem[Sanders \& Binney(2015)]{2015MNRAS.449.3479S} Sanders, J.~L., \& Binney, J.\ 2015, \mnras, 449, 3479
 \bibitem[Sanders \& Binney(2015)]{2015arXiv151108213S} \NEW{Sanders, J.~L., \& Binney, J.\ 2015, arXiv:1511.08213}
@@ -947,7 +926,7 @@ true potential                        & \emph{$N_{*}$:} & 20,000 & & \\
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \begin{appendix}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-\section{\NEW{Mock data}} \label{sec:mockdata}
+\subsection{\NEW{Mock data}} \label{sec:mockdata}
 
 \OLD{We will rely on mock data as input to explore the limitations of the modelling.}\NEW{The mock data in this work is generated according to the following procedure:} 
 
@@ -988,6 +967,20 @@ Measurement uncertainties can be added to the mock data by applying the followin
 %====================
 
 We show examples of mock data sets (without measurement uncertainties) in action space (Figure \ref{fig:kks2WedgeEx_actions}) and configuration space $(\vect{x},\vect{v})$ (Figure \ref{fig:kks2WedgeEx_xv}). The mock data generated from the qDF follow the expected distributions in configuration space. The distribution in action space illustrates the intuitive physical meaning of actions: The stars of the \texttt{cool} population have in general lower radial and vertical actions, as they are on more circular orbits. Circular orbits with $J_R = 0$ and $J_z = 0$ can only be observed in the Galactic mid-plane. The different ranges of angular momentum $L_z$ in the two example observation volumes reflect $L_z \sim R  \times v_\text{circ}$ and the volumes' different radial extent. The volume at larger $z$ contains stars with higher $J_z$.  An orbit with $L_z \ll$ or $\gg L_z(R_\odot)$ can only reach into a volume at $\sim R_\odot$, if it is more eccentric and has therefore larger $J_R$. This together with the effect of asymmetric drift explains the asymmetric distribution of $J_R$ vs. $L_z$ in Figure \ref{fig:kks2WedgeEx_actions}.
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{\NEW{Selection functions}} %\label{sec:selectionfunction}
+
+Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). \NEW{The SF can therefore be thought of as having both spatial small scale structure (due to pencil beam pointing, dust obscuration, etc.) and some overall spatial characteristics (e.g., mean height above the plane and mean Galactocentric radius of the stars). The treatment of realistic and complex SFs was already demonstrated in BR13 (who used the pencil-beam SF of the SEGUE survey \citep{2012ApJ...753..148B}) and \citet{2016ApJ...818..130B} (who investigated the effect of dust exticition). In this work we aim to make a generic and basic exploration of search volume shapes and, as shown by \citet{2016ApJ...818..130B}, this should be possible without explicitly considering spatial SF substructure. Inspired by the contiguous nature of the Gaia SF, which is basically only limited by a magnitude cut, and the fact that this magnitude cut would---in the absence of small scale structure---translate to a sharp distance cut for standard candle tracer populations like red clump stars, we therefore use in our modelling a simple spatial SF of spherical shape with radius $r_\text{max}$ around the Sun,} \OLD{In our modelling we use simple spatial SFs, describes the probability to observe a star at position $\vect{x}$,}
+\begin{eqnarray*}
+\text{SF}(\vect{x}) \equiv \begin{cases}
+\text{completeness}(\vect{x}) &\text{\OLD{if $\vect{x}$ within obs. volume,}\NEW{if $|\vect{x}-\vect{x}_\odot| \leq r_\text{max}$,}}\\
+0 & \text{\OLD{if $\vect{x}$ outside.}\NEW{otherwise,}}
+\end{cases}
+\end{eqnarray*}
+
+\OLD{The SF of the SEGUE survey \citep{2012ApJ...753..148B} used by BR13 consists of many pencil-beams. In anticipation of large contiguous volume surveys like Gaia, we use SFs that span large observed volumes of simple geometrical shapes: a sphere of radius $r_\text{max}$ with the Sun at its center; or an angular segment of an cylindrical annulus (wedge), i.e., the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. The sharp outer edge of the survey volume could be interpreted as a detection limit in apparent brightness in the case where all stars have the same luminosity.} We set $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability \NEW{for a star at $\vect{x}$}. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$. \NEW{Additionally, we use in Figures \ref{fig:wedFlexVol_bias_vs_SE} (Test \ref{test:wedFlexVol}), \ref{fig:kks2WedgeEx_actions} and \ref{fig:kks2WedgeEx_xv} for illustrative purposes some rather unrealistic survey volumes which are} angular segment\NEW{s} of a cylindrical annulus (wedge), i.e., the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. 
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{appendix}
