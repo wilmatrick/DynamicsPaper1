@@ -147,7 +147,7 @@ Our modelling takes place in the Galactocentric rest-frame with cylindrical coor
 \begin{equation}
 J_i \equiv \frac{1}{2\pi} \oint_\text{orbit} p_i \diff x_i, \label{eq:action_general}
 \end{equation}
-which is evaluated along the orbit with position $\vect{x}(t)$ and momentum $\vect{p}(t)$ in a given potential $\Phi$. Actions have several convenient properties which make them excellent orbit labels and ideal as arguments for orbit DFs: They are integrals of motion; they have an intuitive physical meaning as they quantify the amount of oscillation of the orbit in each coordinate direction; together with a set of angle coordinates $\vect{\theta}$ actions form a set of canonical conjugate phase-space coordinates, i.e., $\diff \vect{x} \diff \vect{p} = \diff \vect{\theta} \diff \vect{J}$. The angles $\vect{\theta}(t)\propto t$ evolve linearly in time and specify the position of the star along the orbit.  (For a full introduction to angle-action variables see \citealt{2008gady.book.....B}, \S 3.5.)}
+which is evaluated along the orbit with position $\vect{x}(t)$ and momentum $\vect{p}(t)$ in a given potential $\Phi$. Actions have several convenient properties which make them excellent orbit labels and ideal as arguments for orbit DFs: They are integrals of motion; they have an intuitive physical meaning as they quantify the amount of oscillation of the orbit in each coordinate direction; together with a set of angle coordinates $\vect{\theta}$ actions form a set of canonical conjugate phase-space coordinates, i.e., the Jacobian determinant $\left| \partial(\vect{J},\vect{\theta}) / \partial (\vect{x},\vect{v}) \right|=1$. The angles $\vect{\theta}(t)\propto t$ evolve linearly in time and specify the position of the star along the orbit.  (For a full introduction to angle-action variables see \citealt{2008gady.book.....B}, \S 3.5.)}
 
 \OLD{Orbits in an axisymmetric gravitational potential $\Phi$ are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi\equiv L_z)$ (Binney \& Tremaine 2008, \S 3.5).} 
 
@@ -216,6 +216,8 @@ For the gravitational potential in our modelling we assume a family of parametri
 
 \subsection{Stellar distribution functions} \label{sec:qDF}
 
+\NEW{A stellar distribution function $\text{DF}(\vect{x},\vect{v})$ can be considered as the probability of a star to be found at $(\vect{x},\vect{v})$. Using instead orbit DFs in terms of $(\vect{J},\vect{\theta})$ has the advantage that the distribution of stars in $\vect{\theta}$ is uniform and the orbit DF reduces effectively to a function of the actions $\vect{J}$ only. As $\left| \partial(\vect{J},\vect{\theta}) / \partial (\vect{x},\vect{v}) \right| = 1$, the function $\text{DF}(\vect{J})$ can still be thought of as a probability in $(\vect{x},\vect{v})$.}
+
 The action-based quasi-isothermal distribution function (qDF) by \citet{2010MNRAS.401.2318B} and \citet{2011MNRAS.413.1889B} is a simple DF which we will employ as a specific example throughout this work to describe individual stellar sub-populations. This is motivated by the findings of \citet{2012ApJ...751..131B,2012ApJ...755..115B,2012ApJ...753..148B} and \citet{2013MNRAS.434..652T} \OLD{about}\NEW{on} the simple phase-space structure of stellar \MAPs{} and BR13's successful application. The qDF has the form
 \begin{eqnarray}
 &&\text{qDF}(\vect{J} \mid p_\text{DF}) \nonumber\\
@@ -280,7 +282,7 @@ We fit a model potential and DF (here: the qDF) which are specified by a number 
 \begin{eqnarray*}
 \pmodel \equiv \{ p_\text{DF} , p_\Phi \}.
 \end{eqnarray*}
-The orbit of the $i$-th star in a potential with $p_\Phi$ is labelled by the actions $\vect{J}_i := \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the DF evaluated for the $i$-th star is then $\text{DF}(\vect{J}_i \mid \pmodel) := \text{DF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
+The orbit of the $i$-th star in a potential with $p_\Phi$ is labelled by the actions $\vect{J}_i \equiv \vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}]$ and the DF evaluated for the $i$-th star is then $\text{DF}(\vect{J}_i \mid \pmodel) \equiv \text{DF}(\vect{J}[\vect{x}_i,\vect{v}_i\mid p_{\Phi}] \mid p_\text{DF})$.
 
 %====================
 \begin{figure*}[!htbp]
@@ -291,8 +293,6 @@ The orbit of the $i$-th star in a potential with $p_\Phi$ is labelled by the act
 \end{figure*}
 %====================
 
-\Jo{[TO DO: The referee writes: "The Jacobian from J,theta to x,v should be mentioned here." - I don't know, where this is important. We treat the normalisation integral never as integral over J, theta, but always as integral over x,v and qDF as function of xv. Jo says: we can consider the qDF as probability of x,v or as a function of the actions (theta uniform). But the difference does not matter as det J = 1 anyway.]}
-
 The likelihood of the data given the model is, following BR13,
 \begin{eqnarray}
 &&\mathscr{L}(D \mid \pmodel) \nonumber\\
@@ -300,7 +300,7 @@ The likelihood of the data given the model is, following BR13,
 &&= \prod_i^{N_*} \frac{\text{DF}(\vect{J}_i \mid \pmodel) \cdot \text{SF}(\vect{x}_i)}{\int  \text{DF}(\vect{J} \mid \pmodel) \cdot \text{SF}(\vect{x})  \Diff 3 x \Diff 3 v}\nonumber\\
 &&\propto \prod_i^{N_*} \frac{\text{DF}(\vect{J}_i \mid \pmodel)}{\int \rho_\text{DF}(R,|z| \mid \pmodel) \cdot \text{SF}(\vect{x}) \Diff 3 x}, \label{eq:prob}
 \end{eqnarray}
-where $N_*$ is the number of stars in $D$, and in the last step we used Equation \eqref{eq:tracerdensity}. $\prod_i\text{SF}(\vect{x}_i)$ is independent of \pmodel{}, so we treat it as unimportant proportionality factor. We find the best fitting \pmodel{} by maximizing the posterior probability distribution $\pdf{}(\pmodel \mid D)$, which is, according to Bayes' theorem\OLD{, proportional to the likelihood $\mathscr{L}(D\mid \pmodel)$ times a prior $p(\pmodel)$.}\NEW{
+where $N_*$ is the number of stars in $D$, and in the last step we used Equation \eqref{eq:tracerdensity}.\footnote{\NEW{Because $\left| \partial(\vect{J},\vect{\theta}) / \partial (\vect{x},\vect{v}) \right| = 1$, we can treat $\text{DF}(\vect{J} \mid \pmodel)$ equivalently as a function of $(\vect{x},\vect{v})$. The integration over phase-space in the normalisation term can be performed either over $(\vect{J},\vect{\theta})$ or $(\vect{x},\vect{v})$.}} $\prod_i\text{SF}(\vect{x}_i)$ is independent of \pmodel{}, so we treat it as unimportant proportionality factor. We find the best fitting \pmodel{} by maximizing the posterior probability distribution $\pdf{}(\pmodel \mid D)$, which is, according to Bayes' theorem\OLD{, proportional to the likelihood $\mathscr{L}(D\mid \pmodel)$ times a prior $p(\pmodel)$.}\NEW{
 \begin{equation*}
 \pdf{}(\pmodel \mid D) \propto \mathscr{L}(D\mid \pmodel) \cdot p(\pmodel),
 \end{equation*}
@@ -313,8 +313,6 @@ p_\text{DF} := \{ \ln h_R, \ln \sigma_{R,0}, \ln \sigma_{z,0}, \ln h_{\sigma,R},
 \NEW{In the limit of uninformative priors a maximum-likelihood estimation procedure (e.g., via the expectation–maximization (EM) algorithm and parameter uncertainty estimates from the Fisher information matrix) would lead to the same result as the Bayesian inferential procedure described in this work. We expect however that in due course increasingly informative priors will become available (like, e.g., rotation curve measurements from maser sources by \citet{2009ApJ...700..137R}) and Bayesian inference is therefore the preferred framework.}
 
 \subsection{\NEW{Likelihood normalisation}}
-
-\Wilma{[TO DO:  The discussion of the likelihood normalization should reference and compare with McMillan and Binney (2013) as the discussion is very similar.]}
 
 The normalisation in Equation \eqref{eq:prob} is a measure for the total number of tracers inside the survey volume,
 \begin{equation}
@@ -337,6 +335,8 @@ with
 \log (1 + \delta M_\text{tot}) \leq \frac{1}{N_{*}},\label{eq:accuracycondition}
 \end{eqnarray}
 and therefore $\delta M_\text{tot} \lesssim 1/N_*$. Otherwise numerical inaccuracies could lead to systematic biases in the potential and DF recovery. For data sets as large as $N_* = 20,000$ stars, which in the age of Gaia could very well be the case, one needs a numerical accuracy of 0.005\% in the normalisation. \NEW{We made sure that this is satisfied for all analyses in this work.} Figure \ref{fig:norm_accuracy} demonstrates \NEW{how}\OLD{that} the numerical accuracy \OLD{we use in the analysis}\NEW{for analyses with the \texttt{DHB-Pot} depends on the spatial and velocity resolution of the grid and that the accuracy we use}, $N_x=16$, $N_v=24$ and $n_\sigma=5$\OLD{, does satisfy this requirement.}\NEW{, is sufficient.}\footnote{\NEW{The accuracy used in this work's analyses is slightly higher than in BR13, where $N_*$ was only a few $\sim 100$.}} \NEW{It has to be noted however, that the optimal values for $N_x$, $N_v$ and $n_\sigma$ depend not only on $N_*$, but also on the kinematic temperature of the population (and to a certain degree even on the choice of potential}\footnote{\NEW{In potentials where the Hamilton-Jacobi equation \Wilma{[TO DO: check]} is separable (like the \texttt{Iso-Pot} and \texttt{KKS-Pot}) the DF scaling profiles in Equations \eqref{eq:sigmaRRg} and \eqref{eq:sigmazRg} appear to be close to the physical velocity dispersion. It works therefore well to use them together with $n_\sigma \sim 5$ for the integration limits over velocity in Equation \eqref{eq:tracerdensity}. For non-separable potentials the DF dispersion parameters and physical velocity dispersion might deviate strongly and $n_\sigma$ has to be adapted accordingly to get a suitable integration regime.}}\NEW{) and it has to be checked on a case-by-case basis what the optimal accuracy is.} \OLD{This is slightly higher than in BR13, where $N_*$ was only a few $\sim 100$.}
+
+\NEW{\citet{2013MNRAS.433.1411M}, who use a similar modelling approach and likelihood normalisation, argued that the required accuracy for the normalisation scales as $\log_{10} \left(1+\delta M_\text{tot} \right) \leq 1 / N_* \Rightarrow \delta M_\text{tot} \lesssim 2.3/N_*$, which is satisfied for our tests as well.  They evaluate the integrals in the normalisation via Monte-Carlo integration with $\sim 10^9$ sample points in action space. Our approach uses a tracer density interpolation grid for which the resolution needs to be optimized by hand, but it has the advantage that it then only requires the calculation of $N_x^2 \times N_v^3 \sim 4\cdot 10^{6} - 10^7$ actions per normalisation.}
 
 %====================
 \begin{figure}[!htbp]
