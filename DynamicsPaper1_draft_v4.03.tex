@@ -594,9 +594,15 @@ We consider the impact of the DF deviations on the recovery of the potential and
 %====================
 \begin{figure}[!htbp]
 \centering
+\includegraphics[scale=0.55]{figs/MWbdhMixDiff_violins.eps}
+\caption{The dependence of the parameter recovery on the difference in qDF parameters of a 50/50 mixture of two stellar populations and their temperature. The two qDFs from which the stars in each mock data set were drawn are indicated in the legend, with the qDF parameters $\sigma_{R,0}, \sigma_{z,0}$ and $h_R$ differing by $X\%$ (see also Table \ref{tbl:referenceMAPs} \NEW{and Section \Wilma{[TO DO]}}), as indicated on the $x$-axis. (The model parameters used for the mock data creation are given as Test \ref{test:isoSphFlexMix}, \emph{Example 2a \& b}, in Table \ref{tbl:tests}.) Each composite mock data set is fitted with a \emph{single} qDF and the marginalized \pdf{}s are shown as violins. Some mock data sets of Example 2a are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, last row (colour-coded analogous to the violins here). By mixing populations with varying difference in their qDF parameters, we model the effect of finite bin size or abundance errors when sorting stars into different \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane and assuming they follow single qDFs (cf. BR13). We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs{} is less than 20\%. \Wilma{[TO DO: Thest if hot 0.2 b gives the same result.]}} 
+\label{fig:MWdhbMixDiff}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
 \includegraphics[scale=0.55]{figs/isoSphFlexMixDiff_violins_2.eps}
-\caption{The dependence of the parameter recovery on the difference in qDF parameters of a 50/50 mixture of two stellar populations and their temperature. The two qDFs from which the stars in each mock data set were drawn are indicated in the legend, with the qDF parameters $\sigma_{R,0}, \sigma_{z,0}$ and $h_R$ differing by $X\%$ (see also Table \ref{tbl:referenceMAPs}), as indicated on the $x$-axis. (The model parameters used for the mock data creation are given as Test \ref{test:isoSphFlexMix}, \emph{Example 2a \& b}, in Table \ref{tbl:tests}.) Each composite mock data set is fitted with a \emph{single} qDF and the marginalized \pdf{}s are shown as violins. Some mock data sets of Example 2a are shown in Figure \ref{fig:isoSphFlexMix_mockdata_residuals}, last row (colour-coded analogous to the violins here). By mixing populations with varying difference in their qDF parameters, we model the effect of finite bin size or abundance errors when sorting stars into different \MAPs{} in the $[\alpha/\mathrm{Fe}]$-vs.-$[\mathrm{Fe}/\mathrm{H}]$ plane and assuming they follow single qDFs (cf. BR13). We find that the bin sizes should be chosen such that the difference in qDF parameters between neighbouring \MAPs{} is less than 20\%. \Wilma{[TO DO: redo with DHB potential]}} 
-\label{fig:isoSphFlexMixDiff}
+\caption{\Wilma{[TO DO: This is an old plot, with analyses using the isochrone potential. Delete it later.]}}
 \end{figure}
 %====================
 
@@ -898,19 +904,20 @@ uncertainties 			 	& \emph{Uncertainties:}		& only proper motion uncertainties &
 					&						& 1, 2 or $3~\text{mas yr}^{-1}$ & 10\% or 50\% underestimated & \\
 					& \emph{$N_{*}$:} & 10,000 & & \\
 \tableline
-Test \testlabel{test:isoSphFlexMix}{7} :       & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figures \ref{fig:isoSphFlexMix_mockdata_residuals}, \ref{fig:isoSphFlexMixCont} \& \ref{fig:isoSphFlexMixDiff}\\
-Deviations of the       & \emph{DF:}      & mix of two qDFs... & single qDF, all parameters free & \\
-assumed DF              &                   & (i) \emph{Example 1:}   & & \\
-from the                &                   & ... with different mixing rates & & \\
-stars' true DF          &                   & and fixed qDF parameters & & \\
+Test \testlabel{test:isoSphFlexMix}{7} :       & \emph{Potential:} & \OLD{\texttt{Iso-Pot}}\NEW{\texttt{DHB-Pot}} & \OLD{\texttt{Iso-Pot}, all parameters free}\NEW{\texttt{DHB-Pot}, free parameters:} & Figures \ref{fig:isoSphFlexMix_mockdata_residuals}, \ref{fig:isoSphFlexMixCont} \& \ref{fig:isoSphFlexMixDiff}\\
+Deviations of the & & & \NEW{$v_\text{circ}(R_\odot), a_\text{disk}, f_\text{halo}$} & \\
+assumed DF       & \emph{DF:}      & mix of two qDFs... & single qDF, all parameters free & \\
+from the              &                   & (i) \emph{Example 1:}   & & \\
+stars' true DF                &                   & ... with different mixing rates & & \\
+          &                   & and fixed qDF parameters & & \\
                         &                   & (\texttt{hot} \& \texttt{cooler} qDF from Table \ref{tbl:referenceMAPs}) & & \\
-                        &                   & \emph{Example 2:} & & \\
-                        &                   & ... with 50/50 mixing rate & & \\
-                        &                   & and varying qDF parameters (by $X\%$): & & \\
-                        &                   & \emph{a)} \texttt{hot} \& \texttt{colder} qDF or & & \\
-                        &					  & \emph{b)} \texttt{cool} \& \texttt{warmer} qDF (see Table \ref{tbl:referenceMAPs}) & & \\
-                        & \emph{Survey volume:}& sphere around Sun, $r_\text{max}=2~\text{kpc}$ & (fixed \& known) & \\
-                        & \emph{$N_{*}$:} & 20,000 & & \\
+                        &                   & \NEW{(ii)} \emph{Example 2:} & & \NEW{Example 2:} \\
+                        &                   & ... with 50/50 mixing rate & & \NEW{Differences of $\lesssim 20\%$ in qDF}\\
+                        &                   & and varying qDF parameters (by $X\%$): & & \NEW{parameters do not matter}\\
+                        &                   & \emph{a)} \texttt{hot} \& \texttt{colder} qDF or & & \NEW{when mixing sub-populations,}\\
+                        &					  & \emph{b)} \texttt{cool} \& \texttt{warmer} qDF (see Table \ref{tbl:referenceMAPs}) & & \NEW{e.g., due to finite binning in}\\
+                        & \emph{Survey volume:}& sphere around Sun, $r_\text{max}=2~\text{kpc}$ & (fixed \& known) & \NEW{abundance space and abundance}\\
+                        & \emph{$N_{*}$:} & 20,000 & & \NEW{errors.}\\
                         \tableline
 Test \testlabel{test:MW14vsKKS2SphFlex}{8} :			&  \emph{Potential:} & \texttt{MW14-Pot} & \texttt{KKS-Pot}, all parameters free, & Figures \ref{fig:MW14vsKKS2SphFlex_mockdata_residuals}, \ref{fig:MW14vsKKS2SphFlex} \& \ref{fig:MW14vsKKS2SphFlex_violins}\\
 Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230~\text{km s}^{-1}$ fixed &  \\
@@ -984,5 +991,8 @@ Any survey's selection function (SF) can be understood as defining an effective 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \end{appendix}
+
+\Wilma{[TO DO: Make sure numbering in Table 3 is correct.]}
+\Wilma{[TO DO: Remove latex comments]}
 
 \end{document}
