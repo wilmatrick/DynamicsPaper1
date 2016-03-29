@@ -383,7 +383,7 @@ A similar but one-dimensional treatment of measurement uncertainties in only $v_
 \begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figs/isoSphFlex_short_hot_2kpc_triangle_MCMC.eps}
-\caption{The \pdf{} in the parameter space $\pmodel{} = \{p_\Phi,p_\text{DF}\}$ for one example mock data set (see Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}). Blue indicates the \pdf{} for the potential parameters $p_\Phi$, green the qDF parameters $p_\text{DF}$. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent $1\sigma$, $2\sigma$ and $3\sigma$ confidence regions, respectively. The parameters are weakly to moderately covariant, but their level of covariance depends on the actual choice of the mock data's \pmodel{}. The \pdf{} here was sampled using MCMC. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates very well that for such a large number of stars, the \pdf{} approaches the shape of a multi-variate Gaussian, as expected for a maximum likelihood estimator.}
+\caption{The \pdf{} in the parameter space $\pmodel{} = \{p_\Phi,p_\text{DF}\}$ for one example mock data set (see Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}). Blue indicates the \pdf{} for the potential parameters $p_\Phi$, green the qDF parameters $p_\text{DF}$. The true parameters are marked by dotted lines. The dark, medium and bright contours in the 2D distributions represent $1\sigma$, $2\sigma$ and $3\sigma$ confidence regions, respectively. The parameters are weakly to moderately covariant, but their level of covariance depends on the actual choice of the mock data's \pmodel{}. The \pdf{} here was sampled using MCMC. The dashed lines in the 1D distributions are Gaussian fits to the histogram of MCMC samples. This demonstrates \OLD{very well} that for such a large number of stars, the \pdf{} approaches the shape of a multi-variate Gaussian \NEW{,that also projects into Gaussians when considering the marginalized \pdf{} for all the individual \pmodel{}}, as expected for a maximum likelihood estimator.}
 \label{fig:isoSphFlex_triangleplot}
 \end{figure*}
 %====================
@@ -418,7 +418,7 @@ The second step samples the shape of the \pdf{} using MCMC. Formally, calculatin
 
 We are now in a position to examine the limitations of action-based modelling posed in the introduction using our \RM{} machinery. We explore: (i) whether the parameter estimates are unbiased, (ii) the role of the survey volume, (iii) imperfect selection functions, (iv) measurement uncertainties, and what happens if the true (v) DF or (vi) potential are not included in the space of models. We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state.
 
-\NEW{We will rely on mock data as input to explore the limitations of the modelling. The mock data is generated directly from the potential and DF models introduced in Sections \ref{sec:potentials} and \ref{sec:qDF}, following the procedure described in Appendix \ref{sec:mockdata}.} With the exception of the test suite on measurement uncertainties in Section \ref{sec:results_errors}, we assume that phase-space uncertainties are negligible. All tests are also summarized in Table \ref{tbl:tests}. 
+\NEW{We will rely on mock data as input to explore the limitations of the modelling. The mock data is generated directly from the fiducial potential and DF models introduced in Sections \ref{sec:potentials} and \ref{sec:qDF}, following the procedure described in Appendix \ref{sec:mockdata}.} With the exception of the test suite on measurement uncertainties in Section \ref{sec:results_errors}, we assume that phase-space uncertainties are negligible. All tests are also summarized in Table \ref{tbl:tests}. 
 
 \Wilma{[TO DO: It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \HW{I wonder as well about the impact of resonances, particularly when the data are very high quality. --> pragmatic way look at simulations where that happens
 --> we presume that the data deviation residuals from the best fit
@@ -429,20 +429,15 @@ axisymmetric model may be a good way to investiagte resonances
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Model parameter estimates in the limit of large data sets} \label{sec:largedata}
 
-\HW{[TO DO: The referee writes: "This seems a good sanity check but should it be published? Fig 6. seems sufficient to me to demonstrate that your code works. I don't think the paper would miss this section."]}
-\Wilma{[TO DO: Text should be much shorter in this section. Simply mention that we confirmed that the width scales as 1/sqrt(N).]}
-
-The individual \MAP{}s in BR13 contained typically between 100 and 800 objects, so that each \MAP{} implied a quite broad \pdf{} for the model parameters $\pmodel{}$. Here we explore what happens in the limit of much larger samples, say $N_{*} = 20,000$ objects.  As outlined in Section \ref{sec:likelihood}, the immediate consequence of larger samples is given by the likelihood normalisation requirement $\delta M_\text{tot} \lesssim 1/N_{*}$ (see Equation \eqref{eq:accuracycondition}), which is the modelling aspect that drives the computing time. This issue aside, we would expect that in the limit of large data sets with vanishing measurement uncertainties the \pdf{}s of the \pmodel{} become Gaussian, with a \pdf{} width (i.e., the standard error (SE) on the parameter estimate) that scales as $1/\sqrt{N_{*}}$. Further, we must verify that any bias in the \pdf{} expectation value is considerably less than the error, even for quite large samples.
-
-Using sets of mock data, created according to the procedure in \OLD{Section}\NEW{Appendix} \ref{sec:mockdata} and a fiducial model for \pmodel{} (see Table \ref{tbl:tests}, Tests \ref{test:sqrtNiso}, \ref{test:isoSph_CLT}, and \ref{test:isoSphFlex}), we verified that \RM{} satisfies all these conditions and expectations: Figure \ref{fig:isoSphFlex_triangleplot} illustrates the joint \pdf{}s of all \pmodel{}. The \pdf{} is a multivariate Gaussian that projects into Gaussians when considering the marginalized \pdf{} for all the individual \pmodel{}. Figure \ref{fig:sqrtNiso} then demonstrates that the \pdf{} width indeed scales as $1/\sqrt{N_{*}}$. Figure \ref{fig:isoSph_CLT} illustrates even more that \RM{} behaves like an unbiased maximum likelihood estimator: The average parameter estimates from many mock samples with identical underlying \pmodel{} are very close to the input \pmodel{}, and the distribution of the actual parameter estimates are a Gaussian around it. 
+The \OLD{individual }\MAP{}s in BR13 contained \OLD{typically }between 100 and 800 objects, \OLD{so that each \MAP{} implied  a quite broad \pdf{}}\NEW{which implied broad \pdf{}s} for the model parameters $\pmodel{}$. \OLD{Here we explore what happens in the limit of much larger samples, say $N_{*} = 20,000$ objects.}\NEW{Several consequences arise in the limit of much larger samples, say $N_{*} = 20,000$:} \NEW{(i)} As outlined in Section \ref{sec:likelihood} \NEW{and investigated in Figure \ref{fig:norm_accuracy} (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests}),}\OLD{, the immediate consequence of larger samples is given by} \NEW{higher numerical accuracy is needed due to} the likelihood normalisation requirement $\delta M_\text{tot} \lesssim 1/N_{*}$ (see Equation \eqref{eq:accuracycondition}), which \OLD{is the modelling aspect that} drives the computing time. \NEW{(ii) The} \OLD{This issue aside, we would expect that in the limit of large data sets with vanishing measurement uncertainties the} \pdf{}s of the \pmodel{} become Gaussian, with a \pdf{} width (i.e., the standard error (SE) on the parameter estimate) that scales as $1/\sqrt{N_{*}}$. \NEW{The former is demonstrated in Figure \ref{fig:isoSphFlex_triangleplot} (Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}) and we also verified that the latter is true.} \NEW{(iii) Any}\OLD{Further, we must verify that any} bias in the \pdf{} expectation value \OLD{is}\NEW{has to be} considerably less than the \NEW{SE}\OLD{error, even for quite large samples}. \OLD{Using sets of mock data, created according to the procedure in Section \ref{sec:mockdata} and a fiducial model for \pmodel{} (see Table \ref{tbl:tests}, Tests \ref{test:sqrtNiso}, \ref{test:isoSph_CLT}, and \ref{test:isoSphFlex}), we verified that \RM{} satisfies all these conditions and expectations: Figure \ref{fig:isoSphFlex_triangleplot} illustrates the joint \pdf{}s of all \pmodel{}. The \pdf{} is a multivariate Gaussian that projects into Gaussians when considering the marginalized \pdf{} for all the individual \pmodel{}. Figure \ref{fig:sqrtNiso} then demonstrates that the \pdf{} width indeed scales as $1/\sqrt{N_{*}}$.} Figure \ref{fig:isoSph_CLT} \NEW{(Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests})} illustrates \OLD{even more }that \RM{} behaves like an unbiased maximum likelihood estimator: The average parameter estimates from many mock \OLD{samples with identical underlying \pmodel{}}\NEW{data sets} are very close to the input \pmodel{}, and the distribution of the actual parameter estimates are Gaussian around it.
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %====================
-\begin{figure}[!htbp]
-\plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
-\caption{The width of the \pdf{} (see Equation \eqref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set, $N_{*}$. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as expected. \Wilma{[TO DO: remove this figure]}} 
-\label{fig:sqrtNiso}
-\end{figure}
+%\begin{figure}[!htbp]
+%\plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
+%\caption{The width of the \pdf{} (see Equation \eqref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set, $N_{*}$. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as expected.} 
+%\label{fig:sqrtNiso}
+%\end{figure}
 %====================
 
 %====================
@@ -486,7 +481,7 @@ The \NEW{survey} SF (see \OLD{Section}\NEW{also Appendix} \ref{app:selectionfunc
 \begin{equation}
 \text{completeness}(r) \equiv 1- \epsilon_r \frac{r}{r_\text{max}}, \label{eq:rad_incomp}
 \end{equation}
-which drops linearly with distance $r$ from the Sun. \NEW{The completeness function can be understood as the probability of a star at distance $r$ to be detected (see also  Equation \ref{eq:selectionfunction}).} In the \RM{} analysis however, we assume constant completeness ($\epsilon_r=0$). The incompleteness parameter $\epsilon_r$ of the mock data quantifies therefore by how much we misjudge the SF. This captures the relevant case of stars being less likely to be observed (than assumed) the further away they are (e.g., due to unknown dust obscuration). 
+which drops linearly with distance $r$ from the Sun. \NEW{The completeness function can be understood as the probability of a star at distance $r$ to be detected (see also  Equation \ref{eq:selectionfunction}).} In the \RM{} analysis \OLD{however}\NEW{on the other hand}, we assume constant completeness ($\epsilon_r=0$). The incompleteness parameter $\epsilon_r$ of the mock data quantifies therefore by how much we misjudge the SF. This \NEW{mock test} captures the relevant case of stars being less likely to be observed (than assumed) the further away they are (e.g., due to unknown dust obscuration). 
 
 Figure \ref{fig:MWdhbIncompR_violins} demonstrates that the potential recovery with \RM{} is \OLD{very}\NEW{quite} robust against somewhat wrong assumptions about the completeness of the data\NEW{, i.e., $\epsilon_r \lesssim 0.15$ for the \texttt{hot} and $\epsilon_r \lesssim 0.2$ for the \texttt{cool} population}. \NEW{The \texttt{cool} population is more robust, because it is less affected by the SF misjudgement at high $|z|$ than the \texttt{hot} population. Our simple model SF affects stars at large and small radii in equal proportion. As long as the misjudgement is small, the tracer scale length parameter $h_R$ can still be reliable recovered, and with it the potential.} \OLD{The robustness for the \texttt{cool} stellar population is even more striking than for the \texttt{hot} population. The reason for this robustness could be, that much information about the potential comes from the rotation curve measurements in the plane, which is not affected by the incompleteness of the sample. We test this by analysing the data sets from Figure \ref{fig:isoSphFlexIncompR_violins} again, but this time not including tangential velocity measurements (which is done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$). Figure \ref{fig:isoSphFlexIncompR_marginal_violins} shows that in this case the potential is much less tightly constrained, even for 20,000 stars. For only minor deviations of true and assumed completeness ($\epsilon_r \lesssim 0.15$) the true potential is however still included within the errors of our fitting result (see Figure \ref{fig:isoSphFlexIncompR_marginal_violins}).}
 
@@ -494,13 +489,13 @@ Figure \ref{fig:MWdhbIncompR_violins} demonstrates that the potential recovery w
 
 \NEW{For spatial completeness functions varying with the distance from the plane $|z|$ only, the $\texttt{Iso-Pot}$ potential recovery is similarly robust as long as $v_T$ measurements are included.}\OLD{We found similarly robust results also for a misjudgement of spatial completeness functions varying with the distance from the plane, $|z|$.}
 
-\HW{[TO DO: In general the SF is not so important for cool populatoins, while for hot populations getting the radial profile right matters more.]}
+\HW{[TO DO: Hans-Walter said: "In general the SF is not so important for cool populatoins, while for hot populations getting the radial profile right matters more." - Not sure if this is right and how to fit this in the text.]}
 
 %====================
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/MWbdhIncompR_violins.eps}
-\caption{\NOTE{[This is a new version of the original plot (Figure \ref{fig:isoSphFlexIncompR}) - using the DHB-Pot instead of the Iso-Pot. (TO DO: Remove this note for final version.)]}  Impact of misjudging the completeness of the data on the parameter recovery with \RM{}. Each mock data set was created with a different incompleteness parameter $\epsilon_r$ (shown on the $x$-axis, see Equation \eqref{eq:rad_incomp}). (The model parameters are given as Test \ref{test:isoSphFlexIncomp} in Table \ref{tbl:tests}.) The analysis however assumed that all data sets had constant completeness within the survey volume ($\epsilon_r = 0$). The violins show the full shape of the projected \pdf{}s for each model parameter, and the solid lines their true values. The \RM{} method seems to be very robust against small to intermediate deviations between the true and the assumed data incompleteness. (\NEW{The potential parameter $f_\text{halo}$ and the other qDF parameters are recovered to a comparable accuracy and are therefore not shown here.}\OLD{The qDF parameters not shown here exhibit a similar robustness as $h_R$.}) \Wilma{[TO DO: More ticks on y-axis.]}} 
+\caption{\NOTE{[This is a new version of the original plot (Figure \ref{fig:isoSphFlexIncompR}) - using the DHB-Pot instead of the Iso-Pot. (TO DO: Remove this note for final version.)]}  Impact of misjudging the completeness of the data on the parameter recovery with \RM{}. Each mock data set was created with a different incompleteness parameter $\epsilon_r$ (shown on the $x$-axis, see Equation \eqref{eq:rad_incomp}). (The model parameters are given as Test \ref{test:isoSphFlexIncomp} in Table \ref{tbl:tests}.) The analysis however assumed that all data sets had constant completeness within the survey volume ($\epsilon_r = 0$). The violins show the full shape of the projected \pdf{}s for each model parameter, and the solid lines their true values. The \RM{} method seems to be very robust against small to intermediate deviations between the true and the assumed data incompleteness. (\NEW{The potential parameter $f_\text{halo}$ and the other qDF parameters are recovered to a comparable accuracy and are therefore not shown here.}\OLD{The qDF parameters not shown here exhibit a similar robustness as $h_R$.})} 
 \label{fig:MWdhbIncompR_violins}
 \end{figure}
 %====================
@@ -844,23 +839,25 @@ uncertainties					&						& $\delta v_\text{los} = 2~\text{km s}^{-1}$ &  & \\
 						& \emph{$N_{*}$:} & 10,000 & & \\	   
 \tableline
 Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlex_triangleplot}\\
-The \pdf{} is a               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \\
-multivariate            & \emph{Survey Volume:} & sphere around Sun, $r_\text{max} = 2~\text{kpc}$ & (fixed \& known) & \\
-Gaussian                & \emph{$N_{*}$:} & 20,000 & & \\
-for large data sets.	&  & & & \\
+\NEW{Shape of the model }\OLD{The \pdf{} is a}\NEW{}               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \NEW{The \pdf{} becomes a multivariate}\\
+\NEW{parameters' \pdf{}}\OLD{multivariate}            & \emph{Survey Volume:} & sphere around Sun, $r_\text{max} = 2~\text{kpc}$ & (fixed \& known) & \NEW{Gaussian in the limit of}\\
+\NEW{for large data sets}\OLD{Gaussian}                & \emph{$N_{*}$:} & 20,000 & & \NEW{large data. The width of the}\\
+\OLD{for large data sets.}	&  & & & \NEW{\pdf{} scales as $1/\sqrt{N_*}$.}\\
+
+%\tableline
+%Test \testlabel{test:sqrtNiso} {3.2}:			& \emph{Potential:}     %& \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:sqrtNiso}\\
+%Width of the			& \emph{DF:}          & \texttt{hot} qDF & qDF, free parameters: & \\
+%likelihood scales       &                       &           & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
+%with number of stars    & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$   & (fixed \& known) & \\
+%by $\propto 1/\sqrt{N_{*}}$.& \emph{$N_{*}$:} & between 100 and 40,000 &  & \\
 
 \tableline
-Test \testlabel{test:sqrtNiso} {3.2}:			& \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:sqrtNiso}\\
-Width of the			& \emph{DF:}          & \texttt{hot} qDF & qDF, free parameters: & \\
-likelihood scales       &                       &           & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
-with number of stars    & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$   & (fixed \& known) & \\
-by $\propto 1/\sqrt{N_{*}}$.& \emph{$N_{*}$:} & between 100 and 40,000 &  & \\
-\tableline
-Test \testlabel{test:isoSph_CLT} {3.3}:        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:isoSph_CLT}\\
-Parameter estimates     & \emph{DF:}       &\texttt{hot} or \texttt{cool} qDF & qDF, free parameters:\\
-are unbiased;           &          &    & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
-Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & (fixed \& known) & \\
+Test \testlabel{test:isoSph_CLT} {3.2}:        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:isoSph_CLT}\\
+Parameter estimates     & \emph{DF:}       &\texttt{hot} or \texttt{cool} qDF & qDF, free parameters: & \NEW{\RM{} behaves like an}\\
+are unbiased;           &          &    & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \NEW{unbiased maximum likelihood}\\
+Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & (fixed \& known) & \NEW{estimator.} \Wilma{[TO DO: Volume result]}\\
 volume size & \emph{$N_{*}$:} & 20,000 & & \\
+
 \tableline
 Test \testlabel{test:wedFlexVol} {4} :		& \emph{Potential:} 	& (i) \texttt{Iso-Pot} or (ii) \texttt{MW13-Pot} & (i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
 Influence of 			& 						& 													& (ii) \texttt{MW13-Pot}, $R_d$ and $f_h$ free & \\
@@ -869,13 +866,13 @@ of survey volume 		& 						& 													& (ii) qDF, only $h_R$, $\sigma_{z,0}$
 on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper panel & (fixed \& known) & \\
 						& \emph{$N_{*}$:} & 20,000 & & \\
 \tableline
-Test \testlabel{test:isoSphFlexIncomp}{5} :        & \emph{Potential:}     & \OLD{\texttt{Iso-Pot}}\NEW{\texttt{DHB-Pot}} & \OLD{\texttt{Iso-Pot}, all parameters free}\NEW{\texttt{DHB-Pot}, free parameters:} & Figures \ref{fig:MWdhbIncompR_violins} \& \ref{fig:isoSphFlexIncompR_marginal_violins}\\
-Influence of & & & \NEW{$v_\text{circ}(R_\odot), a_\text{disk}, f_\text{halo}$} &\\
-wrong assumptions            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free &   \\
-about the spatial SF        & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \\
-on parameter recovery    & \emph{Completeness:}  & Equation \eqref{eq:rad_incomp}   & completeness$(\vect{x})$ = 1, & \\
-       &                       &  with $\epsilon_r \in [0,0.7]$ & i.e., $\epsilon_r=0$& \\
-   &   \emph{$N_{*}$:}                     & 20,000  & & \\
+Test \testlabel{test:isoSphFlexIncomp}{5} :        & \emph{Potential:}     & \OLD{\texttt{Iso-Pot}}\NEW{\texttt{DHB-Pot}} & \OLD{\texttt{Iso-Pot}, all parameters free}\NEW{\texttt{DHB-Pot}, free parameters:} & Figures \ref{fig:MWdhbIncompR_violins} \OLD{\& \ref{fig:isoSphFlexIncompR_marginal_violins}}\\
+Influence of & & & \NEW{$v_\text{circ}(R_\odot), a_\text{disk}, f_\text{halo}$} &\NEW{For minor misjudgements}\\
+wrong assumptions            & \emph{DF:}          & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \NEW{of a radially symmetric SF}  \\
+about the spatial SF        & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \NEW{(i.e., $\epsilon_r \lesssim 0.15$ for \texttt{hot} and }\\
+on parameter recovery    & \emph{Completeness:}  & Equation \eqref{eq:rad_incomp}   & completeness$(\vect{x})$ = 1, & \NEW{$\epsilon_r \lesssim 0.2$ for \texttt{cool} populations)} \\
+       &                       &  with $\epsilon_r \in [0,0.7]$ & i.e., $\epsilon_r=0$& \NEW{the potential recovery} \\
+   &   \emph{$N_{*}$:}                     & 20,000  & & \NEW{is still robust.} \\
 \tableline
 Test \testlabel{test:isoSphFlexErrConv_SE_vs_error}{6.1} : & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_SE_vs_error}\\
 Effect of proper motion & \emph{DF:} & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
@@ -1034,5 +1031,6 @@ Any survey's selection function (SF) can be understood as defining an effective 
 \Wilma{[TO DO: Make sure SF is still somewhere properly introduced.]}
 \Wilma{[TO DO: How to have subchapters with numbers in the appendix? Otherwise referencing doesn't work.]}
 \Wilma{[TO DO: Reference on Staeckel pancakes]}
+\Wilma{[TO DO: Equation numbering in Appendix starts again from (1) - which is stupid.]}
 
 \end{document}
