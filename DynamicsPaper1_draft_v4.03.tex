@@ -152,18 +152,18 @@ which is evaluated along the orbit with position $\vect{x}(t)$ and momentum $\ve
 
 \OLD{Orbits in an axisymmetric gravitational potential $\Phi$ are best described and fully specified by the three actions $\vect{J} \equiv (J_R, J_z, J_\phi\equiv L_z)$ (Binney \& Tremaine 2008, \S 3.5).} 
 
-Action calculation from a star's phase-space coordinates, $(\vect{x},\vect{v}) \stackrel{\Phi}{\longrightarrow} \vect{J}$, is typically very computationally expensive. \NEW{Only for or some special, separable potentials Equation \eqref{eq:action_general} simplifies significantly.} \OLD{The spherical isochrone potential 1959AnAp...22..126H and axisymmetric}\NEW{The triaxial} St\"{a}ckel potential\NEW{s} \citep{1985MNRAS.216..273D} are the most general  \OLD{(Galactic)} potentials, that allow exact action calculations \NEW{using a single quadrature} \OLD{(2008gady.book.....B, \S 3.5.2 and \S 3.5.3)}. \NEW{Some flattened axisymmetric St\"{a}ckel potentials are quite similar to our Galaxy's potential (\citealt{2008gady.book.....B}, \S 3.5.3; \citealt{1994AA...287...43B,2003MNRAS.340..752F}). The spherical isochrone potential (\citealt{1959AnAp...22..126H,2008gady.book.....B}, \S 3.5.3) is the most general special case for which the action calculation is analytic without any integration.} In all other potentials actions have to be numerically estimated\NEW{; see \cite{2015arXiv151108213S} for a recent review of action estimation methods}. \NEW{According to \cite{2015arXiv151108213S} the best compromise of speed and accuracy for the Galactic disk is the} \OLD{We use the} \emph{St\"{a}ckel fudge} by \citet{2012MNRAS.426.1324B} for axisymmetric potentials\NEW{. In addition we use} \OLD{and} action interpolation grids \citep{2012MNRAS.426.1324B,2015ApJS..216...29B} to speed up the calculation. The latter is one of the improvements employed by \RM{}, which was not used in BR13. 
+Action calculation from a star's phase-space coordinates, $(\vect{x},\vect{v}) \stackrel{\Phi}{\longrightarrow} \vect{J}$, is typically very computationally expensive. \NEW{Only for or some special, separable potentials Equation \eqref{eq:action_general} simplifies significantly.} \OLD{The spherical isochrone potential 1959AnAp...22..126H and axisymmetric}\NEW{The triaxial} St\"{a}ckel potential\NEW{s} \citep{1985MNRAS.216..273D} are the most general  \OLD{(Galactic)} potentials, that allow exact action calculations \NEW{using a single quadrature} \OLD{(2008gady.book.....B, \S 3.5.2 and \S 3.5.3)}. \NEW{Some flattened axisymmetric St\"{a}ckel potentials are quite similar to our Galaxy's potential (\citealt{2008gady.book.....B}, \S 3.5.3; \citealt{1994AA...287...43B,2003MNRAS.340..752F}). The spherical isochrone potential (\citealt{1959AnAp...22..126H,2008gady.book.....B}, \S 3.5.3) is the most general special case for which the action calculation is analytic without any integration.} In all other potentials actions have to be numerically estimated\NEW{; see \citet{2016MNRAS.457.2107S} for a recent review of action estimation methods}. \NEW{According to \citet{2016MNRAS.457.2107S} the best compromise of speed and accuracy for the Galactic disk is the} \OLD{We use the} \emph{St\"{a}ckel fudge} by \citet{2012MNRAS.426.1324B} for axisymmetric potentials\NEW{. In addition we use} \OLD{and} action interpolation grids \citep{2012MNRAS.426.1324B,2015ApJS..216...29B} to speed up the calculation. The latter is one of the improvements employed by \RM{}, which was not used in BR13. 
 
 \subsection{\NEW{Potential models}} %\label{sec:potentials} --> because I changed the structure, the referencing has to be re-checked.
 
-For the gravitational potential in our modelling we assume a family of parametrized models. We use: The MW-like potential from BR13 (\texttt{MW13-Pot}) with bulge, disks and halo; the spherical isochrone potential (\texttt{Iso-Pot}); and the 2-component Kuzmin-Kutuzov St\"{a}ckel potential (\citealt{1994AA...287...43B}; \texttt{KKS-Pot}), which also displays a disk and halo structure. \NEW{The true circular velocity at the Sun for all potential models was chosen to be $v_\text{circ}(R_\odot)=230~\text{km s}^{-1}$.} Table \ref{tbl:referencepotentials} summarizes all reference potentials used in this work together with their free parameters $p_\Phi$. The density distribution of these potentials is illustrated in Figure \ref{fig:ref_pots}. \NEW{Many tests are performed for speed reasons with the \texttt{Iso-Pot}, which allows the fastest action calculations, and the \texttt{KKS-Pot}, whose analytic form makes the computation of forces and densities quick and easy. Both potentials also have the advantage of allowing for accurate action estimation.}
+For the gravitational potential in our modelling we assume a family of parametrized models. We use: The MW-like potential from BR13 (\texttt{MW13-Pot}) \Wilma{[TO DO: Remove MW13]} with bulge, disks and halo; the spherical isochrone potential (\texttt{Iso-Pot}); and the 2-component Kuzmin-Kutuzov St\"{a}ckel potential (\citealt{1994AA...287...43B}; \texttt{KKS-Pot}), which also displays a disk and halo structure. \NEW{The true circular velocity at the Sun for all potential models was chosen to be $v_\text{circ}(R_\odot)=230~\text{km s}^{-1}$.} Table \ref{tbl:referencepotentials} summarizes all reference potentials used in this work together with their free parameters $p_\Phi$. The density distribution of these potentials is illustrated in Figure \ref{fig:ref_pots}. \NEW{Many tests are performed for speed reasons with the \texttt{Iso-Pot}, which allows the fastest action calculations, and the \texttt{KKS-Pot}, whose analytic form makes the computation of forces and densities quick and easy. Both potentials also have the advantage of allowing for accurate action estimation.}
 \Wilma{[TO DO: Rewrite to account for DHB-Pot.]}
 \Wilma{[TO DO: Make sure that nowhere in this work the MW13-Potential is still used.]}
 
 %====================
 \begin{deluxetable*}{llcll}[!htbp]
 \tabletypesize{\scriptsize}
-\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \texttt{MW13-Pot} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
+\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \texttt{MW13-Pot} \Wilma{[TO DO: Remove MW13]} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential model} & \multicolumn{2}{c}{parameters $p_\Phi$} & \colhead{action calculation}}
@@ -193,7 +193,7 @@ For the gravitational potential in our modelling we assume a family of parametri
 %                               & \citep{2013ApJ...779..115B} & & & \\
 \tableline
 \texttt{MW14-Pot} & MW-like potential\tablenotemark{(d)}: \OLD{with} &  & & \textbf{\emph{approximate}} \\
-                               & Miyamoto-Nagai\OLD{ stellar} disk, & & & (same as \texttt{MW13-Pot}) \\
+                               & Miyamoto-Nagai\OLD{ stellar} disk, & & & (same as \texttt{MW13-Pot}) \Wilma{[TO DO: Remove MW13]}\\
                                & NFW halo, & & & \\
                                & \NEW{cut-off power-law bulge} & & & \\
                                & \citep{2015ApJS..216...29B} & & & 
@@ -454,24 +454,28 @@ The \OLD{individual }\MAP{}s in BR13 contained \OLD{typically }between 100 and 8
 
 To explore the role of the survey volume at given sample size, we devise two suites of mock data sets: 
 
-The first suite draws mock data for two different potentials (\texttt{Iso-Pot} and \texttt{MW13-Pot}) and four volume wedges (see Section \ref{sec:selectionfunction}) with different extent and at {\it different positions within the Galaxy}, illustrated in the upper panel of Figure \ref{fig:wedFlexVol_bias_vs_SE}. Otherwise the data sets are generated from the same \pmodel{} (see Test \ref{test:wedFlexVol} in Table \ref{tbl:tests}). To isolate the role of the survey volume geometry, the mock data sets all have the same number of stars ($N_{*} = 20,000$) in all cases, and are drawn from identical total survey volumes ($4.5~\text{kpc}^3$, achieved by adjusting the angular width of the wedges). The results are shown in Figure \ref{fig:wedFlexVol_bias_vs_SE}.
+The first suite draws mock data for two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}}) and four volume wedges (see Section \ref{sec:selectionfunction}) with different extent and at {\it different positions within the Galaxy}, illustrated in the upper panel of Figure \ref{fig:wedFlexVol_bias_vs_SE}. Otherwise the data sets are generated from the same \pmodel{} (see Test \ref{test:wedFlexVol} in Table \ref{tbl:tests}). To isolate the role of the survey volume geometry, the mock data sets all have the same number of stars ($N_{*} = 20,000$)\OLD{in all cases}, and are drawn from identical total survey volumes ($4.5~\text{kpc}^3$, achieved by adjusting the angular width of the wedges).
+\NEW{We investigate these rather unrealistic survey volumes to test (i) if there are regions in the Galaxy where stars are on intrinsically more informative orbits (i.e., which give tighter potential constraints) and (ii) if spatial cuts applied to the survey volume (e.g., to avoid regions of large dust extinction or measurement uncertainties) could therefore strongly affect the modelling precision. To explore this we choose some extreme, but illustrative examples.}
+The results are shown in Figure \ref{fig:wedFlexVol_bias_vs_SE}.
 
 %====================
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figs/wedFlexVol_bias_vs_SE.eps}
-\caption{Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \texttt{MW13-Pot} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedFlexVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. Overall there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes. \HW{[TO DO: the referee writes: I understand that the selections used in Fig 9 are illustrative but the pink selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration of the difference between different selections. Fig. 9 doesn't add anything and is barely discussed in the text. Also, without observational uncertainties (which will be greater for the more distant boxes) the discussion seems superficial. I would consider removing this.]} \Wilma{[TO DO: I will keep this figure but explain it more in the text and what the idea behind this figure was.]} \Wilma{[TO DO: we have chosen extreme cases to see the effects most dramatic, but we don't claim that all of them are realistic]} \Wilma{[TO DO: To be consistent I probably have to replace the MW13 analyses with DHB analyses...]}}
+\includegraphics[width=\columnwidth]{figs/wedgesVol_bias_vs_SE.eps}
+\caption{\NOTE{[This is a new version of the original plot - using the DHB-Pot instead of the MW13-Pot. (TO DO: Remove this note for final version.)]} Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedFlexVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. \NEW{(The recovery of the free potential parameter $v_\text{circ}(R_\odot)$ for the \texttt{DHB-Pot} in the different wedges is very similar for both potentials and therefore only shown for the \texttt{Iso-Pot}. Minor expected differences can be seen (e.g., $v_\text{circ}(R_\odot)$ and tracer density scale lengths requiring larger radial extent), but overall}\OLD{Overall} there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes. \HW{[TO DO: the referee writes: I understand that the selections used in Fig 9 are illustrative but the pink selection just doesn't seem realistic. I think Fig 8. is a sufficient demonstration of the difference between different selections. Fig. 9 doesn't add anything and is barely discussed in the text. Also, without observational uncertainties (which will be greater for the more distant boxes) the discussion seems superficial. I would consider removing this.]} \Wilma{[TO DO: I will keep this figure but explain it more in the text and what the idea behind this figure was.]} \Wilma{[TO DO: we have chosen extreme cases to see the effects most dramatic, but we don't claim that all of them are realistic]} \Wilma{[TO DO: show vcirc and a, instead of a and f]}}
 \label{fig:wedFlexVol_bias_vs_SE}
 \end{figure}
 %====================
 
 The second suite of mock data sets was already introduced in Section \ref{sec:largedata} (see also Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests}), where mock data sets were drawn from five spherical volumes around the Sun with different maximum radius, for two different stellar populations. The results of this second suite are shown in Figure \ref{fig:isoSph_CLT} and exemplify the effect of the {\it size of the survey volume}.
 
-Figure \ref{fig:isoSph_CLT} demonstrates that, given a choice of $p_\text{DF}$, a larger volume always results in tighter constraints. There is no obvious trend that a hotter or cooler population will always give better results; it depends on the survey volume and the model parameter in question. In Figure \ref{fig:wedFlexVol_bias_vs_SE} the wedges all have the same volume and all give results of similar precision. Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume. In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. In addition, Figure \ref{fig:wedFlexVol_bias_vs_SE} implies that volume offsets in the radial or vertical direction have at most a modest impact---even in case of the very large sample size at hand.
+Figure \ref{fig:isoSph_CLT} demonstrates that, given a choice of $p_\text{DF}$, a larger volume always results in tighter constraints. There is no obvious trend that a hotter or cooler population will always give better results; it depends on the survey volume and the model parameter in question.
+
+In Figure \ref{fig:wedFlexVol_bias_vs_SE} the wedges all have the same volume and all give results of similar precision. \OLD{Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume.}\NEW{There are some minor differences (e.g., $v_\text{circ}(R_\odot)$ and radial scale lengths, $b$ or $a_\text{disk}$, being slightly better recovered for large radial extent and the halo fraction at the Sun, $f_\text{halo}$, for volumes centered around $R_\odot$).} In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. In addition, Figure \ref{fig:wedFlexVol_bias_vs_SE} implies that volume offsets \NEW{or spatial cuts of the survey volume} in the radial or vertical direction have at most a modest impact---even in case of the very large sample size at hand\NEW{---implying that in the absence of measurement errors????}.
 
 While it appears that the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel{} and volumes.
 
-That in reality different regions in the Galaxy have different stellar number densities, should therefore be the major factor to drive the precision of the potential recovery when choosing a survey volume.
+That in reality different regions in the Galaxy have different stellar number densities\NEW{ and different measurement uncertainties}, should therefore be the major factor to drive the precision of the potential recovery when choosing a survey volume.
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -513,7 +517,7 @@ We also note that in this case the relative and absolute difference in recovered
 
 Secondly, we investigate the impact of additional measurement uncertainties in distance (modulus). In absence of distance uncertainties the uncertainty-convolved model probability given in Equation \eqref{eq:errorconv} is unbiased (see upper left panel in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}).  When including distance (modulus) uncertainties, Equation \eqref{eq:errorconv} is just an approximation for the true likelihood; the systematic bias thus introduced in the parameter recovery gets larger with the size of $\delta (m-M)$, as demonstrated in Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}, lower panels (see also Test \ref{test:isoSphFlexErrConv_bias_vs_SE} in Table \ref{tbl:tests}).  We find however that in case of $\delta(m-M) \lesssim 0.2 \text{ mag}$ (if also $\delta \mu \lesssim 2 ~\text{mas yr}^{-1}$ and a maximum distance of $r_\text{max} = 3~\text{kpc}$, see Test \ref{test:isoSphFlexErrConv_bias_vs_SE} in Table \ref{tbl:tests}) the potential parameters can still be recovered within $2 \sigma$. This corresponds to a relative distance uncertainty of $\sim10\%$. The overall precision of the potential recovery is also not degraded much by introducing distance uncertainties of less than $10\%$.
 
-\NEW{How does this compare with the distance uncertainties expected for Gaia? For a typical red clump giant star with $M_I\sim0~\text{mag}$ and $(V-I)\sim1~\text{mag}$ at a distance of $r=3~\text{kpc}$ we estimate (using the magnitude transformation by \citet{2010A&A...523A..48J} and the uncertainty parametrization by \citet{2014EAS....67...23D}) a parallax uncertainty of $\delta\pi\sim11~\mu\text{as}$, which is consistent with a distance uncertainty of less than 5\%, and a proper motion uncertainty of $\delta \mu\sim6~\mu\text{as yr}^{-1}$, which is negligible. When not restricting the modelling to giant stars only, a quick investigation by Rene Andrae of stars at $r=3~\text{kpc}\pm5~\text{pc}$ from the Gaia Universe model snapshot catalogue (GUMS; \citealt{2012A&A...543A.100R}) revealed that a magnitude cut at $G\sim15~\text{mag}$ in the overall Gaia data set should keep all distance uncertainties within $3~\text{kpc}$ below $\sim10\%$, while also preserving Gaia's simple SF.}
+\NEW{How does this compare with the distance uncertainties expected for Gaia? For a typical red clump giant star with $M_I\sim0~\text{mag}$ and $(V-I)\sim1~\text{mag}$ at a distance of $r=3~\text{kpc}$ we estimate (using the magnitude transformation by \citet{2010A&A...523A..48J} and the uncertainty parametrization by \citet{2014EAS....67...23D}) a parallax uncertainty of $\delta\pi\sim11~\mu\text{as}$, which is consistent with a distance uncertainty of less than 5\% \WILMA{[TO DO: Check this again with linear approximation. I think it is rather $4\%$ than $5\%$]}, and a proper motion uncertainty of $\delta \mu\sim6~\mu\text{as yr}^{-1}$, which is negligible. When not restricting the modelling to giant stars only, a quick investigation by Rene Andrae of stars at $r=3~\text{kpc}\pm5~\text{pc}$ from the Gaia Universe model snapshot catalogue (GUMS; \citealt{2012A&A...543A.100R}) revealed that a magnitude cut at $G\sim15~\text{mag}$ in the overall Gaia data set should keep all distance uncertainties within $3~\text{kpc}$ below $\sim10\%$, while also preserving Gaia's simple SF.}
 
 %====================
 \begin{figure}[!htbp]
@@ -707,7 +711,7 @@ The qDF is a specific example for a simple DF for stellar sub-populations which 
 
 \noindent {\bf Gravitational potential beyond the parametrized functions considered:~} In addition to the DF, \RM{} also assumes a parametric model for the gravitational potential. We test how using a potential of St\"{a}ckel form (\texttt{KKS-Pot}, \citealt{1994AA...287...43B}) affects the \RM{} analysis of mock data from a different potential family with halo, bulge and exponential disk. The potential recovery is quite successful: We properly reproduce the mock data distribution in configuration space; and the best fit potential is---within the limits of the model---as close as it gets to the true potential, even outside of the observation volume of the stellar tracers. 
 
-For as many as 20,000 stars constraints become already so tight that it should presumably be possible to distinguish between different parametric MW potential models (e.g., the \texttt{MW13-Pot} used by BR13 and the \texttt{KKS-Pot}).
+For as many as 20,000 stars constraints become already so tight that it should presumably be possible to distinguish between different parametric MW potential models (e.g., the \texttt{MW13-Pot} used by BR13 and the \texttt{KKS-Pot}) \Wilma{[TO DO: Remove MW13]}.
 
 BR13 fitted a MW-like model potential and calculated actions using the St\"{a}ckel approximation \citep{2012MNRAS.426.1324B}; in this case study we directly fitted a St\"{a}ckel potential to the data, with exact actions in the model potential. The latter is computationally much less expensive due to the simple analytic form of the potential. It would also allow flexibility by expressing the MW potential as a superposition of many more simple Kuzmin-Kutuzov St\"{a}ckel components (\citet{2003MNRAS.340..752F} used for example 3 components). The former approach by BR13 however allows to parametrize the potential with intuitive and physically motivated building blocks (exponential disks, power-law dark matter halo etc.). While both approaches are formally similar, it remains to decide which is better.\\
 
@@ -754,74 +758,76 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % REFERENCES
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-\Wilma{[TO DO: Use appropriate journal abbreviations in the reference list.]}
-\begin{thebibliography}{}
-\bibitem[Abazajian et al.(2003)]{2003AJ....126.2081A} \NEW{Abazajian, K., Adelman-McCarthy, J.~K., Ag{\"u}eros, M.~A., et al.\ 2003, \aj, 126, 2081}
-\bibitem[Ahn et al.(2014)]{2014ApJS..211...17A} Ahn, C.~P., Alexandroff, R., Allende Prieto, C., et al.\ 2014, \apjs, 211, 17 
-\bibitem[Batsleer \& Dejonghe(1994)]{1994AA...287...43B} Batsleer, P., \& Dejonghe, H.\ 1994, \aap, 287, 43
-\bibitem[Binney \& Tremaine(2008)]{2008gady.book.....B} Binney, J., \& Tremaine, S.\ 2008, Galactic Dynamics: Second Edition
-\bibitem[Binney(2010)]{2010MNRAS.401.2318B} Binney, J.\ 2010, \mnras, 401, 2318
-\bibitem[Binney(2011)]{2011Prama..77...39B} Binney, J.\ 2011, Pramana, 77, 39
-\bibitem[Binney \& McMillan(2011)]{2011MNRAS.413.1889B} Binney, J., \& McMillan, P.\ 2011, \mnras, 413, 1889
-\bibitem[Binney(2012a)]{2012MNRAS.426.1324B} Binney, J.\ 2012a, \mnras, 426, 1324
-\bibitem[Binney(2012b)]{2012MNRAS.426.1328B} Binney, J.\ 2012b, \mnras, 426, 1328
-\bibitem[Binney(2013)]{2013NewAR..57...29B} Binney, J.\ 2013, NAR, 57, 29 
-\bibitem[Bovy et al.(2012b)]{2012ApJ...751..131B} Bovy, J., Rix, H.-W., \& Hogg, D.~W.\ 2012b, \apj, 751, 131
-\bibitem[Bovy et al.(2012c)]{2012ApJ...755..115B} Bovy, J., Rix, H.-W., Hogg, D.~W., et al.\ 2012c, \apj, 755, 115 
-\bibitem[Bovy et al.(2012d)]{2012ApJ...753..148B} Bovy, J., Rix, H.-W., Liu, C., et al.\ 2012d, \apj, 753, 148
-\bibitem[Bovy \& Tremaine(2012)]{2012ApJ...756...89B} Bovy, J., \& Tremaine, S.\ 2012, \apj, 756, 89
-\bibitem[Bovy \& Rix(2013)]{2013ApJ...779..115B} Bovy, J., \& Rix, H.-W.\ 2013, \apj, 779, 115 (BR13)
-\bibitem[Bovy(2015)]{2015ApJS..216...29B} Bovy, J.\ 2015, \apjs, 216, 29
+\bibliography{BibFile_DynamicsPaper}{}
+\bibliographystyle{aasjournal}
 
-\bibitem[Bovy et al.(2016)]{2016ApJ...818..130B} Bovy, J., Rix, H.-W., 
-Green, G.~M., Schlafly, E.~F., \& Finkbeiner, D.~P.\ 2016, \apj, 818, 130 
-\bibitem[B{\"u}denbender et al.(2015)]{2015MNRAS.452..956B} B{\"u}denbender, A., van de Ven, G., \& Watkins, L.~L.\ 2015, \mnras, 452, 956 
-\bibitem[Casagrande et al.(2011)]{2011A&A...530A.138C} Casagrande, L., Sch{\"o}nrich, R., Asplund, M., et al.\ 2011, \aap, 530, A138 
-\bibitem[de Bruijne et al.(2014)]{2014EAS....67...23D} \NEW{de Bruijne, J.~H.~J., Rygl, K.~L.~J., \& Antoja, T.\ 2014, EAS Publications Series, 67, 23}
-\bibitem[Dehnen \& Binney(1998)]{1998MNRAS.294..429D} Dehnen, W., \& Binney, J.\ 1998, \mnras, 294, 429 
-\bibitem[de Lorenzi et al.(2007)]{2007MNRAS.376...71D} de Lorenzi, F., Debattista, V.~P., Gerhard, O., \& Sambhus, N.\ 2007, \mnras, 376, 71 
-\bibitem[de Zeeuw(1985)]{1985MNRAS.216..273D} de Zeeuw, T.\ 1985, \mnras, 216, 273 
-\bibitem[ESA(1997)]{1997ESASP1200.....E} \NEW{ESA 1997, ESA Special Publication, 1200,}
-\bibitem[Famaey \& Dejonghe(2003)]{2003MNRAS.340..752F} Famaey, B., \& Dejonghe, H.\ 2003, \mnras, 340, 752 
-\bibitem[Foreman-Mackey et al.(2013)]{2013PASP..125..306F} Foreman-Mackey, D., Hogg, D.~W., Lang, D., \& Goodman, J.\ 2013, \pasp, 125, 306
-\bibitem[Garbari et al.(2012)]{2012MNRAS.425.1445G} Garbari, S., Liu, C., Read, J.~I., \& Lake, G.\ 2012, \mnras, 425, 1445 
-\bibitem[Gilmore \& Reid(1983)]{1983MNRAS.202.1025G} Gilmore, G., \& Reid, N.\ 1983, \mnras, 202, 1025 
-\bibitem[Gould \& Kollmeier(2004)]{2004ApJS..152..103G} \NEW{Gould, A., \& Kollmeier, J.~A.\ 2004, \apjs, 152, 103}
-\bibitem[Henon(1959)]{1959AnAp...22..126H} Henon, M.\ 1959, Annales d'Astrophysique, 22, 126 
-\bibitem[H{\o}g et al.(2000)]{2000A&A...355L..27H} \NEW{H{\o}g, E., Fabricius, C., Makarov, V.~V., et al.\ 2000, \aap, 355, L27}
-\bibitem[Holmberg et al.(2009)]{2009A&A...501..941H} Holmberg, J., Nordstr{\"o}m, B., \& Andersen, J.\ 2009, \aap, 501, 941 
-\bibitem[Hunt \& Kawata(2014)]{2014MNRAS.443.2112H} Hunt, J.~A.~S., \& Kawata, D.\ 2014, \mnras, 443, 2112 
-\bibitem[Ivezic et al.(2008)]{2008arXiv0805.2366I} \NEW{Ivezic, Z., Tyson, J.~A., Abel, B., et al.\ 2008, arXiv:0805.2366}
-\bibitem[Ivezi{\'c} et al.(2008)]{2008IAUS..248..537I} \NEW{Ivezi{\'c}, {\v Z}., Monet, D.~G., Bond, N., et al.\ 2008, A Giant Step: from Milli- to Micro-arcsecond Astrometry, 248, 537}
-\bibitem[Jordi et al.(2010)]{2010A&A...523A..48J} \NEW{Jordi, C., Gebran, M., Carrasco, J.~M., et al.\ 2010, \aap, 523, A48}
-\bibitem[Juri{\'c} et al.(2008)]{2008ApJ...673..864J} Juri{\'c}, M., Ivezi{\'c}, {\v Z}., Brooks, A., et al.\ 2008, \apj, 673, 864
-\bibitem[Kaiser et al.(2010)]{2010SPIE.7733E..0EK} \NEW{Kaiser, N., Burgett, W., Chambers, K., et al.\ 2010, \procspie, 7733, 77330E}
-\bibitem[Kuijken \& Gilmore(1989)]{1989MNRAS.239..605K} Kuijken, K., \& Gilmore, G.\ 1989, \mnras, 239, 605 
-\bibitem[McMillan \& Binney(2008)]{2008MNRAS.390..429M} McMillan, P.~J., \& Binney, J.~J.\ 2008, \mnras, 390, 429 
-\bibitem[McMillan(2012)]{2012EPJWC..1910002M} McMillan, P.~J.\ 2012, European Physical Journal Web of Conferences, 19, 10002 
-\bibitem[McMillan \& Binney(2012)]{2012MNRAS.419.2251M} McMillan, P.~J., \& Binney, J.\ 2012, \mnras, 419, 2251 
-\bibitem[McMillan \& Binney(2013)]{2013MNRAS.433.1411M} McMillan, P.~J., \& Binney, J.~J.\ 2013, \mnras, 433, 1411
-\bibitem[Monet et al.(2003)]{2003AJ....125..984M} \NEW{Monet, D.~G., Levine, S.~E., Canzian, B., et al.\ 2003, \aj, 125, 984}
-\bibitem[Munn et al.(2004)]{2004AJ....127.3034M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2004, \aj, 127, 3034}
-\bibitem[Munn et al.(2008)]{2008AJ....136..895M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2008, \aj, 136, 895}
-\bibitem[Nordstr{\"o}m et al.(2004)]{2004A&A...418..989N} Nordstr{\"o}m, B., Mayor, M., Andersen, J., et al.\ 2004, \aap, 418, 989 
-\bibitem[Perryman et al.(2001)]{2001A&A...369..339P} Perryman, M.~A.~C., de Boer, K.~S., Gilmore, G., et al.\ 2001, \aap, 369, 339 
-\bibitem[Piffl et al.(2014)]{2014MNRAS.445.3133P} Piffl, T., Binney, J., McMillan, P.~J., et al.\ 2014, \mnras, 445, 3133
-\bibitem[Read(2014)]{2014JPhG...41f3101R} Read, J.~I.\ 2014, Journal of Physics G Nuclear Physics, 41, 063101 
-\bibitem[Reid et al.(2009)]{2009ApJ...700..137R} Reid, M.~J., Menten, K.~M., Zheng, X.~W., et al.\ 2009, \apj, 700, 137-148 
-\bibitem[Rix \& Bovy(2013)]{2013A&ARv..21...61R} Rix, H.-W., \& Bovy, J.\ 2013, \aapr, 21, 61
-\bibitem[Robin et al.(2012)]{2012A&A...543A.100R} \NEW{Robin, A.~C., Luri, X., Reyl{\'e}, C., et al.\ 2012, \aap, 543, A100}
-\bibitem[Sanders \& Binney(2015)]{2015MNRAS.449.3479S} Sanders, J.~L., \& Binney, J.\ 2015, \mnras, 449, 3479
-\bibitem[Sanders \& Binney(2016)]{2016MNRAS.457.2107S} \NEW{Sanders, J.~L., \& Binney, J.\ 2016, \mnras, 457, 2107}
-\bibitem[Sesar et al.(2015)]{2015ApJ...809...59S} \NEW{Sesar, B., Bovy, J., Bernard, E.~J., et al.\ 2015, \apj, 809, 59}
-\bibitem[Skrutskie et al.(2006)]{2006AJ....131.1163S} \NEW{Skrutskie, M.~F., Cutri, R.~M., Stiening, R., et al.\ 2006, \aj, 131, 1163} 
-\bibitem[Steinmetz et al.(2006)]{2006AJ....132.1645S} Steinmetz, M., Zwitter, T., Siebert, A., et al.\ 2006, \aj, 132, 1645 
-\bibitem[Strigari(2013)]{2013PhR...531....1S} Strigari, L.~E.\ 2013, \physrep, 531, 1 
-\bibitem[Syer \& Tremaine(1996)]{1996MNRAS.282..223S} Syer, D., \& Tremaine, S.\ 1996, \mnras, 282, 223 
-\bibitem[Ting et al.(2013)]{2013MNRAS.434..652T} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G.\ 2013, \mnras, 434, 652
-\bibitem[Yanny et al.(2009)]{2009AJ....137.4377Y} Yanny, B., Rockosi, C., Newberg, H.~J., et al.\ 2009, \aj, 137, 4377 
-\bibitem[Zhang et al.(2013)]{2013ApJ...772..108Z} Zhang, L., Rix, H.-W., van de Ven, G., et al.\ 2013, \apj, 772, 108
-\end{thebibliography}
+%\begin{thebibliography}{}
+%\bibitem[Abazajian et al.(2003)]{2003AJ....126.2081A} \NEW{Abazajian, K., Adelman-McCarthy, J.~K., Ag{\"u}eros, M.~A., et al.\ 2003, \aj, 126, 2081}
+%\bibitem[Ahn et al.(2014)]{2014ApJS..211...17A} Ahn, C.~P., Alexandroff, R., Allende Prieto, C., et al.\ 2014, \apjs, 211, 17 
+%\bibitem[Batsleer \& Dejonghe(1994)]{1994AA...287...43B} Batsleer, P., \& Dejonghe, H.\ 1994, \aap, 287, 43
+%\bibitem[Binney \& Tremaine(2008)]{2008gady.book.....B} Binney, J., \& Tremaine, S.\ 2008, Galactic Dynamics: Second Edition
+%\bibitem[Binney(2010)]{2010MNRAS.401.2318B} Binney, J.\ 2010, \mnras, 401, 2318
+%\bibitem[Binney(2011)]{2011Prama..77...39B} Binney, J.\ 2011, Pramana, 77, 39
+%\bibitem[Binney \& McMillan(2011)]{2011MNRAS.413.1889B} Binney, J., \& McMillan, P.\ 2011, \mnras, 413, 1889
+%\bibitem[Binney(2012a)]{2012MNRAS.426.1324B} Binney, J.\ 2012a, \mnras, 426, 1324
+%\bibitem[Binney(2012b)]{2012MNRAS.426.1328B} Binney, J.\ 2012b, \mnras, 426, 1328
+%\bibitem[Binney(2013)]{2013NewAR..57...29B} Binney, J.\ 2013, NAR, 57, 29 
+%\bibitem[Bovy et al.(2012b)]{2012ApJ...751..131B} Bovy, J., Rix, H.-W., \& Hogg, D.~W.\ 2012b, \apj, 751, 131
+%\bibitem[Bovy et al.(2012c)]{2012ApJ...755..115B} Bovy, J., Rix, H.-W., Hogg, D.~W., et al.\ 2012c, \apj, 755, 115 
+%\bibitem[Bovy et al.(2012d)]{2012ApJ...753..148B} Bovy, J., Rix, H.-W., Liu, C., et al.\ 2012d, \apj, 753, 148
+%\bibitem[Bovy \& Tremaine(2012)]{2012ApJ...756...89B} Bovy, J., \& Tremaine, S.\ 2012, \apj, 756, 89
+%\bibitem[Bovy \& Rix(2013)]{2013ApJ...779..115B} Bovy, J., \& Rix, H.-W.\ 2013, \apj, 779, 115 (BR13)
+%\bibitem[Bovy(2015)]{2015ApJS..216...29B} Bovy, J.\ 2015, \apjs, 216, 29
+%
+%\bibitem[Bovy et al.(2016)]{2016ApJ...818..130B} Bovy, J., Rix, H.-W., 
+%Green, G.~M., Schlafly, E.~F., \& Finkbeiner, D.~P.\ 2016, \apj, 818, 130 
+%\bibitem[B{\"u}denbender et al.(2015)]{2015MNRAS.452..956B} B{\"u}denbender, A., van de Ven, G., \& Watkins, L.~L.\ 2015, \mnras, 452, 956 
+%\bibitem[Casagrande et al.(2011)]{2011A&A...530A.138C} Casagrande, L., Sch{\"o}nrich, R., Asplund, M., et al.\ 2011, \aap, 530, A138 
+%\bibitem[de Bruijne et al.(2014)]{2014EAS....67...23D} \NEW{de Bruijne, J.~H.~J., Rygl, K.~L.~J., \& Antoja, T.\ 2014, EAS Publications Series, 67, 23}
+%\bibitem[Dehnen \& Binney(1998)]{1998MNRAS.294..429D} Dehnen, W., \& Binney, J.\ 1998, \mnras, 294, 429 
+%\bibitem[de Lorenzi et al.(2007)]{2007MNRAS.376...71D} de Lorenzi, F., Debattista, V.~P., Gerhard, O., \& Sambhus, N.\ 2007, \mnras, 376, 71 
+%\bibitem[de Zeeuw(1985)]{1985MNRAS.216..273D} de Zeeuw, T.\ 1985, \mnras, 216, 273 
+%\bibitem[ESA(1997)]{1997ESASP1200.....E} \NEW{ESA 1997, ESA Special Publication, 1200,}
+%\bibitem[Famaey \& Dejonghe(2003)]{2003MNRAS.340..752F} Famaey, B., \& Dejonghe, H.\ 2003, \mnras, 340, 752 
+%\bibitem[Foreman-Mackey et al.(2013)]{2013PASP..125..306F} Foreman-Mackey, D., Hogg, D.~W., Lang, D., \& Goodman, J.\ 2013, \pasp, 125, 306
+%\bibitem[Garbari et al.(2012)]{2012MNRAS.425.1445G} Garbari, S., Liu, C., Read, J.~I., \& Lake, G.\ 2012, \mnras, 425, 1445 
+%\bibitem[Gilmore \& Reid(1983)]{1983MNRAS.202.1025G} Gilmore, G., \& Reid, N.\ 1983, \mnras, 202, 1025 
+%\bibitem[Gould \& Kollmeier(2004)]{2004ApJS..152..103G} \NEW{Gould, A., \& Kollmeier, J.~A.\ 2004, \apjs, 152, 103}
+%\bibitem[Henon(1959)]{1959AnAp...22..126H} Henon, M.\ 1959, Annales d'Astrophysique, 22, 126 
+%\bibitem[H{\o}g et al.(2000)]{2000A&A...355L..27H} \NEW{H{\o}g, E., Fabricius, C., Makarov, V.~V., et al.\ 2000, \aap, 355, L27}
+%\bibitem[Holmberg et al.(2009)]{2009A&A...501..941H} Holmberg, J., Nordstr{\"o}m, B., \& Andersen, J.\ 2009, \aap, 501, 941 
+%\bibitem[Hunt \& Kawata(2014)]{2014MNRAS.443.2112H} Hunt, J.~A.~S., \& Kawata, D.\ 2014, \mnras, 443, 2112 
+%\bibitem[Ivezic et al.(2008)]{2008arXiv0805.2366I} \NEW{Ivezic, Z., Tyson, J.~A., Abel, B., et al.\ 2008, arXiv:0805.2366}
+%\bibitem[Ivezi{\'c} et al.(2008)]{2008IAUS..248..537I} \NEW{Ivezi{\'c}, {\v Z}., Monet, D.~G., Bond, N., et al.\ 2008, A Giant Step: from Milli- to Micro-arcsecond Astrometry, 248, 537}
+%\bibitem[Jordi et al.(2010)]{2010A&A...523A..48J} \NEW{Jordi, C., Gebran, M., Carrasco, J.~M., et al.\ 2010, \aap, 523, A48}
+%\bibitem[Juri{\'c} et al.(2008)]{2008ApJ...673..864J} Juri{\'c}, M., Ivezi{\'c}, {\v Z}., Brooks, A., et al.\ 2008, \apj, 673, 864
+%\bibitem[Kaiser et al.(2010)]{2010SPIE.7733E..0EK} \NEW{Kaiser, N., Burgett, W., Chambers, K., et al.\ 2010, \procspie, 7733, 77330E}
+%\bibitem[Kuijken \& Gilmore(1989)]{1989MNRAS.239..605K} Kuijken, K., \& Gilmore, G.\ 1989, \mnras, 239, 605 
+%\bibitem[McMillan \& Binney(2008)]{2008MNRAS.390..429M} McMillan, P.~J., \& Binney, J.~J.\ 2008, \mnras, 390, 429 
+%\bibitem[McMillan(2012)]{2012EPJWC..1910002M} McMillan, P.~J.\ 2012, European Physical Journal Web of Conferences, 19, 10002 
+%\bibitem[McMillan \& Binney(2012)]{2012MNRAS.419.2251M} McMillan, P.~J., \& Binney, J.\ 2012, \mnras, 419, 2251 
+%\bibitem[McMillan \& Binney(2013)]{2013MNRAS.433.1411M} McMillan, P.~J., \& Binney, J.~J.\ 2013, \mnras, 433, 1411
+%\bibitem[Monet et al.(2003)]{2003AJ....125..984M} \NEW{Monet, D.~G., Levine, S.~E., Canzian, B., et al.\ 2003, \aj, 125, 984}
+%\bibitem[Munn et al.(2004)]{2004AJ....127.3034M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2004, \aj, 127, 3034}
+%\bibitem[Munn et al.(2008)]{2008AJ....136..895M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2008, \aj, 136, 895}
+%\bibitem[Nordstr{\"o}m et al.(2004)]{2004A&A...418..989N} Nordstr{\"o}m, B., Mayor, M., Andersen, J., et al.\ 2004, \aap, 418, 989 
+%\bibitem[Perryman et al.(2001)]{2001A&A...369..339P} Perryman, M.~A.~C., de Boer, K.~S., Gilmore, G., et al.\ 2001, \aap, 369, 339 
+%\bibitem[Piffl et al.(2014)]{2014MNRAS.445.3133P} Piffl, T., Binney, J., McMillan, P.~J., et al.\ 2014, \mnras, 445, 3133
+%\bibitem[Read(2014)]{2014JPhG...41f3101R} Read, J.~I.\ 2014, Journal of Physics G Nuclear Physics, 41, 063101 
+%\bibitem[Reid et al.(2009)]{2009ApJ...700..137R} Reid, M.~J., Menten, K.~M., Zheng, X.~W., et al.\ 2009, \apj, 700, 137-148 
+%\bibitem[Rix \& Bovy(2013)]{2013A&ARv..21...61R} Rix, H.-W., \& Bovy, J.\ 2013, \aapr, 21, 61
+%\bibitem[Robin et al.(2012)]{2012A&A...543A.100R} \NEW{Robin, A.~C., Luri, X., Reyl{\'e}, C., et al.\ 2012, \aap, 543, A100}
+%\bibitem[Sanders \& Binney(2015)]{2015MNRAS.449.3479S} Sanders, J.~L., \& Binney, J.\ 2015, \mnras, 449, 3479
+%\bibitem[Sanders \& Binney(2016)]{2016MNRAS.457.2107S} \NEW{Sanders, J.~L., \& Binney, J.\ 2016, \mnras, 457, 2107}
+%\bibitem[Sesar et al.(2015)]{2015ApJ...809...59S} \NEW{Sesar, B., Bovy, J., Bernard, E.~J., et al.\ 2015, \apj, 809, 59}
+%\bibitem[Skrutskie et al.(2006)]{2006AJ....131.1163S} \NEW{Skrutskie, M.~F., Cutri, R.~M., Stiening, R., et al.\ 2006, \aj, 131, 1163} 
+%\bibitem[Steinmetz et al.(2006)]{2006AJ....132.1645S} Steinmetz, M., Zwitter, T., Siebert, A., et al.\ 2006, \aj, 132, 1645 
+%\bibitem[Strigari(2013)]{2013PhR...531....1S} Strigari, L.~E.\ 2013, \physrep, 531, 1 
+%\bibitem[Syer \& Tremaine(1996)]{1996MNRAS.282..223S} Syer, D., \& Tremaine, S.\ 1996, \mnras, 282, 223 
+%\bibitem[Ting et al.(2013)]{2013MNRAS.434..652T} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G.\ 2013, \mnras, 434, 652
+%\bibitem[Yanny et al.(2009)]{2009AJ....137.4377Y} Yanny, B., Rockosi, C., Newberg, H.~J., et al.\ 2009, \aj, 137, 4377 
+%\bibitem[Zhang et al.(2013)]{2013ApJ...772..108Z} Zhang, L., Rix, H.-W., van de Ven, G., et al.\ 2013, \apj, 772, 108
+%\end{thebibliography}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % TABLE
@@ -872,10 +878,10 @@ Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} =
 volume size & \emph{$N_{*}$:} & 20,000 & & \\
 
 \tableline
-Test \testlabel{test:wedFlexVol} {4} :		& \emph{Potential:} 	& (i) \texttt{Iso-Pot} or (ii) \texttt{MW13-Pot} & (i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
-Influence of 			& 						& 													& (ii) \texttt{MW13-Pot}, $R_d$ and $f_h$ free & \\
-position \& shape 		& \emph{DF:}			& \texttt{hot} qDF 										& (i) qDF, all parameters free & \\
-of survey volume 		& 						& 													& (ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free& \\
+Test \testlabel{test:wedFlexVol} {4} :		& \emph{Potential:} 	& (i) \texttt{Iso-Pot} or (ii) \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} & (i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
+Influence of 			& 						& 													& (ii) \OLD{\texttt{MW13-Pot}, $R_d$ and $f_h$ free}\NEW{\texttt{DHB-Pot}, free parameters:} & \\
+position \& shape 		& 			&  										& \NEW{$v_\text{circ}(R_\odot)$, $a_\text{disk}$, $f_\text{halo}$}& \\
+of survey volume 		& \emph{DF:} & \texttt{hot} qDF											& \OLD{(i) }qDF, all parameters free\OLD{(ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free}& \\
 on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper panel & (fixed \& known) & \\
 						& \emph{$N_{*}$:} & 20,000 & & \\
 \tableline
