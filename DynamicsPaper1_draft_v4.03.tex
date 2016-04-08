@@ -92,9 +92,7 @@ Through dynamical modelling we can infer the Milky Way's (MW) gravitational pote
 
 The Galactic gravitational potential is fundamental for understanding the MW's dark matter and baryonic structure \citep{2012EPJWC..1910002M,2013A&ARv..21...61R,2013PhR...531....1S,2014JPhG...41f3101R} and the stellar-population-dependent orbit DF is a basic constraint on the Galaxy's formation history \citep{2013NewAR..57...29B,2015MNRAS.449.3479S}.
 
-There is a variety of practical approaches to dynamical modelling of discrete collisionless tracers, such as the stars in the MW, e.g., Jeans modelling (\citealt{1989MNRAS.239..605K}; \citealt{2012ApJ...756...89B}; \citealt{2012MNRAS.425.1445G}; \citealt{2013ApJ...772..108Z}; \citealt{2015MNRAS.452..956B}), action-based DF modelling (\citealt{2013ApJ...779..115B}; \citealt{2014MNRAS.445.3133P}; \citealt{2015MNRAS.449.3479S}\NEW{; \citealt{2016arXiv160309332D}}), torus modelling (\citealt{2008MNRAS.390..429M}; \citealt{2012MNRAS.419.2251M}; \citealt{2013MNRAS.433.1411M}), or made-to-measure modelling (\citealt{1996MNRAS.282..223S}; \citealt{2007MNRAS.376...71D}; or \citealt{2014MNRAS.443.2112H}). Most of them---explicitly or implicitly---describe the stellar distribution through a DF. Not all of them avoid binning to exploit the full discrete information content of the data.
-
-\Wilma{[TO DO: Magorrian (2014) has provided a framework for constraining the potential without assuming a particular parametrized form for the DF. Whilst Magorrian's method is computationally intensive, it should be referenced in the introduction as it relates to the later discussion of choosing a particular DF parametrization.]}
+There is a variety of practical approaches to dynamical modelling of discrete collisionless tracers, such as the stars in the MW, e.g., Jeans modelling (\citealt{1989MNRAS.239..605K}; \citealt{2012ApJ...756...89B}; \citealt{2012MNRAS.425.1445G}; \citealt{2013ApJ...772..108Z}; \citealt{2015MNRAS.452..956B}), action-based DF modelling (\NEW{with parametric DFs:} \citealt{2013ApJ...779..115B}; \citealt{2014MNRAS.445.3133P}; \citealt{2015MNRAS.449.3479S}\NEW{; \citealt{2016arXiv160309332D}; with non-parametric DFs: \citealt{2014MNRAS.437.2230M}}), torus modelling (\citealt{2008MNRAS.390..429M}; \citealt{2012MNRAS.419.2251M}; \citealt{2013MNRAS.433.1411M}), or made-to-measure modelling (\citealt{1996MNRAS.282..223S}; \citealt{2007MNRAS.376...71D}; or \citealt{2014MNRAS.443.2112H}). Most of them---explicitly or implicitly---describe the stellar distribution through a DF. Not all of them avoid binning to exploit the full discrete information content of the data.
 
 Recently, \citet{2012MNRAS.426.1328B} and \citet{2013ApJ...779..115B} proposed \OLD{to constrain}\NEW{constraining} the MW's gravitational potential by combining parametrized axisymmetric potential models with DFs that are simple analytic functions of the three orbital actions to model discrete data.
 
@@ -156,7 +154,7 @@ For the gravitational potential in our modelling we assume a family of parametri
 %====================
 \begin{deluxetable*}{llcll}[!htbp]
 \tabletypesize{\scriptsize}
-\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \texttt{MW13-Pot} \Wilma{[TO DO: Remove MW13]} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
+\tablecaption{Axisymmetric gravitational potential models used \OLD{troughout}\NEW{throughout} this work. The potential parameters are fixed for the mock data creation at the values given in this table, which we susequently aim to recover with \RM{}. The parameters of \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} and \texttt{KKS-Pot} were chosen by eye to resemble the \texttt{MW14-Pot} (see Figure \ref{fig:ref_pots}). We use $v_\text{circ}(R_\odot)$ = $230~\text{km s}^{-1}$ as the circular velocity at the Sun for all potentials in this work. \label{tbl:referencepotentials}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{name} & \colhead{potential model} & \multicolumn{2}{c}{parameters $p_\Phi$} & \colhead{action calculation}}
@@ -186,7 +184,7 @@ For the gravitational potential in our modelling we assume a family of parametri
 %                               & \citep{2013ApJ...779..115B} & & & \\
 \tableline
 \texttt{MW14-Pot} & MW-like potential\tablenotemark{(d)}: \OLD{with} &  & & \textbf{\emph{approximate}} \\
-                               & Miyamoto-Nagai\OLD{ stellar} disk, & & & (same as \texttt{MW13-Pot}) \Wilma{[TO DO: Remove MW13]}\\
+                               & Miyamoto-Nagai\OLD{ stellar} disk, & & & (same as \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}})\\
                                & NFW halo, & & & \\
                                & \NEW{cut-off power-law bulge} & & & \\
                                & \citep{2015ApJS..216...29B} & & & 
@@ -358,8 +356,6 @@ with
 \vect{y}'_{i,n} \sim N[\vect{y}_i,\delta \vect{y}_i].\nonumber
 \end{eqnarray}
 
-\Wilma{[TO DO: The referee writes: "Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?"] [Make clear the otherwise we have to calculate normalization for each star] [Is a reason why we have to restrict the analysis to stars with good distance such that this approximation is not too far off.]}
-
 The above approximation \OLD{also} assumes that the star's \emph{position} $\tilde{\vect{x}}_i$ is perfectly measured. As the SF is also velocity independent, this simplifies the normalisation drastically to Equation \eqref{eq:normalisation}. Measurement uncertainties in $\mathrm{RA}$ and $\mathrm{Dec}$ are often negligible anyway. The uncertainties in the Galactocentric \emph{velocities} $\vect{v}_i = (v_{R,i},v_{T,i},v_{z,i})$ depend \OLD{besides}\NEW{not only} on $\delta \vect{\mu}$ and $\delta v_\text{los}$ \NEW{but} also on the distance and its uncertainty, which we do \emph{not} neglect when drawing MC samples $\vect{y}'_{i,n}$ from the full uncertainty distribution $N[\vect{y}_i,\delta \vect{y}_i]$. \NEW{ An analogous but one-dimensional treatment of measurement uncertainties in only $v_z$ was already applied by BR13. Similar approaches ignoring measurement uncertainties in the likelihood normalisation were for example also used by \citet{2013MNRAS.433.1411M} and \citet{2016arXiv160309332D}. In Section \ref{sec:results_errors}, Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE} (Test \ref{test:isoSphFlexErrConv_bias_vs_SE} in Table \ref{tbl:tests}), we investigate the breakdown of this approximation for non-negligible distance uncertainties.}
 
 Figure \ref{fig:isoSphFlexErrConv_MC_vs_error} demonstrates that in the absence of position uncertainties the $N_\text{samples}$ needed for the convolution integral to converge depends as
@@ -416,14 +412,10 @@ The second step samples the shape of the \pdf{} using MCMC. Formally, calculatin
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Results} \label{sec:results}
 
-We are now in a position to examine the limitations of action-based modelling posed in the introduction using our \RM{} machinery. We explore: (i) whether the parameter estimates are unbiased, (ii) the role of the survey volume, (iii) imperfect selection functions, (iv) measurement uncertainties, and what happens if the true (v) DF or (vi) potential are not included in the space of models. We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state.
+We are now in a position to examine the limitations of action-based modelling posed in the introduction using our \RM{} machinery. We explore: (i) whether the parameter estimates are unbiased, (ii) the role of the survey volume, (iii) imperfect selection functions, (iv) measurement uncertainties, and what happens if the true (v) DF or (vi) potential are not included in the space of models. We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state \NEW{nor the impact of resonances---which should be a task for future studies}.
 
 \NEW{We will rely on mock data as input to explore the limitations of the modelling. The mock data is generated directly from the fiducial potential and DF models introduced in Sections \ref{sec:potentials} and \ref{sec:qDF}, following the procedure described in Appendix \ref{sec:mockdata}.} With the exception of the test suite on measurement uncertainties in Section \ref{sec:results_errors}, we assume that phase-space uncertainties are negligible. All tests are also summarized in Table \ref{tbl:tests}. 
 
-\Wilma{[TO DO: It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \HW{I wonder as well about the impact of resonances, particularly when the data are very high quality. --> pragmatic way look at simulations where that happens
---> we presume that the data deviation residuals from the best fit
-axisymmetric model may be a good way to investiagte resonances
-} This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach.]}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -690,7 +682,11 @@ In case the data set is affected by substantive measurement uncertainties, the p
 
 For the results to be accurate within $2\sigma$ (for 10,000 stars), we need to know to within 10\% both the true stellar distances (at $r_\text{max} \leq 3~\text{kpc}$ and $\delta \mu \lesssim 2 ~ \text{mas yr}^{-1}$) and the true proper motion uncertainties (with $\delta \mu \lesssim 3 ~ \text{mas yr}^{-1}$).
 
+\NEW{The former restriction is an artefact of the likelihood approximation, Equation \eqref{eq:errorconv}, that \RM{} uses to save computation time, and the reason why we will have to restrict the \RM{} modelling to stars with small distance uncertainties.}
+
 \Wilma{[TO DO: Perhaps add statements comparing the errors explored to those anticipated from Gaia.]}
+
+\NEW{The main caveat of Tests \ref{test:isoSphFlexErrConv_MC_vs_error} and \ref{test:isoSphFlexErrConv_SE_vs_error}- \ref{test:isoSphFlexErrSyst} (see Table \ref{tbl:tests}) investigating the effect of measurement uncertainties is the use of the \texttt{Iso-Pot}, which we choose for its advantages concerning computational speed. However, Tests \ref{test:isoSphFlexIncomp} and \ref{test:MWdhbMix}, which we run for both the \texttt{DHB-Pot} and the \texttt{Iso-Pot}, gave qualitatively and quantitatively very similar results for both potentials. This makes us confident that also our results considering the measurement uncertainties are independent of the actual choice of potential.}
 
 We also found that the location of the survey volume within the Galaxy matters little. At given sample size a larger survey volume with large coverage in both radial and vertical direction will give the tightest constraints on the model parameters.
 
@@ -719,6 +715,8 @@ For as many as 20,000 stars constraints become already so tight that it should p
 
 \noindent {\bf Different modelling approaches using action-based DFs:~} BR13 focussed on \MAPs{} for a number of reasons: First, they seem to permit simple DFs \citep{2012ApJ...751..131B,2012ApJ...755..115B,2012ApJ...753..148B}, i.e., approximately qDFs \citep{2013MNRAS.434..652T}. Second, all stars must orbit in the same potential. While each \MAP{} can yield different DF parameters, it will also provide a (statistically) independent estimate of the potential. This allows for a valuable cross-checking reference. In some sense, the \RM{} approach focusses on constraining the potential, treating the DF parameters as nuisance parameters. That we were able to show in this work that \RM{} results are quite robust to the form of the DF not being entirely correct motivates this approach further. 
 
+\NEW{\citet{2014MNRAS.437.2230M} introduced a framework which avoids specific parametrizations of action-based DFs and marginalizes over all possible DFs to constrain the potential. While this might be the proper way to treat the nuisance DF, it appears to be computationally very challenging.}
+
 For reasons of galaxy and chemical evolution, the DF properties are astrophysically linked between different \MAPs{} \citep{2015MNRAS.449.3479S}. In its current implementation, \RM{} treats all \MAPs{} as independent and dos not exploit such correlations. Ultimately, the goal is to do a consistent chemodynamical model that simultaneously fits the potential and $\text{DF}(\vect{J},\text{[X/H]})$ (where $[\mathrm{X}/\mathrm{Fe}]$ \Wilma{[TO DO: Typo --> [X/H]. Also write: x/H is Fe/H and other elements either referenced to H or Fe.]} denotes the whole abundance space) with a full likelihood analysis. This has not yet been attempted with \RM{}, because the behaviour is quite complex. 
 
 \HW{[TO DO: The referee writes: "The definition of X in f(J,[X/H]) doesn't seem to make sense."]}
@@ -730,6 +728,8 @@ Since the first application of \RM{} by BR13 there have been two similar efforts
 \citet{2015MNRAS.449.3479S} have focussed on understanding the abundance-dependence of the DF, relying on a fiducial potential. They developed extended distribution functions (eDF), i.e., functions of both actions and metallicity for a superposition of thin and thick disk, each consisting of several cohorts described by qDFs, a DF for the halo, a functional form of the metallicity of the interstellar medium at the time of birth of the stars, and a simple prescription for radial migration. They applied a full likelihood analysis accounting for selection effects and found a best fit for the eDF in the fixed fiducial potential by \citet{1998MNRAS.294..429D} to the stellar phase-space data of the Geneva-Copenhagen Survey \citep{2004A&A...418..989N,2009A&A...501..941H}, metallicity determinations by \citet{2011A&A...530A.138C} and the stellar density curves by \citet{1983MNRAS.202.1025G}. Their best fit predicted the velocity distribution of SEGUE G-dwarfs \citep{2014ApJS..211...17A} quite well, but had biases in the metallicity distribution, which they accounted to being a problem with the SEGUE metallicities. \\
 
 \noindent {\bf Future work:~} We know that real galaxies, including the MW, are not axisymmetric. Using N-body models, we will explore in a subsequent paper how the recovery of the gravitational potential with \RM{} will be affected when data from a non-axisymmetric system get interpreted through axisymmetric models. In this context further investigations of questions that came up in Section \ref{sec:results_incompR} (``How much of the information on the potential is stored in the rotation curve?'') and earlier in Section \ref{sec:discussionsummary} (``What is better: fitting a MW-like potential using approximate St\"ackel actions, or fitting a St\"ackel potential to the MW using exact actions?'') should also be conducted.
+
+\NEW{Within the setup of this study using mock data drawn from axisymmetric Galaxy models, it is not possible to investigate the breakdown of the assumptions of axisymmetry and steady state or the influence of resonant orbits. The most pragmatic way to study this would be to apply \RM{} to simulations of disk galaxies with spiral arms, bars etc. and to investigate the data deviation residuals from the best fit axisymmetric model. We plan to do this in a future paper.}
 
 \Wilma{[TO DO: The first section in future work is very interesting. \HW{Use of different DFs and potentials as explored in this paper is interesting but a true test of the apparatus on a more realistic galaxy} would make the 'RoadMapping' tool much more attractive.]}
 
@@ -847,13 +847,13 @@ the likelihood       & \emph{Numerical accuracy:} & \OLD{$N_x\in[5,20]$, $N_v\in
 normalisation           &                       & & & \NEW{required for cooler populations.}\\
 \tableline
 Test \testlabel{test:isoSphFlexErrConv_MC_vs_error}{2} :		& \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_MC_vs_error}\\
-Numerical convergence 	& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \\
-of convolution		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \\
-with measurement		& \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{Dec} =\delta(m-M)=0$	& (fixed \& known)	& \\
-uncertainties					&						& $\delta v_\text{los} = 2~\text{km s}^{-1}$ &  & \\
-						&						& $\delta \mu =$ 2,3,4 or $5~\text{mas yr}^{-1}$ & & \\
-						& \emph{Numerical Accuracy:} & & $N_\text{samples} \in [25,1200]$& \\
-						& \emph{$N_{*}$:} & 10,000 & & \\	   
+Numerical convergence 	& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & \NEW{The number of required MC samples}\\
+of convolution		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed \& known) & \NEW{scales as $N_\text{samples} \propto (\delta v_\text{max})^2$,}\\
+with measurement		& \emph{Uncertainties:}		& $\delta \text{RA} =\delta \text{Dec} =\delta(m-M)=0$	& (fixed \& known)	& \NEW{with $\delta v_\text{max}$ being the largest $\delta v$}\\
+uncertainties					&						& $\delta v_\text{los} = 2~\text{km s}^{-1}$ &  & \NEW{in the data set. If $N_*$ is smaller,}\\
+						&						& $\delta \mu =$ 2,3,4 or $5~\text{mas yr}^{-1}$ & & \NEW{less accuracy, i.e., less $N_\text{samles}$,}\\
+						& \emph{Numerical accuracy:} & & $N_\text{samples} \in [25,1200]$& \NEW{are needed to reach a}\\
+						& \emph{$N_{*}$:} & 10,000 & & \NEW{given accuracy.}\\	   
 \tableline
 Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlex_triangleplot}\\
 \NEW{Shape of the model }\OLD{The \pdf{} is a}\NEW{}               & \emph{DF:}          & \texttt{hot} qDF & qDF, all parameters free & \NEW{The \pdf{} becomes a multivariate}\\
@@ -872,16 +872,17 @@ Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{I
 Test \testlabel{test:isoSph_CLT} {3.2}:        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:isoSph_CLT}\\
 Parameter estimates     & \emph{DF:}       &\texttt{hot} or \texttt{cool} qDF & qDF, free parameters: & \NEW{\RM{} behaves like an}\\
 are unbiased;           &          &    & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \NEW{unbiased maximum likelihood}\\
-Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & (fixed \& known) & \NEW{estimator.} \Wilma{[TO DO: Volume result]}\\
-volume size & \emph{$N_{*}$:} & 20,000 & & \\
+Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & (fixed \& known) & \NEW{estimator. Larger survey volumes}\\
+volume size & \emph{$N_{*}$:} & 20,000 & & \NEW{lead to tighter constraints,}\\
+& & & & \NEW{even at the same $N_*$.}\\
 
 \tableline
 Test \testlabel{test:wedFlexVol} {4} :		& \emph{Potential:} 	& (i) \texttt{Iso-Pot} or (ii) \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} & (i) \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:wedFlexVol_bias_vs_SE} \\
-Influence of 			& 						& 													& (ii) \OLD{\texttt{MW13-Pot}, $R_d$ and $f_h$ free}\NEW{\texttt{DHB-Pot}, free parameters:} & \\
-position \& shape 		& 			&  										& \NEW{$v_\text{circ}(R_\odot)$, $a_\text{disk}$, $f_\text{halo}$}& \\
-of survey volume 		& \emph{DF:} & \texttt{hot} qDF											& \OLD{(i) }qDF, all parameters free\OLD{(ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free}& \\
-on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper panel & (fixed \& known) & \\
-						& \emph{$N_{*}$:} & 20,000 & & \\
+Influence of 			& 						& 													& (ii) \OLD{\texttt{MW13-Pot}, $R_d$ and $f_h$ free}\NEW{\texttt{DHB-Pot}, free parameters:} & \NEW{The exact position \& shape of the}\\
+position \& shape 		& 			&  										& \NEW{$v_\text{circ}(R_\odot)$, $a_\text{disk}$, $f_\text{halo}$}& \NEW{survey volume plays only a}\\
+of survey volume 		& \emph{DF:} & \texttt{hot} qDF											& \OLD{(i) }qDF, all parameters free\OLD{(ii) qDF, only $h_R$, $\sigma_{z,0}$ and $h_{\sigma,R}$ free}& \NEW{minor role. Having both large }\\
+on parameter recovery 	& \emph{Survey volume:}	& 4 different wedges, see Figure \ref{fig:wedFlexVol_bias_vs_SE}, upper panel & (fixed \& known) & \NEW{radial and vertical extent should}\\
+						& \emph{$N_{*}$:} & 20,000 & &  \NEW{give the tightest constraints.}\\
 \tableline
 Test \testlabel{test:isoSphFlexIncomp}{5} :        & \emph{Potential:}     & \OLD{\texttt{Iso-Pot}}\NEW{\texttt{DHB-Pot}} & \OLD{\texttt{Iso-Pot}, all parameters free}\NEW{\texttt{DHB-Pot}, free parameters:} & Figures \ref{fig:MWdhbIncompR_violins} \OLD{\& \ref{fig:isoSphFlexIncompR_marginal_violins}}\\
 Influence of & & & \NEW{$v_\text{circ}(R_\odot), a_\text{disk}, f_\text{halo}$} &\NEW{For minor misjudgements}\\
@@ -931,11 +932,12 @@ stars' true DF                &                   & ... with different mixing ra
                         &					  & \emph{b)} \texttt{cool} \& \texttt{warmer} qDF (see Table \ref{tbl:referenceMAPs}) & & \NEW{e.g., due to finite binning in}\\
                         & \emph{Survey volume:}& sphere around Sun, $r_\text{max}=2~\text{kpc}$ & (fixed \& known) & \NEW{abundance space and abundance}\\
                         & \emph{$N_{*}$:} & 20,000 & & \NEW{errors.}\\
-                        \tableline
+
+\tableline
 Test \testlabel{test:MW14vsKKS2New}{8} :			&  \emph{Potential:} & \texttt{MW14-Pot} & \texttt{KKS-Pot}, all parameters free, & Figures \ref{fig:MW14vsKKS2New_mockdata_residuals}, \ref{fig:MW14vsKKS2New_contours} \& \ref{fig:MW14vsKKS2New_violins}\\
-Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230~\text{km s}^{-1}$ fixed &  \\
-assumed potential model	& \emph{DF:}       & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \\
-from the stars'			& \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 4~\text{kpc}$ & (fixed \& known) &  \\
+Deviations of the		&                    &            & only $v_\text{circ}(R_\odot)=230~\text{km s}^{-1}$ fixed & \NEW{It appears to be possible to}\\
+assumed potential model	& \emph{DF:}       & \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & \NEW{find a good approximation for the true potential}\\
+from the stars'			& \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 4~\text{kpc}$ & (fixed \& known) &  \NEW{given the limitations of the pot. model}\\
 true potential                        & \emph{$N_{*}$:} & 20,000 & & \\
                                             & \NEW{\emph{Numerical accuracy:}} & & \NEW{$N_x=20, N_v = 28, n_\sigma = 5.5$} & 
 \enddata
