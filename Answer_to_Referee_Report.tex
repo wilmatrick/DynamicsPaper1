@@ -107,7 +107,7 @@ in the paper. I have detailed places in the paper where things could be changed.
 There is also a short list of typos at the end.\\\\
 
 
-\section{Abstract}
+\section{"Abstract"}
 \begin{itemize}
 \item 1. 4th sentence -- explain what 'slightly wrong' means more quantitatively. \Comment{I had to delete this sentence because the abstract was too long. I tried however to give some qualitative statements for all the results I'm summarizing in the abstract.}
 \item 2. 5th sentence -- Are the constraints of high precision on the potential or DF? -- clarify \Comment{This sentence was also removed. In the original abstract however I meant that the constraints on both potential and DF parameters are precise.}
@@ -115,15 +115,15 @@ There is also a short list of typos at the end.\\\\
 \item \Comment{\textbf{Additional changes:} The abstract was partly rewritten, to (a) meet the limit of 250 words, (b) focus more on the key results of the work, (c) make it clearer that we used idealized test cases.}
 \end{itemize}
 
-\section{Introduction}
+\section{"1. Introduction"}
 \begin{itemize}
 \item 1. Magorrian (2014) has provided a framework for constraining the potential without assuming a particular parametrized form for the DF. Whilst Magorrian's method is computationally intensive, it should be referenced in the introduction as it relates to the later discussion of choosing a particular DF parametrization. \Comment{Thanks for the suggestion. I included the reference in the paragraph on different modelling methods in the introduction. I also added a little paragraph in the discussion of different modelling methods.}
 \item 2. At the end of the introduction I think that you should refer people more strongly to the results section as much of section 2 is presenting a framework that appears elsewhere. \Comment{Most of the introduction on page 2 is a list of the different questions we try to investigate in the result section of this paper paper. But to make sure that the reader knows immediately what the key results are, I added a sentence pointing again to the corresponding sections at the very end of the introduction.}
 \end{itemize}
 
-\section{Dynamical Modelling}
+\section{"2. Dynamical Modelling"}
 
-\subsection{Section 2.2}
+\subsection{Section 2.2 - Now: "2.2 Actions" \& "2.3 Potential models"}
 \begin{itemize}
 \item 1. A slightly fuller introduction of the actions is merited. Mention why the actions are introduced. What advantages do they present? Also state that the action-angles are canonical -- this is important later for transformation of the pdf. \Comment{I completely agree. I added a corresponding section.}
 \item 2. The third sentence isn't quite right -- the most general are the triaxial Staeckel potentials of which the axisymmetric Staeckel potentials are special cases and all spherical potentials are special cases of these. THe isochrone potential is the most general potential in which the actions are not computed as a quadrature. \Comment{Thanks for making it clearer for me. I changed the text accordingly.}
@@ -132,58 +132,60 @@ Re-iterate that the reason for using the isochrone and Staeckel potential is the
 \item \Comment{\textbf{Additional changes:} I removed the \texttt{MW13-Pot} completely from the paper and replaced it with the \texttt{DHB-Pot} everywhere, also in Table 1 and Figure 1. I wanted to have only four different potentials in the paper, and the \texttt{DHB-Pot} was much better suited to re-run some of the tests in short time than the \texttt{MW13-Pot}, for which the analysis is very slow due to the use of an exponential disk.}
 \end{itemize}
 
-\subsection{Section 2.3}
+\subsection{Section 2.3 - Now: "2.4 Stellar distribution functions"}
 \begin{itemize}
 \item 1. Guiding-center should not be in brackets as this is important. \Comment{Done.}
 \item 2. The final sentence of the left-hand column of Fig 3 should read $L<<L_0$. \Comment{Thanks for pointing out that typo. I wrote $L < L_0$ instead.}
 \item 3. Top of page 4 -- explain what X is in the text. \Comment{Done.}
-\item 4. Do you interpolate in log density? \Comment{Yes, I did. I mentioned it in the paper as well.}
+\item 4. Do you interpolate in log density? \Comment{Yes, I did. I now mention it in the paper as well.}
 \item 5. The footnote says 'should be chosen as' -- add a forward reference to Fig. 4 \Comment{Done.}
 \item \Comment{\textbf{Additional changes:} I added a paragraph at the beginning of this section which discusses why the Jacobian = 1 (which I mentioned in Section 2.2 as requested by the referee) allows us to consider DF(x,v) and DF(J) equivalently as probability of a star to be at (x,v).}
 \end{itemize}
 
-\subsection{Section 2.4}
+\subsection{Section 2.4 - Now: "Appendix B: Selection Functions"}
 \begin{itemize}
 \item 1. An entire section dedicated to this topic seems unnecessary. See below. \Comment{I moved this section to the Appendix (because I also wanted to further motivate the "unrealistic" selection functions we use in this work).}
 \end{itemize}
 
-\subsection{Section 2.5}
+\subsection{Section 2.5 - Now: "Appendix A: Mock data"}
 \begin{itemize}
 \item 1. As this section only explains technical details rather than testing the apparatus I think that this section can be put in an appendix along with Fig. 2 and 3. Fig 2 and 3 are illustrative but I think that they are similar to BR13 Fig2 and 3 so do not need to appear in the main body. I don't think it is a 'test' so should be removed from Table 3. \Comment{I agree. I moved the mock data section and figures to the appendix and removed the parameters belonging to Figure 2 + 3 from the 'tests' Table 3.}
 \item 2. The discussion of selection on very errorneous x coordinates is interesting but surely this isn't the way the data will actually be handled?
 \Comment{We are not 100\% sure that we understand the referee's main point. If one considers several percent of distance errors at the edge of the survey volume, the volume from which stars can get scattered outwards or inwards due to Poisson noise is larger than the survey volume. This is why we create perfect data in a large volume, before we first perturb it according to the measurement errors and then select the stars that would enter the actual survey volume and therefore data catalogue. For contiguous surveys like Gaia or Hipparcos we would of course not have a survey volume with a sharp edge and the survey selection function is more likely to be a magnitude cut. But for intrinsic standard candles like red clump stars a magnitude cut translates to a distance cut. We realise it's idealized and there won't be a sharp distance cut. But scatter in and out of survey volume will play a role and we explore an ideal case. \Wilma{[TO DO: Move part of it to the above discussion of selection function.]}}
 \end{itemize}
 
-\subsection{Section 2.6}
+\subsection{Section 2.6 - Now: "2.5 Data likelihood", "2.6 Likelihood normalisation" \& "2.7 Measurement uncertainties"}
 \begin{itemize}
 \item 1. The selection function can be briefly mentioned at the beginning of this section and stated that you assume here for simplicity it is a function of $\vec{x}$. \Comment{Done.}
 \item 2. The Jacobian from J,theta to x,v should be mentioned here. \Comment{I already put a little bit of the implications of the Jacobian for the DF at the beginning of Section 2.4 "Stellar distribution functions", but I added also a footnote here that explains why we can integrate DF(J) easily over (x,v) in the likelihood normalisation.}
 \item 3. pdf should be defined in a separate equation. \Comment{Done.}
-\item 4. \hl{Figure 4. -- it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to.}\\\HW{Comment by Wilma: I can re-run it. What would be large enough values? - On the other hand I'm not sure, if we maybe should tackle the question of numerical accuracy in a different way. Let's talk about this...}
-\item 5. Make the normalization discussion a separate section.
-\item 6. The discussion of the likelihood normalization should reference and compare with McMillan and Binney (2013) as the discussion is very similar.
-\item 7. \hl{Is there any general advice on how to choose $N_x$, $N_v$ and $N_\sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset?} \HW{[Comment by Wilma: My honest answer is "If you have 20,000 stars, you can start with the same parameters as me. But yes, ultimately you would have to do the full exercise to find out, if for your special case this accuracy is fine.". Is it okay to say it like this? I have no idea what other general advice I should give...]}
-\item 8. Put error discussion in separate section.
-\item 9. Reduce size of caption for Fig 5. More of the details could go in the text.
-\item 10. \hl{Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow?} \Comment{In our simple test scenarios it should be indeed computationally possible to convolve the selection function with the homoscedastic uncertainties and not use the approximation in Equation (15) - independent of potential. However, in each realistic case (heteroscedastic errors, more complex selection functions, etc.) the proper treatment would be actually computationally way too expensive as the normalisation has to be calculated for each star separately. We will therefore never actually want to use the proper likelihood formula, and always use the approximation. Ignoring measurement uncertainties in the normalisation is by the way also done in similar studies, like McMillan \& Binney (2013) and Das \& Binney (2016). We are the first to test this approximation a bit. That we used the Iso-Pot instead of a more realistic potential was simply for its computational speed, because we wanted to investigate a large number of mock data sets at different accuracies to be able to do some statistics. If it would have been feasible, we would have done the test with a more realistic potential. We still think that it should not make a huge difference. In the tests that we run with both Iso-Pot and a more realistic DHB-Pot we always got pretty similar results - also quantitatively. I added some sentences in the paper, to stress more the computational expense when NOT using the approximation and added a caveat in the discussion that we tested the approximation with the Iso-Pot only.}
-\item 11. The penultimate sentence of this section contradicts the previous sentence without validation. Why is this?
+\item 4. Figure 4. -- it wasn't clear to me that the 'truth' normalization used a high enough set of parameters. $N_x=20$, $N_v=56$ and $n_\sigma=7$ only seem slightly larger than the values actually compared to. \Comment{Yes. I re-run this test with a higher accuracy $N_x=32$, $N_v = 68$, $n_\sigma = 7$ for the "true" normalisation.  I also used the \texttt{DHB-Pot} in this plot instead of the \texttt{KKS-Pot}, which was used in the original plot. The reason for the change is, that the \texttt{DHB-Pot} is used in more tests. I was also interested how this test depends on the kinematic temperature of the population. And as there seems to be a dependence, I added a new row of panels for the cool population in this plot. It turned out that for the cool population the accuracy condition was not satisfied for all volumes. So overplotted little black stars that show which volumes are actually used in tests of this paper, to assure the reader that for the actual tests the condition was satisfied.}
+\item 5. Make the normalization discussion a separate section. \Comment{Done.}
+\item 6. The discussion of the likelihood normalization should reference and compare with McMillan and Binney (2013) as the discussion is very similar. \Comment{Thanks for the suggestion. I included a paragraph where I compare their work on the likelihood normalisation with ours.}
+\item 7. Is there any general advice on how to choose $N_x$, $N_v$ and $N_\sigma$? The authors have shown it is OK for the mock datasets but do I have to redo the authors' exercise when I have a real dataset? \Comment{The short answer is unfortunately "yes", you would need to go through the full exercise. I think if you use a similar DF and potential than we did in Figure 2, you could use Figure 2 to look what accuracy you need for your number of stars. Or use our values as starting values and optimize later. But otherwise you need to check on a case-by-case basis if your accuracy was high enough. I added a corresponding sentence in the paper and explain (in a footnote) why it depends on both kinematic temperature and also the particular potential model what accuracy you need.}
+\item 8. Put error discussion in separate section. \Comment{Done.}
+\item 9. Reduce size of caption for Fig 5. More of the details could go in the text. \Comment{Done.}
+\item 10. Equation (15) is a novelty. It is troubling that the tests that use this approximation all seem to use the isochrone but the approximation is still necessary. Is that because it is computationally awkward to calculate this integral or just very slow? \Comment{In our simple test scenarios it should be indeed computationally possible to convolve the selection function with the homoscedastic uncertainties and not use the approximation in Equation (15) - independent of potential. However, in each realistic case (heteroscedastic errors, more complex selection functions, etc.) the proper treatment would be actually computationally way too expensive as the normalisation has to be calculated for each star separately. We will therefore never actually want to use the proper likelihood formula, and always use the approximation. Ignoring measurement uncertainties in the normalisation is by the way also done in similar studies, like McMillan \& Binney (2013) and Das \& Binney (2016). We are the first to test this approximation a bit. That we used the Iso-Pot instead of a more realistic potential was simply for its computational speed, because we wanted to investigate a large number of mock data sets at different accuracies to be able to do some statistics. If it would have been feasible, we would have done the test with a more realistic potential. We still think that it should not make a huge difference. In the tests that we run with both Iso-Pot and a more realistic DHB-Pot we always got pretty similar results - also quantitatively. I added a sentences in the section, to stress more the computational expense when NOT using the approximation and added a caveat in the discussion that we tested the approximation with the Iso-Pot only.}
+\item 11. The penultimate sentence of this section contradicts the previous sentence without validation. Why is this? \Comment{Thanks for pointing it out. That was indeed confusing. After running more tests for both the \texttt{Iso-Pot} and \texttt{DHB-Pot} I think the reason is, that the recovery of $v_\text{circ}(R_\odot)$ behaves in the \texttt{Iso-Pot} always as expected and similar to \texttt{DHB-Pot}. To not get biases in $v_\text{circ}(R_\odot)$ one needs more $N_\text{samples}$ for higher $N_*$, as expected. For the isochrone scale length $b$ this trend was not so clear. I think that this is a specific property of the \text{Iso-Pot}. I rewrote those two sentences in the paper and specified a bit more closely what we observed for smaller $N_*$ and different parameters.}
+\item \Comment{\textbf{Additional changes:} In the section "Data likelihood" I added a paragraph that argues why we chose to use a Bayesian framework, to address the comments by Dr. Feigelson (see below).}
 \end{itemize}
 
-\subsection{Section 2.7}
+\subsection{Section 2.7 - Now: "2.8 Fitting procedure"}
 \begin{itemize}
 \item 1. I liked this section -- it was well thought out and informative. \Comment{Thanks. :-)}
-\item 2. \hl{Here a fixed sampling is used for the error samples. I think again you should reference McMillan \& Binney (2013) as they discussed the numerical stability of this method.}
+\item 2. Here a fixed sampling is used for the error samples. I think again you should reference McMillan \& Binney (2013) as they discussed the numerical stability of this method. \Comment{I referenced this paper, but not in this section, which is more about fitting and less about measurment errors. I mentioned it in "2.7 Measurement uncertainties" as a similar approach using MC sampling for convolution with the measurement errors.}
 \end{itemize}
 
-\section{Section 3}
+\section{"3. Results"}
 \begin{itemize}
-\item 1. It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. \hl{I wonder as well about the impact of resonances, particularly when the data are very high quality.} This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach.
+\item 1. It is stated that the breakdown of axisymmetry and steady state assumptions is not explored. I wonder as well about the impact of resonances, particularly when the data are very high quality. This cannot be explored in the current setup as the data are generated from an action-based DF but perhaps should be mentioned as a potential limitation of the approach. \Comment{Thanks for this suggestion. I added a corresponding comment in this section and also mentioned that we are planning to further investigate non-axisymmetries by applying \RM{} to a galaxy simulation in a future paper.}
+\item \Comment{\textbf{Additional changes:} As I moved the Mock data section to the Appendix, I stress here explicitly that we use mock data for our tests.}
 \end{itemize}
 
 
-\subsection{Section 3.1}
+\subsection{Section 3.1 - "Model parameter estimates in the limit of large data sets"}
 \begin{itemize}
-\item 1. \hl{This seems a good sanity check but should it be published? Fig 6. seems sufficient to me to demonstrate that your code works. I don't think the paper would miss this section.}\\\HW{Comment by Wilma: I see the point, but I would like to keep it, please... It was a lot of work...}
+\item 1. This seems a good sanity check but should it be published? Fig 6. seems sufficient to me to demonstrate that your code works. I don't think the paper would miss this section. \Comment{I wanted to have one section in this paper that summarizes the (statistical) implications of using large data sets for \RM{} separately and not just in the context of "Likelihood normalisation" as in Section 2.6. But as you are in principle right and it is mostly a sanity check, I edited the whole section to make it much shorter. I also removed the figure, that shows how the width of the pdf decreases with $1/\sqrt{N_*}$, completely from the paper and only mention the result in one sentence.}
 \end{itemize}
 
 

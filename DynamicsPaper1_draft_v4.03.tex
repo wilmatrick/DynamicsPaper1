@@ -288,6 +288,8 @@ p_\text{DF} := \{ \ln h_R, \ln \sigma_{R,0}, \ln \sigma_{z,0}, \ln h_{\sigma,R},
 
 \NEW{In this case, where we use uninformative priors, a maximum-likelihood estimation procedure (e.g., via the expectation–maximization (EM) algorithm and parameter uncertainty estimates from the Fisher information matrix) would lead to the same result as the Bayesian inferential procedure described in this work (see Section \ref{sec:fitting}). We expect however that in due course increasingly informative priors will become available (like, e.g., rotation curve measurements from maser sources by \citet{2009ApJ...700..137R}) and Bayesian inference is therefore the preferred framework.}
 
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 %====================
 \begin{figure*}[!htbp]
 \centering
@@ -339,7 +341,7 @@ Measurement uncertainties of the data have to be incorporated in the likelihood.
 &&\tilde{p}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i)\nonumber\\
 & \equiv& \frac{\text{SF}(\vect{y}_i) \cdot \int \text{DF}(\vect{y}') \cdot N[\vect{y}_i,\delta \vect{y}_i] \Diff{6} y'}{\int \left(  \text{DF}(\vect{y}')  \cdot  \int \text{SF}(\vect{y})  \cdot N[\vect{y}',\delta \vect{y}_i] \Diff{6} y \right) \Diff{6}y'}.
 \end{eqnarray}
-In the case of uncertainties in distance \NEW{and/}or $(\text{RA},\text{Dec})$ the evaluation of this is computational \NEW{very} expensive---especially if the stars have heteroscedastic $\delta \vect{y}_i$ \NEW{and the normalisation needs to be calculated for each star separately}. In practice we compute the convolution using Monte Carlo (MC) integration with $N_\text{samples}$ samples,
+In the case of uncertainties in distance \NEW{and/}or $(\text{RA},\text{Dec})$ the evaluation of this is computational \NEW{very} expensive---especially if the stars have heteroscedastic $\delta \vect{y}_i$\NEW{, which is the case for realistic data sets, and the normalisation needs to be calculated for each star separately}. In practice we compute the convolution using Monte Carlo (MC) integration with $N_\text{samples}$ samples,
 \begin{eqnarray}
 &&\tilde{p}_\text{approx}(\vect{y}_i \mid p_\Phi,p_\text{DF},\delta \vect{y}_i) \nonumber\\
 &&\approx \frac{ \text{SF}(\tilde{\vect{x}}_i)}{M_\text{tot}} \cdot \frac{1}{N_\text{samples}} \sum_n^{N_\text{samples}}  \text{DF}(\tilde{\vect{x}}_i,\vect{v}[\vect{y}'_{i,n}]) \label{eq:errorconv}
@@ -410,7 +412,16 @@ We are now in a position to examine the limitations of action-based modelling po
 
 \NEW{We will rely on mock data as input to explore the limitations of the modelling. The mock data is generated directly from the fiducial potential and DF models introduced in Sections \ref{sec:potentials} and \ref{sec:qDF}, following the procedure described in Appendix \ref{app:mockdata}.} With the exception of the test suite on measurement uncertainties in Section \ref{sec:results_errors}, we assume that phase-space uncertainties are negligible. All tests are also summarized in Table \ref{tbl:tests}. 
 
-We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state \NEW{nor the impact of resonances, which is not possible in the current setup using mock data drawn from axisymmetric galaxy models. (We plan however to investigate this in a future paper, where we will apply \RM{} to N-body simulations of disk galaxies.)}
+%====================
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{figs/isoSph_CLT_2.eps}
+\caption{Lack of bias in the parameter estimates. Maximum likelihood estimators converge to the true parameter values for large numbers of data points and have a Gaussian spread---if the model assumptions are fulfilled. To test that these conditions are satisfied for \RM{}, we create 320 mock data sets, which come from two different stellar populations and five spherical observation volumes (see legends). (All model parameters are summarized in Table \ref{tbl:tests} as Test \ref{test:isoSph_CLT}.) Bias and relative standard error (SE) are derived from the marginalized \pdf{} for two model parameters (isochrone scale length $b$ in the first row and qDF parameter $h_{\sigma,z}$ in the second row). The second column displays a histogram of the 320 bias offsets. As it closely follows a normal distribution, our modelling method is therefore well-behaved and unbiased. The black dots denote the \pdf{} expectation value for the 32 analyses belonging to the same $\pmodel{}$.}
+\label{fig:isoSph_CLT}
+\end{figure}
+%====================
+
+We do not explore the breakdown of the assumption that the system is axisymmetric and in steady state \NEW{nor the impact of resonances, which is not possible in the current setup using mock data drawn from axisymmetric galaxy models. We plan however to investigate this in a future paper, where we will apply \RM{} to N-body simulations of disk galaxies.}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -418,51 +429,36 @@ We do not explore the breakdown of the assumption that the system is axisymmetri
 \subsection{Model parameter estimates in the limit of large data sets} \label{sec:largedata}
 
 The \OLD{individual }\MAP{}s in BR13 contained \OLD{typically }between 100 and 800 objects, \OLD{so that each \MAP{} implied  a quite broad \pdf{}}\NEW{which implied broad \pdf{}s} for the model parameters $\pmodel{}$. \OLD{Here we explore what happens in the limit of much larger samples, say $N_{*} = 20,000$ objects.}\NEW{Several consequences arise in the limit of much larger samples, say $N_{*} = 20,000$:} \NEW{(i)} As outlined in Section \OLD{\ref{sec:likelihood}}\NEW{\ref{sec:likelihood_normalisation}} \NEW{and investigated in Figure \ref{fig:norm_accuracy} (Test \ref{test:norm_accuracy} in Table \ref{tbl:tests}),}\OLD{, the immediate consequence of larger samples is given by} \NEW{higher numerical accuracy is needed due to} the likelihood normalisation requirement $\delta M_\text{tot} \lesssim 1/N_{*}$ (see Equation \eqref{eq:accuracycondition}), which \OLD{is the modelling aspect that} drives the computing time. \NEW{(ii) The} \OLD{This issue aside, we would expect that in the limit of large data sets with vanishing measurement uncertainties the} \pdf{}s of the \pmodel{} become Gaussian, with a \pdf{} width (i.e., the standard error (SE) on the parameter estimate) that scales as $1/\sqrt{N_{*}}$. \NEW{The former is demonstrated in Figure \ref{fig:isoSphFlex_triangleplot} (Test \ref{test:isoSphFlex} in Table \ref{tbl:tests}) and we also verified that the latter is true.} \NEW{(iii) Any}\OLD{Further, we must verify that any} bias in the \pdf{} expectation value \OLD{is}\NEW{has to be} considerably less than the \NEW{SE}\OLD{error, even for quite large samples}. \OLD{Using sets of mock data, created according to the procedure in Section \ref{sec:mockdata} and a fiducial model for \pmodel{} (see Table \ref{tbl:tests}, Tests \ref{test:sqrtNiso}, \ref{test:isoSph_CLT}, and \ref{test:isoSphFlex}), we verified that \RM{} satisfies all these conditions and expectations: Figure \ref{fig:isoSphFlex_triangleplot} illustrates the joint \pdf{}s of all \pmodel{}. The \pdf{} is a multivariate Gaussian that projects into Gaussians when considering the marginalized \pdf{} for all the individual \pmodel{}. Figure \ref{fig:sqrtNiso} then demonstrates that the \pdf{} width indeed scales as $1/\sqrt{N_{*}}$.} Figure \ref{fig:isoSph_CLT} \NEW{(Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests})} illustrates \OLD{even more }that \RM{} behaves like an unbiased maximum likelihood estimator: The average parameter estimates from many mock \OLD{samples with identical underlying \pmodel{}}\NEW{data sets} are very close to the input \pmodel{}, and the distribution of the actual parameter estimates are Gaussian around it.
-%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-%====================
-\begin{figure}[!hp]
-\centering
-\includegraphics[width=\columnwidth]{figs/isoSph_CLT_2.eps}
-\caption{Lack of  bias in the parameter estimates. Maximum likelihood estimators converge to the true parameter values for large numbers of data points and have a Gaussian spread---if the model assumptions are fulfilled. To test that these conditions are satisfied for \RM{}, we create 320 mock data sets, which come from two different stellar populations and five spherical observation volumes (see legends). (All model parameters are summarized in Table \ref{tbl:tests} as Test \ref{test:isoSph_CLT}.) Bias and relative standard error (SE) are derived from the marginalized \pdf{} for two model parameters (isochrone scale length $b$ in the first row and qDF parameter $h_{\sigma,z}$ in the second row). The second column displays a histogram of the 320 bias offsets. As it closely follows a normal distribution, our modelling method is therefore well-behaved and unbiased. The black dots denote the \pdf{} expectation value for the 32 analyses belonging to the same $\pmodel{}$.}
-\label{fig:isoSph_CLT}
-\end{figure}
-%====================
-
-%====================
-%\begin{figure}[!htbp]
-%\plotone{figs/sqrtNiso_Stddev_Vs_N.eps}
-%\caption{The width of the \pdf{} (see Equation \eqref{eq:prob}) for two fit parameters found from analyses of 132 mock data sets vs. the number of stars in each data set, $N_{*}$. (The mock data was created according to the model parameters given in Test \ref{test:sqrtNiso} in Table \ref{tbl:tests}.) The relative standard error (SE) was found from a Gaussian fit to the marginalized \pdf{} for each model parameter. As can be seen, for large data samples the width of the \pdf{} scales with $1/\sqrt{N_{*}}$ as expected.} 
-%\label{fig:sqrtNiso}
-%\end{figure}
-%====================
 
 %====================
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figs/wedgesVol_bias_vs_SE.eps}
-\caption{\NOTE{[This is a new version of the original plot - using the DHB-Pot instead of the MW13-Pot. (TO DO: Remove this note for final version.)]} Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedgesVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. \NEW{(The recovery of the free potential parameter $v_\text{circ}(R_\odot)$ for the \texttt{DHB-Pot} in the different wedges is very similar for both potentials and therefore only shown for the \texttt{Iso-Pot}. Minor expected differences can be seen (e.g., $v_\text{circ}(R_\odot)$ and tracer density scale lengths requiring larger radial extent), but overall}\OLD{Overall} there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes.}
+\caption{\NOTE{[This is a new version of the original plot - using the DHB-Pot instead of the MW13-Pot. (TO DO: Remove this note for final version.)]} Bias vs. standard error in recovering the potential parameters for mock data sets drawn from four different wedge-shaped test observation volumes within the Galaxy (illustrated in the upper panel; the corresponding analyses are colour-coded) and two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}} from Table \ref{tbl:referencepotentials}; see also Test \ref{test:wedgesVol} in Table \ref{tbl:tests} for all model parameters used). Standard error and offset were determined from a Gaussian fit to the marginalized \pdf{}. The angular extent of each wedge-shaped observation volume was adapted such that all have a volume of $4.5~\text{kpc}^3$, even though their extent in $(R,z)$ is different. \NEW{(The recovery of the free potential parameter $v_\text{circ}(R_\odot)$ in the different wedges is very similar for both potentials and therefore only shown for the \texttt{Iso-Pot}). Minor expected differences can be seen (e.g., $v_\text{circ}(R_\odot)$ and tracer density scale lengths requiring larger radial extent), but overall}\OLD{Overall} there is no clear trend that an observation volume around the Sun, above the disk or at smaller Galactocentric radii should give remarkably better constraints on the potential than the other volumes.}
 \label{fig:wedgesVol_bias_vs_SE}
 \end{figure}
 %====================
 
+\NOTE{[The figure demonstrating that the width of the pdf scales as $1/\sqrt{N_*}$ was removed. (TO DO: Remove this note for the final version.)]}
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{The role of the survey volume geometry} \label{sec:results_obsvolume}
 
-To explore the role of the survey volume at given sample size, we devise two suites of mock data sets: 
+To explore the role of the survey volume at given sample size, we devise two suites of mock data sets\OLD{:}\NEW{.}
 
-The first suite draws mock data for two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}}) and four volume wedges (see \OLD{Section \ref{sec:selectionfunction}}\NEW{Appendix \ref{app:selectionfunction}}) with different extent and at {\it different positions within the Galaxy}, illustrated in the upper panel of Figure \ref{fig:wedgesVol_bias_vs_SE}. Otherwise the data sets are generated from the same \pmodel{} (see Test \ref{test:wedgesVol} in Table \ref{tbl:tests}). To isolate the role of the survey volume geometry, the mock data sets all have the same number of stars ($N_{*} = 20,000$)\OLD{in all cases}, and are drawn from identical total survey volumes ($4.5~\text{kpc}^3$, achieved by adjusting the angular width of the wedges).
-\NEW{We investigate these rather unrealistic survey volumes to test (i) if there are regions in the Galaxy where stars are on intrinsically more informative orbits (i.e., which give tighter potential constraints) and (ii) if spatial cuts applied to the survey volume (e.g., to avoid regions of large dust extinction or measurement uncertainties) could therefore strongly affect the modelling precision. To see the effect most dramatic we choose some extreme, but illustrative examples.}
-The results are shown in Figure \ref{fig:wedgesVol_bias_vs_SE}.
+The first suite draws mock data for two different potentials (\texttt{Iso-Pot} and \OLD{\texttt{MW13-Pot}}\NEW{\texttt{DHB-Pot}}) and four volume wedges (see \OLD{Section \ref{sec:selectionfunction}}\NEW{Appendix \ref{app:selectionfunction}}) with different extent and at different positions within the Galaxy, illustrated in the upper panel of Figure \ref{fig:wedgesVol_bias_vs_SE}. Otherwise the data sets are generated from the same \pmodel{} (see Test \ref{test:wedgesVol} in Table \ref{tbl:tests}). To isolate the role of the survey volume geometry \NEW{and position}, the mock data sets all have the same number of stars ($N_{*} = 20,000$)\OLD{in all cases}, and are drawn from identical total survey volumes ($4.5~\text{kpc}^3$, achieved by adjusting the angular width of the wedges).
+\NEW{We investigate these rather unrealistic survey volumes to test (i) if there are regions in the Galaxy where stars are on intrinsically more informative orbits and (ii) if spatial cuts applied to the survey volume (e.g., to avoid regions of large dust extinction or measurement uncertainties) would therefore strongly affect the precision of the potential constraints. To make this effect---if it exists---noticeable, we choose some extreme, but illustrative examples.}
 
-The second suite of mock data sets was already introduced in Section \ref{sec:largedata} (see also Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests}), where mock data sets were drawn from five spherical volumes around the Sun with different maximum radius, for two different stellar populations. The results of this second suite are shown in Figure \ref{fig:isoSph_CLT} and exemplify the effect of the {\it size of the survey volume}.
+The results are shown in Figure \ref{fig:wedgesVol_bias_vs_SE}\OLD{. In Figure \ref{fig:wedgesVol_bias_vs_SE} the}\NEW{: The} wedges all have the same volume and all give results of similar precision. \OLD{Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume.}\NEW{There are some minor and expected differences, e.g., $v_\text{circ}(R_\odot)$ and radial scale lengths ($b$ and $a_\text{disk}$) are slightly better recovered for large radial extent and the halo fraction at the Sun, $f_\text{halo}$, for volumes centered around $R_\odot$.} In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. \OLD{In addition,} Figure \ref{fig:wedgesVol_bias_vs_SE} implies \NEW{therefore} that volume offsets \NEW{or spatial cuts of the survey volume} in the radial or vertical direction have at most a modest impact---even in case of the very large sample size at hand.
+
+The second suite of mock data sets was already introduced in Section \ref{sec:largedata} (see also Test \ref{test:isoSph_CLT} in Table \ref{tbl:tests}), where mock data sets were drawn from five spherical volumes around the Sun with different \OLD{maximum radius}\NEW{$r_\text{max}$}, for two different stellar populations. The results of this second suite are shown in Figure \ref{fig:isoSph_CLT} and exemplify the effect of the size of the survey volume.
 
 Figure \ref{fig:isoSph_CLT} demonstrates that, given a choice of $p_\text{DF}$, a larger volume always results in tighter constraints. There is no obvious trend that a hotter or cooler population will always give better results; it depends on the survey volume and the model parameter in question.
 
-In Figure \ref{fig:wedgesVol_bias_vs_SE} the wedges all have the same volume and all give results of similar precision. \OLD{Minor differences (e.g., the \texttt{Iso-Pot} potential being less constrained in the wedge with large vertical but small radial extent) are a special property of the considered potential and parameters, and not a global property of the corresponding survey volume.}\NEW{There are some minor differences (e.g., $v_\text{circ}(R_\odot)$ and radial scale lengths, $b$ or $a_\text{disk}$, being slightly better recovered for large radial extent and the halo fraction at the Sun, $f_\text{halo}$, for volumes centered around $R_\odot$).} In the case of an axisymmetric model galaxy, the extent in $\phi$ direction is not expected to matter. Overall radial extent and vertical extent seem to be equally important to constrain the potential. In addition, Figure \ref{fig:wedgesVol_bias_vs_SE} implies that volume offsets \NEW{or spatial cuts of the survey volume} in the radial or vertical direction have at most a modest impact---even in case of the very large sample size at hand.
-
 While it appears that the argument for significant radial and vertical extent is generic, we have not done a full exploration of all combinations of \pmodel{} and volumes.
 
-That in reality different regions in the Galaxy have different stellar number densities\NEW{ and different measurement uncertainties}, should therefore be the major factor to drive the precision of the potential recovery when choosing a survey volume.
+That in reality different regions in the Galaxy have different stellar number densities \NEW{and different measurement uncertainties}, should therefore be the major factor to drive the precision of the potential recovery when choosing a survey volume.
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %====================
@@ -484,8 +480,6 @@ The \NEW{survey} SF (see \OLD{Section}\NEW{also Appendix} \ref{app:selectionfunc
 which drops linearly with distance $r$ from the Sun. \NEW{The completeness function can be understood as the probability of a star at distance $r$ to be detected (see also  Equation \ref{eq:selectionfunction}).} In the \RM{} analysis \OLD{however}\NEW{on the other hand}, we assume constant completeness ($\epsilon_r=0$). The incompleteness parameter $\epsilon_r$ of the mock data quantifies therefore by how much we misjudge the SF. This \NEW{mock test} captures the relevant case of stars being less likely to be observed (than assumed) the further away they are (e.g., due to unknown dust obscuration). 
 
 Figure \ref{fig:MWdhbIncompR_violins} demonstrates that the potential recovery with \RM{} is \OLD{very}\NEW{quite} robust against somewhat wrong assumptions about the completeness of the data\NEW{, i.e., $\epsilon_r \lesssim 0.15$ for the \texttt{hot} and $\epsilon_r \lesssim 0.2$ for the \texttt{cool} population}. \NEW{The \texttt{cool} population is more robust, because it is less affected by the SF misjudgement at high $|z|$ than the \texttt{hot} population. Our simple model SF affects stars at large and small radii in equal proportion. As long as the misjudgement is small, the tracer scale length parameter $h_R$ can still be reliable recovered, and with it the potential.} \OLD{The robustness for the \texttt{cool} stellar population is even more striking than for the \texttt{hot} population. The reason for this robustness could be, that much information about the potential comes from the rotation curve measurements in the plane, which is not affected by the incompleteness of the sample. We test this by analysing the data sets from Figure \ref{fig:isoSphFlexIncompR_violins} again, but this time not including tangential velocity measurements (which is done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$). Figure \ref{fig:isoSphFlexIncompR_marginal_violins} shows that in this case the potential is much less tightly constrained, even for 20,000 stars. For only minor deviations of true and assumed completeness ($\epsilon_r \lesssim 0.15$) the true potential is however still included within the errors of our fitting result (see Figure \ref{fig:isoSphFlexIncompR_marginal_violins}).}
-
-\NEW{We have also investigated several test suites using the \texttt{Iso-Pot}. The recovery of $v_\text{circ}(R_\odot)$ and the qDF parameters at different $\epsilon_r$ is qualitatively and quantitatively similar to Figure \ref{fig:MWdhbIncompR_violins} for the \texttt{DHB-Pot}. The isochrone scale length $b$ however is recovered independently of $\epsilon_r$---probably because rotation curve measurements in the plane alone, which are not affected by the SF cuts, give reliable constraints on $b$. When not including tangential velocity measurements in the analysis (which is done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$), the parameters are well recovered only for $\epsilon_r \lesssim 0.15$ and $\epsilon_r \lesssim 0.2$ for the \texttt{hot} and \texttt{cool} population respectively. As this is in concordance with our findings for the $\texttt{DHB-Pot}$, this result seems to be valid for different choices of potentials.}
 
 %====================
 \begin{figure}[!htbp]
@@ -513,6 +507,9 @@ Figure \ref{fig:MWdhbIncompR_violins} demonstrates that the potential recovery w
 \label{fig:isoSphFlexErrSyst}
 \end{figure}
 %====================
+
+
+\NEW{We have also investigated several test suites using the \texttt{Iso-Pot}. The recovery of $v_\text{circ}(R_\odot)$ and the qDF parameters at different $\epsilon_r$ is qualitatively and quantitatively similar to Figure \ref{fig:MWdhbIncompR_violins} for the \texttt{DHB-Pot}. The isochrone scale length $b$ however is recovered independently of $\epsilon_r$---probably because rotation curve measurements in the plane alone, which are not affected by the SF cuts, give reliable constraints on $b$. When not including tangential velocity measurements in the analysis (which is done by marginalizing the likelihood in Equation \eqref{eq:prob} over $v_T$), the parameters are well recovered only for $\epsilon_r \lesssim 0.15$ and $\epsilon_r \lesssim 0.2$ for the \texttt{hot} and \texttt{cool} population respectively. As this is in concordance with our findings for the $\texttt{DHB-Pot}$, this result seems to be valid for different choices of potentials.}
 
 \NEW{For spatial completeness functions varying with the distance from the plane $|z|$ only, the $\texttt{Iso-Pot}$ potential recovery is similarly robust as long as $v_T$ measurements are included.}\OLD{We found similarly robust results also for a misjudgement of spatial completeness functions varying with the distance from the plane, $|z|$.}
 
@@ -553,9 +550,6 @@ Lastly, Figure \ref{fig:isoSphFlexErrSyst} investigates the effect of a systemat
 \end{figure}
 %====================
 
-The size of the bias also depends on the kinematic temperature of the stellar population and the model parameter considered (see Figure \ref{fig:isoSphFlexErrSyst}). The qDF parameters are for example better recovered by hotter populations. This is, because the relative difference between the \emph{true} $\sigma_i(R)$ (with $i \in \{R,z\}$) and \emph{measured} $\sigma_i(R)$ (which comes from the deconvolution with an underestimated velocity uncertainty) is smaller for hotter populations. 
-%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 %====================
 \begin{figure}[!htbp]
 \centering
@@ -573,6 +567,9 @@ The size of the bias also depends on the kinematic temperature of the stellar po
 \label{fig:MWdhbMixDiff}
 \end{figure}
 %====================
+
+The size of the bias also depends on the kinematic temperature of the stellar population and the model parameter considered (see Figure \ref{fig:isoSphFlexErrSyst}). The qDF parameters are for example better recovered by hotter populations. This is, because the relative difference between the \emph{true} $\sigma_i(R)$ (with $i \in \{R,z\}$) and \emph{measured} $\sigma_i(R)$ (which comes from the deconvolution with an underestimated velocity uncertainty) is smaller for hotter populations. 
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{The impact of deviations of the data from the idealized distribution function} \label{sec:results_mixedDFs}
@@ -625,7 +622,7 @@ We analyse a mock data set from a \texttt{hot} and \texttt{cool} stellar populat
 \OLD{The results for the potential}\NEW{The comparison between true and best fit potentials} are shown in Figure \ref{fig:MW14vsKKS2New_contours}. We find that the potential recovered by \RM{} is in good agreement with the true potential. Especially the force contours, to which the orbits are sensitive, and the rotation curve are very tightly constrained and reproduce the true potential even outside of the observed volume of the mock tracers.
 
 %====================
-\begin{figure*}[!htb]
+\begin{figure*}[!htbp]
 \includegraphics[width=1\textwidth]{figs/MW14vsKKS2New_violins.eps}
 \caption{\NOTE{[This is a new version of the original plot. TO DO: Remove this note for final version. Changes: (i) Displayed the new analyses from Figure \ref{fig:MW14vsKKS2New_contours}. (ii) Added points for the physical velocity dispersion and scale lengths and a legend.]} Recovery of the qDF parameters for the case where the true and assumed potential deviate from each other (see Test \ref{test:MW14vsKKS2New} in Table \ref{tbl:tests}). The thick red (blue) lines represent the true qDF parameters of the \texttt{hot} (\texttt{cool}) qDF in Table \ref{tbl:referenceMAPs} used to create the mock data, surrounded by a \OLD{10\%}\NEW{5\%} error region. The grey violins are the marginalized \pdf{}s for the qDF parameters found simultaneously with the potential constraints shown in Figure \ref{fig:MW14vsKKS2New_contours}. \NEW{We compare the qDF parameters with the actual physical scale lenghts and velocity dispersion at the Sun estimated from the mock data and the best fit distribution by fitting exponential functions to the data. Firstly this shows that---apart from some small deviations in the velocity dispersion scale lengths---the velocity distribution of the mock data is very well reproduced by the best fit. Secondly, this demonstrates how the qDF parameters in different potentials do not necessarily agree with each other or with the actual physical velocity distribution.}}
 \label{fig:MW14vsKKS2New_violins}
@@ -742,73 +739,7 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 \bibliography{BibFile_DynamicsPaper}{}
 \bibliographystyle{aasjournal}
 
-%\begin{thebibliography}{}
-%\bibitem[Abazajian et al.(2003)]{2003AJ....126.2081A} \NEW{Abazajian, K., Adelman-McCarthy, J.~K., Ag{\"u}eros, M.~A., et al.\ 2003, \aj, 126, 2081}
-%\bibitem[Ahn et al.(2014)]{2014ApJS..211...17A} Ahn, C.~P., Alexandroff, R., Allende Prieto, C., et al.\ 2014, \apjs, 211, 17 
-%\bibitem[Batsleer \& Dejonghe(1994)]{1994AA...287...43B} Batsleer, P., \& Dejonghe, H.\ 1994, \aap, 287, 43
-%\bibitem[Binney \& Tremaine(2008)]{2008gady.book.....B} Binney, J., \& Tremaine, S.\ 2008, Galactic Dynamics: Second Edition
-%\bibitem[Binney(2010)]{2010MNRAS.401.2318B} Binney, J.\ 2010, \mnras, 401, 2318
-%\bibitem[Binney(2011)]{2011Prama..77...39B} Binney, J.\ 2011, Pramana, 77, 39
-%\bibitem[Binney \& McMillan(2011)]{2011MNRAS.413.1889B} Binney, J., \& McMillan, P.\ 2011, \mnras, 413, 1889
-%\bibitem[Binney(2012a)]{2012MNRAS.426.1324B} Binney, J.\ 2012a, \mnras, 426, 1324
-%\bibitem[Binney(2012b)]{2012MNRAS.426.1328B} Binney, J.\ 2012b, \mnras, 426, 1328
-%\bibitem[Binney(2013)]{2013NewAR..57...29B} Binney, J.\ 2013, NAR, 57, 29 
-%\bibitem[Bovy et al.(2012b)]{2012ApJ...751..131B} Bovy, J., Rix, H.-W., \& Hogg, D.~W.\ 2012b, \apj, 751, 131
-%\bibitem[Bovy et al.(2012c)]{2012ApJ...755..115B} Bovy, J., Rix, H.-W., Hogg, D.~W., et al.\ 2012c, \apj, 755, 115 
-%\bibitem[Bovy et al.(2012d)]{2012ApJ...753..148B} Bovy, J., Rix, H.-W., Liu, C., et al.\ 2012d, \apj, 753, 148
-%\bibitem[Bovy \& Tremaine(2012)]{2012ApJ...756...89B} Bovy, J., \& Tremaine, S.\ 2012, \apj, 756, 89
-%\bibitem[Bovy \& Rix(2013)]{2013ApJ...779..115B} Bovy, J., \& Rix, H.-W.\ 2013, \apj, 779, 115 (BR13)
-%\bibitem[Bovy(2015)]{2015ApJS..216...29B} Bovy, J.\ 2015, \apjs, 216, 29
-%
-%\bibitem[Bovy et al.(2016)]{2016ApJ...818..130B} Bovy, J., Rix, H.-W., 
-%Green, G.~M., Schlafly, E.~F., \& Finkbeiner, D.~P.\ 2016, \apj, 818, 130 
-%\bibitem[B{\"u}denbender et al.(2015)]{2015MNRAS.452..956B} B{\"u}denbender, A., van de Ven, G., \& Watkins, L.~L.\ 2015, \mnras, 452, 956 
-%\bibitem[Casagrande et al.(2011)]{2011A&A...530A.138C} Casagrande, L., Sch{\"o}nrich, R., Asplund, M., et al.\ 2011, \aap, 530, A138 
-%\bibitem[de Bruijne et al.(2014)]{2014EAS....67...23D} \NEW{de Bruijne, J.~H.~J., Rygl, K.~L.~J., \& Antoja, T.\ 2014, EAS Publications Series, 67, 23}
-%\bibitem[Dehnen \& Binney(1998)]{1998MNRAS.294..429D} Dehnen, W., \& Binney, J.\ 1998, \mnras, 294, 429 
-%\bibitem[de Lorenzi et al.(2007)]{2007MNRAS.376...71D} de Lorenzi, F., Debattista, V.~P., Gerhard, O., \& Sambhus, N.\ 2007, \mnras, 376, 71 
-%\bibitem[de Zeeuw(1985)]{1985MNRAS.216..273D} de Zeeuw, T.\ 1985, \mnras, 216, 273 
-%\bibitem[ESA(1997)]{1997ESASP1200.....E} \NEW{ESA 1997, ESA Special Publication, 1200,}
-%\bibitem[Famaey \& Dejonghe(2003)]{2003MNRAS.340..752F} Famaey, B., \& Dejonghe, H.\ 2003, \mnras, 340, 752 
-%\bibitem[Foreman-Mackey et al.(2013)]{2013PASP..125..306F} Foreman-Mackey, D., Hogg, D.~W., Lang, D., \& Goodman, J.\ 2013, \pasp, 125, 306
-%\bibitem[Garbari et al.(2012)]{2012MNRAS.425.1445G} Garbari, S., Liu, C., Read, J.~I., \& Lake, G.\ 2012, \mnras, 425, 1445 
-%\bibitem[Gilmore \& Reid(1983)]{1983MNRAS.202.1025G} Gilmore, G., \& Reid, N.\ 1983, \mnras, 202, 1025 
-%\bibitem[Gould \& Kollmeier(2004)]{2004ApJS..152..103G} \NEW{Gould, A., \& Kollmeier, J.~A.\ 2004, \apjs, 152, 103}
-%\bibitem[Henon(1959)]{1959AnAp...22..126H} Henon, M.\ 1959, Annales d'Astrophysique, 22, 126 
-%\bibitem[H{\o}g et al.(2000)]{2000A&A...355L..27H} \NEW{H{\o}g, E., Fabricius, C., Makarov, V.~V., et al.\ 2000, \aap, 355, L27}
-%\bibitem[Holmberg et al.(2009)]{2009A&A...501..941H} Holmberg, J., Nordstr{\"o}m, B., \& Andersen, J.\ 2009, \aap, 501, 941 
-%\bibitem[Hunt \& Kawata(2014)]{2014MNRAS.443.2112H} Hunt, J.~A.~S., \& Kawata, D.\ 2014, \mnras, 443, 2112 
-%\bibitem[Ivezic et al.(2008)]{2008arXiv0805.2366I} \NEW{Ivezic, Z., Tyson, J.~A., Abel, B., et al.\ 2008, arXiv:0805.2366}
-%\bibitem[Ivezi{\'c} et al.(2008)]{2008IAUS..248..537I} \NEW{Ivezi{\'c}, {\v Z}., Monet, D.~G., Bond, N., et al.\ 2008, A Giant Step: from Milli- to Micro-arcsecond Astrometry, 248, 537}
-%\bibitem[Jordi et al.(2010)]{2010A&A...523A..48J} \NEW{Jordi, C., Gebran, M., Carrasco, J.~M., et al.\ 2010, \aap, 523, A48}
-%\bibitem[Juri{\'c} et al.(2008)]{2008ApJ...673..864J} Juri{\'c}, M., Ivezi{\'c}, {\v Z}., Brooks, A., et al.\ 2008, \apj, 673, 864
-%\bibitem[Kaiser et al.(2010)]{2010SPIE.7733E..0EK} \NEW{Kaiser, N., Burgett, W., Chambers, K., et al.\ 2010, \procspie, 7733, 77330E}
-%\bibitem[Kuijken \& Gilmore(1989)]{1989MNRAS.239..605K} Kuijken, K., \& Gilmore, G.\ 1989, \mnras, 239, 605 
-%\bibitem[McMillan \& Binney(2008)]{2008MNRAS.390..429M} McMillan, P.~J., \& Binney, J.~J.\ 2008, \mnras, 390, 429 
-%\bibitem[McMillan(2012)]{2012EPJWC..1910002M} McMillan, P.~J.\ 2012, European Physical Journal Web of Conferences, 19, 10002 
-%\bibitem[McMillan \& Binney(2012)]{2012MNRAS.419.2251M} McMillan, P.~J., \& Binney, J.\ 2012, \mnras, 419, 2251 
-%\bibitem[McMillan \& Binney(2013)]{2013MNRAS.433.1411M} McMillan, P.~J., \& Binney, J.~J.\ 2013, \mnras, 433, 1411
-%\bibitem[Monet et al.(2003)]{2003AJ....125..984M} \NEW{Monet, D.~G., Levine, S.~E., Canzian, B., et al.\ 2003, \aj, 125, 984}
-%\bibitem[Munn et al.(2004)]{2004AJ....127.3034M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2004, \aj, 127, 3034}
-%\bibitem[Munn et al.(2008)]{2008AJ....136..895M} \NEW{Munn, J.~A., Monet, D.~G., Levine, S.~E., et al.\ 2008, \aj, 136, 895}
-%\bibitem[Nordstr{\"o}m et al.(2004)]{2004A&A...418..989N} Nordstr{\"o}m, B., Mayor, M., Andersen, J., et al.\ 2004, \aap, 418, 989 
-%\bibitem[Perryman et al.(2001)]{2001A&A...369..339P} Perryman, M.~A.~C., de Boer, K.~S., Gilmore, G., et al.\ 2001, \aap, 369, 339 
-%\bibitem[Piffl et al.(2014)]{2014MNRAS.445.3133P} Piffl, T., Binney, J., McMillan, P.~J., et al.\ 2014, \mnras, 445, 3133
-%\bibitem[Read(2014)]{2014JPhG...41f3101R} Read, J.~I.\ 2014, Journal of Physics G Nuclear Physics, 41, 063101 
-%\bibitem[Reid et al.(2009)]{2009ApJ...700..137R} Reid, M.~J., Menten, K.~M., Zheng, X.~W., et al.\ 2009, \apj, 700, 137-148 
-%\bibitem[Rix \& Bovy(2013)]{2013A&ARv..21...61R} Rix, H.-W., \& Bovy, J.\ 2013, \aapr, 21, 61
-%\bibitem[Robin et al.(2012)]{2012A&A...543A.100R} \NEW{Robin, A.~C., Luri, X., Reyl{\'e}, C., et al.\ 2012, \aap, 543, A100}
-%\bibitem[Sanders \& Binney(2015)]{2015MNRAS.449.3479S} Sanders, J.~L., \& Binney, J.\ 2015, \mnras, 449, 3479
-%\bibitem[Sanders \& Binney(2016)]{2016MNRAS.457.2107S} \NEW{Sanders, J.~L., \& Binney, J.\ 2016, \mnras, 457, 2107}
-%\bibitem[Sesar et al.(2015)]{2015ApJ...809...59S} \NEW{Sesar, B., Bovy, J., Bernard, E.~J., et al.\ 2015, \apj, 809, 59}
-%\bibitem[Skrutskie et al.(2006)]{2006AJ....131.1163S} \NEW{Skrutskie, M.~F., Cutri, R.~M., Stiening, R., et al.\ 2006, \aj, 131, 1163} 
-%\bibitem[Steinmetz et al.(2006)]{2006AJ....132.1645S} Steinmetz, M., Zwitter, T., Siebert, A., et al.\ 2006, \aj, 132, 1645 
-%\bibitem[Strigari(2013)]{2013PhR...531....1S} Strigari, L.~E.\ 2013, \physrep, 531, 1 
-%\bibitem[Syer \& Tremaine(1996)]{1996MNRAS.282..223S} Syer, D., \& Tremaine, S.\ 1996, \mnras, 282, 223 
-%\bibitem[Ting et al.(2013)]{2013MNRAS.434..652T} Ting, Y.-S., Rix, H.-W., Bovy, J., \& van de Ven, G.\ 2013, \mnras, 434, 652
-%\bibitem[Yanny et al.(2009)]{2009AJ....137.4377Y} Yanny, B., Rockosi, C., Newberg, H.~J., et al.\ 2009, \aj, 137, 4377 
-%\bibitem[Zhang et al.(2013)]{2013ApJ...772..108Z} Zhang, L., Rix, H.-W., van de Ven, G., et al.\ 2013, \apj, 772, 108
-%\end{thebibliography}
+\NOTE{[The reference list is now generated using Bibtex and the style file aasjournal. Hopefully this makes the format and journal abbreviations correct. (TO DO: remove this note for the final version.)]}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % TABLE
@@ -843,13 +774,6 @@ Test \testlabel{test:isoSphFlex} {3.1}:      & \emph{Potential:}     & \texttt{I
 \NEW{parameters' \pdf{}}\OLD{multivariate}            & \emph{Survey Volume:} & sphere around Sun, $r_\text{max} = 2~\text{kpc}$ & (fixed \& known) & \NEW{Gaussian in the limit of}\\
 \NEW{for large data sets}\OLD{Gaussian}                & \emph{$N_{*}$:} & 20,000 & & \NEW{large data. The width of the}\\
 \OLD{for large data sets.}	&  & & & \NEW{\pdf{} scales as $1/\sqrt{N_*}$.}\\
-
-%\tableline
-%Test \testlabel{test:sqrtNiso} {3.2}:			& \emph{Potential:}     %& \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:sqrtNiso}\\
-%Width of the			& \emph{DF:}          & \texttt{hot} qDF & qDF, free parameters: & \\
-%likelihood scales       &                       &           & $\ln h_R,\ln\sigma_{R,0},\ln h_{\sigma,R}$ & \\
-%with number of stars    & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$   & (fixed \& known) & \\
-%by $\propto 1/\sqrt{N_{*}}$.& \emph{$N_{*}$:} & between 100 and 40,000 &  & \\
 
 \tableline
 Test \testlabel{test:isoSph_CLT} {3.2}:        & \emph{Potential:}     & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:isoSph_CLT}\\
@@ -926,6 +850,7 @@ true potential                        & \emph{$N_{*}$:} & 20,000 & & \NEW{does n
                                             & \NEW{\emph{Numerical accuracy:}} & & \NEW{$N_x=20, N_v = 28, n_\sigma = 5.5$} & \NEW{given the limitations of the model.}
 \enddata
 \end{deluxetable}
+\NOTE{[I removed two tests from this table w.r.t. the original version: The test that shows how the width of the pdf scales by $1/\sqrt{N_*}$, and the description of Figures \ref{fig:kks2WedgeEx_xv} and \ref{fig:kks2WedgeEx_actions}, which have been moved to the appendix. (TO DO: remove this note for final version.)]}
 \clearpage
 \end{landscape}
 
@@ -966,7 +891,7 @@ Measurement uncertainties can be added to the mock data by applying the followin
 We show examples of mock data sets (without measurement uncertainties) in action space (Figure \ref{fig:kks2WedgeEx_actions}) and configuration space $(\vect{x},\vect{v})$ (Figure \ref{fig:kks2WedgeEx_xv}). The mock data generated from the qDF follow the expected distributions in configuration space. The distribution in action space illustrates the intuitive physical meaning of actions: The stars of the \texttt{cool} population have in general lower radial and vertical actions, as they are on more circular orbits. Circular orbits with $J_R = 0$ and $J_z = 0$ can only be observed in the Galactic mid-plane. The different ranges of angular momentum $L_z$ in the two example observation volumes reflect $L_z \sim R  \times v_\text{circ}$ and the volumes' different radial extent. The volume at larger $z$ contains stars with higher $J_z$.  An orbit with $L_z \ll$ or $\gg L_z(R_\odot)$ can only reach into a volume at $\sim R_\odot$, if it is more eccentric and has therefore larger $J_R$. This together with the effect of asymmetric drift explains the asymmetric distribution of $J_R$ vs. $L_z$ in Figure \ref{fig:kks2WedgeEx_actions}.
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{\NEW{Selection functions}} \label{app:selectionfunction}%\label{sec:selectionfunction}
+\section{\NEW{Selection functions}} \label{app:selectionfunction}
 
 Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). \NEW{The SF can therefore be thought of as having both spatial small scale structure (due to pencil beam pointing, dust obscuration, etc.) and some overall spatial characteristics (e.g., mean height above the plane and mean Galactocentric radius of the stars). The treatment of realistic and complex SFs was already demonstrated in BR13 (who used the pencil-beam SF of the SEGUE survey \citep{2012ApJ...753..148B}) and \citet{2016ApJ...818..130B} (who investigated the effect of dust exticition). In this work we aim to make a generic and basic exploration of search volume shapes and, as shown by \citet{2016ApJ...818..130B}, this should be possible without explicitly considering spatial SF substructure. Inspired by the contiguous nature of the Gaia SF, which is basically only limited by a magnitude cut, and the fact that this magnitude cut would---in the absence of small scale structure---translate to a sharp distance cut for standard candle tracer populations like red clump stars, we therefore use in our modelling a simple spatial SF of spherical shape with radius $r_\text{max}$ around the Sun,} \OLD{In our modelling we use simple spatial SFs, describes the probability to observe a star at position $\vect{x}$,}
 \begin{eqnarray}
