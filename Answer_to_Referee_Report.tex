@@ -36,14 +36,16 @@ with a broad expertise in statistical matters in an astrophysical context. Perha
 these comments will be of use to you as you prepare your revision. If you have any
 questions about the comments, however, please direct them to me, not to Dr.
 Feigelson.
-Please consider the report carefully. When you resubmit, please include a \Wilma{detailed cover letter indicating point-by-point your responses to the referee's report}, and also indicating any \Wilma{other changes you have made} to the text. Reviewers find it helpful if the changes in the text of the manuscript are easily distinguishable from the rest of the text. Therefore we ask you to \Wilma{print changes in bold face}; this highlighting can be removed easily after the review.
+Please consider the report carefully. When you resubmit, please include a detailed cover letter indicating point-by-point your responses to the referee's report, and also indicating any other changes you have made to the text. Reviewers find it helpful if the changes in the text of the manuscript are easily distinguishable from the rest of the text. Therefore we ask you to print changes in bold face; this highlighting can be removed easily after the review. 
 
-And two minor matters: Please adhere to the ApJ instructions to authors (see
-\url{http://aas.org/journals/authors/common_instruct#_Toc3.2}) regarding the abstract --
-\Wilma{"The abstract should be a single paragraph of not more than 250 words ..."} Please also \Wilma{use the appropriate journal abbreviations in the reference list}: these
-abbreviations for refereed journals are given on the ADS site
-\url{http://adsabs.harvard.edu/abs_doc/refereed.html}, and on the site
-\url{http://adsabs.harvard.edu/abs_doc/non_refereed.html} for non-refereed publications.
+\Comment{All new text is printed in green. Notes, that should be removed for the final version, are written in blue. If you comment out the second of the \textbackslash OLD\{\} macros in the tex-File, you can also see deleted text in red.}
+
+And two minor matters: 
+\begin{itemize}
+\item Please adhere to the ApJ instructions to authors (see \url{http://aas.org/journals/authors/common_instruct#_Toc3.2}) regarding the abstract --"The abstract should be a single paragraph of not more than 250 words ..." \Comment{\Wilma{Almost done... It is 270 words. Right now I don't know what else to cut from the abstract without removing the "quantitative statements" that the referee wanted...}}
+\item Please also use the appropriate journal abbreviations in the reference list: these abbreviations for refereed journals are given on the ADS site \url{http://adsabs.harvard.edu/abs_doc/refereed.html}, and on the site
+\url{http://adsabs.harvard.edu/abs_doc/non_refereed.html} for non-refereed publications. \Comment{My reference list is now using bibtex and the bibtex style file "aasjournal.sty". I hope that makes everything automatically correct.}
+\end{itemize}
 
 Click this link (it will work one time) to upload your revised manuscript:
 \url{https://apj.msubmit.net/cgi-bin/main.plex?el=A7Ew3QPh3A7DACX7F5A9ftdsyk8KtDBL1q74yfVAJnw0AZ}
@@ -54,7 +56,7 @@ then ask for a new password via the Unknown/Forgotten Password link if you have
 forgotten your password. 
 
 The policy of The Astrophysical Journal is to \Wilma{view manuscripts as withdrawn if no
-revised version is received within six month}s after the most recent referee's report
+revised version is received within six months} after the most recent referee's report
 goes to the authors.
 
 If you have any questions, please contact me.\\
@@ -67,10 +69,9 @@ Prof. W. Butler Burton\\
 Associate Editor-in-Chief, The Astrophysical Journal\\
 Professor Emeritus, Leiden University\\
 National Radio Astronomy Observatory\\
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\\
+\\++++++++++++++++++++++++++++++++++++++++++++++\\
 The text of the review is appended below.\\
-================================================================\\\\ 
+==============================================\\\\ 
   
 \section{Reviewer's Comments:}
 
@@ -92,12 +93,11 @@ problem for three reasons:
 \begin{itemize}
 \item 1. The selection volumes considered seem unrealistic. It is unclear how they relate to what one might use with the Gaia data. \Comment{The treatment of realistic selection functions has been already demonstrated in Bovy \& Rix (2013) and Bovy et al. (2015). We understand the referee's concern though, and we added a small paragraph in Appendix B that tries to motivate the spherical selection function used in almost all tests in this work. For contiguous surveys like Gaia or Hipparcos we would of course not have a survey volume with a sharp edge and the survey selection function is more likely to be a magnitude cut. But for intrinsic standard candles like red clump stars a magnitude cut translates to a distance cut. (The very unrealistic wedge-like selection functions are only used in one test, Test 4, and that one was not supposed to show realistic scenarios, but rather investigate an intrinsic aspect of action-based modelling.)}\\
 \item 2. It is unclear how the error distributions relate to the anticipated errors from the Gaia data. \Comment{This is a good point and I included two paragraphs and a footnote in Section 3.4, that try to address this. The proper motion errors we considered were inspired by the range of proper motion errors achieved by ground-based surveys. I estimated also the Gaia errors for suitable giant tracer stars and Rene Andrae used the GUMS catalogue to estimate for us the magnitude limit required to ensure that the distance errors for all Gaia stars in a sample would be small enough for our method to work.}
-\item 3. The majority of the tests seem to be done with the isochrone potential. This is obviously done for speed reasons. A few cases are tackled with the KKS-Pot and one case with the MW13-Pot. \Comment{This was indeed a caveat of our work. Four out of six aspects investigated in this paper were done with the \texttt{Iso-Pot}. To alleviate this, I rerun two of the more important aspects (on DF misjudgments and on SF misjudgements) with a more realistic Galaxy potential with disk, halo and bulge, the \texttt{DHB-Pot}. (All tests with the \texttt{MW13-Pot} were also replaced with the \texttt{DHB-Pot} to have no more than four different potentials in the paper. Because of the immense computational effort I could however not re-run the tests on the measurement uncertainties with the \texttt{DHB-Pot}. There we still use the \texttt{Iso-Pot}.) The new analyses using the \texttt{DHB-Pot} are presented in Figures \Wilma{[TO DO]} and Tests \Wilma{[TO DO]}.} \\
+\item 3. The majority of the tests seem to be done with the isochrone potential. This is obviously done for speed reasons. A few cases are tackled with the KKS-Pot and one case with the MW13-Pot. \Comment{This was indeed a caveat of our work. Four out of six aspects investigated in this paper were done with the \texttt{Iso-Pot}. To alleviate this, I rerun two of the more important aspects (on DF misjudgments and on SF misjudgements) with a more realistic Galaxy potential with disk, halo and bulge, the \texttt{DHB-Pot}. (All tests with the \texttt{MW13-Pot} were also replaced with the \texttt{DHB-Pot} to have no more than four different potentials in the paper.) Because of the immense computational effort I could however not re-run the tests on the measurement uncertainties with the \texttt{DHB-Pot}. There we still use the \texttt{Iso-Pot}. Results of the new tests using the \texttt{DHB-Pot} are presented in Figures 1, 2, 6, 7, 11, 12, 13, 14 and Tests 1, 4, 5, 7.} \\
 It is then not clear how the precision of the potential parameter recovery for the isochrone relates to more realistic potentials (e.g. will the circular velocity always be so well constrained irrespective of the potential form?). \Comment{Now, that we re-run some of the tests with the more realistic \texttt{DHB-Pot}, we found that the $v_\text{circ}(R_\odot)$ parameter is indeed recovered to a very similar precision as for the \texttt{Iso-Pot}. Overall, the new results with the \texttt{DHB-Pot} are very similar to the \texttt{Iso-Pot}---for example for which differences in DF and misjudgment of the SF the recovery of the potential broke down---which is very encouraging for the transferability of the results, also considering the tests that we could not repeat with the \texttt{DHB-Pot}.}\\
-The issue of computational speed is mentioned in the discussion but I think this issue is slightly glossed over. \Comment{I included a paragraph in the discussion section that discusses how computation speed limits the potential models that we are currently able to use in \RM{}. I also included a measurement how long some of the analyses in the paper need on how many cores.}
+The issue of computational speed is mentioned in the discussion but I think this issue is slightly glossed over. \Comment{I included a few more sentences in the discussion section on "Computational speed" that discusses how computation speed limits the potential models that we are currently able to use in \RM{}. I also included a measurement how long some of the analyses in the paper need on how many cores.}
 Using more realistic potentials in all cases would obviously be much better and would also test the `Staeckel fudge'
-apparatus more fully. The improvements to this apparatus are highlighted in the paper but I don't think that it is shown that it has been fully tested.
-\HW{[Comment from Wilma: The Staeckel fudge was tested by other people excessively. I think we do not have to do that. Concerning the use of realistic potentials in all my tests: Just not possible. Sorry. But maybe we could do the following: I could have a potential with a fixed Hernquist halo+bulge and a Miyamoto-Nagai disk with scale length a=0.9kpc (or would that make the potential too unrealistic?). Then isochrone and this more realistic potential have the same free parameters. I could for a few selected test cases in 3.3 (incomplete data) and 3.5 (deviations from qDF) do the analysis with this more realistic potential and overplot these violins with my existing violin plots. Let's hope that we get the same trend...]} I think that the heavy use of the isochrone potential should be flagged in the abstract. \Comment{As it is now only two of the tests that still use the \texttt{Iso-Pot} I hope it is okay if I do not mention the \text{Iso-Pot} specifically in the abstract.}
+apparatus more fully. The improvements to this apparatus are highlighted in the paper but I don't think that it is shown that it has been fully tested. \Comment{The \emph{Staeckel fudge} is used in all similar studies, e.g., Bovy \& Rix (2013), Piffl et al. (2014), Sanders \& Binney (2015), Das \& Binney (2016). The \emph{Staeckel fudge} was also recently reviewed and discussed in Sanders \& Binney (2016). Because the \emph{Staeckel fudge} is "state of the art" and has been tested, used and discussed by so many people before us, we did not test it in detail.} I think that the heavy use of the isochrone potential should be flagged in the abstract. \Comment{As it is now only two of the tests that still use the \texttt{Iso-Pot} I hope it is okay if I do not mention the \text{Iso-Pot} specifically in the abstract.}
 \end{itemize}
 
 It would be good if some of these concerns were brought to the fore and highlighted
