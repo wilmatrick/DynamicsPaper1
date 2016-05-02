@@ -29,13 +29,11 @@
 }
 \makeatother
 
-%[TO DO: Delete these makros for final version. ?????????????????????????????????]
 \usepackage[usenames,dvipsnames]{xcolor}
 \newcommand{\NOTE}[1]{\textcolor{Cyan}{#1}}
 \newcommand{\NEW}[1]{\textcolor{ForestGreen}{#1}}
 %\newcommand{\OLD}[1]{\textcolor{Red}{#1}}
 \newcommand{\OLD}[1]{}
-\newcommand{\Wilma}[1]{\textcolor{Magenta}{#1}}
 
 %% Abbreviations
 \shorttitle{Action-based Dynamical Modelling for the Milky Way Disk}
@@ -73,8 +71,6 @@ We present \RM{}, a full-likelihood dynamical modelling machinery that aims to r
 %INTRODUCTION
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Introduction} \label{sec:intro}
-
-\Wilma{[TO DO: Delete Wilma makro]}
 
 Through dynamical modelling we can infer the Milky Way's (MW) gravitational potential from stellar motions (\citealt{2008gady.book.....B,2011Prama..77...39B,2013A&ARv..21...61R}). Observational information on the 6D phase-space coordinates of stars is currently growing at a rapid pace, and will be taken to a whole new level in quantity and precision by the upcoming data from the Gaia mission \citep{2001A&A...369..339P}. Yet, rigorous and practical modelling tools that turn position-velocity data of individual stars into constraints both on the gravitational potential and on the distribution function (DF) of stellar orbits are scarce \citep{2013A&ARv..21...61R}.
 
@@ -613,7 +609,7 @@ We analyse a mock data set from a \texttt{hot} and \texttt{cool} stellar populat
 
 \OLD{The results for the potential are shown in Figure \ref{fig:MW14vsKKS2New_contours}. We find that the potential recovered by \RM{} is in good agreement with the true potential. Especially the force contours, to which the orbits are sensitive, and the rotation curve are very tightly constrained and reproduce the true potential even outside of the observed volume of the mock tracers.}
 
-\NEW{The comparison between true and best fit potentials are shown in Figure \ref{fig:MW14vsKKS2New_contours}. We find that the potential recovered by \RM{} is in good agreement with the true potential inside of the observed volume of mock tracers. Outside of it we can make predictions at least to a certain extent. Especially the potential forces, to which the stellar orbits are sensitive, are recovered and tightly constrained. This robust recovery of the radial and vertical forces leads to small errors on the estimated circular velocity curve ($\lesssim 5\%$) and surface density within $|z| = 1.1~\text{kpc}$ ($\lesssim 10\%$), respectively. \Wilma{???} We get the best results for the local density, the surface density and disk-to-halo ratio between $R\sim4~\text{kpc}$ and $R\sim8~\text{kpc}$, i.e., where most of the tracer stars used in the analysis are located (see Figure \ref{fig:MW14vsKKS2New_mockdata_residuals}).}
+\NEW{The comparison between true and best fit potentials are shown in Figure \ref{fig:MW14vsKKS2New_contours}. We find that the potential recovered by \RM{} is in good agreement with the true potential inside of the observed volume of mock tracers. Outside of it we can make predictions at least to a certain extent. Especially the potential forces, to which the stellar orbits are sensitive, are recovered and tightly constrained. This robust recovery of the radial and vertical forces leads to small errors on the estimated circular velocity curve ($\lesssim 5\%$) and surface density within $|z| = 1.1~\text{kpc}$ ($\lesssim 10\%$), respectively. We get the best results for the local density, the surface density and disk-to-halo ratio between $R\sim4~\text{kpc}$ and $R\sim8~\text{kpc}$, i.e., where most of the tracer stars used in the analysis are located (see Figure \ref{fig:MW14vsKKS2New_mockdata_residuals}).}
 
 \NEW{The local density distribution is in general less reliably constrained than the forces, but we still capture the essentials. Exceptions are the inner regions $R\lesssim3~\text{kpc}$, where the \texttt{KKS-Pot} model is missing a bulge by construction, and the local radial density profile, which is somewhat misjudged by the \texttt{KKS-Pot} model. The \texttt{cool} population, where most stars are confined to regions close to the mid-plane, recovers the flatness of the disk better than the \texttt{hot} population, but overall}\OLD{Overall} the best fit disk is \NEW{slightly} less dense in the mid-plane than the true disk. While it is in general possible to generate very flattened density distributions from St\"{a}ckel potentials, it might be difficult to simultaneously have a roundish halo and to require that both St\"{a}ckel components have the same focal distance (see Table \ref{tbl:referencepotentials}).
 
