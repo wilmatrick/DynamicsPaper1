@@ -559,8 +559,6 @@ We find from \emph{Example 1} that the potential parameters can be more robustly
 
 Overall, the circular velocity at the Sun is very reliably recovered to within $2\%$ in all these tests. But the best fit $v_\text{circ}(R_\odot)$ is not always unbiased at the implied precision.
 
-\Wilma{[TO DO: Check footnotes.]}
-
 The recovery of the effective qDF parameters, in light of non-qDF mock data, is quite intuitive (in Figures \ref{fig:MWdhbMixCont} and \ref{fig:MWdhbMixDiff} we therefore show only $h_R$): the effective qDF temperature lies between the two temperatures from which the mixed DF of the mock data was drawn; in all cases the scale lengths of the velocity dispersion fall-off, $h_{\sigma,R}$ and $h_{\sigma,z}$, are shorter than the true scale lengths because the stars drawn form the hotter qDF dominate at small radii, while stars from the cooler qDF (with its longer tracer scale length) dominate at large radii; the recovered tracer scale lengths, $h_R$, vary smoothly between the input values of the two qDFs that entered the mix of mock data. The latter is also demonstrated in Figure \ref{fig:MWbdhMix_residual_RvsZ}: the radial tracer density profile of the mock data is steeper than a single qDF in the mid-plane and more shallow at higher $|z|$; overall the best fit $h_R$ therefore lies in between.
 
 We note that in the cases where the systematic bias in the potential parameter recovery becomes as big as several $\sigma$, a direct comparison of the true mock data set and best fit distribution (see Figure \ref{fig:MWdhbMix_mockdata_residuals}) can sometimes already reveal that the assumed DF is not a good model for the data.
@@ -728,14 +726,14 @@ We thank Glenn van de Ven for suggesting the use of Kuzmin-Kutuzov St\"{a}ckel p
 \begin{landscape}
 \begin{deluxetable}{lllll}
 \tabletypesize{\scriptsize}
-\tablecaption{Summary of test suites in this work: The first column indicates the test suite, the second column the potential, DF and SF model, etc., used for the mock data creation, the third column the corresponding model assumed in the \RM{} analysis, and the last column lists the figures belonging to the test suite and summarizes the results. Reference potentials and qDFs are introduced in Tables \ref{tbl:referencepotentials} and \ref{tbl:referenceMAPs}, respectively. Parameters that are not left free in the analysis, are always fixed to their true value. Unless stated otherwise, all mock data sets have SFs with completeness$(\vect{x}) = 1$ and no measurement uncertainties, and we use $N_x=16, N_v = 24, n_\sigma = 5$ as numerical accuracy for calculating the likelihood normalization (see Section \ref{sec:likelihood_normalisation}). \label{tbl:tests}}
+\tablecaption{Summary of Test Suites in this Work. \label{tbl:tests}}
 \tablewidth{0pt}
 \tablehead{
 \colhead{Test} & & \colhead{Model for Mock Data} & \colhead{Model in Analysis} & \colhead{Figures and Results}}
 \startdata
 Test \testlabel{test:norm_accuracy} {1}: & \emph{Potential:} & \texttt{DHB-Pot} & - & Figure \ref{fig:norm_accuracy}\\
 Numerical accuracy & \emph{DF:} & \texttt{hot} or \texttt{cool} qDF & & Suitable accuracy for our tests: \\
-in calculating & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & & $N_x=16, N_v = 24, n_\sigma = 5$.\\
+in calculating & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3,$ or $4~\text{kpc}$ & & $N_x=16, N_v = 24, n_\sigma = 5$.\\
 the likelihood & \emph{Numerical accuracy:} & $N_x\in[5,32]$, $N_v\in[4,48]$, $n_\sigma\in[3,7]$ & & Higher spatial resolution is\\
 normalization & & & & required for cooler populations.\\
 \tableline
@@ -744,7 +742,7 @@ Numerical convergence 	& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters f
 of convolution		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed and known) & scales as $N_\text{samples} \propto (\delta v_\text{max})^2$,\\
 with measurement		& \emph{Uncertainties:}		& $\delta \text{R.A.} =\delta \text{decl.} =\delta(m-M)=0$	& (fixed and known)	& with $\delta v_\text{max}$ being the largest $\delta v$\\
 uncertainties					&						& $\delta v_\text{los} = 2~\text{km s}^{-1}$ & & in the data set. If $N_*$ is smaller,\\
-						&						& $\delta \mu =$ 2,3,4 or $5~\text{mas yr}^{-1}$ & & less accuracy, i.e., less $N_\text{samples}$,\\
+						&						& $\delta \mu =$ 2,3,4, or $5~\text{mas yr}^{-1}$ & & less accuracy, i.e., less $N_\text{samples}$,\\
 						& \emph{Numerical accuracy:} & & $N_\text{samples} \in [25,1200]$& is needed to reach a given\\
 						& \emph{$N_{*}$:} & 10,000 & & accuracy.\\	 
 \tableline
@@ -758,7 +756,7 @@ for large data sets & \emph{$N_{*}$:} & 20,000 & & large data. The width of the\
 Test \testlabel{test:isoSph_CLT} {3.2}: & \emph{Potential:} & \texttt{Iso-Pot} & \texttt{Iso-Pot}, free parameter: $b$ & Figure \ref{fig:isoSph_CLT}\\
 Parameter estimates & \emph{DF:} &\texttt{hot} or \texttt{cool} qDF & qDF, free parameters: & \RM{} behaves like an\\
 are unbiased; & & & $\ln h_R,\ln\sigma_{z,0},\ln h_{\sigma,z}$ & unbiased maximum likelihood\\
-Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3$ or $4~\text{kpc}$ & (fixed and known) & estimator. Larger survey volumes\\
+Influence of survey & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 0.2, 1, 2, 3,$ or $4~\text{kpc}$ & (fixed and known) & estimator. Larger survey volumes\\
 volume size & \emph{$N_{*}$:} & 20,000 & & lead to tighter constraints,\\
 & & & & even at the same $N_*$.\\
 
@@ -783,17 +781,17 @@ Effect of proper motion & \emph{DF:} & \texttt{hot} or \texttt{cool} qDF & qDF, 
 uncertainties on & \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed and known) & precision of the potential para-\\
 precision of & \emph{Uncertainties:} & (i) $\delta\text{R.A.}=\delta\text{decl.}=\delta(m-M)=0,$ & (fixed and known) & meter recovery is only a\\
 potential recovery & & $\delta v_\text{los} = 2~\text{km s}^{-1},$ & & factor $\sim1.15-2$ worse\\
-& & $\delta \mu = 1, 2, 3, 4$ or $5~\text{mas yr}^{-1}$ & & for $\delta\mu\sim1-5~\text{mas yr}^{-1}$\\
+& & $\delta \mu = 1, 2, 3, 4,$ or $5~\text{mas yr}^{-1}$ & & for $\delta\mu\sim1-5~\text{mas yr}^{-1}$\\
 & & (ii) no measurement uncertainties & & than for a data set without\\
  & \emph{$N_{*}$:} & 10,000 & & proper motion uncertainties.\\
 %\tableline
-\\
+\\\\\\\\\\\\\\\\\\\\
 Test \testlabel{test:isoSphFlexErrConv_bias_vs_SE}{6.2} : & \emph{Potential:} 	& \texttt{Iso-Pot} & \texttt{Iso-Pot}, all parameters free & Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}\\
 Testing the convolution		& \emph{DF:}			& \texttt{hot} qDF & qDF, all parameters free & The approximate likelihood\\
 with measurement 		& \emph{Survey Volume:}	& sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed and known) & in Equation \eqref{eq:errorconv} is the true\\
  uncertainties in Equation \eqref{eq:errorconv} & \emph{Uncertainties:}		& $\delta \text{R.A.} =\delta \text{decl.} =0$,	& (fixed and known)	& likelihood in the absence of\\
 with and without			&						& $\delta v_\text{los} = 2~\text{km s}^{-1}$, & & position errors. For distance\\
-distance uncertainties						&						& $\delta \mu =$ 1,2,3,4 or $5~\text{mas yr}^{-1}$, & & uncertainties $\lesssim10\%$ at\\
+distance uncertainties						&						& $\delta \mu =$ 1,2,3,4, or $5~\text{mas yr}^{-1}$, & & uncertainties $\lesssim10\%$ at\\
 						&						& (i) $\delta(m-M) = 0$ or & & $r_\text{max}\sim3~\text{kpc}$, which is the case\\
 						& & (ii) $\delta(m-M) \neq 0$ (see Figure \ref{fig:isoSphFlexErrConv_bias_vs_SE}) & & for \emph{Gaia} and $G \lesssim 15$, the intro-\\
 						& \emph{$N_{*}$:} & 10,000 & & duced bias is still less than $2\sigma$.\\
@@ -802,7 +800,7 @@ Test \testlabel{test:isoSphFlexErrSyst}{6.3} :	& \emph{Potential:}		& \texttt{Is
 Underestimation 	& \emph{DF:}			& \texttt{hot} or \texttt{cool} qDF & qDF, all parameters free & The bias introduced by under-\\
 of proper motion 	& \emph{Survey volume:}	& sphere around Sun, $r_\text{max} = 3~\text{kpc}$ & (fixed and known) & estimating $\delta\mu$ grows with $\delta \mu$.\\
 uncertainties 			 	& \emph{Uncertainties:}		& only proper motion uncertainties & proper motion uncertainties & If $\delta \mu \lesssim 3~\text{mas yr}^{-1}$ and $\delta \mu$\\
-					&						& 1, 2 or $3~\text{mas yr}^{-1}$ & 10\% or 50\% underestimated & is underestimated by 10\%\\
+					&						& 1, 2, or $3~\text{mas yr}^{-1}$ & 10\% or 50\% underestimated & is underestimated by 10\%\\
 					& \emph{$N_{*}$:} & 10,000 & & the bias is only $\sim2\sigma$ or less.\\
 \tableline
 Test \testlabel{test:MWdhbMix}{7} : & \emph{Potential:} & \texttt{DHB-Pot} & \texttt{DHB-Pot}, free parameters: & Figures \ref{fig:MWdhbMix_mockdata_residuals}, \ref{fig:MWbdhMix_residual_RvsZ}, \ref{fig:MWdhbMixCont}, and \ref{fig:MWdhbMixDiff}\\
@@ -828,6 +826,7 @@ from the stars'			& \emph{Survey volume:} & sphere around Sun, $r_\text{max} = 4
 true potential & \emph{$N_{*}$:} & 20,000 & & given the limitations of the wrong\\
  & \emph{Numerical accuracy:} & & $N_x=20, N_v = 28, n_\sigma = 5.5$ & assumed potential model family.
 \enddata
+\tablecomments{Reference potentials and qDFs are introduced in Tables \ref{tbl:referencepotentials} and \ref{tbl:referenceMAPs}, respectively. Parameters that are not left free in the analysis, are always fixed to their true value. Unless stated otherwise, all mock data sets have SFs with completeness$(\vect{x}) = 1$ and no measurement uncertainties, and we use $N_x=16, N_v = 24, n_\sigma = 5$ as numerical accuracy for calculating the likelihood normalization (see Section \ref{sec:likelihood_normalisation}).\\The first column indicates the test suite; the second column the potential, DF, and SF model, etc., used for the mock data creation; the third column the corresponding model assumed in the \RM{} analysis; and the last column lists the figures belonging to the test suite and summarizes the results.}
 \end{deluxetable}
 \clearpage
 \end{landscape}
@@ -836,16 +835,16 @@ true potential & \emph{$N_{*}$:} & 20,000 & & given the limitations of the wrong
 \appendix
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Mock Data} \label{app:mockdata}
-\Wilma{[TO DO: continue here with corrections]}
+
 The mock data in this work is generated according to the following procedure.
 
 We assume that the positions and velocities of our stellar mock sample are indeed drawn from our assumed family of potentials (Section \ref{sec:potentials}) and DFs (Section \ref{sec:qDF}), with given parameters $p_\Phi$ and $p_\text{DF}$. The DF is in terms of actions, while the transformation $(\vect{x}_i,\vect{v}_i) \stackrel{\Phi}{\longrightarrow} \vect{J}_i$ is computationally much less expensive than its inversion. We therefore employ the following efficient two-step method for creating mock data, which also accounts for a spatial survey selection function SF$(\vect{x})$ see Appendix \ref{app:selectionfunction}.
 
-In the first step we draw stellar positions $\vect{x}_i$. We start by setting up the interpolation grid for the tracer density $\rho(R,|z| \mid p_\Phi, p_\text{DF})$ generated according to Section \ref{sec:qDF}.\footnote{For the creation of the mock data we use $N_x = 20$, $N_v = 40$ and $n_\sigma=5$ in Equation \eqref{eq:tracerdensity}.} Next, we sample random positions $(R_i,z_i,\phi_i)$ uniformly within the observable volume. Using a Monte Carlo rejection method we then shape the samples distribution to follow $\rho(R,|z| \mid p_\Phi, p_\text{DF})$. To apply a non-uniform completeness function, we use the rejection method a second time. The resulting set of positions $\vect{x}_i$ follows the distribution $p(\vect{x}) \propto \rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) \times \text{SF}(\vect{x})$.
+In the first step we draw stellar positions $\vect{x}_i$. We start by setting up the interpolation grid for the tracer density $\rho(R,|z| \mid p_\Phi, p_\text{DF})$ generated according to Section \ref{sec:qDF}.\footnote{For the creation of the mock data we use $N_x = 20$, $N_v = 40$ and $n_\sigma=5$ in Equation \eqref{eq:tracerdensity}.} Next, we sample random positions $(R_i,z_i,\phi_i)$ uniformly within the observable volume. Using an MC rejection method we then shape the samples distribution to follow $\rho(R,|z| \mid p_\Phi, p_\text{DF})$. To apply a non-uniform completeness function, we use the rejection method a second time. The resulting set of positions, $\vect{x}_i$, follows the distribution $p(\vect{x}) \propto \rho_\text{DF}(R,|z| \mid p_{\Phi},p_\text{DF}) \times \text{SF}(\vect{x})$.
 
-In the second step we draw velocities $\vect{v}_i$. For each of the positions $(R_i,z_i)$ we first sample velocities from a Gaussian envelope function in velocity space which is then shaped towards DF$(\vect{J}[R_i,z_i,\vect{v} \mid p_{\Phi}] \mid p_\text{DF})$ using a rejection method. We now have a mock data set satisfying $(\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{DF}(\vect{J}[\vect{x},\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \times \text{SF}(\vect{x})$.
+In the second step we draw velocities, $\vect{v}_i$. For each of the positions $(R_i,z_i)$ we first sample velocities from a Gaussian envelope function in velocity space which is then shaped toward DF$(\vect{J}[R_i,z_i,\vect{v} \mid p_{\Phi}] \mid p_\text{DF})$ using a rejection method. We now have a mock data set satisfying $(\vect{x}_i,\vect{v}_i) \longrightarrow p(\vect{x},\vect{v}) \propto \text{DF}(\vect{J}[\vect{x},\vect{v} \mid p_{\Phi}] \mid p_\text{DF}) \times \text{SF}(\vect{x})$.
 
-Measurement uncertainties can be added to the mock data by applying the following modifications to the above procedure. We assume Gaussian uncertainties in the heliocentric phase-space coordinates $\tilde{\vect{x}} = (\text{R.A.},\text{decl.},(m-M)), \tilde{\vect{v}} = (\mu_\text{R.A.} \cdot \cos \text{decl.} ,\mu_\text{decl.},v_\text{los})$ (see Section \ref{sec:coordinates}). In the case of distance and position uncertainties, stars virtually scatter in and out of the observed volume. To account for this, we draw the \emph{true} $\vect{x}_i$ from a volume that is larger than the actual observation volume, perturb the $\vect{x}_i$ according to the position uncertainties and then reject all stars that lie now outside of the observed volume. This mirrors the random scatter around the detection threshold for stars whose distances are determined from the apparent brightness and the distance modulus. We then sample \emph{true} $\vect{v}_i$ (given the \emph{true} $\vect{x}_i$) as described above and perturb them according to the velocity uncertainties.
+Measurement uncertainties can be added to the mock data by applying the following modifications to the above procedure. We assume Gaussian uncertainties in the heliocentric phase-space coordinates $\tilde{\vect{x}} = (\text{R.A.},\text{decl.},(m-M)), \tilde{\vect{v}} = (\mu_\text{R.A.} \cdot \cos \text{decl.} ,\mu_\text{decl.},v_\text{los})$ (see Section \ref{sec:coordinates}). In the case of distance and position uncertainties, stars virtually scatter in and out of the observed volume. To account for this, we draw the \emph{true} $\vect{x}_i$ from a volume that is larger than the actual observation volume, perturb the $\vect{x}_i$ according to the position uncertainties and then reject all stars that now lie outside of the observed volume. This mirrors the random scatter around the detection threshold for stars whose distances are determined from the apparent brightness and the distance modulus. We then sample \emph{true} $\vect{v}_i$ (given the \emph{true} $\vect{x}_i$) as described above and perturb them according to the velocity uncertainties.
 
 %====================
 \begin{figure}[!htbp]
@@ -871,7 +870,7 @@ We show examples of mock data sets (without measurement uncertainties) in action
 
 \section{Selection Functions} \label{app:selectionfunction}
 
-Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors and metallicity of the stars (limited by survey mode and targeting). The SF can therefore be thought of as having both a spatial small scale structure (due to pencil beam pointing, dust obscuration, etc.) and some overall spatial characteristics (e.g., mean height above the plane and mean Galactocentric radius of the stars). The treatment of realistic and complex SFs was already demonstrated in BR13 (who used the pencil-beam SF of the SEGUE survey \citep{2012ApJ...753..148B}) and \citet{2016ApJ...818..130B} (who investigated the effect of dust extinction). In this work, we aim to make a generic and basic exploration of search volume shapes and, as shown by \citet{2016ApJ...818..130B}, this should be possible without explicitly considering the spatial SF substructure. Inspired by the contiguous nature of the \emph{Gaia} SF, which is basically only limited by a magnitude cut, and the fact that this magnitude cut would---in the absence of small scale structure---translate to a sharp distance cut for standard candle tracer populations like red clump stars, we therefore use in our modeling a simple spatial SF of spherical shape with radius $r_\text{max}$ around the Sun,
+Any survey's selection function (SF) can be understood as defining an effective sample sub-volume in the space of observables, e.g., position on the sky (limited by the pointing of the survey), distance from the Sun (limited by brightness and detector sensitivity), colors, and metallicity of the stars (limited by survey mode and targeting). The SF can therefore be thought of as having both a spatial small scale structure (due to pencil beam pointing, dust obscuration, etc.) and some overall spatial characteristics (e.g., mean height above the plane and mean Galactocentric radius of the stars). The treatment of realistic and complex SFs was already demonstrated in BR13 (who used the pencil beam SF of the SEGUE survey; \citealt{2012ApJ...753..148B}) and \citet{2016ApJ...818..130B} (who investigated the effect of dust extinction). In this work, we aim to make a generic and basic exploration of search volume shapes and, as shown by \citet{2016ApJ...818..130B}, this should be possible without explicitly considering the spatial SF substructure. Inspired by the contiguous nature of the \emph{Gaia} SF, which is basically only limited by a magnitude cut, and the fact that this magnitude cut would---in the absence of small scale structure---translate to a sharp distance cut for standard candle tracer populations like red clump stars, we therefore use in our modeling a simple spatial SF of spherical shape with radius $r_\text{max}$ around the Sun,
 \begin{eqnarray}
 \text{SF}(\vect{x}) \equiv \begin{cases}
 \text{completeness}(\vect{x}) &\text{if $|\vect{x}-\vect{x}_\odot| \leq r_\text{max}$,}\\
@@ -879,7 +878,7 @@ Any survey's selection function (SF) can be understood as defining an effective 
 \end{cases} \label{eq:selectionfunction}
 \end{eqnarray}
 
-We set $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability for a star at $\vect{x}$. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$. Additionally, we use in Figure \ref{fig:wedgesVol_bias_vs_SE} (Test \ref{test:wedgesVol}) and Figures \ref{fig:kks2WedgeEx_actions}-\ref{fig:kks2WedgeEx_xv} for illustrative purposes some rather unrealistic survey volumes which are angular segments of a cylindrical annulus (wedge), i.e., the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. 
+We set $0 \leq \text{completeness}(\vect{x}) \leq 1$ everywhere inside the observed volume, so it can be understood as a position-dependent detection probability for a star at $\vect{x}$. Unless explicitly stated otherwise, we simplify to $\text{completeness}(\vect{x}) = 1$. Additionally, we use in Figure \ref{fig:wedgesVol_bias_vs_SE} (Test \ref{test:wedgesVol} in Table \ref{tbl:tests}) and Figures \ref{fig:kks2WedgeEx_actions}-\ref{fig:kks2WedgeEx_xv} for illustrative purposes some rather unrealistic survey volumes which are angular segments of a cylindrical annulus (wedge), i.e., the volume with $R \in [R_\text{min},R_\text{max}],\phi \in [\phi_\text{min},\phi_\text{max}],z \in [z_\text{min},z_\text{max}]$ within the model Galaxy. 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
